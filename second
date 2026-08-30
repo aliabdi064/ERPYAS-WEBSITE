@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPYAS.AI — Enterprise Autonomous Financial &amp; Operational Intelligence</title>
+<meta name="description" content="Enterprise-grade, AI-driven middleware bridging physical documents with ERPNext ledgers in under 4.5 seconds, powered by Gemini 3.7 and Google Cloud.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#F6F4EC',
+          paperband: '#ECE6D4',
+          ink: '#1A2420',
+          inksoft: '#49584C',
+          inkfaint: '#828F80',
+          rule: '#DBD3BE',
+          rulestrong: '#C7BC9E',
+          ledger: '#1F6E4C',
+          ledgerdark: '#154D35',
+          ledgertint: '#E3EEE6',
+          stamp: '#9C3B26',
+          stamptint: '#F4E4DE',
+          inkdark: '#132018',
+        },
+        fontFamily: {
+          serif: ['Newsreader', 'Georgia', 'serif'],
+          sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root {
+    --paper: #F6F4EC;
+    --ink: #1A2420;
+    --rule: #DBD3BE;
+    --ledger: #1F6E4C;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Newsreader', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection { background: #1F6E4C; color: #F6F4EC; }
+
+  /* Visible, deliberate focus ring — ledger green, offset like a highlighter mark */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #1F6E4C;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  section { scroll-margin-top: 5rem; }
+
+  /* -------- Skip link -------- */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: #1A2420;
+    color: #F6F4EC;
+    padding: 0.75rem 1.25rem;
+    z-index: 100;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.875rem;
+  }
+  .skip-link:focus { left: 1rem; top: 1rem; border-radius: 3px; }
+
+  /* -------- Eyebrow label: sentence case, mono, small square mark -------- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8125rem;
+    color: #49584C;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #1F6E4C;
+  }
+
+  /* -------- Buttons -------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: #1F6E4C;
+    color: #F6F4EC;
+  }
+  .btn-primary:hover { background: #154D35; }
+  .btn-secondary {
+    background: transparent;
+    border-color: #1A2420;
+    color: #1A2420;
+  }
+  .btn-secondary:hover { background: #1A2420; color: #F6F4EC; }
+  .btn-block { width: 100%; }
+
+  /* -------- Cards: flat, hairline, no shadow soup -------- */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover { border-color: #C7BC9E; }
+
+  .rule-top { border-top: 1px solid var(--rule); }
+  .rule-bottom { border-bottom: 1px solid var(--rule); }
+
+  /* -------- Stamp badge: literal rubber-stamp graphic, used sparingly -------- */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    transform: rotate(-2.5deg);
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3px currentColor;
+  }
+  .stamp-verified { color: #1F6E4C; }
+  .stamp-draft { color: #9C3B26; }
+
+  /* -------- Receipt / ledger ticket visual (signature element) -------- */
+  .receipt {
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    position: relative;
+    transform: rotate(-0.6deg);
+  }
+  .receipt::before, .receipt::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 10px;
+    background-image: radial-gradient(circle, #F6F4EC 5px, transparent 5.5px);
+    background-size: 16px 16px;
+    background-position: -4px center;
+  }
+  .receipt::before { top: -5px; }
+  .receipt::after { bottom: -5px; }
+
+  /* -------- Ledger banding: subtle green-bar paper echo, used only on data tables -------- */
+  .ledger-band {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      #FFFFFF 0px,
+      #FFFFFF 36px,
+      #F1F6F3 36px,
+      #F1F6F3 72px
+    );
+  }
+
+  /* -------- Reveal: single, restrained scroll-in -------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* -------- Nav -------- */
+  #navbar { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+  #navbar.is-scrolled { box-shadow: 0 1px 0 var(--rule); }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    color: #49584C;
+    transition: color 0.15s ease;
+  }
+  .nav-link:hover { color: #1A2420; }
+
+  /* -------- Slider styling -------- */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: var(--rule);
+    border-radius: 999px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1F6E4C;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 0 1px #1F6E4C;
+    cursor: pointer;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1F6E4C;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 0 1px #1F6E4C;
+    cursor: pointer;
+  }
+
+  /* -------- Form inputs -------- */
+  .field {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    color: #1A2420;
+  }
+  .field:focus { border-color: #1F6E4C; }
+  .field::placeholder { color: #A8A08C; }
+
+  /* -------- Count-up numerals -------- */
+  .count-target { display: inline-block; }
+
+  /* -------- Query tabs -------- */
+  .query-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    color: #49584C;
+    background: #FFFFFF;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .query-btn.active {
+    background: #1A2420;
+    border-color: #1A2420;
+    color: #F6F4EC;
+  }
+
+  /* Utility */
+  .measure { max-width: 62ch; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+</style>
+</head>
+<body class="antialiased">
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="navbar" class="fixed top-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-rule" aria-label="Primary">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex justify-between h-[4.5rem] items-center">
+
+      <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2.5">
+        <span class="w-8 h-8 border border-ink flex items-center justify-center rounded-sm">
+          <i data-lucide="stamp" class="w-4 h-4 text-ledger" aria-hidden="true"></i>
+        </span>
+        <span class="flex flex-col items-start leading-none">
+          <span class="font-serif text-xl font-medium text-ink">ERPYAS<span class="text-ledger">.AI</span></span>
+          <span class="mono text-[10px] text-inkfaint mt-0.5">Enterprise Middleware</span>
+        </span>
+      </button>
+
+      <div class="hidden lg:flex items-center gap-7">
+        <button type="button" onclick="scrollToSection('capabilities')" class="nav-link">Capabilities</button>
+        <button type="button" onclick="scrollToSection('copilot')" class="nav-link">AI Co-Pilot</button>
+        <button type="button" onclick="scrollToSection('showcase')" class="nav-link">Mobile Edge</button>
+      </div>
+
+      <div class="hidden sm:flex items-center gap-3">
+        <button type="button" onclick="scrollToSection('copilot')" class="nav-link font-medium">Live Simulation</button>
+        <button onclick="openEarlyAccessModal()" class="btn btn-primary !py-2.5 !px-4 !text-sm">
+          Get Early Access
+        </button>
+      </div>
+
+      <div class="lg:hidden flex items-center">
+        <button id="mobile-menu-btn" class="p-2 border border-rule rounded-sm text-ink" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" id="menu-icon" class="w-5 h-5" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-rule bg-paper px-5 pt-3 pb-6 space-y-1">
+    <button type="button" onclick="scrollToSection('capabilities')" class="mobile-link block w-full text-left px-2 py-3 text-ink border-b border-rule">Capabilities</button>
+    <button type="button" onclick="scrollToSection('copilot')" class="mobile-link block w-full text-left px-2 py-3 text-ink border-b border-rule">AI Co-Pilot</button>
+    <button type="button" onclick="scrollToSection('showcase')" class="mobile-link block w-full text-left px-2 py-3 text-ink">Mobile Edge</button>
+    <div class="pt-4">
+      <button onclick="openEarlyAccessModal()" class="btn btn-primary btn-block">Request Early Access</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<header class="pt-32 pb-20 lg:pt-40 lg:pb-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+      <div class="lg:col-span-7">
+        <div class="eyebrow mb-6">Enterprise-grade AI-driven middleware</div>
+
+        <h1 class="font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-medium leading-[1.05] text-ink mb-7">
+          Bridging physical reality with strict relational truth.
+        </h1>
+
+        <p class="text-lg text-inksoft leading-relaxed measure mb-9">
+          <strong class="text-ink font-semibold">ERPYAS</strong> is an enterprise-grade, AI-driven middleware designed to completely eliminate the manual data-entry bottleneck by bridging unstructured physical reality with strict relational databases. Operating on a highly scalable serverless architecture, it transforms chaotic warehouse receipts, invoices, and natural language requests into mathematically validated ERPNext ledger entries in <strong class="text-ink font-semibold">under 4.5 seconds</strong>.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 mb-12">
+          <button onclick="openEarlyAccessModal()" class="btn btn-primary">
+            <i data-lucide="zap" class="w-4 h-4" aria-hidden="true"></i>
+            Start Free Enterprise Pilot
+          </button>
+          <button type="button" onclick="scrollToSection('showcase')" class="btn btn-secondary">
+            <i data-lucide="smartphone" class="w-4 h-4" aria-hidden="true"></i>
+            View Mobile Edge App
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mono text-xs text-inkfaint">
+          <span class="border border-rule rounded-sm px-2.5 py-1">Google Gemini 3.7</span>
+          <span aria-hidden="true">·</span>
+          <span class="border border-rule rounded-sm px-2.5 py-1">Google Cloud Infrastructure</span>
+          <span aria-hidden="true">·</span>
+          <span class="border border-rule rounded-sm px-2.5 py-1">ERPNext Frappe Framework</span>
+        </div>
+      </div>
+
+      <!-- Ledger tally strip -->
+      <div class="lg:col-span-5">
+        <div class="receipt p-6 sm:p-7 reveal">
+          <div class="flex items-center justify-between mb-5">
+            <span class="mono text-[11px] text-inkfaint">Live ledger tally</span>
+            <span class="stamp stamp-verified">Verified</span>
+          </div>
+          <dl class="divide-y divide-rule">
+            <div class="flex items-baseline justify-between py-3">
+              <dt class="text-sm text-inksoft">Receipt to ERP ledger</dt>
+              <dd class="mono text-xl font-medium text-ledger">&lt; <span class="count-target" data-count-to="4.5" data-suffix="s" data-decimals="1">0</span></dd>
+            </div>
+            <div class="flex items-baseline justify-between py-3">
+              <dt class="text-sm text-inksoft">Persistent disk footprint</dt>
+              <dd class="mono text-xl font-medium text-ink"><span class="count-target" data-count-to="0" data-suffix=" KB">0</span></dd>
+            </div>
+            <div class="flex items-baseline justify-between py-3">
+              <dt class="text-sm text-inksoft">HITL draft safeguard</dt>
+              <dd class="mono text-xl font-medium text-ink"><span class="count-target" data-count-to="100" data-suffix="%">0</span></dd>
+            </div>
+            <div class="flex items-baseline justify-between py-3">
+              <dt class="text-sm text-inksoft">Multimodal schema match</dt>
+              <dd class="mono text-xl font-medium text-ink"><span class="count-target" data-count-to="99.8" data-suffix="%" data-decimals="1">0</span></dd>
+            </div>
+            <div class="flex items-baseline justify-between pt-3">
+              <dt class="text-sm text-inksoft">Compute cost per scan</dt>
+              <dd class="mono text-xl font-medium text-stamp">&lt; $<span class="count-target" data-count-to="0.002" data-suffix="" data-decimals="3">0</span></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ==================== CORE ENTERPRISE CAPABILITIES ==================== -->
+<section id="capabilities" class="py-24 rule-top">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="eyebrow mb-4">Enterprise core</div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ink mb-5">Core enterprise capabilities</h2>
+      <p class="text-inksoft text-lg leading-relaxed">
+        Engineered to eliminate administrative friction while upholding ironclad accounting compliance and sub-second operational throughput.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+
+      <div class="card p-7">
+        <div class="w-10 h-10 border border-rule rounded-sm flex items-center justify-center mb-5">
+          <i data-lucide="scan-line" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-inkfaint mb-1.5">Edge node processing</div>
+        <h3 class="text-lg font-semibold text-ink mb-3">Intelligent Edge Capture</h3>
+        <p class="text-inksoft text-sm leading-relaxed mb-6">
+          The cross-platform mobile application operates as an intelligent edge node, utilizing on-device neural processing to automatically crop, flatten, and compress physical documents. This localized pre-processing guarantees rapid cloud transmission and allows the system to cache payloads offline to survive severe warehouse network outages.
+        </p>
+        <div class="pt-4 rule-top flex items-center justify-between mono text-xs text-inkfaint">
+          <span>Offline sync queue</span>
+          <span class="text-ledger font-medium">Mobile Edge Engine</span>
+        </div>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-10 h-10 border border-rule rounded-sm flex items-center justify-center mb-5">
+          <i data-lucide="sparkles" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-inkfaint mb-1.5">Multimodal cognitive layer</div>
+        <h3 class="text-lg font-semibold text-ink mb-3">Semantic AI Extraction</h3>
+        <p class="text-inksoft text-sm leading-relaxed mb-6">
+          Eradicating the fragility of traditional, template-dependent OCR, the backend leverages Google Gemini to semantically interpret unpredictable vendor layouts, multi-page PDFs, and even physically damaged documents without prior template configuration.
+        </p>
+        <div class="pt-4 rule-top flex items-center justify-between mono text-xs text-inkfaint">
+          <span>Zero template drift</span>
+          <span class="text-ledger font-medium">Gemini 3.7</span>
+        </div>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-10 h-10 border border-rule rounded-sm flex items-center justify-center mb-5">
+          <i data-lucide="lock" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-inkfaint mb-1.5">Zero-retention conduit</div>
+        <h3 class="text-lg font-semibold text-ink mb-3">Cryptographic &amp; Financial Integrity</h3>
+        <p class="text-inksoft text-sm leading-relaxed mb-6">
+          The system acts strictly as a stateless conduit, ensuring sensitive corporate documents evaporate from server memory the millisecond extraction concludes to maintain absolute data privacy. A strict Human-In-The-Loop (HITL) protocol ensures the AI only drafts records, leaving ultimate financial authority and liability with certified human accountants.
+        </p>
+        <div class="pt-4 rule-top flex items-center justify-between mono text-xs text-inkfaint">
+          <span>Draft safeguard</span>
+          <span class="text-ledger font-medium">Human-verified</span>
+        </div>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-10 h-10 border border-rule rounded-sm flex items-center justify-center mb-5">
+          <i data-lucide="bot" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-inkfaint mb-1.5">Natural-language router</div>
+        <h3 class="text-lg font-semibold text-ink mb-3">Executive Agentic Co-Pilot</h3>
+        <p class="text-inksoft text-sm leading-relaxed mb-6">
+          Beyond document ingestion, the platform features a natural-language router that translates complex operational queries — such as requests for Cash Flow or Accounts Payable summaries — into deterministic database functions. Executives receive instantly rendered, native data visualizations on their devices without latency or hallucination risks.
+        </p>
+        <div class="pt-4 rule-top flex items-center justify-between mono text-xs text-inkfaint">
+          <span>Native SDUI widgets</span>
+          <span class="text-ledger font-medium">Gemini 3.7</span>
+        </div>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-10 h-10 border border-rule rounded-sm flex items-center justify-center mb-5">
+          <i data-lucide="activity" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-inkfaint mb-1.5">High-concurrency engine</div>
+        <h3 class="text-lg font-semibold text-ink mb-3">Serverless Economic Scalability</h3>
+        <p class="text-inksoft text-sm leading-relaxed mb-6">
+          Engineered on scalable Google Cloud infrastructure, the platform elastically expands to handle thousands of concurrent users instantly. This ensures maximum throughput during peak warehouse hours while reducing operational expenditure to fractions of a cent per scan.
+        </p>
+        <div class="pt-4 rule-top flex items-center justify-between mono text-xs text-inkfaint">
+          <span>Instant auto-scaling</span>
+          <span class="text-ledger font-medium">Google Cloud</span>
+        </div>
+      </div>
+
+      <div class="card p-7 bg-inkdark border-inkdark text-paper flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 border border-paper/30 rounded-sm flex items-center justify-center mb-5">
+            <i data-lucide="database" class="w-5 h-5 text-paper" aria-hidden="true"></i>
+          </div>
+          <div class="mono text-xs text-paper/60 mb-1.5">Architectural guarantee</div>
+          <h3 class="text-lg font-semibold text-paper mb-3">The Architectural Verdict</h3>
+          <p class="text-paper/80 text-sm leading-relaxed">
+            By isolating AI to handle only unstructured chaos while relying on battle-tested SQL databases for all mathematical business logic, ERPYAS delivers an infinitely adaptable operations suite. It replaces hours of tedious administration with a frictionless, high-velocity data pipeline that directly accelerates bottom-line efficiency.
+          </p>
+        </div>
+        <div class="pt-5 mt-5 border-t border-paper/20 flex items-center gap-2 mono text-xs text-paper font-medium">
+          <i data-lucide="check-circle-2" class="w-4 h-4" aria-hidden="true"></i>
+          <span>Zero math hallucinations allowed</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== THE GENERALIZATION GAP &amp; ARCHITECTURE ==================== -->
+<section id="architecture" class="py-24 rule-top bg-paperband/40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
+
+      <div class="lg:col-span-5 reveal">
+        <div class="eyebrow mb-4">Architecture deep-dive</div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-medium text-ink mb-6 leading-tight">
+          The generalization gap: AI perception vs SQL logic.
+        </h2>
+        <p class="text-inksoft leading-relaxed mb-8">
+          ERPs like SAP, Oracle, and ERPNext demand perfection and strict schema integrity, but the physical warehouse supply chain is messy. Traditional zonal OCR breaks when vendor layouts drift. ERPYAS bridges this chasm by completely decoupling cognitive AI extraction from deterministic transactional accounting.
+        </p>
+
+        <ol class="space-y-5">
+          <li class="flex gap-4">
+            <span class="mono text-sm text-ledger flex-shrink-0 pt-0.5">01</span>
+            <div>
+              <h4 class="font-semibold text-ink text-base mb-1">The Cost Bottleneck</h4>
+              <p class="text-sm text-inksoft leading-relaxed">
+                SMEs waste hours on manual keying. We reduce document input latency from 48 hours to <strong class="text-ink">4.5 seconds</strong> with mathematical certainty.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mono text-sm text-ledger flex-shrink-0 pt-0.5">02</span>
+            <div>
+              <h4 class="font-semibold text-ink text-base mb-1">The HITL Shield</h4>
+              <p class="text-sm text-inksoft leading-relaxed">
+                AI models can hallucinate. ERPYAS mathematically enforces <code class="mono text-ledger">docstatus: 0</code> (Draft Mode). The AI does the typing; the human retains legal authority.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mono text-sm text-ledger flex-shrink-0 pt-0.5">03</span>
+            <div>
+              <h4 class="font-semibold text-ink text-base mb-1">The 10/90 Compute Split</h4>
+              <p class="text-sm text-inksoft leading-relaxed">
+                We never send unprocessed raw images across unreliable networks. The on-device engine compresses and cleans each document before the cloud layer performs semantic reasoning.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Pipeline receipt ticket -->
+      <div class="lg:col-span-7 reveal">
+        <div class="card overflow-hidden">
+          <div class="px-5 py-4 rule-bottom flex flex-wrap items-center justify-between gap-3 bg-paperband/50">
+            <div class="flex items-center gap-2 mono text-xs text-inksoft">
+              <i data-lucide="file-code-2" class="w-4 h-4 text-ledger" aria-hidden="true"></i>
+              erpyas.core / pipeline.overview
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="mono text-[10px] border border-rule rounded-sm px-2 py-0.5 text-inkfaint">High-level overview</span>
+              <button onclick="copySnippet()" id="copy-btn" class="mono text-[11px] flex items-center gap-1 border border-rule rounded-sm px-2 py-1 text-inksoft hover:text-ink hover:border-ink transition-colors">
+                <i data-lucide="copy" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="p-6 overflow-x-auto mono text-[13px] leading-relaxed">
+<pre><code id="code-snippet"><span class="text-inkfaint"># ERPYAS Ingestion Pipeline — High-level overview</span>
+<span class="text-inkfaint"># Proprietary implementation details withheld</span>
+
+<span class="text-ledger">STEP 1</span>  CAPTURE    → document captured and pre-processed at the edge
+<span class="text-ledger">STEP 2</span>  TRANSMIT   → encrypted transfer to Google Cloud
+<span class="text-ledger">STEP 3</span>  INTERPRET  → semantic understanding via Gemini 3.7
+<span class="text-ledger">STEP 4</span>  VALIDATE   → business-rule &amp; schema checks applied
+<span class="text-ledger">STEP 5</span>  DRAFT      → written to ERPNext as a Human-in-the-Loop draft
+<span class="text-ledger">STEP 6</span>  DISCARD    → source bytes cleared from memory instantly
+
+<span class="text-inkfaint"># Result: a fully-validated draft ledger entry, ready</span>
+<span class="text-inkfaint"># for human review — in under 4.5 seconds end-to-end</span></code></pre>
+          </div>
+
+          <div class="px-6 py-4 rule-top bg-paperband/50 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2 mono text-inksoft">
+              <span class="w-1.5 h-1.5 rounded-full bg-ledger" aria-hidden="true"></span>
+              Pipeline SLA: <strong class="text-ink">&lt; 4.5s total roundtrip</strong>
+            </div>
+            <div class="flex items-center gap-4 mono text-inksoft">
+              <span>Edge: <strong class="text-ink">~180ms</strong></span>
+              <span>Gemini 3.7: <strong class="text-ink">~2100ms</strong></span>
+              <span>ERPNext sync: <strong class="text-ink">~420ms</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EXECUTIVE AGENTIC CO-PILOT SIMULATOR ==================== -->
+<section id="copilot" class="py-24 rule-top">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="eyebrow mb-4">Deterministic natural-language router</div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ink mb-5">Executive Agentic Co-Pilot</h2>
+      <p class="text-inksoft text-lg leading-relaxed">
+        Executives don't navigate convoluted 100-page ERP menus. They ask direct questions in natural language. Our semantic router executes mathematical SQL functions in ERPNext and renders instant, hallucination-free Server-Driven UI (SDUI) widgets.
+      </p>
+    </div>
+
+    <div class="card overflow-hidden max-w-6xl reveal">
+
+      <div class="px-6 py-4 rule-bottom bg-paperband/50 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 border border-rule rounded-sm flex items-center justify-center">
+            <i data-lucide="bot" class="w-4.5 h-4.5 text-ledger" aria-hidden="true"></i>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-ink flex items-center gap-2">
+              ERPYAS CEO Agentic Router
+              <span class="mono text-[10px] border border-ledger text-ledger rounded-sm px-1.5 py-0.5">Online · SQL connected</span>
+            </div>
+            <div class="text-xs text-inkfaint mono">ERPNext v15 Core · Multi-tenant partition</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-inkfaint hidden sm:inline">Try executive query:</span>
+          <div class="flex gap-1.5 overflow-x-auto">
+            <button onclick="runQuery('cashflow')" class="query-btn active">Cash Flow &amp; AP</button>
+            <button onclick="runQuery('invoices')" class="query-btn">Pending Invoices</button>
+            <button onclick="runQuery('tax')" class="query-btn">VAT &amp; Tax Forecast</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12">
+
+        <div class="lg:col-span-5 p-6 rule-bottom lg:rule-bottom-0 lg:border-r border-rule flex flex-col justify-between">
+          <div class="space-y-4 overflow-y-auto max-h-[420px] pr-1" id="chat-messages">
+
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 border border-rule rounded-sm flex items-center justify-center flex-shrink-0 text-ledger">
+                <i data-lucide="sparkles" class="w-4 h-4" aria-hidden="true"></i>
+              </div>
+              <div class="p-3.5 rounded-md bg-paperband/60 border border-rule text-xs text-inksoft leading-relaxed">
+                Welcome, Alireza. I am connected directly to your Frappe ledger. What financial insight or operational query would you like to resolve?
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 justify-end" id="user-bubble">
+              <div class="p-3.5 rounded-md bg-ink text-paper text-xs leading-relaxed max-w-[85%]">
+                &ldquo;Give me an instant summary of our current Cash Flow, Accounts Payable, and top 3 supplier liabilities.&rdquo;
+              </div>
+              <div class="w-7 h-7 border border-rule rounded-sm flex items-center justify-center flex-shrink-0 text-inksoft">
+                <i data-lucide="user" class="w-4 h-4" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3" id="ai-response-bubble">
+              <div class="w-7 h-7 border border-rule rounded-sm flex items-center justify-center flex-shrink-0 text-ledger">
+                <i data-lucide="cpu" class="w-4 h-4" aria-hidden="true"></i>
+              </div>
+              <div class="p-3.5 rounded-md bg-paperband/60 border border-rule text-xs text-inksoft leading-relaxed space-y-2">
+                <div class="mono text-[11px] text-ledger bg-white px-2 py-1 rounded-sm border border-rule">
+                  frappe.db.get_list('Purchase Invoice') → 0.04s
+                </div>
+                <p id="ai-response-text">
+                  Retrieved verified bank &amp; ERPNext ledger entries. Operational liquidity is healthy at £154,200 (+12% MoM), with 3 verified pending liabilities. Rendered interactive SDUI widget on the right.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-4 pt-4 rule-top">
+            <div class="relative flex items-center">
+              <label for="chat-input" class="sr-only">Ask a financial question</label>
+              <input type="text" id="chat-input" placeholder="Ask financial question or execute ledger query…" class="field pr-11 text-xs">
+              <button onclick="sendCustomQuery()" aria-label="Send query" class="absolute right-2 p-1.5 rounded-sm bg-ink text-paper hover:bg-ledger transition-colors">
+                <i data-lucide="arrow-up" class="w-4 h-4" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 p-6 ledger-band flex flex-col justify-between" id="sdui-container">
+
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <span class="mono text-[11px] text-ledger font-medium" id="widget-type">SDUI Executive Matrix</span>
+                <h4 class="text-lg font-semibold text-ink" id="widget-title">Liquidity &amp; Accounts Payable Snapshot</h4>
+                <p class="text-xs text-inkfaint mt-0.5" id="widget-subtitle">Deterministic SQL data extracted directly from Frappe ledger</p>
+              </div>
+              <span class="stamp stamp-verified flex-shrink-0">Verified</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 mb-6" id="widget-metrics">
+              <div class="p-3.5 rounded-sm bg-white border border-rule">
+                <span class="text-[11px] text-inkfaint block">Bank balance</span>
+                <span class="text-lg font-semibold text-ink mono" id="metric-1">£154,200</span>
+                <span class="text-[10px] text-ledger block">↑ 12% vs last month</span>
+              </div>
+              <div class="p-3.5 rounded-sm bg-white border border-rule">
+                <span class="text-[11px] text-inkfaint block">Accounts payable</span>
+                <span class="text-lg font-semibold text-ink mono" id="metric-2">£6,267.00</span>
+                <span class="text-[10px] text-ledger block">3 draft invoices</span>
+              </div>
+              <div class="p-3.5 rounded-sm bg-white border border-rule">
+                <span class="text-[11px] text-inkfaint block">Projected tax</span>
+                <span class="text-lg font-semibold text-stamp mono" id="metric-3">£12,450</span>
+                <span class="text-[10px] text-stamp block">HMRC Q3 accrual</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-sm border border-rule overflow-hidden" id="widget-table-container">
+              <div class="px-4 py-3 bg-paperband/50 rule-bottom flex justify-between items-center text-xs font-medium text-inksoft">
+                <span id="table-title">3 Verified Ledger Records (Frappe Purchase Invoices)</span>
+                <span class="mono text-[10px] text-inkfaint">docstatus: 0 (draft)</span>
+              </div>
+              <div class="divide-y divide-rule text-xs">
+                <div class="px-4 py-2.5 grid grid-cols-12 text-inkfaint mono text-[11px]">
+                  <div class="col-span-4">Supplier</div>
+                  <div class="col-span-4">Invoice ref</div>
+                  <div class="col-span-4 text-right">Total amount</div>
+                </div>
+                <div class="px-4 py-3 grid grid-cols-12 items-center text-inksoft">
+                  <div class="col-span-4 font-medium text-ink">Aliman Baith Ltd</div>
+                  <div class="col-span-4 mono text-inkfaint">PINV-2026-0814</div>
+                  <div class="col-span-4 text-right mono font-medium text-ink">£2,156.00</div>
+                </div>
+                <div class="px-4 py-3 grid grid-cols-12 items-center text-inksoft">
+                  <div class="col-span-4 font-medium text-ink">Maria Hanker Logistics</div>
+                  <div class="col-span-4 mono text-inkfaint">PINV-2026-0819</div>
+                  <div class="col-span-4 text-right mono font-medium text-ink">£381.00</div>
+                </div>
+                <div class="px-4 py-3 grid grid-cols-12 items-center text-inksoft">
+                  <div class="col-span-4 font-medium text-ink">Kashi Ramal Warehouse</div>
+                  <div class="col-span-4 mono text-inkfaint">PINV-2026-0822</div>
+                  <div class="col-span-4 text-right mono font-medium text-ink">£3,730.00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 rule-top flex justify-between items-center text-xs text-inksoft">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="check-check" class="w-4 h-4 text-ledger" aria-hidden="true"></i>
+              Ledger integrity: <strong class="text-ink">zero math discrepancy</strong>
+            </span>
+            <span class="mono text-inkfaint">Query latency: <strong class="text-ink">3.2s</strong></span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MOBILE EDGE CLIENT SHOWCASE ==================== -->
+<section id="showcase" class="py-24 rule-top bg-paperband/40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="eyebrow mb-4">Physical reality to ledger</div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ink mb-5">The Mobile Edge Client in Action</h2>
+      <p class="text-inksoft text-lg leading-relaxed">
+        Designed for warehouse dock workers, floor managers, and executives. From instant enterprise SSO and offline neural document capture to live conversational querying.
+      </p>
+    </div>
+
+    <div class="card p-5 sm:p-8 lg:p-10 max-w-5xl reveal">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="p-4 rounded-sm border border-rule text-left">
+          <div class="flex items-center gap-2 mono text-xs font-medium text-ledger mb-1">
+            <span class="w-5 h-5 rounded-full border border-ledger flex items-center justify-center text-[10px]">1</span>
+            Enterprise Login
+          </div>
+          <h4 class="text-sm font-semibold text-ink mb-1">SSO &amp; Ledger Credentials</h4>
+          <p class="text-xs text-inkfaint">Direct HTTPS authentication to your ERPNext instance with tokenized API key protection.</p>
+        </div>
+
+        <div class="p-4 rounded-sm border border-rule text-left">
+          <div class="flex items-center gap-2 mono text-xs font-medium text-ledger mb-1">
+            <span class="w-5 h-5 rounded-full border border-ledger flex items-center justify-center text-[10px]">2</span>
+            Neural Edge Capture
+          </div>
+          <h4 class="text-sm font-semibold text-ink mb-1">Offline-Resilient Scanner</h4>
+          <p class="text-xs text-inkfaint">On-device neural edge cropping with automated offline caching for dead warehouse zones.</p>
+        </div>
+
+        <div class="p-4 rounded-sm border border-rule text-left">
+          <div class="flex items-center gap-2 mono text-xs font-medium text-ledger mb-1">
+            <span class="w-5 h-5 rounded-full border border-ledger flex items-center justify-center text-[10px]">3</span>
+            CEO Agentic Chat
+          </div>
+          <h4 class="text-sm font-semibold text-ink mb-1">Interactive SDUI Tables</h4>
+          <p class="text-xs text-inkfaint">Instant function routing returning live verified supplier records and totals without latency.</p>
+        </div>
+      </div>
+
+      <div class="relative rounded-sm overflow-hidden border border-rule bg-white">
+        <img
+          src="{{HERO_IMAGE_DATA_URI}}"
+          alt="ERPYAS Mobile Edge App: Enterprise Login, Ready to Capture, and CEO Agentic Chat Screens"
+          class="w-full h-auto object-cover"
+          loading="lazy"
+        />
+        <div class="absolute bottom-4 right-4 bg-ink/90 px-3.5 py-1.5 rounded-sm mono text-[11px] text-paper flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-ledger" aria-hidden="true"></span>
+          <span>Production Build: ERPYAS Edge v2.4</span>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 rule-top grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-base font-semibold text-ink mono">&lt; 200 KB</div>
+          <div class="text-[11px] text-inkfaint">Compressed Edge Payload</div>
+        </div>
+        <div>
+          <div class="text-base font-semibold text-ledger mono">Zero Lag</div>
+          <div class="text-[11px] text-inkfaint">Local Neural Shutter</div>
+        </div>
+        <div>
+          <div class="text-base font-semibold text-ink mono">100% Offline</div>
+          <div class="text-[11px] text-inkfaint">Hive / SQLite Local Cache</div>
+        </div>
+        <div>
+          <div class="text-base font-semibold text-ink mono">iOS &amp; Android</div>
+          <div class="text-[11px] text-inkfaint">Cross-Platform Mobile</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTERACTIVE ROI CALCULATOR ==================== -->
+<section id="roi-calculator" class="py-24 rule-top">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="eyebrow mb-4">Economic impact</div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ink mb-5">Calculate your bottom-line ROI</h2>
+      <p class="text-inksoft text-lg leading-relaxed">
+        See exactly how much money and manual clerk hours ERPYAS eliminates for your finance department every single month.
+      </p>
+    </div>
+
+    <div class="card p-6 sm:p-10 max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-10 items-center reveal">
+
+      <div class="md:col-span-7 space-y-7">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="calc-volume" class="text-sm font-medium text-ink">Monthly Invoice / Receipt Volume</label>
+            <span class="mono text-base font-semibold text-ledger" id="calc-volume-val">2,500 docs</span>
+          </div>
+          <input type="range" id="calc-volume" min="200" max="25000" step="100" value="2500" oninput="updateCalculator()">
+          <div class="flex justify-between mono text-[11px] text-inkfaint mt-1.5">
+            <span>200</span>
+            <span>10,000</span>
+            <span>25,000+</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label for="calc-rate" class="text-sm font-medium text-ink">Manual Clerk Hourly Cost (£ / hr)</label>
+            <span class="mono text-base font-semibold text-ledger" id="calc-rate-val">£22 / hr</span>
+          </div>
+          <input type="range" id="calc-rate" min="15" max="60" step="1" value="22" oninput="updateCalculator()">
+          <div class="flex justify-between mono text-[11px] text-inkfaint mt-1.5">
+            <span>£15/hr</span>
+            <span>£35/hr</span>
+            <span>£60/hr</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-sm border border-rule bg-paperband/40 text-xs text-inksoft">
+          <strong class="text-ink">Benchmark assumption:</strong> Average manual typing &amp; double-check takes ~4.5 mins per supplier invoice vs <strong class="text-ledger">4.5 seconds with ERPYAS</strong>.
+        </div>
+      </div>
+
+      <div class="md:col-span-5 p-6 rounded-sm bg-inkdark text-center flex flex-col justify-between h-full" aria-live="polite">
+        <div>
+          <span class="mono text-xs text-paper/60">Estimated Monthly Savings</span>
+          <div class="text-4xl sm:text-5xl font-serif font-medium text-paper my-3" id="calc-savings">£4,125</div>
+          <div class="text-xs text-ledgertint font-medium mb-6 flex items-center justify-center gap-1.5">
+            <i data-lucide="trending-up" class="w-4 h-4" aria-hidden="true"></i>
+            <span id="calc-annual-savings">£49,500 Annual Bottom-Line Boost</span>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-paper/15 space-y-2 text-xs">
+          <div class="flex justify-between text-paper/80">
+            <span>Clerk hours eliminated:</span>
+            <strong class="text-paper mono" id="calc-hours-saved">187.5 hrs / mo</strong>
+          </div>
+          <div class="flex justify-between text-paper/80">
+            <span>Input delay slashed:</span>
+            <strong class="text-ledgertint mono">99.8% faster</strong>
+          </div>
+        </div>
+
+        <button onclick="openEarlyAccessModal()" class="mt-6 btn btn-primary btn-block !text-xs">
+          Unlock These Savings Now
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECURITY &amp; COMPLIANCE ==================== -->
+<section id="compliance" class="py-24 rule-top bg-paperband/40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+      <div class="reveal">
+        <div class="eyebrow mb-4">SOC2 &amp; GDPR ready architecture</div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-medium text-ink mb-6">
+          Global compliance &amp; volatile RAM protection.
+        </h2>
+        <p class="text-inksoft leading-relaxed mb-8">
+          ERPYAS relies on ERPNext for the ultimate ledger authority. We enforce the <strong class="text-ink">Law of Absolute Statelessness</strong>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.
+        </p>
+
+        <ul class="space-y-3.5">
+          <li class="flex items-start text-inksoft text-sm">
+            <span class="w-5 h-5 border border-ledger rounded-full flex items-center justify-center mr-3 text-ledger flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3 h-3" aria-hidden="true"></i>
+            </span>
+            <span>Auto-adjusts VAT/GST rates via Frappe Regional Tax Templates</span>
+          </li>
+          <li class="flex items-start text-inksoft text-sm">
+            <span class="w-5 h-5 border border-ledger rounded-full flex items-center justify-center mr-3 text-ledger flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3 h-3" aria-hidden="true"></i>
+            </span>
+            <span>Compliant with UK Companies House &amp; HMRC digital filing standards</span>
+          </li>
+          <li class="flex items-start text-inksoft text-sm">
+            <span class="w-5 h-5 border border-ledger rounded-full flex items-center justify-center mr-3 text-ledger flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3 h-3" aria-hidden="true"></i>
+            </span>
+            <span>Saga Pattern distributed transaction rollbacks for zero orphaned entries</span>
+          </li>
+          <li class="flex items-start text-inksoft text-sm">
+            <span class="w-5 h-5 border border-ledger rounded-full flex items-center justify-center mr-3 text-ledger flex-shrink-0 mt-0.5">
+              <i data-lucide="check" class="w-3 h-3" aria-hidden="true"></i>
+            </span>
+            <span>Dual-Layer SQL SHA-256 Deduplication protects against double billing</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card p-8 text-center reveal">
+        <div class="w-12 h-12 border border-rule rounded-sm flex items-center justify-center mx-auto mb-6">
+          <i data-lucide="globe" class="w-6 h-6 text-ledger" aria-hidden="true"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-ink mb-2">Active Operational Regions</h3>
+        <p class="text-xs text-inkfaint max-w-md mx-auto mb-6">Chart of accounts &amp; automated tax calculation natively tailored for global enterprise markets:</p>
+
+        <div class="flex flex-wrap justify-center gap-2.5">
+          <span class="px-3.5 py-1.5 rounded-sm bg-ink text-paper text-xs font-medium">🇬🇧 United Kingdom (HMRC)</span>
+          <span class="px-3.5 py-1.5 rounded-sm border border-rule text-inksoft text-xs">🇺🇸 USA (Sales Tax &amp; IRS)</span>
+          <span class="px-3.5 py-1.5 rounded-sm border border-rule text-inksoft text-xs">🇩🇪 Germany (GoBD &amp; VAT)</span>
+          <span class="px-3.5 py-1.5 rounded-sm border border-rule text-inksoft text-xs">🇨🇦 Canada (CRA / GST)</span>
+          <span class="px-3.5 py-1.5 rounded-sm border border-rule text-inksoft text-xs">🇦🇪 UAE (FTA Corporate Tax)</span>
+        </div>
+
+        <div class="mt-8 p-4 rounded-sm border border-rule mono text-[11px] text-inkfaint">
+          AES-256 in transit · TLS 1.3 strict · Zero persistent files on cloud disk
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ROADMAP &amp; INFRASTRUCTURE ==================== -->
+<section id="roadmap" class="py-24 rule-top">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="eyebrow mb-4">Execution strategy</div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ink mb-5">Development Roadmap</h2>
+      <p class="text-inksoft text-lg leading-relaxed">
+        Transparent milestones as we scale ERPYAS across global logistics hubs and multi-tier enterprise supply chains.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 reveal">
+
+      <div class="card p-7 border-t-[3px] border-t-ledger">
+        <div class="flex justify-between items-center mb-3">
+          <span class="mono text-xs font-medium text-ledger">Q1 2026</span>
+          <span class="mono text-[10px] border border-ledger text-ledger rounded-sm px-2 py-0.5">Completed / Live</span>
+        </div>
+        <h4 class="text-lg font-semibold text-ink mb-3">MVP Core Ingestion</h4>
+        <p class="text-inksoft text-sm leading-relaxed mb-4">
+          Core accounting ledger ingestion, Dual-Layer SQL Deduplication, and the Static AI Inbox with Frappe draft enforcement.
+        </p>
+        <ul class="text-xs text-inksoft space-y-1.5 mono">
+          <li>✓ Mobile edge on-device preprocessing</li>
+          <li>✓ Gemini 3.7 schema validation</li>
+          <li>✓ ERPNext draft enforcement (docstatus: 0)</li>
+        </ul>
+      </div>
+
+      <div class="card p-7 border-t-[3px] border-t-ink">
+        <div class="flex justify-between items-center mb-3">
+          <span class="mono text-xs font-medium text-ink">Q2 2026</span>
+          <span class="mono text-[10px] border border-ink text-ink rounded-sm px-2 py-0.5">Current Focus</span>
+        </div>
+        <h4 class="text-lg font-semibold text-ink mb-3">Beta Fleet Expansion</h4>
+        <p class="text-inksoft text-sm leading-relaxed mb-4">
+          Rolling out to 500 vetted beta enterprise users. Stress testing cloud concurrency and Gemini 3.7 performance at scale.
+        </p>
+        <ul class="text-xs text-inksoft space-y-1.5 mono">
+          <li>◐ High-concurrency cloud scaling</li>
+          <li>◐ Offline SQLite queue synchronization</li>
+          <li>◐ Bank reconciliation feed webhooks</li>
+        </ul>
+      </div>
+
+      <div class="card p-7 border-t-[3px] border-t-stamp">
+        <div class="flex justify-between items-center mb-3">
+          <span class="mono text-xs font-medium text-stamp">Q4 2026</span>
+          <span class="mono text-[10px] border border-stamp text-stamp rounded-sm px-2 py-0.5">Roadmap</span>
+        </div>
+        <h4 class="text-lg font-semibold text-ink mb-3">Public Enterprise SaaS</h4>
+        <p class="text-inksoft text-sm leading-relaxed mb-4">
+          Full commercial scale with multi-tenant SaaS DB isolation and Dynamic Server-Driven UI (SDUI) for bespoke reporting.
+        </p>
+        <ul class="text-xs text-inksoft space-y-1.5 mono">
+          <li>○ Multi-tenant cloud scaling</li>
+          <li>○ Autonomous inventory reorder triggers</li>
+          <li>○ Global ERP connectors (SAP / Business Central)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="rounded-sm p-8 sm:p-12 bg-inkdark text-center text-paper mb-16 reveal">
+      <div class="max-w-3xl mx-auto">
+        <div class="w-11 h-11 border border-paper/30 rounded-sm flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="layers" class="w-5 h-5 text-paper" aria-hidden="true"></i>
+        </div>
+        <div class="mono text-xs text-paper/60 mb-3">Modern 2026 infrastructure stack</div>
+        <h4 class="font-serif text-2xl sm:text-3xl font-medium mb-4">Stateless Compute · Relational Certainty</h4>
+        <p class="text-sm sm:text-base text-paper/75 leading-relaxed mb-6">
+          Enterprise-grade architecture utilizing <strong class="text-paper">Google Cloud</strong> for stateless serverless compute, <strong class="text-paper">ERPNext (Frappe Framework)</strong> for strict ACID relational logic, and <strong class="text-paper">Google Gemini 3.7</strong> for deterministic schema extraction.
+        </p>
+        <div class="flex flex-wrap justify-center items-center gap-2.5 mono text-xs text-paper/80">
+          <span class="px-3 py-1 rounded-sm border border-paper/25">Google Gemini 3.7</span>
+          <span class="px-3 py-1 rounded-sm border border-paper/25">Google Cloud</span>
+          <span class="px-3 py-1 rounded-sm border border-paper/25">ERPNext / Frappe</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="team" class="text-center max-w-3xl mx-auto reveal">
+      <h2 class="font-serif text-3xl font-medium text-ink mb-8">Leadership &amp; Engineering</h2>
+
+      <div class="card p-7 flex flex-col sm:flex-row items-center gap-6 text-left max-w-xl mx-auto">
+        <div class="w-20 h-20 rounded-sm bg-inkdark flex items-center justify-center flex-shrink-0">
+          <span class="font-serif text-2xl font-medium text-paper">A</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <h4 class="text-lg font-semibold text-ink">Alireza Abdi</h4>
+            <a href="https://www.linkedin.com/company/erpyas/" target="_blank" rel="noopener" class="text-ledger hover:text-ledgerdark" aria-label="Alireza Abdi on LinkedIn">
+              <i data-lucide="linkedin" class="w-4 h-4" aria-hidden="true"></i>
+            </a>
+          </div>
+          <p class="text-ledger mono text-xs font-medium mb-2">Founder, CEO &amp; AI Systems Architect</p>
+          <p class="text-inksoft text-xs leading-relaxed">
+            Specializing in distributed serverless systems, multimodal AI middleware, and enterprise accounting integrations. Based in Edinburgh, Scotland.
+          </p>
+          <a href="mailto:hello@erpyas.com" class="inline-flex items-center gap-1.5 text-xs text-ledger hover:text-ledgerdark mt-3 font-medium">
+            <i data-lucide="mail" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            hello@erpyas.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-inkdark text-paper pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+      <div>
+        <div class="flex items-center gap-2.5 mb-5">
+          <span class="w-8 h-8 border border-paper/30 rounded-sm flex items-center justify-center">
+            <i data-lucide="stamp" class="w-4 h-4 text-paper" aria-hidden="true"></i>
+          </span>
+          <span class="font-serif text-lg font-medium text-paper">ERPYAS<span class="text-ledgertint">.AI</span></span>
+        </div>
+
+        <p class="text-paper/60 text-xs mb-1">Edinburgh, Scotland, UK</p>
+        <p class="text-paper/60 text-xs mb-4 mono">Postcode: EH14</p>
+        <a href="mailto:hello@erpyas.com" class="text-ledgertint hover:text-paper transition-colors text-xs mono font-medium flex items-center gap-1.5 mb-4">
+          <i data-lucide="mail" class="w-3.5 h-3.5" aria-hidden="true"></i>
+          hello@erpyas.com
+        </a>
+        <div class="flex items-center gap-3">
+          <a href="https://www.linkedin.com/company/erpyas/" target="_blank" rel="noopener" aria-label="ERPYAS on LinkedIn" class="w-8 h-8 rounded-sm border border-paper/20 flex items-center justify-center text-paper/70 hover:text-paper hover:border-paper/50 transition-colors">
+            <i data-lucide="linkedin" class="w-4 h-4" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener" aria-label="ERPYAS on GitHub" class="w-8 h-8 rounded-sm border border-paper/20 flex items-center justify-center text-paper/70 hover:text-paper hover:border-paper/50 transition-colors">
+            <i data-lucide="github" class="w-4 h-4" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h5 class="text-sm font-semibold text-paper mb-5">Platform</h5>
+        <ul class="space-y-2.5 text-xs text-paper/65">
+          <li><button type="button" onclick="scrollToSection('capabilities')" class="hover:text-paper transition-colors text-left">Intelligent Edge Capture</button></li>
+          <li><button type="button" onclick="scrollToSection('capabilities')" class="hover:text-paper transition-colors text-left">Semantic AI Extraction</button></li>
+          <li><button type="button" onclick="scrollToSection('compliance')" class="hover:text-paper transition-colors text-left">Stateless RAM Conduit</button></li>
+          <li><button type="button" onclick="scrollToSection('copilot')" class="hover:text-paper transition-colors text-left">Executive Agentic Co-Pilot</button></li>
+          <li><button type="button" onclick="scrollToSection('architecture')" class="hover:text-paper transition-colors text-left">Serverless Cloud Engine</button></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-sm font-semibold text-paper mb-5">Ecosystem</h5>
+        <ul class="space-y-2.5 text-xs text-paper/65">
+          <li><button type="button" onclick="scrollToSection('architecture')" class="hover:text-paper transition-colors text-left">ERPNext / Frappe V15</button></li>
+          <li><button type="button" onclick="scrollToSection('compliance')" class="hover:text-paper transition-colors text-left">UK HMRC &amp; Companies House</button></li>
+          <li><button type="button" onclick="scrollToSection('showcase')" class="hover:text-paper transition-colors text-left">Cross-Platform Mobile Edge</button></li>
+          <li><button type="button" onclick="scrollToSection('roadmap')" class="hover:text-paper transition-colors text-left">Public Roadmap 2026</button></li>
+          <li><button type="button" onclick="scrollToSection('roi-calculator')" class="hover:text-paper transition-colors text-left">Financial ROI Calculator</button></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-sm font-semibold text-paper mb-5">Enterprise Access</h5>
+        <p class="text-paper/65 text-xs mb-4 leading-relaxed">
+          Join our exclusive tier for high-volume enterprise warehouse operators and finance teams.
+        </p>
+        <button onclick="openEarlyAccessModal()" class="btn btn-primary btn-block !text-xs">
+          Request Pilot Access
+        </button>
+      </div>
+    </div>
+
+    <div class="border-t border-paper/15 pt-7 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-paper/50">
+      <p>&copy; 2026 ERPYAS.AI — Autonomous Financial Intelligence. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <button type="button" onclick="scrollToSection('compliance')" class="hover:text-paper/80 transition-colors">Privacy &amp; Stateless Data Policy</button>
+        <button type="button" onclick="scrollToSection('compliance')" class="hover:text-paper/80 transition-colors">Terms of Enterprise Service</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== EARLY ACCESS MODAL ==================== -->
+<div id="early-access-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-ink/60" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="bg-paper rounded-sm p-6 sm:p-8 max-w-lg w-full border border-rule relative">
+    <button onclick="closeEarlyAccessModal()" aria-label="Close dialog" class="absolute top-5 right-5 text-inksoft hover:text-ink p-1 rounded-sm border border-rule">
+      <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+    </button>
+
+    <div class="mb-6">
+      <div class="w-11 h-11 border border-rule rounded-sm flex items-center justify-center mb-3">
+        <i data-lucide="zap" class="w-5 h-5 text-ledger" aria-hidden="true"></i>
+      </div>
+      <h3 id="modal-title" class="font-serif text-2xl font-medium text-ink">Join the ERPYAS Enterprise Beta</h3>
+      <p class="text-xs text-inksoft mt-1">Connect your ERPNext or SAP instance for sub-4.5s automated receipt ingestion.</p>
+    </div>
+
+    <form onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs">
+      <div>
+        <label for="lead-email" class="block text-ink font-medium mb-1">Work Email</label>
+        <input type="email" id="lead-email" required placeholder="you@company.com" class="field">
+      </div>
+      <div>
+        <label for="lead-company" class="block text-ink font-medium mb-1">Company / Organization</label>
+        <input type="text" id="lead-company" required placeholder="Enterprise Corp Ltd" class="field">
+      </div>
+      <div>
+        <label for="lead-erp" class="block text-ink font-medium mb-1">Current ERP System</label>
+        <select id="lead-erp" class="field">
+          <option>ERPNext (Frappe)</option>
+          <option>SAP Business One / S/4HANA</option>
+          <option>Microsoft Dynamics 365</option>
+          <option>Oracle NetSuite</option>
+          <option>Other / Custom PostgreSQL</option>
+        </select>
+      </div>
+      <div>
+        <label for="lead-volume" class="block text-ink font-medium mb-1">Estimated Monthly Document Volume</label>
+        <select id="lead-volume" class="field">
+          <option>500 – 2,500 docs/month</option>
+          <option>2,500 – 10,000 docs/month</option>
+          <option>10,000 – 50,000+ docs/month</option>
+        </select>
+      </div>
+
+      <div class="pt-2">
+        <button type="submit" id="submit-btn" class="btn btn-primary btn-block !text-sm">
+          Request VIP Onboarding Slot
+        </button>
+      </div>
+    </form>
+
+    <div id="modal-success" class="hidden text-center py-6 space-y-3">
+      <div class="w-11 h-11 rounded-full border border-ledger text-ledger flex items-center justify-center mx-auto">
+        <i data-lucide="check" class="w-5 h-5" aria-hidden="true"></i>
+      </div>
+      <h4 class="text-lg font-semibold text-ink">Application Received!</h4>
+      <p class="text-xs text-inksoft leading-relaxed">
+        Thank you. Alireza Abdi and the ERPYAS engineering team will review your ERP instance requirements and provide access credentials within 24 hours.
+      </p>
+      <button onclick="closeEarlyAccessModal()" class="mt-2 btn btn-secondary !text-xs">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== INTERACTIVE JAVASCRIPT ==================== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('is-scrolled', window.scrollY > 12);
+    });
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isHidden));
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    updateCalculator();
+    initReveal();
+    initCountUp();
+  });
+
+  // Copy pipeline snippet
+  function copySnippet() {
+    const codeText = document.getElementById('code-snippet').innerText;
+    navigator.clipboard.writeText(codeText).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-ledger" aria-hidden="true"></i><span>Copied</span>';
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5" aria-hidden="true"></i><span>Copy</span>';
+        if (window.lucide) lucide.createIcons();
+      }, 2000);
+    });
+  }
+
+  // Executive Co-Pilot Simulator data
+  const queryData = {
+    cashflow: {
+      prompt: '“Give me an instant summary of our current Cash Flow, Accounts Payable, and top 3 supplier liabilities.”',
+      aiText: 'Retrieved verified bank & ERPNext ledger entries. Operational liquidity is healthy at £154,200 (+12% MoM), with 3 verified pending liabilities. Rendered interactive SDUI widget on the right.',
+      sqlCall: 'frappe.db.get_list(\'Purchase Invoice\') → 0.04s',
+      title: 'Liquidity & Accounts Payable Snapshot',
+      subtitle: 'Deterministic SQL data extracted directly from Frappe ledger',
+      metric1: '£154,200', metric1Sub: '↑ 12% vs last month',
+      metric2: '£6,267.00', metric2Sub: '3 draft invoices',
+      metric3: '£12,450', metric3Sub: 'HMRC Q3 accrual',
+      tableTitle: '3 Verified Ledger Records (Frappe Purchase Invoices)',
+      rows: [
+        { name: 'Aliman Baith Ltd', ref: 'PINV-2026-0814', amt: '£2,156.00' },
+        { name: 'Maria Hanker Logistics', ref: 'PINV-2026-0819', amt: '£381.00' },
+        { name: 'Kashi Ramal Warehouse', ref: 'PINV-2026-0822', amt: '£3,730.00' }
+      ]
+    },
+    invoices: {
+      prompt: '“Show me all recent physical receipts ingested by warehouse floor staff in the last 2 hours.”',
+      aiText: 'Queried Suspense AI Ingestion Buffer. 3 receipts uploaded from mobile edge nodes, pre-validated via Gemini 3.7, and staged in docstatus: 0 draft mode.',
+      sqlCall: 'SELECT * FROM `tabPurchase Invoice` WHERE docstatus=0 → 0.02s',
+      title: 'Warehouse Floor Ingest Queue (DocStatus: 0 Drafts)',
+      subtitle: 'Awaiting certified accountant sign-off in ERPNext',
+      metric1: '3 invoices', metric1Sub: 'Ready for approval',
+      metric2: '100%', metric2Sub: 'Mathematical OCR match',
+      metric3: '2.4s avg', metric3Sub: 'Gemini pipeline latency',
+      tableTitle: 'Pending Warehouse Receipts Ingestion Stream',
+      rows: [
+        { name: 'Freight Express UK', ref: 'REC-WH-9921', amt: '£1,420.50' },
+        { name: 'Apex Industrial Parts', ref: 'REC-WH-9922', amt: '£890.00' },
+        { name: 'Scottish Power Grid', ref: 'REC-WH-9923', amt: '£455.10' }
+      ]
+    },
+    tax: {
+      prompt: '“Estimate our HMRC VAT liability and tax deductible expenses for the current quarter.”',
+      aiText: 'Synthesized input tax credits across all Frappe Tax Templates. Estimated deductible VAT refund is £4,890 with net liability on track for January 15 submission.',
+      sqlCall: 'frappe.regional.uk.get_vat_report(period=\'Q3\') → 0.05s',
+      title: 'HMRC Quarterly VAT & Tax Forecast',
+      subtitle: 'IFRS & UK Companies House automated compliance calculation',
+      metric1: '£12,450', metric1Sub: 'Net VAT payable',
+      metric2: '£4,890', metric2Sub: 'Input tax recoverable',
+      metric3: 'Jan 15', metric3Sub: 'HMRC filing deadline',
+      tableTitle: 'Tax Template Breakdown (UK Standard 20%)',
+      rows: [
+        { name: 'Standard Rated Output VAT', ref: 'TAX-UK-20-OUT', amt: '£17,340.00' },
+        { name: 'Input Tax Deductions (Invoices)', ref: 'TAX-UK-20-IN', amt: '-£4,890.00' },
+        { name: 'Net Obligation (Auto-drafted)', ref: 'HMRC-SUBMIT-Q3', amt: '£12,450.00' }
+      ]
+    }
+  };
+
+  function runQuery(key) {
+    document.querySelectorAll('.query-btn').forEach(btn => btn.classList.remove('active'));
+    if (window.event && window.event.currentTarget) window.event.currentTarget.classList.add('active');
+
+    const data = queryData[key];
+    if (!data) return;
+
+    document.getElementById('user-bubble').querySelector('div').innerText = data.prompt;
+    document.getElementById('ai-response-text').innerText = data.aiText;
+    document.getElementById('widget-title').innerText = data.title;
+    document.getElementById('widget-subtitle').innerText = data.subtitle;
+    document.getElementById('metric-1').innerText = data.metric1;
+    document.getElementById('metric-2').innerText = data.metric2;
+    document.getElementById('metric-3').innerText = data.metric3;
+    document.getElementById('table-title').innerText = data.tableTitle;
+
+    const tableContainer = document.querySelector('#widget-table-container .divide-y');
+    let html = `
+      <div class="px-4 py-2.5 grid grid-cols-12 text-inkfaint mono text-[11px]">
+        <div class="col-span-4">Supplier / entity</div>
+        <div class="col-span-4">Invoice / tax code</div>
+        <div class="col-span-4 text-right">Total amount</div>
+      </div>
+    `;
+    data.rows.forEach(r => {
+      html += `
+        <div class="px-4 py-3 grid grid-cols-12 items-center text-inksoft">
+          <div class="col-span-4 font-medium text-ink">${r.name}</div>
+          <div class="col-span-4 mono text-inkfaint">${r.ref}</div>
+          <div class="col-span-4 text-right mono font-medium text-ink">${r.amt}</div>
+        </div>
+      `;
+    });
+    tableContainer.innerHTML = html;
+  }
+
+  function sendCustomQuery() {
+    const input = document.getElementById('chat-input');
+    const val = input.value.trim();
+    if (!val) return;
+    document.getElementById('user-bubble').querySelector('div').innerText = `“${val}”`;
+    document.getElementById('ai-response-text').innerText = `Executed deterministic SQL router for “${val}”. Verified against Frappe ledger database schema. Results synchronized.`;
+    input.value = '';
+  }
+
+  // ROI Calculator
+  function updateCalculator() {
+    const volume = parseInt(document.getElementById('calc-volume').value, 10);
+    const rate = parseInt(document.getElementById('calc-rate').value, 10);
+
+    document.getElementById('calc-volume-val').innerText = volume.toLocaleString() + ' docs';
+    document.getElementById('calc-rate-val').innerText = '£' + rate + ' / hr';
+
+    const manualHours = volume * 0.075;
+    const manualCost = manualHours * rate;
+    const erpyasMonthly = volume * 0.002 * 0.8;
+    const netSavings = Math.max(0, Math.round(manualCost - erpyasMonthly));
+    const annualSavings = netSavings * 12;
+
+    document.getElementById('calc-savings').innerText = '£' + netSavings.toLocaleString();
+    document.getElementById('calc-annual-savings').innerText = '£' + annualSavings.toLocaleString() + ' Annual Bottom-Line Boost';
+    document.getElementById('calc-hours-saved').innerText = manualHours.toFixed(1) + ' hrs / mo';
+  }
+
+  // Navigation
+  function scrollToSection(id) {
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  // Early access modal
+  function openEarlyAccessModal() {
+    const modal = document.getElementById('early-access-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+  function closeEarlyAccessModal() {
+    const modal = document.getElementById('early-access-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  const EARLY_ACCESS_INBOX = 'hello@erpyas.com';
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('lead-email').value;
+    const company = document.getElementById('lead-company').value;
+    const erp = document.getElementById('lead-erp').value;
+    const volume = document.getElementById('lead-volume').value;
+
+    const subject = encodeURIComponent('New ERPYAS Early Access Request — ' + company);
+    const body = encodeURIComponent(
+      'New Enterprise Beta application submitted via erpyas.ai\n\n' +
+      'Work Email: ' + email + '\n' +
+      'Company: ' + company + '\n' +
+      'Current ERP System: ' + erp + '\n' +
+      'Estimated Monthly Document Volume: ' + volume
+    );
+    window.location.href = 'mailto:' + EARLY_ACCESS_INBOX + '?subject=' + subject + '&body=' + body;
+
+    document.querySelector('#early-access-modal form').classList.add('hidden');
+    document.getElementById('modal-success').classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Single, restrained scroll-reveal
+  function initReveal() {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || revealEls.length === 0) {
+      revealEls.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  // Count-up numerals — a single data-driven moment, not decoration
+  function initCountUp() {
+    const targets = document.querySelectorAll('.count-target');
+    if (targets.length === 0) return;
+
+    function animateCount(el) {
+      const to = parseFloat(el.getAttribute('data-count-to'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const duration = 900;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = to * eased;
+        el.textContent = value.toFixed(decimals) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = to.toFixed(decimals) + suffix;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const cio = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      targets.forEach(t => cio.observe(t));
+    } else {
+      targets.forEach(animateCount);
+    }
+  }
+</script>
+</body>
+</html>
