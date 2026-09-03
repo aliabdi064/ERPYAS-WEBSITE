@@ -863,6 +863,57 @@
             box-shadow: 0 30px 100px -20px rgba(0, 240, 255, 0.35), 0 0 60px -15px rgba(59, 130, 246, 0.25);
         }
 
+        
+        /* 4K Ultra-Definition Screen Rendering & Subpixel Antialiasing */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Kinetic Scroll-Linked Text Illumination (Apple/Stripe Style) */
+        .scroll-illuminate {
+            opacity: 0.35;
+            transform: translateY(6px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease;
+            will-change: opacity, transform;
+        }
+        .scroll-illuminate.illuminated {
+            opacity: 1;
+            transform: translateY(0);
+            color: #ffffff;
+        }
+
+        /* Mathematical & Sacred Geometry Animations */
+        @keyframes geo-rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes geo-rotate-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes geo-pulse-scale {
+            0%, 100% { transform: scale(1); opacity: 0.08; }
+            50% { transform: scale(1.04); opacity: 0.14; }
+        }
+
+        .math-geo-svg {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            mix-blend-mode: screen;
+        }
+        .geo-spin-clockwise {
+            animation: geo-rotate-slow 60s linear infinite;
+        }
+        .geo-spin-counter {
+            animation: geo-rotate-reverse 75s linear infinite;
+        }
+        .geo-pulse {
+            animation: geo-pulse-scale 8s ease-in-out infinite;
+        }
+
         /* Section Anchors */
         section {
             scroll-margin-top: 5.5rem;
@@ -1077,6 +1128,16 @@
                 </div>
             </div>
             
+            
+            <!-- ==================== DYNAMIC KINETIC PAIN-POINT TICKER ==================== -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
+                    <span class="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">Eliminating:</span>
+                    <span id="pain-point-ticker" class="text-xs font-mono font-bold text-cyan-300 transition-all duration-300">Manual Invoice Keystrokes</span>
+                </div>
+            </div>
+
             <!-- Headline & High-Converting Narrative -->
             <div class="text-center max-w-5xl mx-auto relative mt-8">
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-6 font-sans">
@@ -1254,6 +1315,17 @@
 
     <!-- ==================== CORE ENTERPRISE CAPABILITIES (TRUE ASYMMETRIC BENTO GRID) ==================== -->
     <section id="capabilities" class="py-28 bg-[#020512] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Fibonacci Golden Spiral & Hexagonal Matrix Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-10 -right-24 -top-24 w-[650px] h-[650px]" viewBox="0 0 400 400" fill="none" stroke="rgba(0, 255, 157, 0.45)" stroke-width="1.2">
+            <circle cx="200" cy="200" r="180" stroke-dasharray="4 6" />
+            <circle cx="200" cy="200" r="130" />
+            <circle cx="200" cy="200" r="80" stroke-dasharray="2 4" />
+            <path d="M200,20 A180,180 0 0,1 380,200 A130,130 0 0,1 250,330 A80,80 0 0,1 170,250 A50,50 0 0,1 200,200" stroke="rgba(0, 240, 255, 0.6)" stroke-width="1.6"/>
+            <polygon points="200,30 347,115 347,285 200,370 53,285 53,115" stroke-dasharray="6 6" />
+            <polygon points="200,70 312,135 312,265 200,330 88,265 88,135" />
+            <line x1="200" y1="20" x2="200" y2="380" stroke-dasharray="3 3"/>
+            <line x1="20" y1="200" x2="380" y2="200" stroke-dasharray="3 3"/>
+        </svg>
         <!-- Background Geometric Shapes & Rings for Capabilities -->
         <div class="holo-ring holo-ring-2 opacity-40" style="top: 25%; left: 80%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-20 left-10 opacity-40" aria-hidden="true"></div>
@@ -1270,7 +1342,7 @@
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
                     Core Enterprise Capabilities
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Engineered to eliminate administrative friction while upholding ironclad accounting compliance and sub-second operational throughput.
                 </p>
             </div>
@@ -1432,6 +1504,23 @@
     <!-- ==================== THE GENERALIZATION GAP & ARCHITECTURE ==================== -->
     <!-- ==================== FRACTION-OF-A-SECOND RELATIONAL PROOF (BENCHMARKS) ==================== -->
     <section id="architecture" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Sacred Metatron's Cube & Relational Database Topology Blueprint -->
+        <svg class="math-geo-svg geo-spin-counter opacity-10 -left-28 -top-20 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="1.2">
+            <circle cx="250" cy="250" r="220" stroke-dasharray="5 7"/>
+            <circle cx="250" cy="250" r="140"/>
+            <circle cx="250" cy="250" r="60" stroke="rgba(0, 240, 255, 0.7)" stroke-width="1.8"/>
+            <circle cx="250" cy="110" r="60"/>
+            <circle cx="250" cy="390" r="60"/>
+            <circle cx="129" cy="180" r="60"/>
+            <circle cx="371" cy="180" r="60"/>
+            <circle cx="129" cy="320" r="60"/>
+            <circle cx="371" cy="320" r="60"/>
+            <polygon points="250,50 423,150 423,350 250,450 77,350 77,150" stroke-dasharray="4 4"/>
+            <line x1="250" y1="50" x2="250" y2="450"/>
+            <line x1="77" y1="150" x2="423" y2="350"/>
+            <line x1="77" y1="350" x2="423" y2="150"/>
+        </svg>
+
         <!-- 3D Perspective Cyber Floor Grid -->
         <div class="cyber-grid-floor opacity-50" aria-hidden="true"></div>
 
@@ -1576,6 +1665,22 @@
     <!-- ==================== EXECUTIVE AGENTIC CO-PILOT SIMULATOR ==================== -->
     <!-- ==================== NATURAL LANGUAGE CO-PILOT SIMULATOR ==================== -->
     <section id="copilot" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: Neural Tensor Network Synapses & Cognitive Vector Mesh Blueprint -->
+        <svg class="math-geo-svg geo-pulse opacity-12 -right-32 top-10 w-[720px] h-[720px]" viewBox="0 0 500 500" fill="none" stroke="rgba(176, 38, 255, 0.45)" stroke-width="1.2">
+            <polygon points="250,30 460,250 250,470 40,250" stroke-dasharray="6 6"/>
+            <polygon points="250,100 400,250 250,400 100,250"/>
+            <circle cx="250" cy="250" r="110" stroke="rgba(236, 72, 153, 0.5)"/>
+            <circle cx="250" cy="250" r="30" fill="rgba(176, 38, 255, 0.2)" stroke="rgba(0, 240, 255, 0.7)" stroke-width="2"/>
+            <line x1="40" y1="250" x2="460" y2="250" stroke-dasharray="3 5"/>
+            <line x1="250" y1="30" x2="250" y2="470" stroke-dasharray="3 5"/>
+            <circle cx="100" cy="250" r="6" fill="#00f0ff"/>
+            <circle cx="400" cy="250" r="6" fill="#00f0ff"/>
+            <circle cx="250" cy="100" r="6" fill="#b026ff"/>
+            <circle cx="250" cy="400" r="6" fill="#b026ff"/>
+            <circle cx="250" cy="30" r="8" fill="#d946ef"/>
+            <circle cx="250" cy="470" r="8" fill="#d946ef"/>
+        </svg>
+
         <!-- 3D Perspective Cyber Floor Grid -->
         <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
 
@@ -1609,7 +1714,7 @@
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
                     Executive Agentic Co-Pilot
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Executives don't navigate convoluted 100-page ERP menus. They ask direct questions in natural language. Our semantic router executes mathematical SQL functions in ERPNext and renders instant, hallucination-free Server-Driven UI (SDUI) widgets.
                 </p>
             </div>
@@ -1799,6 +1904,16 @@
     <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
     <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
     <section id="showcase" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Optical Viewport Calibration Grid & Coordinate Axes Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-10 left-10 -top-16 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.4)" stroke-width="1.2">
+            <circle cx="250" cy="250" r="230" stroke-dasharray="4 8"/>
+            <circle cx="250" cy="250" r="160"/>
+            <circle cx="250" cy="250" r="90" stroke-dasharray="2 4"/>
+            <line x1="250" y1="10" x2="250" y2="490" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1.5"/>
+            <line x1="10" y1="250" x2="490" y2="250" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1.5"/>
+            <rect x="190" y="190" width="120" height="120" stroke="rgba(59, 130, 246, 0.6)" stroke-width="1.4" stroke-dasharray="4 4"/>
+        </svg>
+
         <!-- 3D Perspective Cyber Floor Grid -->
         <div class="cyber-grid-floor opacity-65" aria-hidden="true"></div>
 
@@ -1833,7 +1948,7 @@
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
                     The Mobile Edge Client in Action
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Designed for warehouse dock workers, floor managers, and executives. From instant enterprise SSO and offline neural document capture to live conversational querying.
                 </p>
             </div>
@@ -1884,19 +1999,16 @@
                         <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
 
                         <!-- Crisp Responsive Picture Element -->
-                        <picture>
-                            <source srcset="mobile-edge-showcase-2k.webp" type="image/webp">
-                            <img 
-                                src="mobile-edge-showcase.jpg"
-                                onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/third/mobile-edge-showcase.jpg';" 
-                                alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
-                                width="2048"
-                                height="2048"
-                                loading="lazy"
-                                decoding="async"
-                                class="w-full h-auto object-cover rounded-[20px] shadow-2xl transition-transform duration-700 group-hover:scale-[1.012] crisp-4k-image"
-                            />
-                        </picture>
+                        <img 
+                            src="mobile-edge-showcase.jpg"
+                            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/third/mobile-edge-showcase.jpg';" 
+                            alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
+                            width="1024"
+                            height="1024"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-auto object-cover rounded-[20px] shadow-2xl transition-transform duration-700 group-hover:scale-[1.01] crisp-4k-image"
+                        />
                         
                         <!-- Overlay Cyber HUD Status Bar -->
                         <div class="absolute inset-0 bg-gradient-to-t from-[#010206] via-transparent to-transparent opacity-40 pointer-events-none"></div>
@@ -1926,6 +2038,21 @@
     <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
     <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
     <section id="roi-calculator" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: Exponential Growth Curve & Financial Matrix Plane Blueprint -->
+        <svg class="math-geo-svg geo-pulse opacity-12 -left-20 top-20 w-[650px] h-[650px]" viewBox="0 0 500 500" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2">
+            <line x1="50" y1="450" x2="470" y2="450" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
+            <line x1="50" y1="450" x2="50" y2="30" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
+            <path d="M50,440 Q 200,420 320,250 T 460,50" stroke="rgba(255, 183, 0, 0.75)" stroke-width="2.5" fill="none"/>
+            <circle cx="320" cy="250" r="7" fill="#ffb700"/>
+            <circle cx="460" cy="50" r="9" fill="#00ff9d"/>
+            <line x1="50" y1="350" x2="470" y2="350" stroke-dasharray="4 6"/>
+            <line x1="50" y1="250" x2="470" y2="250" stroke-dasharray="4 6"/>
+            <line x1="50" y1="150" x2="470" y2="150" stroke-dasharray="4 6"/>
+            <line x1="150" y1="450" x2="150" y2="30" stroke-dasharray="4 6"/>
+            <line x1="250" y1="450" x2="250" y2="30" stroke-dasharray="4 6"/>
+            <line x1="350" y1="450" x2="350" y2="30" stroke-dasharray="4 6"/>
+        </svg>
+
         <!-- 3D Perspective Cyber Floor Grid -->
         <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
 
@@ -1959,7 +2086,7 @@
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
                     Calculate Your Bottom-Line ROI
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     See exactly how much money and manual clerk hours ERPYAS eliminates for your finance department every single month.
                 </p>
             </div>
@@ -2030,6 +2157,14 @@
 
     <!-- ==================== COMPLIANCE & STATELESSNESS ==================== -->
     <section id="compliance" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Cryptographic Merkle Hash Tree & Shield Matrix Blueprint -->
+        <svg class="math-geo-svg geo-spin-counter opacity-10 -right-28 top-16 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
+            <path d="M250,40 L440,110 L440,280 C440,390 250,470 250,470 C250,470 60,390 60,280 L60,110 Z" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
+            <path d="M250,90 L390,140 L390,260 C390,340 250,410 250,410 C250,410 110,340 110,260 L110,140 Z" stroke-dasharray="6 6"/>
+            <circle cx="250" cy="240" r="60" stroke="rgba(20, 184, 166, 0.6)"/>
+            <line x1="250" y1="90" x2="250" y2="410" stroke-dasharray="3 3"/>
+            <line x1="110" y1="240" x2="390" y2="240" stroke-dasharray="3 3"/>
+        </svg>
         <!-- Background Holographic Shapes for Compliance -->
         <div class="holo-ring holo-ring-2 opacity-35" style="top: 50%; left: 20%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-24 right-16 opacity-45" aria-hidden="true"></div>
@@ -2127,6 +2262,17 @@
     <!-- ==================== DEVELOPMENT ROADMAP ==================== -->
     <!-- ==================== STRATEGIC ENTERPRISE ROADMAP ==================== -->
     <section id="roadmap" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: 4D Tesseract Hypercube & Temporal Progression Vector Plane Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-12 -left-24 top-24 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="1.3">
+            <rect x="70" y="70" width="360" height="360" stroke-dasharray="6 6"/>
+            <rect x="150" y="150" width="200" height="200" stroke="rgba(0, 240, 255, 0.6)" stroke-width="1.8"/>
+            <line x1="70" y1="70" x2="150" y2="150"/>
+            <line x1="430" y1="70" x2="350" y2="150"/>
+            <line x1="70" y1="430" x2="150" y2="350"/>
+            <line x1="430" y1="430" x2="350" y2="350"/>
+            <circle cx="250" cy="250" r="40" stroke="rgba(255, 183, 0, 0.7)"/>
+            <circle cx="250" cy="250" r="140" stroke-dasharray="3 5"/>
+        </svg>
         <!-- 3D Perspective Cyber Floor Grid -->
         <div class="cyber-grid-floor opacity-60" aria-hidden="true"></div>
 
@@ -2160,7 +2306,7 @@
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
                     Development Roadmap
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Transparent milestones as we scale ERPYAS across global logistics hubs and multi-tier enterprise supply chains.
                 </p>
             </div>
@@ -2675,6 +2821,57 @@
             }
             refreshIcons();
         }
+
+        // ==================== DYNAMIC KINETIC PAIN-POINT TICKER ====================
+        (function() {
+            const tickerEl = document.getElementById('pain-point-ticker');
+            if (!tickerEl) return;
+
+            const painPoints = [
+                'Manual Invoice Keystrokes',
+                '48-Hour Ledger Lag',
+                'VAT Reconciliation Delays',
+                'Audit Discrepancy Risk',
+                'Warehouse Dock Data Bottlenecks',
+                'Unverified Paper Receipts'
+            ];
+            let idx = 0;
+
+            setInterval(() => {
+                tickerEl.style.opacity = '0';
+                tickerEl.style.transform = 'translateY(-6px)';
+                setTimeout(() => {
+                    idx = (idx + 1) % painPoints.length;
+                    tickerEl.innerText = painPoints[idx];
+                    tickerEl.style.opacity = '1';
+                    tickerEl.style.transform = 'translateY(0)';
+                }, 300);
+            }, 2800);
+        })();
+
+        // ==================== SCROLL-LINKED WORD / SENTENCE ILLUMINATION ====================
+        (function() {
+            if (!('IntersectionObserver' in window)) return;
+            const elements = document.querySelectorAll('.scroll-illuminate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('illuminated');
+                    } else {
+                        // Soft dim when scrolling far away
+                        if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
+                            entry.target.classList.remove('illuminated');
+                        }
+                    }
+                });
+            }, {
+                threshold: [0.15, 0.5],
+                rootMargin: '0px 0px -60px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+        })();
+
 
         function sendCustomQuery() {
             const input = document.getElementById('chat-input');
