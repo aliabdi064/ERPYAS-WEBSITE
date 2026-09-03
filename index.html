@@ -781,38 +781,10 @@
             transform: scale(1.02);
         }
 
-        .hero-part-1 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 30%, #00f0ff 70%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 4s linear infinite;
-            filter: drop-shadow(0 0 26px rgba(0, 240, 255, 0.55));
-        }
-
-        .hero-part-2 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #00ff9d 30%, #34d399 70%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 4.8s linear infinite;
-            filter: drop-shadow(0 0 26px rgba(0, 255, 157, 0.5));
-        }
-
-        .hero-part-3 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 25%, #ffb700 65%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 5.5s linear infinite;
-            filter: drop-shadow(0 0 26px rgba(192, 132, 252, 0.5));
-        }
-
         @keyframes text-flow-a {
             0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
             100% { background-position: 200% center; }
         }
 
@@ -912,6 +884,87 @@
         }
         .geo-pulse {
             animation: geo-pulse-scale 8s ease-in-out infinite;
+        }
+
+        
+        /* ==================== 4K / 8K ULTRA-SHINE HDR VISUAL ENGINE ==================== */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "kern", "liga";
+        }
+
+        /* Luminous Multi-Stop Neon Bloom on the 3 Signature Statement Lines */
+        .hero-part-1 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 20%, #00f0ff 50%, #0284c7 80%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 3.8s linear infinite;
+            filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 38px rgba(0, 240, 255, 0.45));
+        }
+
+        .hero-part-2 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #34d399 20%, #00ff9d 50%, #059669 80%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 4.2s linear infinite;
+            filter: drop-shadow(0 0 14px rgba(0, 255, 157, 0.85)) drop-shadow(0 0 38px rgba(0, 255, 157, 0.45));
+        }
+
+        .hero-part-3 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 20%, #b026ff 48%, #ffb700 80%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 4.8s linear infinite;
+            filter: drop-shadow(0 0 14px rgba(176, 38, 255, 0.85)) drop-shadow(0 0 38px rgba(255, 183, 0, 0.45));
+        }
+
+        /* Maximum Shining Radiant Mathematical SVG Blueprints */
+        .math-geo-svg {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 8px currentColor);
+            transition: opacity 0.5s ease, filter 0.5s ease;
+        }
+
+        /* Luminous Metric Numbers with Bloom */
+        .count-target {
+            text-shadow: 0 0 18px currentColor, 0 0 36px currentColor;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* High-Definition Contrast Shimmer on Glass Cards */
+        .glass-card {
+            background: rgba(4, 9, 26, 0.85);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .glass-card:hover {
+            box-shadow: 0 25px 60px -10px rgba(0, 240, 255, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        /* Specular Lens Flares Behind Major Section Titles */
+        .section-flare {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 120px;
+            background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.18) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Section Anchors */
@@ -1316,7 +1369,7 @@
     <!-- ==================== CORE ENTERPRISE CAPABILITIES (TRUE ASYMMETRIC BENTO GRID) ==================== -->
     <section id="capabilities" class="py-28 bg-[#020512] relative border-t border-slate-800/80 overflow-hidden">
         <!-- Mathematical Geometry: Fibonacci Golden Spiral & Hexagonal Matrix Blueprint -->
-        <svg class="math-geo-svg geo-spin-clockwise opacity-10 -right-24 -top-24 w-[650px] h-[650px]" viewBox="0 0 400 400" fill="none" stroke="rgba(0, 255, 157, 0.45)" stroke-width="1.2">
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 -right-24 -top-24 w-[650px] h-[650px]" viewBox="0 0 400 400" fill="none" stroke="rgba(0, 255, 157, 0.45)" stroke-width="1.2">
             <circle cx="200" cy="200" r="180" stroke-dasharray="4 6" />
             <circle cx="200" cy="200" r="130" />
             <circle cx="200" cy="200" r="80" stroke-dasharray="2 4" />
@@ -1340,7 +1393,7 @@
                     Enterprise Core<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Core Enterprise Capabilities
+                    <div class="section-flare" aria-hidden="true"></div>Core Enterprise Capabilities
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Engineered to eliminate administrative friction while upholding ironclad accounting compliance and sub-second operational throughput.
@@ -1419,7 +1472,7 @@
                     </div>
                 </div>
 
-                <!-- Bento Card 4 (Span 2 on lg): Executive Agentic Co-Pilot -->
+                <!-- Bento Card 4 (Span 2 on lg): <div class="section-flare" aria-hidden="true"></div>Executive Agentic Co-Pilot -->
                 <div class="lg:col-span-2 glass-card glass-card-hover spotlight-card capture-frame p-8 sm:p-10 rounded-3xl relative overflow-hidden group border border-violet-500/30 bg-gradient-to-br from-slate-900/90 via-[#140b2a]/85 to-slate-900/90 shadow-2xl">
                     <span class="cf-corner cf-tl"></span><span class="cf-corner cf-tr"></span><span class="cf-corner cf-bl"></span><span class="cf-corner cf-br"></span>
                     
@@ -1430,7 +1483,7 @@
                             </div>
                             <div>
                                 <div class="text-xs font-mono font-bold text-violet-400 tracking-widest uppercase">Autonomous Business Intelligence</div>
-                                <h3 class="text-2xl font-black text-white font-sans mt-0.5">Executive Agentic Co-Pilot</h3>
+                                <h3 class="text-2xl font-black text-white font-sans mt-0.5"><div class="section-flare" aria-hidden="true"></div>Executive Agentic Co-Pilot</h3>
                             </div>
                         </div>
                         <span class="px-3 py-1 rounded-full text-xs font-mono bg-violet-950/80 text-violet-300 border border-violet-800/60">SDUI_ROUTER: ACTIVE</span>
@@ -1505,7 +1558,7 @@
     <!-- ==================== FRACTION-OF-A-SECOND RELATIONAL PROOF (BENCHMARKS) ==================== -->
     <section id="architecture" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
         <!-- Mathematical Geometry: Sacred Metatron's Cube & Relational Database Topology Blueprint -->
-        <svg class="math-geo-svg geo-spin-counter opacity-10 -left-28 -top-20 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="1.2">
+        <svg class="math-geo-svg geo-spin-counter opacity-25 -left-28 -top-20 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="1.2">
             <circle cx="250" cy="250" r="220" stroke-dasharray="5 7"/>
             <circle cx="250" cy="250" r="140"/>
             <circle cx="250" cy="250" r="60" stroke="rgba(0, 240, 255, 0.7)" stroke-width="1.8"/>
@@ -1525,8 +1578,8 @@
         <div class="cyber-grid-floor opacity-50" aria-hidden="true"></div>
 
         <!-- Ambient Atmospheric Aurora Spheres -->
-        <div class="glow-sphere w-[700px] h-[700px] bg-blue-600/16 top-20 -right-40 pointer-events-none"></div>
-        <div class="glow-sphere w-[550px] h-[550px] bg-indigo-600/15 bottom-16 -left-36 pointer-events-none"></div>
+        <div class="glow-sphere w-[700px] h-[700px] bg-blue-500/25 top-20 -right-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-indigo-500/22 bottom-16 -left-36 pointer-events-none"></div>
 
         <!-- Holographic Concentric Orbital Rings -->
         <div class="holo-ring holo-ring-2 opacity-40" style="top: 50%; left: 20%;" aria-hidden="true"></div>
@@ -1554,7 +1607,7 @@
                     </div>
                     
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight font-sans">
-                        The Generalization Gap: <br/>
+                        <div class="section-flare" aria-hidden="true"></div>The Generalization Gap: <br/>
                         <span class="text-gradient">AI Perception vs SQL Logic.</span>
                     </h2>
                     
@@ -1666,7 +1719,7 @@
     <!-- ==================== NATURAL LANGUAGE CO-PILOT SIMULATOR ==================== -->
     <section id="copilot" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
         <!-- Mathematical Geometry: Neural Tensor Network Synapses & Cognitive Vector Mesh Blueprint -->
-        <svg class="math-geo-svg geo-pulse opacity-12 -right-32 top-10 w-[720px] h-[720px]" viewBox="0 0 500 500" fill="none" stroke="rgba(176, 38, 255, 0.45)" stroke-width="1.2">
+        <svg class="math-geo-svg geo-pulse opacity-25 -right-32 top-10 w-[720px] h-[720px]" viewBox="0 0 500 500" fill="none" stroke="rgba(176, 38, 255, 0.45)" stroke-width="1.2">
             <polygon points="250,30 460,250 250,470 40,250" stroke-dasharray="6 6"/>
             <polygon points="250,100 400,250 250,400 100,250"/>
             <circle cx="250" cy="250" r="110" stroke="rgba(236, 72, 153, 0.5)"/>
@@ -1685,8 +1738,8 @@
         <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
 
         <!-- Ambient Atmospheric Aurora Spheres -->
-        <div class="glow-sphere w-[650px] h-[650px] bg-violet-600/16 top-16 -left-40 pointer-events-none"></div>
-        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-600/15 bottom-20 -right-36 pointer-events-none"></div>
+        <div class="glow-sphere w-[650px] h-[650px] bg-violet-500/26 top-16 -left-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-500/25 bottom-20 -right-36 pointer-events-none"></div>
 
         <!-- Holographic Concentric Orbital Rings -->
         <div class="holo-ring holo-ring-1 opacity-40" style="top: 40%; left: 80%;" aria-hidden="true"></div>
@@ -1711,7 +1764,8 @@
                     <i data-lucide="terminal" class="w-3.5 h-3.5 text-violet-400"></i>
                     Deterministic Natural Language Router
                 </div>
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans relative">
+                    <div class="section-flare" aria-hidden="true"></div>
                     Executive Agentic Co-Pilot
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
@@ -1905,7 +1959,7 @@
     <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
     <section id="showcase" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
         <!-- Mathematical Geometry: Optical Viewport Calibration Grid & Coordinate Axes Blueprint -->
-        <svg class="math-geo-svg geo-spin-clockwise opacity-10 left-10 -top-16 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.4)" stroke-width="1.2">
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 left-10 -top-16 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.4)" stroke-width="1.2">
             <circle cx="250" cy="250" r="230" stroke-dasharray="4 8"/>
             <circle cx="250" cy="250" r="160"/>
             <circle cx="250" cy="250" r="90" stroke-dasharray="2 4"/>
@@ -1946,7 +2000,7 @@
                     Physical Reality to Ledger<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    The Mobile Edge Client in Action
+                    <div class="section-flare" aria-hidden="true"></div>The Mobile Edge Client in Action
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Designed for warehouse dock workers, floor managers, and executives. From instant enterprise SSO and offline neural document capture to live conversational querying.
@@ -2039,7 +2093,7 @@
     <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
     <section id="roi-calculator" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
         <!-- Mathematical Geometry: Exponential Growth Curve & Financial Matrix Plane Blueprint -->
-        <svg class="math-geo-svg geo-pulse opacity-12 -left-20 top-20 w-[650px] h-[650px]" viewBox="0 0 500 500" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2">
+        <svg class="math-geo-svg geo-pulse opacity-25 -left-20 top-20 w-[650px] h-[650px]" viewBox="0 0 500 500" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2">
             <line x1="50" y1="450" x2="470" y2="450" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
             <line x1="50" y1="450" x2="50" y2="30" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
             <path d="M50,440 Q 200,420 320,250 T 460,50" stroke="rgba(255, 183, 0, 0.75)" stroke-width="2.5" fill="none"/>
@@ -2058,7 +2112,7 @@
 
         <!-- Ambient Atmospheric Aurora Spheres -->
         <div class="glow-sphere w-[700px] h-[700px] bg-emerald-600/16 top-16 -right-32 pointer-events-none"></div>
-        <div class="glow-sphere w-[550px] h-[550px] bg-amber-600/12 bottom-10 -left-28 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-amber-500/22 bottom-10 -left-28 pointer-events-none"></div>
 
         <!-- Holographic Concentric Orbital Rings -->
         <div class="holo-ring holo-ring-1 opacity-40" style="top: 45%; left: 80%;" aria-hidden="true"></div>
@@ -2084,7 +2138,7 @@
                     Economic Impact
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Calculate Your Bottom-Line ROI
+                    <div class="section-flare" aria-hidden="true"></div>Calculate Your Bottom-Line ROI
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     See exactly how much money and manual clerk hours ERPYAS eliminates for your finance department every single month.
@@ -2158,7 +2212,7 @@
     <!-- ==================== COMPLIANCE & STATELESSNESS ==================== -->
     <section id="compliance" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
         <!-- Mathematical Geometry: Cryptographic Merkle Hash Tree & Shield Matrix Blueprint -->
-        <svg class="math-geo-svg geo-spin-counter opacity-10 -right-28 top-16 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
+        <svg class="math-geo-svg geo-spin-counter opacity-25 -right-28 top-16 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
             <path d="M250,40 L440,110 L440,280 C440,390 250,470 250,470 C250,470 60,390 60,280 L60,110 Z" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
             <path d="M250,90 L390,140 L390,260 C390,340 250,410 250,410 C250,410 110,340 110,260 L110,140 Z" stroke-dasharray="6 6"/>
             <circle cx="250" cy="240" r="60" stroke="rgba(20, 184, 166, 0.6)"/>
@@ -2180,7 +2234,7 @@
                     </div>
                     
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6 font-sans">
-                        Global Compliance &amp; <br/>
+                        <div class="section-flare" aria-hidden="true"></div>Global Compliance &amp; <br/>
                         <span class="text-gradient">Volatile RAM Protection.</span>
                     </h2>
                     
@@ -2263,7 +2317,7 @@
     <!-- ==================== STRATEGIC ENTERPRISE ROADMAP ==================== -->
     <section id="roadmap" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
         <!-- Mathematical Geometry: 4D Tesseract Hypercube & Temporal Progression Vector Plane Blueprint -->
-        <svg class="math-geo-svg geo-spin-clockwise opacity-12 -left-24 top-24 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="1.3">
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 -left-24 top-24 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="1.3">
             <rect x="70" y="70" width="360" height="360" stroke-dasharray="6 6"/>
             <rect x="150" y="150" width="200" height="200" stroke="rgba(0, 240, 255, 0.6)" stroke-width="1.8"/>
             <line x1="70" y1="70" x2="150" y2="150"/>
@@ -2277,8 +2331,8 @@
         <div class="cyber-grid-floor opacity-60" aria-hidden="true"></div>
 
         <!-- Ambient Atmospheric Aurora Spheres -->
-        <div class="glow-sphere w-[700px] h-[700px] bg-purple-600/16 top-16 -right-36 pointer-events-none"></div>
-        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-600/15 bottom-16 -left-32 pointer-events-none"></div>
+        <div class="glow-sphere w-[700px] h-[700px] bg-purple-500/24 top-16 -right-36 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-500/25 bottom-16 -left-32 pointer-events-none"></div>
 
         <!-- Holographic Concentric Orbital Rings -->
         <div class="holo-ring holo-ring-1 opacity-45" style="top: 35%; left: 12%;" aria-hidden="true"></div>
@@ -2304,7 +2358,7 @@
                     Execution Strategy<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Development Roadmap
+                    <div class="section-flare" aria-hidden="true"></div>Development Roadmap
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Transparent milestones as we scale ERPYAS across global logistics hubs and multi-tier enterprise supply chains.
