@@ -639,73 +639,8 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* Custom Superhuman Cursor */
-        @media (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-ring {
-                position: fixed;
-                top: 0; left: 0;
-                pointer-events: none;
-                z-index: 999999;
-                transform: translate(-50%, -50%);
-            }
-            .cursor-dot {
-                width: 6px;
-                height: 6px;
-                background: #00f0ff;
-                border-radius: 50%;
-                box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-                transition: width 0.2s, height 0.2s, background-color 0.2s;
-                will-change: transform;
-            }
-            .cursor-ring {
-                width: 32px;
-                height: 32px;
-                border: 1px solid rgba(0, 240, 255, 0.55);
-                border-radius: 50%;
-                transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s, height 0.2s, background-color 0.2s;
-                will-change: transform;
-            }
-        }
-
         /* Ambient Aurora Background */
         .aurora-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            overflow: hidden;
-            pointer-events: none;
-            background: transparent;
-        }
-        .aurora-blob {
-            position: absolute;
-            filter: blur(130px);
-            opacity: 0.55;
-            animation: aurora-drift 24s infinite alternate ease-in-out;
-            border-radius: 50%;
-            transform: translateZ(0);
-        }
-        .aurora-blob:nth-child(1) {
-            top: -20%; left: -10%;
-            width: 68vw; height: 68vh;
-            background: rgba(37,99,235,0.32);
-            animation-delay: 0s;
-        }
-        .aurora-blob:nth-child(2) {
-            bottom: -20%; right: -10%;
-            width: 78vw; height: 78vh;
-            background: rgba(0,240,255,0.28);
-            animation-delay: -5s;
-        }
-        .aurora-blob:nth-child(3) {
-            top: 30%; left: 20%;
-            width: 58vw; height: 58vh;
-            background: rgba(176,38,255,0.24);
-            animation-delay: -10s;
-        }
-        @keyframes aurora-drift {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             50% { transform: translate(15vw, 15vh) scale(1.1) rotate(45deg); }
             100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(-45deg); }
@@ -915,6 +850,17 @@
         @keyframes pulse-pass {
             0% { transform: translateX(-100%); }
             50%, 100% { transform: translateX(100%); }
+        }
+
+        
+        /* 4K Optical Sharpness & Pedestal Glare */
+        .crisp-4k-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: contrast(102%) brightness(101%);
+        }
+        .pedestal-glow {
+            box-shadow: 0 30px 100px -20px rgba(0, 240, 255, 0.35), 0 0 60px -15px rgba(59, 130, 246, 0.25);
         }
 
         /* Section Anchors */
@@ -1484,7 +1430,26 @@
     </section>
 
     <!-- ==================== THE GENERALIZATION GAP & ARCHITECTURE ==================== -->
-    <section id="architecture" class="py-28 bg-[#010206] relative overflow-hidden">
+    <!-- ==================== FRACTION-OF-A-SECOND RELATIONAL PROOF (BENCHMARKS) ==================== -->
+    <section id="architecture" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-50" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-blue-600/16 top-20 -right-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-indigo-600/15 bottom-16 -left-36 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-2 opacity-40" style="top: 50%; left: 20%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-1 opacity-35" style="bottom: 20%; right: 15%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-hex top-28 left-[10%] opacity-55" aria-hidden="true"></div>
+        <div class="geo-shape-diamond bottom-40 right-[12%] opacity-60" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube top-60 right-[7%] opacity-50" style="animation-delay: -7s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 10s; animation-delay: -4s;"></div></div>
         <!-- Background Holographic Shapes for Architecture -->
         <div class="holo-ring holo-ring-1 opacity-35" style="top: 50%; left: 10%;" aria-hidden="true"></div>
         <div class="geo-shape-cube top-32 right-16 opacity-50" aria-hidden="true"></div>
@@ -1609,7 +1574,26 @@
     </section>
 
     <!-- ==================== EXECUTIVE AGENTIC CO-PILOT SIMULATOR ==================== -->
+    <!-- ==================== NATURAL LANGUAGE CO-PILOT SIMULATOR ==================== -->
     <section id="copilot" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[650px] h-[650px] bg-violet-600/16 top-16 -left-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-600/15 bottom-20 -right-36 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 40%; left: 80%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-35" style="bottom: 10%; left: 15%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-diamond top-24 right-[14%] opacity-60" style="animation-delay: -6s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube bottom-36 left-[8%] opacity-55" style="animation-delay: -2s;" aria-hidden="true"></div>
+        <div class="geo-shape-hex top-48 left-[12%] opacity-45" style="animation-delay: -8s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 8.5s; animation-delay: -1s;"></div></div>
         <!-- Background Holographic Shapes for Co-Pilot -->
         <div class="holo-ring holo-ring-3 opacity-30" style="top: 60%; left: 70%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-16 left-12 opacity-45" aria-hidden="true"></div>
@@ -1813,7 +1797,27 @@
     </section>
 
     <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
-    <section id="showcase" class="py-28 bg-[#010206] relative overflow-hidden">
+    <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
+    <section id="showcase" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-65" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres (Pedestal Glow) -->
+        <div class="glow-sphere w-[800px] h-[800px] bg-cyan-500/18 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-blue-600/15 top-10 right-10 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings Centered Behind Device -->
+        <div class="holo-ring holo-ring-2 opacity-50" style="top: 55%; left: 50%; width: 750px; height: 750px;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 55%; left: 50%; width: 520px; height: 520px;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-3 opacity-30" style="top: 55%; left: 50%; width: 980px; height: 980px;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-cube top-20 right-14 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-16 left-16 opacity-55" style="animation-delay: -3s;" aria-hidden="true"></div>
+        <div class="geo-shape-diamond top-40 left-20 opacity-50" style="animation-delay: -5s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 9s; animation-delay: -3s;"></div></div>
         <!-- Background Holographic Shapes for Mobile Edge -->
         <div class="holo-ring holo-ring-2 opacity-35" style="top: 45%; left: 30%;" aria-hidden="true"></div>
         <div class="geo-shape-cube top-20 right-14 opacity-50" aria-hidden="true"></div>
@@ -1867,27 +1871,43 @@
                     </div>
                 </div>
 
-                <!-- High-Resolution Image Container with Subtle Ambient Glow -->
-                <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-2xl group">
-                    <img 
-                        src="mobile-edge-showcase.jpg" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/main/mobile-edge-showcase.jpg';" 
-                        alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
-                        width="1024"
-                        height="1024"
-                        loading="lazy"
-                        decoding="async"
-                        class="w-full h-auto object-cover rounded-2xl shadow-2xl transition-transform duration-700 group-hover:scale-[1.015]"
-                    />
-                    
-                    <!-- Overlay Cyber HUD elements on hover -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#010206] via-transparent to-transparent opacity-40 pointer-events-none"></div>
-                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-300">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            <span class="text-white font-semibold">Live Production Flutter/Dart Build</span>
+                <!-- High-Resolution 4K-Like Image Container with Ambient Pedestal Glow -->
+                <div class="relative rounded-3xl p-1 bg-gradient-to-br from-cyan-500/40 via-blue-600/20 to-purple-600/40 pedestal-glow group">
+                    <div class="relative rounded-[22px] overflow-hidden bg-slate-950 border border-slate-700/80">
+                        <!-- High-Tech 4K Ultra-HD Resolution Badge -->
+                        <div class="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-slate-950/85 border border-cyan-400/50 text-cyan-300 font-mono text-[11px] font-bold uppercase tracking-wider backdrop-blur-md shadow-xl flex items-center gap-2">
+                            <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
+                            <span>4K ULTRA-HD DUAL VIEW</span>
                         </div>
-                        <div class="text-slate-400">
-                            iOS 17+ • Android 14+ • frappe_api: ^2.4.0
+
+                        <!-- Titanium Specular Glare Sweep on Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
+
+                        <!-- Crisp Responsive Picture Element -->
+                        <picture>
+                            <source srcset="mobile-edge-showcase-2k.webp" type="image/webp">
+                            <img 
+                                src="mobile-edge-showcase.jpg"
+                                onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/third/mobile-edge-showcase.jpg';" 
+                                alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
+                                width="2048"
+                                height="2048"
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-auto object-cover rounded-[20px] shadow-2xl transition-transform duration-700 group-hover:scale-[1.012] crisp-4k-image"
+                            />
+                        </picture>
+                        
+                        <!-- Overlay Cyber HUD Status Bar -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#010206] via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-700/60 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-300 z-20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                <span class="text-white font-semibold">Live Production Flutter/Dart Build</span>
+                            </div>
+                            <div class="text-slate-400">
+                                iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1904,7 +1924,26 @@
     </section>
 
     <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
+    <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
     <section id="roi-calculator" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-emerald-600/16 top-16 -right-32 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-amber-600/12 bottom-10 -left-28 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 45%; left: 80%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-35" style="bottom: 15%; left: 10%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-diamond top-28 left-20 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-16 right-28 opacity-50" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube top-44 right-16 opacity-45" style="animation-delay: -7s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 8s; animation-delay: -5s;"></div></div>
         <!-- Background Holographic Shapes for ROI -->
         <div class="holo-ring holo-ring-1 opacity-35" style="top: 50%; left: 85%;" aria-hidden="true"></div>
         <div class="geo-shape-diamond top-28 left-20 opacity-55" aria-hidden="true"></div>
@@ -2086,7 +2125,26 @@
     </section>
 
     <!-- ==================== DEVELOPMENT ROADMAP ==================== -->
+    <!-- ==================== STRATEGIC ENTERPRISE ROADMAP ==================== -->
     <section id="roadmap" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-60" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-purple-600/16 top-16 -right-36 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-600/15 bottom-16 -left-32 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-45" style="top: 35%; left: 12%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-40" style="bottom: 30%; right: 10%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-cube top-28 left-16 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-36 right-16 opacity-55" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-diamond top-52 right-24 opacity-50" style="animation-delay: -6s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 10s; animation-delay: -3s;"></div></div>
         <!-- Background Holographic Shapes for Roadmap -->
         <div class="holo-ring holo-ring-3 opacity-30" style="top: 40%; left: 50%;" aria-hidden="true"></div>
         <div class="geo-shape-diamond top-20 left-16 opacity-50" aria-hidden="true"></div>
@@ -2365,8 +2423,8 @@
         <div class="aurora-blob"></div>
     </div>
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+    
+    
 
     <!-- ==================== CONSOLIDATED & OPTIMIZED JAVASCRIPT MODULE ==================== -->
     <script>
@@ -3043,66 +3101,22 @@
                 draw();
             })();
 
-            // ==================== SUPERHUMAN KINETIC CURSOR ====================
-            if (window.matchMedia("(pointer: fine)").matches) {
-                const dot = document.getElementById('cursor-dot');
-                const ring = document.getElementById('cursor-ring');
-                let mouseX = window.innerWidth / 2;
-                let mouseY = window.innerHeight / 2;
-                let ringX = mouseX;
-                let ringY = mouseY;
-                
-                window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-                }, { passive: true });
-
-                function renderCursor() {
-                    ringX += (mouseX - ringX) * 0.16;
-                    ringY += (mouseY - ringY) * 0.16;
-                    ring.style.transform = `translate(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px)`;
-                    requestAnimationFrame(renderCursor);
-                }
-                requestAnimationFrame(renderCursor);
-                
-                const interactives = document.querySelectorAll('a, button, input, textarea, select, .ledger-dot-wrap, .spotlight-card, .magnetic-btn, .hero-statement-text');
-                interactives.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        dot.style.width = '10px';
-                        dot.style.height = '10px';
-                        dot.style.background = '#fff';
-                        dot.style.boxShadow = '0 0 18px #fff';
-                        ring.style.width = '52px';
-                        ring.style.height = '52px';
-                        ring.style.borderColor = 'rgba(0, 240, 255, 0.95)';
-                        ring.style.background = 'rgba(0, 240, 255, 0.1)';
+            // Smart Canvas Sleeping: Stop GPU loop when hero is scrolled out of view
+            const heroCanvasEl = document.getElementById('hero-geometry-canvas');
+            if (heroCanvasEl && 'IntersectionObserver' in window) {
+                const canvasObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!animFrameId) draw();
+                        } else {
+                            if (animFrameId) {
+                                cancelAnimationFrame(animFrameId);
+                                animFrameId = null;
+                            }
+                        }
                     });
-                    el.addEventListener('mouseleave', () => {
-                        dot.style.width = '6px';
-                        dot.style.height = '6px';
-                        dot.style.background = '#00f0ff';
-                        dot.style.boxShadow = '0 0 10px #00f0ff, 0 0 20px #00f0ff';
-                        ring.style.width = '32px';
-                        ring.style.height = '32px';
-                        ring.style.borderColor = 'rgba(0, 240, 255, 0.55)';
-                        ring.style.background = 'transparent';
-                    });
-                });
-                
-                document.addEventListener('mouseleave', () => {
-                    dot.style.opacity = '0';
-                    ring.style.opacity = '0';
-                });
-                document.addEventListener('mouseenter', () => {
-                    dot.style.opacity = '1';
-                    ring.style.opacity = '1';
-                });
-            } else {
-                const d = document.getElementById('cursor-dot');
-                const r = document.getElementById('cursor-ring');
-                if (d) d.style.display = 'none';
-                if (r) r.style.display = 'none';
+                }, { threshold: 0.05 });
+                canvasObserver.observe(heroCanvasEl);
             }
         });
     </script>
