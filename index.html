@@ -895,35 +895,32 @@
             font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "kern", "liga";
         }
 
-        /* Luminous Multi-Stop Neon Bloom on the 3 Signature Statement Lines */
+        /* Clean & Crisp Statement Lines Without Ugly Blur */
         .hero-part-1 {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 20%, #00f0ff 50%, #0284c7 80%, #ffffff 100%);
+            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 25%, #00f0ff 65%, #ffffff 100%);
             background-size: 200% auto;
-            animation: text-flow-a 3.8s linear infinite;
-            filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 38px rgba(0, 240, 255, 0.45));
+            animation: text-flow-a 4s linear infinite;
         }
 
         .hero-part-2 {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #34d399 20%, #00ff9d 50%, #059669 80%, #ffffff 100%);
+            background-image: linear-gradient(110deg, #ffffff 0%, #34d399 25%, #00ff9d 65%, #ffffff 100%);
             background-size: 200% auto;
-            animation: text-flow-a 4.2s linear infinite;
-            filter: drop-shadow(0 0 14px rgba(0, 255, 157, 0.85)) drop-shadow(0 0 38px rgba(0, 255, 157, 0.45));
+            animation: text-flow-a 4.5s linear infinite;
         }
 
         .hero-part-3 {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 20%, #b026ff 48%, #ffb700 80%, #ffffff 100%);
+            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 20%, #ffb700 65%, #ffffff 100%);
             background-size: 200% auto;
-            animation: text-flow-a 4.8s linear infinite;
-            filter: drop-shadow(0 0 14px rgba(176, 38, 255, 0.85)) drop-shadow(0 0 38px rgba(255, 183, 0, 0.45));
+            animation: text-flow-a 5s linear infinite;
         }
 
         /* Maximum Shining Radiant Mathematical SVG Blueprints */
@@ -1044,14 +1041,38 @@
                 <!-- Brand Logo -->
                 <div class="flex items-center gap-3 cursor-pointer">
                     <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2.5 group text-left">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] shadow-lg shadow-blue-500/25">
-                            <div class="w-full h-full bg-[#0b1329] rounded-[11px] flex items-center justify-center">
-                                <i data-lucide="cpu" class="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300"></i>
+                        <div class="relative w-11 h-11 rounded-xl p-[1.5px] bg-gradient-to-br from-emerald-400 via-cyan-400 to-rose-500 shadow-lg shadow-emerald-500/20 group-hover:shadow-rose-500/30 transition-all duration-300 transform group-hover:scale-105">
+                            <div class="w-full h-full bg-[#050a1b] rounded-[10px] flex items-center justify-center overflow-hidden">
+                                <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 4L34 12V28L20 36L6 28V12L20 4Z" fill="url(#logo-bg-grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+                                    <path d="M20 20L6 12V28L20 36V20Z" fill="url(#erp-facet-grad)"/>
+                                    <path d="M20 20L34 12V28L20 36V20Z" fill="url(#yas-facet-grad)"/>
+                                    <path d="M20 4L34 12L20 20L6 12L20 4Z" fill="url(#top-facet-grad)"/>
+                                    <path d="M14 10L20 18L26 10M20 18V29" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 0 4px #00f0ff)"/>
+                                    <defs>
+                                        <linearGradient id="logo-bg-grad" x1="6" y1="4" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#09142f"/>
+                                            <stop offset="1" stop-color="#020612"/>
+                                        </linearGradient>
+                                        <linearGradient id="erp-facet-grad" x1="6" y1="12" x2="20" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#00ff9d" stop-opacity="0.45"/>
+                                            <stop offset="1" stop-color="#059669" stop-opacity="0.2"/>
+                                        </linearGradient>
+                                        <linearGradient id="yas-facet-grad" x1="20" y1="12" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#ff3366" stop-opacity="0.55"/>
+                                            <stop offset="1" stop-color="#be123c" stop-opacity="0.25"/>
+                                        </linearGradient>
+                                        <linearGradient id="top-facet-grad" x1="6" y1="4" x2="34" y2="20" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#00f0ff" stop-opacity="0.4"/>
+                                            <stop offset="1" stop-color="#2563eb" stop-opacity="0.2"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
                             </div>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-2xl font-black tracking-tight text-white flex items-center gap-1 font-sans">
-                                ERPYAS<span class="text-cyan-400">.AI</span>
+                                <span class="text-emerald-400 font-black">ERP</span><span class="text-rose-500 font-black">YAS</span><span class="text-cyan-400 font-bold">.AI</span>
                             </span>
                             <span class="text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-1 font-semibold">Enterprise Middleware</span>
                         </div>
@@ -1199,7 +1220,7 @@
                 </h1>
                 
                 <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
-                    <strong>ERPYAS</strong> transforms chaotic warehouse receipts, commercial invoices, and conversational executive inquiries into mathematically validated ERPNext ledger entries in <strong>under 4.5 seconds</strong>. Built on Google Gemini 3.7 and Google Cloud serverless architecture, it empowers accounting teams with effortless automated data entry while preserving strict human-in-the-loop financial governance.
+                    <strong><span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span></strong> transforms chaotic warehouse receipts, commercial invoices, and conversational executive inquiries into mathematically validated ERPNext ledger entries in <strong>under 4.5 seconds</strong>. Built on Google Gemini 3.7 and Google Cloud serverless architecture, it empowers accounting teams with effortless automated data entry while preserving strict human-in-the-loop financial governance.
                 </p>
                 
                 <!-- CTA Button Cluster -->
@@ -1541,7 +1562,7 @@
                         <div class="text-xs font-mono font-bold text-cyan-300 tracking-wider uppercase mb-2">Architectural Guarantee</div>
                         <h3 class="text-xl font-bold text-white mb-3 font-sans">The Architectural Verdict</h3>
                         <p class="text-slate-200 text-sm leading-relaxed">
-                            By isolating AI to handle only unstructured chaos while relying on battle-tested SQL databases for all mathematical business logic, ERPYAS delivers an infinitely adaptable operations suite. It replaces hours of tedious administration with a frictionless, high-velocity data pipeline that directly accelerates bottom-line efficiency.
+                            By isolating AI to handle only unstructured chaos while relying on battle-tested SQL databases for all mathematical business logic, <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> delivers an infinitely adaptable operations suite. It replaces hours of tedious administration with a frictionless, high-velocity data pipeline that directly accelerates bottom-line efficiency.
                         </p>
                     </div>
                     <div class="pt-6 mt-6 border-t border-slate-800 flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold">
@@ -1612,7 +1633,7 @@
                     </h2>
                     
                     <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                        ERPs like SAP, Oracle, and ERPNext demand perfection and strict schema integrity, but the physical warehouse supply chain is messy. Traditional zonal OCR breaks when vendor layouts drift. ERPYAS bridges this chasm by completely decoupling cognitive AI extraction from deterministic transactional accounting.
+                        ERPs like SAP, Oracle, and ERPNext demand perfection and strict schema integrity, but the physical warehouse supply chain is messy. Traditional zonal OCR breaks when vendor layouts drift. <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> bridges this chasm by completely decoupling cognitive AI extraction from deterministic transactional accounting.
                     </p>
 
                     <!-- Architectural Highlights -->
@@ -1636,7 +1657,7 @@
                             <div>
                                 <h4 class="text-base font-bold text-white font-sans">The HITL Shield</h4>
                                 <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-                                    AI models can hallucinate. ERPYAS mathematically enforces <code class="text-cyan-300 font-mono">docstatus: 0</code> (Draft Mode). The AI does the typing; the human retains legal authority.
+                                    AI models can hallucinate. <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> mathematically enforces <code class="text-cyan-300 font-mono">docstatus: 0</code> (Draft Mode). The AI does the typing; the human retains legal authority.
                                 </p>
                             </div>
                         </div>
@@ -1784,7 +1805,7 @@
                         </div>
                         <div>
                             <div class="text-sm font-bold text-white flex items-center gap-2">
-                                ERPYAS CEO Agentic Router
+                                <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> CEO Agentic Router
                                 <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800/50">Online • SQL Connected</span>
                             </div>
                             <div class="text-xs text-slate-400 font-mono">ERPNext v15 Core • Multi-Tenant Partition</div>
@@ -2141,7 +2162,7 @@
                     <div class="section-flare" aria-hidden="true"></div>Calculate Your Bottom-Line ROI
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
-                    See exactly how much money and manual clerk hours ERPYAS eliminates for your finance department every single month.
+                    See exactly how much money and manual clerk hours <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> eliminates for your finance department every single month.
                 </p>
             </div>
 
@@ -2177,7 +2198,7 @@
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 leading-relaxed">
-                        <strong class="text-white">Benchmark Assumption:</strong> Average manual typing &amp; double-check takes ~4.5 mins per supplier invoice vs <strong class="text-cyan-400">4.5 seconds with ERPYAS</strong>.
+                        <strong class="text-white">Benchmark Assumption:</strong> Average manual typing &amp; double-check takes ~4.5 mins per supplier invoice vs <strong class="text-cyan-400">4.5 seconds with <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span></strong>.
                     </div>
                 </div>
 
@@ -2239,7 +2260,7 @@
                     </h2>
                     
                     <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                        ERPYAS relies on ERPNext for the ultimate ledger authority. We enforce the <strong>Law of Absolute Statelessness</strong>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.
+                        <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> relies on ERPNext for the ultimate ledger authority. We enforce the <strong>Law of Absolute Statelessness</strong>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.
                     </p>
 
                     <div class="space-y-4">
@@ -2361,7 +2382,7 @@
                     <div class="section-flare" aria-hidden="true"></div>Development Roadmap
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
-                    Transparent milestones as we scale ERPYAS across global logistics hubs and multi-tier enterprise supply chains.
+                    Transparent milestones as we scale <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> across global logistics hubs and multi-tier enterprise supply chains.
                 </p>
             </div>
 
@@ -2489,7 +2510,7 @@
                             </div>
                         </div>
                         <span class="text-xl font-bold tracking-tight text-white font-sans">
-                            ERPYAS<span class="text-cyan-400">.AI</span>
+                            <span class="text-emerald-400 font-black">ERP</span><span class="text-rose-500 font-black">YAS</span><span class="text-cyan-400 font-bold">.AI</span>
                         </span>
                     </button>
                     <p class="text-slate-400 text-xs leading-relaxed">
@@ -2542,7 +2563,7 @@
             </div>
             
             <div class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-                <p>&copy; 2026 ERPYAS.AI — Autonomous Financial Intelligence. All rights reserved.</p>
+                <p>&copy; 2026 <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span><span class="text-cyan-400 font-bold">.AI</span> — Autonomous Financial Intelligence. All rights reserved.</p>
                 <div class="mt-4 sm:mt-0 flex items-center space-x-6">
                     <button type="button" onclick="scrollToSection('compliance')" class="hover:text-slate-300 transition-colors">Privacy &amp; Stateless Data Policy</button>
                     <button type="button" onclick="scrollToSection('compliance')" class="hover:text-slate-300 transition-colors">Terms of Enterprise Service</button>
@@ -2562,7 +2583,7 @@
                 <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-cyan-500/20">
                     <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
                 </div>
-                <h3 id="modal-headline" class="text-2xl font-extrabold text-white font-sans">Join the ERPYAS Enterprise Beta</h3>
+                <h3 id="modal-headline" class="text-2xl font-extrabold text-white font-sans">Join the <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> Enterprise Beta</h3>
                 <p class="text-xs text-slate-300 mt-1">Connect your ERPNext or SAP instance for sub-4.5s automated receipt ingestion.</p>
             </div>
 
@@ -2607,7 +2628,7 @@
                 </div>
                 <h4 class="text-xl font-bold text-white font-sans">Application Received!</h4>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                    Thank you. Alireza Abdi and the ERPYAS engineering team will review your ERP instance requirements and provide access credentials within 24 hours.
+                    Thank you. Alireza Abdi and the <span class="text-emerald-400 font-extrabold">ERP</span><span class="text-rose-500 font-extrabold">YAS</span> engineering team will review your ERP instance requirements and provide access credentials within 24 hours.
                 </p>
                 <button onclick="closeEarlyAccessModal()" class="mt-4 px-6 py-2 rounded-xl bg-slate-800 text-white text-xs font-semibold hover:bg-slate-700 transition-colors">
                     Close
