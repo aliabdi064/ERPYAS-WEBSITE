@@ -639,73 +639,8 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* Custom Superhuman Cursor */
-        @media (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-ring {
-                position: fixed;
-                top: 0; left: 0;
-                pointer-events: none;
-                z-index: 999999;
-                transform: translate(-50%, -50%);
-            }
-            .cursor-dot {
-                width: 6px;
-                height: 6px;
-                background: #00f0ff;
-                border-radius: 50%;
-                box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-                transition: width 0.2s, height 0.2s, background-color 0.2s;
-                will-change: transform;
-            }
-            .cursor-ring {
-                width: 32px;
-                height: 32px;
-                border: 1px solid rgba(0, 240, 255, 0.55);
-                border-radius: 50%;
-                transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s, height 0.2s, background-color 0.2s;
-                will-change: transform;
-            }
-        }
-
         /* Ambient Aurora Background */
         .aurora-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            overflow: hidden;
-            pointer-events: none;
-            background: transparent;
-        }
-        .aurora-blob {
-            position: absolute;
-            filter: blur(130px);
-            opacity: 0.55;
-            animation: aurora-drift 24s infinite alternate ease-in-out;
-            border-radius: 50%;
-            transform: translateZ(0);
-        }
-        .aurora-blob:nth-child(1) {
-            top: -20%; left: -10%;
-            width: 68vw; height: 68vh;
-            background: rgba(37,99,235,0.32);
-            animation-delay: 0s;
-        }
-        .aurora-blob:nth-child(2) {
-            bottom: -20%; right: -10%;
-            width: 78vw; height: 78vh;
-            background: rgba(0,240,255,0.28);
-            animation-delay: -5s;
-        }
-        .aurora-blob:nth-child(3) {
-            top: 30%; left: 20%;
-            width: 58vw; height: 58vh;
-            background: rgba(176,38,255,0.24);
-            animation-delay: -10s;
-        }
-        @keyframes aurora-drift {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
             50% { transform: translate(15vw, 15vh) scale(1.1) rotate(45deg); }
             100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(-45deg); }
@@ -831,39 +766,25 @@
             box-shadow: 0 0 14px rgba(0, 255, 157, 0.7);
         }
 
-        /* Three-tier animated statement text gradients */
-        .hero-part-1 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 30%, #00f0ff 70%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 4s linear infinite;
-            display: inline-block;
+        /* Three-tier stacked animated statement lines */
+        .hero-statement-line {
+            display: block;
+            width: 100%;
+            font-size: clamp(1.85rem, 4.2vw, 4.2rem);
+            line-height: 1.14;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
         }
-
-        .hero-part-2 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #00ff9d 30%, #34d399 70%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 4.8s linear infinite;
-            display: inline-block;
-        }
-
-        .hero-part-3 {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 25%, #ffb700 65%, #ffffff 100%);
-            background-size: 200% auto;
-            animation: text-flow-a 5.5s linear infinite;
-            display: inline-block;
+        .hero-statement-line:hover {
+            transform: scale(1.02);
         }
 
         @keyframes text-flow-a {
             0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
             100% { background-position: 200% center; }
         }
 
@@ -901,6 +822,146 @@
         @keyframes pulse-pass {
             0% { transform: translateX(-100%); }
             50%, 100% { transform: translateX(100%); }
+        }
+
+        
+        /* 4K Optical Sharpness & Pedestal Glare */
+        .crisp-4k-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: contrast(102%) brightness(101%);
+        }
+        .pedestal-glow {
+            box-shadow: 0 30px 100px -20px rgba(0, 240, 255, 0.35), 0 0 60px -15px rgba(59, 130, 246, 0.25);
+        }
+
+        
+        /* 4K Ultra-Definition Screen Rendering & Subpixel Antialiasing */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Kinetic Scroll-Linked Text Illumination (Apple/Stripe Style) */
+        .scroll-illuminate {
+            opacity: 0.35;
+            transform: translateY(6px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease;
+            will-change: opacity, transform;
+        }
+        .scroll-illuminate.illuminated {
+            opacity: 1;
+            transform: translateY(0);
+            color: #ffffff;
+        }
+
+        /* Mathematical & Sacred Geometry Animations */
+        @keyframes geo-rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes geo-rotate-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes geo-pulse-scale {
+            0%, 100% { transform: scale(1); opacity: 0.08; }
+            50% { transform: scale(1.04); opacity: 0.14; }
+        }
+
+        .math-geo-svg {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            mix-blend-mode: screen;
+        }
+        .geo-spin-clockwise {
+            animation: geo-rotate-slow 60s linear infinite;
+        }
+        .geo-spin-counter {
+            animation: geo-rotate-reverse 75s linear infinite;
+        }
+        .geo-pulse {
+            animation: geo-pulse-scale 8s ease-in-out infinite;
+        }
+
+        
+        /* ==================== 4K / 8K ULTRA-SHINE HDR VISUAL ENGINE ==================== */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "kern", "liga";
+        }
+
+        /* Clean & Crisp Statement Lines Without Ugly Blur */
+        .hero-part-1 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #38bdf8 25%, #00f0ff 65%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 4s linear infinite;
+        }
+
+        .hero-part-2 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #34d399 25%, #00ff9d 65%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 4.5s linear infinite;
+        }
+
+        .hero-part-3 {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(110deg, #ffffff 0%, #c084fc 20%, #ffb700 65%, #ffffff 100%);
+            background-size: 200% auto;
+            animation: text-flow-a 5s linear infinite;
+        }
+
+        /* Maximum Shining Radiant Mathematical SVG Blueprints */
+        .math-geo-svg {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 8px currentColor);
+            transition: opacity 0.5s ease, filter 0.5s ease;
+        }
+
+        /* Luminous Metric Numbers with Bloom */
+        .count-target {
+            text-shadow: 0 0 18px currentColor, 0 0 36px currentColor;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* High-Definition Contrast Shimmer on Glass Cards */
+        .glass-card {
+            background: rgba(4, 9, 26, 0.85);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .glass-card:hover {
+            box-shadow: 0 25px 60px -10px rgba(0, 240, 255, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        /* Specular Lens Flares Behind Major Section Titles */
+        .section-flare {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 120px;
+            background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.18) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Section Anchors */
@@ -980,14 +1041,38 @@
                 <!-- Brand Logo -->
                 <div class="flex items-center gap-3 cursor-pointer">
                     <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2.5 group text-left">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] shadow-lg shadow-blue-500/25">
-                            <div class="w-full h-full bg-[#0b1329] rounded-[11px] flex items-center justify-center">
-                                <i data-lucide="cpu" class="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300"></i>
+                        <div class="relative w-11 h-11 rounded-xl p-[1.5px] bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-500 shadow-lg shadow-cyan-500/20 group-hover:shadow-violet-500/35 transition-all duration-300 transform group-hover:scale-105">
+                            <div class="w-full h-full bg-[#050a1b] rounded-[10px] flex items-center justify-center overflow-hidden">
+                                <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 4L34 12V28L20 36L6 28V12L20 4Z" fill="url(#logo-bg-grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+                                    <path d="M20 20L6 12V28L20 36V20Z" fill="url(#erp-facet-grad)"/>
+                                    <path d="M20 20L34 12V28L20 36V20Z" fill="url(#yas-facet-grad)"/>
+                                    <path d="M20 4L34 12L20 20L6 12L20 4Z" fill="url(#top-facet-grad)"/>
+                                    <path d="M14 10L20 18L26 10M20 18V29" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(0 0 4px #00f0ff)"/>
+                                    <defs>
+                                        <linearGradient id="logo-bg-grad" x1="6" y1="4" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#09142f"/>
+                                            <stop offset="1" stop-color="#020612"/>
+                                        </linearGradient>
+                                        <linearGradient id="erp-facet-grad" x1="6" y1="12" x2="20" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#00f0ff" stop-opacity="0.5"/>
+                                            <stop offset="1" stop-color="#0284c7" stop-opacity="0.25"/>
+                                        </linearGradient>
+                                        <linearGradient id="yas-facet-grad" x1="20" y1="12" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#c084fc" stop-opacity="0.55"/>
+                                            <stop offset="1" stop-color="#7c3aed" stop-opacity="0.3"/>
+                                        </linearGradient>
+                                        <linearGradient id="top-facet-grad" x1="6" y1="4" x2="34" y2="20" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#00f0ff" stop-opacity="0.4"/>
+                                            <stop offset="1" stop-color="#2563eb" stop-opacity="0.2"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
                             </div>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-2xl font-black tracking-tight text-white flex items-center gap-1 font-sans">
-                                ERPYAS<span class="text-cyan-400">.AI</span>
+                                <span class="text-cyan-400 font-black">ERP</span><span class="text-violet-400 font-black">YAS</span><span class="text-cyan-400 font-bold">.AI</span>
                             </span>
                             <span class="text-[10px] font-mono tracking-widest text-slate-400 uppercase -mt-1 font-semibold">Enterprise Middleware</span>
                         </div>
@@ -1092,14 +1177,10 @@
                         </div>
 
                         <!-- The Meaningful, Grammatically Elevated, High-Impact Title -->
-                        <h2 class="text-center font-sans tracking-tight">
-                            <span class="hero-statement-text">
-                                <span class="hero-part-1">Elevate Accountant Confidence.</span>
-                                <span class="hidden md:inline"> </span>
-                                <span class="hero-part-2">Automate Data Entry.</span>
-                                <span class="hidden md:inline"> </span>
-                                <span class="hero-part-3">Boost Productivity.</span>
-                            </span>
+                        <h2 class="text-center font-sans tracking-tight flex flex-col items-center justify-center space-y-2 sm:space-y-3">
+                            <span class="hero-statement-line hero-part-1">Elevate Accountant Confidence</span>
+                            <span class="hero-statement-line hero-part-2">Automate Data Entry</span>
+                            <span class="hero-statement-line hero-part-3">Boost Productivity</span>
                         </h2>
 
                         <!-- Core Value Badges -->
@@ -1121,6 +1202,16 @@
                 </div>
             </div>
             
+            
+            <!-- ==================== DYNAMIC KINETIC PAIN-POINT TICKER ==================== -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-2xl bg-slate-900/90 border border-cyan-500/40 shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
+                    <span class="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">Eliminating:</span>
+                    <span id="pain-point-ticker" class="text-xs font-mono font-bold text-cyan-300 transition-all duration-300">Manual Invoice Keystrokes</span>
+                </div>
+            </div>
+
             <!-- Headline & High-Converting Narrative -->
             <div class="text-center max-w-5xl mx-auto relative mt-8">
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-6 font-sans">
@@ -1129,7 +1220,7 @@
                 </h1>
                 
                 <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
-                    <strong>ERPYAS</strong> transforms chaotic warehouse receipts, commercial invoices, and conversational executive inquiries into mathematically validated ERPNext ledger entries in <strong>under 4.5 seconds</strong>. Built on Google Gemini 3.7 and Google Cloud serverless architecture, it empowers accounting teams with effortless automated data entry while preserving strict human-in-the-loop financial governance.
+                    <strong><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span></strong> transforms chaotic warehouse receipts, commercial invoices, and conversational executive inquiries into mathematically validated ERPNext ledger entries in <strong>under 4.5 seconds</strong>. Built on Google Gemini 3.7 and Google Cloud serverless architecture, it empowers accounting teams with effortless automated data entry while preserving strict human-in-the-loop financial governance.
                 </p>
                 
                 <!-- CTA Button Cluster -->
@@ -1298,6 +1389,17 @@
 
     <!-- ==================== CORE ENTERPRISE CAPABILITIES (TRUE ASYMMETRIC BENTO GRID) ==================== -->
     <section id="capabilities" class="py-28 bg-[#020512] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Fibonacci Golden Spiral & Hexagonal Matrix Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 -right-24 -top-24 w-[650px] h-[650px]" viewBox="0 0 400 400" fill="none" stroke="rgba(0, 255, 157, 0.45)" stroke-width="1.2">
+            <circle cx="200" cy="200" r="180" stroke-dasharray="4 6" />
+            <circle cx="200" cy="200" r="130" />
+            <circle cx="200" cy="200" r="80" stroke-dasharray="2 4" />
+            <path d="M200,20 A180,180 0 0,1 380,200 A130,130 0 0,1 250,330 A80,80 0 0,1 170,250 A50,50 0 0,1 200,200" stroke="rgba(0, 240, 255, 0.6)" stroke-width="1.6"/>
+            <polygon points="200,30 347,115 347,285 200,370 53,285 53,115" stroke-dasharray="6 6" />
+            <polygon points="200,70 312,135 312,265 200,330 88,265 88,135" />
+            <line x1="200" y1="20" x2="200" y2="380" stroke-dasharray="3 3"/>
+            <line x1="20" y1="200" x2="380" y2="200" stroke-dasharray="3 3"/>
+        </svg>
         <!-- Background Geometric Shapes & Rings for Capabilities -->
         <div class="holo-ring holo-ring-2 opacity-40" style="top: 25%; left: 80%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-20 left-10 opacity-40" aria-hidden="true"></div>
@@ -1312,9 +1414,9 @@
                     Enterprise Core<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Core Enterprise Capabilities
+                    <div class="section-flare" aria-hidden="true"></div>Core Enterprise Capabilities
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Engineered to eliminate administrative friction while upholding ironclad accounting compliance and sub-second operational throughput.
                 </p>
             </div>
@@ -1391,7 +1493,7 @@
                     </div>
                 </div>
 
-                <!-- Bento Card 4 (Span 2 on lg): Executive Agentic Co-Pilot -->
+                <!-- Bento Card 4 (Span 2 on lg): <div class="section-flare" aria-hidden="true"></div>Executive Agentic Co-Pilot -->
                 <div class="lg:col-span-2 glass-card glass-card-hover spotlight-card capture-frame p-8 sm:p-10 rounded-3xl relative overflow-hidden group border border-violet-500/30 bg-gradient-to-br from-slate-900/90 via-[#140b2a]/85 to-slate-900/90 shadow-2xl">
                     <span class="cf-corner cf-tl"></span><span class="cf-corner cf-tr"></span><span class="cf-corner cf-bl"></span><span class="cf-corner cf-br"></span>
                     
@@ -1402,7 +1504,7 @@
                             </div>
                             <div>
                                 <div class="text-xs font-mono font-bold text-violet-400 tracking-widest uppercase">Autonomous Business Intelligence</div>
-                                <h3 class="text-2xl font-black text-white font-sans mt-0.5">Executive Agentic Co-Pilot</h3>
+                                <h3 class="text-2xl font-black text-white font-sans mt-0.5"><div class="section-flare" aria-hidden="true"></div>Executive Agentic Co-Pilot</h3>
                             </div>
                         </div>
                         <span class="px-3 py-1 rounded-full text-xs font-mono bg-violet-950/80 text-violet-300 border border-violet-800/60">SDUI_ROUTER: ACTIVE</span>
@@ -1460,7 +1562,7 @@
                         <div class="text-xs font-mono font-bold text-cyan-300 tracking-wider uppercase mb-2">Architectural Guarantee</div>
                         <h3 class="text-xl font-bold text-white mb-3 font-sans">The Architectural Verdict</h3>
                         <p class="text-slate-200 text-sm leading-relaxed">
-                            By isolating AI to handle only unstructured chaos while relying on battle-tested SQL databases for all mathematical business logic, ERPYAS delivers an infinitely adaptable operations suite. It replaces hours of tedious administration with a frictionless, high-velocity data pipeline that directly accelerates bottom-line efficiency.
+                            By isolating AI to handle only unstructured chaos while relying on battle-tested SQL databases for all mathematical business logic, <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> delivers an infinitely adaptable operations suite. It replaces hours of tedious administration with a frictionless, high-velocity data pipeline that directly accelerates bottom-line efficiency.
                         </p>
                     </div>
                     <div class="pt-6 mt-6 border-t border-slate-800 flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold">
@@ -1474,7 +1576,43 @@
     </section>
 
     <!-- ==================== THE GENERALIZATION GAP & ARCHITECTURE ==================== -->
-    <section id="architecture" class="py-28 bg-[#010206] relative overflow-hidden">
+    <!-- ==================== FRACTION-OF-A-SECOND RELATIONAL PROOF (BENCHMARKS) ==================== -->
+    <section id="architecture" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Sacred Metatron's Cube & Relational Database Topology Blueprint -->
+        <svg class="math-geo-svg geo-spin-counter opacity-25 -left-28 -top-20 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="1.2">
+            <circle cx="250" cy="250" r="220" stroke-dasharray="5 7"/>
+            <circle cx="250" cy="250" r="140"/>
+            <circle cx="250" cy="250" r="60" stroke="rgba(0, 240, 255, 0.7)" stroke-width="1.8"/>
+            <circle cx="250" cy="110" r="60"/>
+            <circle cx="250" cy="390" r="60"/>
+            <circle cx="129" cy="180" r="60"/>
+            <circle cx="371" cy="180" r="60"/>
+            <circle cx="129" cy="320" r="60"/>
+            <circle cx="371" cy="320" r="60"/>
+            <polygon points="250,50 423,150 423,350 250,450 77,350 77,150" stroke-dasharray="4 4"/>
+            <line x1="250" y1="50" x2="250" y2="450"/>
+            <line x1="77" y1="150" x2="423" y2="350"/>
+            <line x1="77" y1="350" x2="423" y2="150"/>
+        </svg>
+
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-50" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-blue-500/25 top-20 -right-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-indigo-500/22 bottom-16 -left-36 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-2 opacity-40" style="top: 50%; left: 20%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-1 opacity-35" style="bottom: 20%; right: 15%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-hex top-28 left-[10%] opacity-55" aria-hidden="true"></div>
+        <div class="geo-shape-diamond bottom-40 right-[12%] opacity-60" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube top-60 right-[7%] opacity-50" style="animation-delay: -7s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 10s; animation-delay: -4s;"></div></div>
         <!-- Background Holographic Shapes for Architecture -->
         <div class="holo-ring holo-ring-1 opacity-35" style="top: 50%; left: 10%;" aria-hidden="true"></div>
         <div class="geo-shape-cube top-32 right-16 opacity-50" aria-hidden="true"></div>
@@ -1490,12 +1628,12 @@
                     </div>
                     
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight font-sans">
-                        The Generalization Gap: <br/>
+                        <div class="section-flare" aria-hidden="true"></div>The Generalization Gap: <br/>
                         <span class="text-gradient">AI Perception vs SQL Logic.</span>
                     </h2>
                     
                     <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                        ERPs like SAP, Oracle, and ERPNext demand perfection and strict schema integrity, but the physical warehouse supply chain is messy. Traditional zonal OCR breaks when vendor layouts drift. ERPYAS bridges this chasm by completely decoupling cognitive AI extraction from deterministic transactional accounting.
+                        ERPs like SAP, Oracle, and ERPNext demand perfection and strict schema integrity, but the physical warehouse supply chain is messy. Traditional zonal OCR breaks when vendor layouts drift. <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> bridges this chasm by completely decoupling cognitive AI extraction from deterministic transactional accounting.
                     </p>
 
                     <!-- Architectural Highlights -->
@@ -1519,7 +1657,7 @@
                             <div>
                                 <h4 class="text-base font-bold text-white font-sans">The HITL Shield</h4>
                                 <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-                                    AI models can hallucinate. ERPYAS mathematically enforces <code class="text-cyan-300 font-mono">docstatus: 0</code> (Draft Mode). The AI does the typing; the human retains legal authority.
+                                    AI models can hallucinate. <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> mathematically enforces <code class="text-cyan-300 font-mono">docstatus: 0</code> (Draft Mode). The AI does the typing; the human retains legal authority.
                                 </p>
                             </div>
                         </div>
@@ -1599,7 +1737,42 @@
     </section>
 
     <!-- ==================== EXECUTIVE AGENTIC CO-PILOT SIMULATOR ==================== -->
+    <!-- ==================== NATURAL LANGUAGE CO-PILOT SIMULATOR ==================== -->
     <section id="copilot" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: Neural Tensor Network Synapses & Cognitive Vector Mesh Blueprint -->
+        <svg class="math-geo-svg geo-pulse opacity-25 -right-32 top-10 w-[720px] h-[720px]" viewBox="0 0 500 500" fill="none" stroke="rgba(176, 38, 255, 0.45)" stroke-width="1.2">
+            <polygon points="250,30 460,250 250,470 40,250" stroke-dasharray="6 6"/>
+            <polygon points="250,100 400,250 250,400 100,250"/>
+            <circle cx="250" cy="250" r="110" stroke="rgba(236, 72, 153, 0.5)"/>
+            <circle cx="250" cy="250" r="30" fill="rgba(176, 38, 255, 0.2)" stroke="rgba(0, 240, 255, 0.7)" stroke-width="2"/>
+            <line x1="40" y1="250" x2="460" y2="250" stroke-dasharray="3 5"/>
+            <line x1="250" y1="30" x2="250" y2="470" stroke-dasharray="3 5"/>
+            <circle cx="100" cy="250" r="6" fill="#00f0ff"/>
+            <circle cx="400" cy="250" r="6" fill="#00f0ff"/>
+            <circle cx="250" cy="100" r="6" fill="#b026ff"/>
+            <circle cx="250" cy="400" r="6" fill="#b026ff"/>
+            <circle cx="250" cy="30" r="8" fill="#d946ef"/>
+            <circle cx="250" cy="470" r="8" fill="#d946ef"/>
+        </svg>
+
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[650px] h-[650px] bg-violet-500/26 top-16 -left-40 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-500/25 bottom-20 -right-36 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 40%; left: 80%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-35" style="bottom: 10%; left: 15%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-diamond top-24 right-[14%] opacity-60" style="animation-delay: -6s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube bottom-36 left-[8%] opacity-55" style="animation-delay: -2s;" aria-hidden="true"></div>
+        <div class="geo-shape-hex top-48 left-[12%] opacity-45" style="animation-delay: -8s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 8.5s; animation-delay: -1s;"></div></div>
         <!-- Background Holographic Shapes for Co-Pilot -->
         <div class="holo-ring holo-ring-3 opacity-30" style="top: 60%; left: 70%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-16 left-12 opacity-45" aria-hidden="true"></div>
@@ -1612,10 +1785,11 @@
                     <i data-lucide="terminal" class="w-3.5 h-3.5 text-violet-400"></i>
                     Deterministic Natural Language Router
                 </div>
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans relative">
+                    <div class="section-flare" aria-hidden="true"></div>
                     Executive Agentic Co-Pilot
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Executives don't navigate convoluted 100-page ERP menus. They ask direct questions in natural language. Our semantic router executes mathematical SQL functions in ERPNext and renders instant, hallucination-free Server-Driven UI (SDUI) widgets.
                 </p>
             </div>
@@ -1631,7 +1805,7 @@
                         </div>
                         <div>
                             <div class="text-sm font-bold text-white flex items-center gap-2">
-                                ERPYAS CEO Agentic Router
+                                <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> CEO Agentic Router
                                 <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800/50">Online • SQL Connected</span>
                             </div>
                             <div class="text-xs text-slate-400 font-mono">ERPNext v15 Core • Multi-Tenant Partition</div>
@@ -1803,7 +1977,37 @@
     </section>
 
     <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
-    <section id="showcase" class="py-28 bg-[#010206] relative overflow-hidden">
+    <!-- ==================== MOBILE EDGE CLIENT SHOWCASE (REAL PHOTOS) ==================== -->
+    <section id="showcase" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Optical Viewport Calibration Grid & Coordinate Axes Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 left-10 -top-16 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.4)" stroke-width="1.2">
+            <circle cx="250" cy="250" r="230" stroke-dasharray="4 8"/>
+            <circle cx="250" cy="250" r="160"/>
+            <circle cx="250" cy="250" r="90" stroke-dasharray="2 4"/>
+            <line x1="250" y1="10" x2="250" y2="490" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1.5"/>
+            <line x1="10" y1="250" x2="490" y2="250" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1.5"/>
+            <rect x="190" y="190" width="120" height="120" stroke="rgba(59, 130, 246, 0.6)" stroke-width="1.4" stroke-dasharray="4 4"/>
+        </svg>
+
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-65" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres (Pedestal Glow) -->
+        <div class="glow-sphere w-[800px] h-[800px] bg-cyan-500/18 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-blue-600/15 top-10 right-10 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings Centered Behind Device -->
+        <div class="holo-ring holo-ring-2 opacity-50" style="top: 55%; left: 50%; width: 750px; height: 750px;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 55%; left: 50%; width: 520px; height: 520px;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-3 opacity-30" style="top: 55%; left: 50%; width: 980px; height: 980px;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-cube top-20 right-14 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-16 left-16 opacity-55" style="animation-delay: -3s;" aria-hidden="true"></div>
+        <div class="geo-shape-diamond top-40 left-20 opacity-50" style="animation-delay: -5s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 9s; animation-delay: -3s;"></div></div>
         <!-- Background Holographic Shapes for Mobile Edge -->
         <div class="holo-ring holo-ring-2 opacity-35" style="top: 45%; left: 30%;" aria-hidden="true"></div>
         <div class="geo-shape-cube top-20 right-14 opacity-50" aria-hidden="true"></div>
@@ -1817,9 +2021,9 @@
                     Physical Reality to Ledger<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    The Mobile Edge Client in Action
+                    <div class="section-flare" aria-hidden="true"></div>The Mobile Edge Client in Action
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
                     Designed for warehouse dock workers, floor managers, and executives. From instant enterprise SSO and offline neural document capture to live conversational querying.
                 </p>
             </div>
@@ -1857,27 +2061,40 @@
                     </div>
                 </div>
 
-                <!-- High-Resolution Image Container with Subtle Ambient Glow -->
-                <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-2xl group">
-                    <img 
-                        src="mobile-edge-showcase.jpg" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/main/mobile-edge-showcase.jpg';" 
-                        alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
-                        width="1024"
-                        height="1024"
-                        loading="lazy"
-                        decoding="async"
-                        class="w-full h-auto object-cover rounded-2xl shadow-2xl transition-transform duration-700 group-hover:scale-[1.015]"
-                    />
-                    
-                    <!-- Overlay Cyber HUD elements on hover -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#010206] via-transparent to-transparent opacity-40 pointer-events-none"></div>
-                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/80 backdrop-blur-md border border-slate-700/60 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-300">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            <span class="text-white font-semibold">Live Production Flutter/Dart Build</span>
+                <!-- High-Resolution 4K-Like Image Container with Ambient Pedestal Glow -->
+                <div class="relative rounded-3xl p-1 bg-gradient-to-br from-cyan-500/40 via-blue-600/20 to-purple-600/40 pedestal-glow group">
+                    <div class="relative rounded-[22px] overflow-hidden bg-slate-950 border border-slate-700/80">
+                        <!-- High-Tech 4K Ultra-HD Resolution Badge -->
+                        <div class="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-slate-950/85 border border-cyan-400/50 text-cyan-300 font-mono text-[11px] font-bold uppercase tracking-wider backdrop-blur-md shadow-xl flex items-center gap-2">
+                            <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping"></span>
+                            <span>4K ULTRA-HD DUAL VIEW</span>
                         </div>
-                        <div class="text-slate-400">
-                            iOS 17+ • Android 14+ • frappe_api: ^2.4.0
+
+                        <!-- Titanium Specular Glare Sweep on Hover -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
+
+                        <!-- Crisp Responsive Picture Element -->
+                        <img 
+                            src="mobile-edge-showcase.jpg"
+                            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/aliabdi064/ERPYAS-WEBSITE/third/mobile-edge-showcase.jpg';" 
+                            alt="ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface" 
+                            width="1024"
+                            height="1024"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-auto object-cover rounded-[20px] shadow-2xl transition-transform duration-700 group-hover:scale-[1.01] crisp-4k-image"
+                        />
+                        
+                        <!-- Overlay Cyber HUD Status Bar -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#010206] via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-700/60 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-300 z-20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                <span class="text-white font-semibold">Live Production Flutter/Dart Build</span>
+                            </div>
+                            <div class="text-slate-400">
+                                iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1894,7 +2111,41 @@
     </section>
 
     <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
+    <!-- ==================== BOTTOM-LINE FINANCIAL ROI CALCULATOR ==================== -->
     <section id="roi-calculator" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: Exponential Growth Curve & Financial Matrix Plane Blueprint -->
+        <svg class="math-geo-svg geo-pulse opacity-25 -left-20 top-20 w-[650px] h-[650px]" viewBox="0 0 500 500" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2">
+            <line x1="50" y1="450" x2="470" y2="450" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
+            <line x1="50" y1="450" x2="50" y2="30" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
+            <path d="M50,440 Q 200,420 320,250 T 460,50" stroke="rgba(255, 183, 0, 0.75)" stroke-width="2.5" fill="none"/>
+            <circle cx="320" cy="250" r="7" fill="#ffb700"/>
+            <circle cx="460" cy="50" r="9" fill="#00ff9d"/>
+            <line x1="50" y1="350" x2="470" y2="350" stroke-dasharray="4 6"/>
+            <line x1="50" y1="250" x2="470" y2="250" stroke-dasharray="4 6"/>
+            <line x1="50" y1="150" x2="470" y2="150" stroke-dasharray="4 6"/>
+            <line x1="150" y1="450" x2="150" y2="30" stroke-dasharray="4 6"/>
+            <line x1="250" y1="450" x2="250" y2="30" stroke-dasharray="4 6"/>
+            <line x1="350" y1="450" x2="350" y2="30" stroke-dasharray="4 6"/>
+        </svg>
+
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-emerald-600/16 top-16 -right-32 pointer-events-none"></div>
+        <div class="glow-sphere w-[550px] h-[550px] bg-amber-500/22 bottom-10 -left-28 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-40" style="top: 45%; left: 80%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-35" style="bottom: 15%; left: 10%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-diamond top-28 left-20 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-16 right-28 opacity-50" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-cube top-44 right-16 opacity-45" style="animation-delay: -7s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 8s; animation-delay: -5s;"></div></div>
         <!-- Background Holographic Shapes for ROI -->
         <div class="holo-ring holo-ring-1 opacity-35" style="top: 50%; left: 85%;" aria-hidden="true"></div>
         <div class="geo-shape-diamond top-28 left-20 opacity-55" aria-hidden="true"></div>
@@ -1908,10 +2159,10 @@
                     Economic Impact
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Calculate Your Bottom-Line ROI
+                    <div class="section-flare" aria-hidden="true"></div>Calculate Your Bottom-Line ROI
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    See exactly how much money and manual clerk hours ERPYAS eliminates for your finance department every single month.
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
+                    See exactly how much money and manual clerk hours <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> eliminates for your finance department every single month.
                 </p>
             </div>
 
@@ -1947,7 +2198,7 @@
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400 leading-relaxed">
-                        <strong class="text-white">Benchmark Assumption:</strong> Average manual typing &amp; double-check takes ~4.5 mins per supplier invoice vs <strong class="text-cyan-400">4.5 seconds with ERPYAS</strong>.
+                        <strong class="text-white">Benchmark Assumption:</strong> Average manual typing &amp; double-check takes ~4.5 mins per supplier invoice vs <strong class="text-cyan-400">4.5 seconds with <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span></strong>.
                     </div>
                 </div>
 
@@ -1981,6 +2232,14 @@
 
     <!-- ==================== COMPLIANCE & STATELESSNESS ==================== -->
     <section id="compliance" class="py-28 bg-[#010206] relative border-t border-slate-800/80 overflow-hidden">
+        <!-- Mathematical Geometry: Cryptographic Merkle Hash Tree & Shield Matrix Blueprint -->
+        <svg class="math-geo-svg geo-spin-counter opacity-25 -right-28 top-16 w-[700px] h-[700px]" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
+            <path d="M250,40 L440,110 L440,280 C440,390 250,470 250,470 C250,470 60,390 60,280 L60,110 Z" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
+            <path d="M250,90 L390,140 L390,260 C390,340 250,410 250,410 C250,410 110,340 110,260 L110,140 Z" stroke-dasharray="6 6"/>
+            <circle cx="250" cy="240" r="60" stroke="rgba(20, 184, 166, 0.6)"/>
+            <line x1="250" y1="90" x2="250" y2="410" stroke-dasharray="3 3"/>
+            <line x1="110" y1="240" x2="390" y2="240" stroke-dasharray="3 3"/>
+        </svg>
         <!-- Background Holographic Shapes for Compliance -->
         <div class="holo-ring holo-ring-2 opacity-35" style="top: 50%; left: 20%;" aria-hidden="true"></div>
         <div class="geo-shape-hex top-24 right-16 opacity-45" aria-hidden="true"></div>
@@ -1996,12 +2255,12 @@
                     </div>
                     
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6 font-sans">
-                        Global Compliance &amp; <br/>
+                        <div class="section-flare" aria-hidden="true"></div>Global Compliance &amp; <br/>
                         <span class="text-gradient">Volatile RAM Protection.</span>
                     </h2>
                     
                     <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                        ERPYAS relies on ERPNext for the ultimate ledger authority. We enforce the <strong>Law of Absolute Statelessness</strong>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.
+                        <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> relies on ERPNext for the ultimate ledger authority. We enforce the <strong>Law of Absolute Statelessness</strong>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.
                     </p>
 
                     <div class="space-y-4">
@@ -2076,7 +2335,37 @@
     </section>
 
     <!-- ==================== DEVELOPMENT ROADMAP ==================== -->
+    <!-- ==================== STRATEGIC ENTERPRISE ROADMAP ==================== -->
     <section id="roadmap" class="py-28 bg-[#020512] border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Mathematical Geometry: 4D Tesseract Hypercube & Temporal Progression Vector Plane Blueprint -->
+        <svg class="math-geo-svg geo-spin-clockwise opacity-25 -left-24 top-24 w-[680px] h-[680px]" viewBox="0 0 500 500" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="1.3">
+            <rect x="70" y="70" width="360" height="360" stroke-dasharray="6 6"/>
+            <rect x="150" y="150" width="200" height="200" stroke="rgba(0, 240, 255, 0.6)" stroke-width="1.8"/>
+            <line x1="70" y1="70" x2="150" y2="150"/>
+            <line x1="430" y1="70" x2="350" y2="150"/>
+            <line x1="70" y1="430" x2="150" y2="350"/>
+            <line x1="430" y1="430" x2="350" y2="350"/>
+            <circle cx="250" cy="250" r="40" stroke="rgba(255, 183, 0, 0.7)"/>
+            <circle cx="250" cy="250" r="140" stroke-dasharray="3 5"/>
+        </svg>
+        <!-- 3D Perspective Cyber Floor Grid -->
+        <div class="cyber-grid-floor opacity-60" aria-hidden="true"></div>
+
+        <!-- Ambient Atmospheric Aurora Spheres -->
+        <div class="glow-sphere w-[700px] h-[700px] bg-purple-500/24 top-16 -right-36 pointer-events-none"></div>
+        <div class="glow-sphere w-[600px] h-[600px] bg-cyan-500/25 bottom-16 -left-32 pointer-events-none"></div>
+
+        <!-- Holographic Concentric Orbital Rings -->
+        <div class="holo-ring holo-ring-1 opacity-45" style="top: 35%; left: 12%;" aria-hidden="true"></div>
+        <div class="holo-ring holo-ring-2 opacity-40" style="bottom: 30%; right: 10%;" aria-hidden="true"></div>
+
+        <!-- Floating Geometric Wireframe Shapes -->
+        <div class="geo-shape-cube top-28 left-16 opacity-60" aria-hidden="true"></div>
+        <div class="geo-shape-hex bottom-36 right-16 opacity-55" style="animation-delay: -4s;" aria-hidden="true"></div>
+        <div class="geo-shape-diamond top-52 right-24 opacity-50" style="animation-delay: -6s;" aria-hidden="true"></div>
+
+        <!-- Sweeping Laser Scan Beam -->
+        <div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration: 10s; animation-delay: -3s;"></div></div>
         <!-- Background Holographic Shapes for Roadmap -->
         <div class="holo-ring holo-ring-3 opacity-30" style="top: 40%; left: 50%;" aria-hidden="true"></div>
         <div class="geo-shape-diamond top-20 left-16 opacity-50" aria-hidden="true"></div>
@@ -2090,10 +2379,10 @@
                     Execution Strategy<span class="term-cursor"></span>
                 </div>
                 <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-sans">
-                    Development Roadmap
+                    <div class="section-flare" aria-hidden="true"></div>Development Roadmap
                 </h2>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Transparent milestones as we scale ERPYAS across global logistics hubs and multi-tier enterprise supply chains.
+                <p class="text-slate-300 text-lg leading-relaxed scroll-illuminate">
+                    Transparent milestones as we scale <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> across global logistics hubs and multi-tier enterprise supply chains.
                 </p>
             </div>
 
@@ -2221,7 +2510,7 @@
                             </div>
                         </div>
                         <span class="text-xl font-bold tracking-tight text-white font-sans">
-                            ERPYAS<span class="text-cyan-400">.AI</span>
+                            <span class="text-cyan-400 font-black">ERP</span><span class="text-violet-400 font-black">YAS</span><span class="text-cyan-400 font-bold">.AI</span>
                         </span>
                     </button>
                     <p class="text-slate-400 text-xs leading-relaxed">
@@ -2274,7 +2563,7 @@
             </div>
             
             <div class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-                <p>&copy; 2026 ERPYAS.AI — Autonomous Financial Intelligence. All rights reserved.</p>
+                <p>&copy; 2026 <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span><span class="text-cyan-400 font-bold">.AI</span> — Autonomous Financial Intelligence. All rights reserved.</p>
                 <div class="mt-4 sm:mt-0 flex items-center space-x-6">
                     <button type="button" onclick="scrollToSection('compliance')" class="hover:text-slate-300 transition-colors">Privacy &amp; Stateless Data Policy</button>
                     <button type="button" onclick="scrollToSection('compliance')" class="hover:text-slate-300 transition-colors">Terms of Enterprise Service</button>
@@ -2294,7 +2583,7 @@
                 <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-cyan-500/20">
                     <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
                 </div>
-                <h3 id="modal-headline" class="text-2xl font-extrabold text-white font-sans">Join the ERPYAS Enterprise Beta</h3>
+                <h3 id="modal-headline" class="text-2xl font-extrabold text-white font-sans">Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta</h3>
                 <p class="text-xs text-slate-300 mt-1">Connect your ERPNext or SAP instance for sub-4.5s automated receipt ingestion.</p>
             </div>
 
@@ -2339,7 +2628,7 @@
                 </div>
                 <h4 class="text-xl font-bold text-white font-sans">Application Received!</h4>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                    Thank you. Alireza Abdi and the ERPYAS engineering team will review your ERP instance requirements and provide access credentials within 24 hours.
+                    Thank you. Alireza Abdi and the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> engineering team will review your ERP instance requirements and provide access credentials within 24 hours.
                 </p>
                 <button onclick="closeEarlyAccessModal()" class="mt-4 px-6 py-2 rounded-xl bg-slate-800 text-white text-xs font-semibold hover:bg-slate-700 transition-colors">
                     Close
@@ -2355,8 +2644,8 @@
         <div class="aurora-blob"></div>
     </div>
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+    
+    
 
     <!-- ==================== CONSOLIDATED & OPTIMIZED JAVASCRIPT MODULE ==================== -->
     <script>
@@ -2607,6 +2896,57 @@
             }
             refreshIcons();
         }
+
+        // ==================== DYNAMIC KINETIC PAIN-POINT TICKER ====================
+        (function() {
+            const tickerEl = document.getElementById('pain-point-ticker');
+            if (!tickerEl) return;
+
+            const painPoints = [
+                'Manual Invoice Keystrokes',
+                '48-Hour Ledger Lag',
+                'VAT Reconciliation Delays',
+                'Audit Discrepancy Risk',
+                'Warehouse Dock Data Bottlenecks',
+                'Unverified Paper Receipts'
+            ];
+            let idx = 0;
+
+            setInterval(() => {
+                tickerEl.style.opacity = '0';
+                tickerEl.style.transform = 'translateY(-6px)';
+                setTimeout(() => {
+                    idx = (idx + 1) % painPoints.length;
+                    tickerEl.innerText = painPoints[idx];
+                    tickerEl.style.opacity = '1';
+                    tickerEl.style.transform = 'translateY(0)';
+                }, 300);
+            }, 2800);
+        })();
+
+        // ==================== SCROLL-LINKED WORD / SENTENCE ILLUMINATION ====================
+        (function() {
+            if (!('IntersectionObserver' in window)) return;
+            const elements = document.querySelectorAll('.scroll-illuminate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('illuminated');
+                    } else {
+                        // Soft dim when scrolling far away
+                        if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
+                            entry.target.classList.remove('illuminated');
+                        }
+                    }
+                });
+            }, {
+                threshold: [0.15, 0.5],
+                rootMargin: '0px 0px -60px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+        })();
+
 
         function sendCustomQuery() {
             const input = document.getElementById('chat-input');
@@ -3033,66 +3373,22 @@
                 draw();
             })();
 
-            // ==================== SUPERHUMAN KINETIC CURSOR ====================
-            if (window.matchMedia("(pointer: fine)").matches) {
-                const dot = document.getElementById('cursor-dot');
-                const ring = document.getElementById('cursor-ring');
-                let mouseX = window.innerWidth / 2;
-                let mouseY = window.innerHeight / 2;
-                let ringX = mouseX;
-                let ringY = mouseY;
-                
-                window.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-                }, { passive: true });
-
-                function renderCursor() {
-                    ringX += (mouseX - ringX) * 0.16;
-                    ringY += (mouseY - ringY) * 0.16;
-                    ring.style.transform = `translate(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px)`;
-                    requestAnimationFrame(renderCursor);
-                }
-                requestAnimationFrame(renderCursor);
-                
-                const interactives = document.querySelectorAll('a, button, input, textarea, select, .ledger-dot-wrap, .spotlight-card, .magnetic-btn, .hero-statement-text');
-                interactives.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        dot.style.width = '10px';
-                        dot.style.height = '10px';
-                        dot.style.background = '#fff';
-                        dot.style.boxShadow = '0 0 18px #fff';
-                        ring.style.width = '52px';
-                        ring.style.height = '52px';
-                        ring.style.borderColor = 'rgba(0, 240, 255, 0.95)';
-                        ring.style.background = 'rgba(0, 240, 255, 0.1)';
+            // Smart Canvas Sleeping: Stop GPU loop when hero is scrolled out of view
+            const heroCanvasEl = document.getElementById('hero-geometry-canvas');
+            if (heroCanvasEl && 'IntersectionObserver' in window) {
+                const canvasObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!animFrameId) draw();
+                        } else {
+                            if (animFrameId) {
+                                cancelAnimationFrame(animFrameId);
+                                animFrameId = null;
+                            }
+                        }
                     });
-                    el.addEventListener('mouseleave', () => {
-                        dot.style.width = '6px';
-                        dot.style.height = '6px';
-                        dot.style.background = '#00f0ff';
-                        dot.style.boxShadow = '0 0 10px #00f0ff, 0 0 20px #00f0ff';
-                        ring.style.width = '32px';
-                        ring.style.height = '32px';
-                        ring.style.borderColor = 'rgba(0, 240, 255, 0.55)';
-                        ring.style.background = 'transparent';
-                    });
-                });
-                
-                document.addEventListener('mouseleave', () => {
-                    dot.style.opacity = '0';
-                    ring.style.opacity = '0';
-                });
-                document.addEventListener('mouseenter', () => {
-                    dot.style.opacity = '1';
-                    ring.style.opacity = '1';
-                });
-            } else {
-                const d = document.getElementById('cursor-dot');
-                const r = document.getElementById('cursor-ring');
-                if (d) d.style.display = 'none';
-                if (r) r.style.display = 'none';
+                }, { threshold: 0.05 });
+                canvasObserver.observe(heroCanvasEl);
             }
         });
     </script>
