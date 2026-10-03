@@ -2173,6 +2173,20 @@ Unlock These Savings Now
 <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
 Predictable, transparent monthly subscriptions. Instantly activate autonomous invoice processing with zero setup delays, zero hidden fees, and guaranteed sub-4.5s ERP ledger validation.
 </p>
+<div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs font-mono">
+  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">
+    <i data-lucide="credit-card" class="w-3.5 h-3.5 text-cyan-400"></i>
+    <span>Cards</span>
+  </span>
+  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+    <i data-lucide="smartphone" class="w-3.5 h-3.5 text-emerald-400"></i>
+    <span>Google Pay &amp; Apple Pay</span>
+  </span>
+  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-950/60 border border-violet-500/30 text-violet-300">
+    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-violet-400"></i>
+    <span>Stripe 256-bit SSL</span>
+  </span>
+</div>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch reveal reveal-stagger">
@@ -2228,10 +2242,10 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
     </ul>
   </div>
 
-  <button type="button" onclick="selectSelfServePlan('Retail Starter', '$9.99 / mo', '1,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn">
+  <a href="https://buy.stripe.com/test_fZu5kD8Og7Thh1xfTc1oI00" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_fZu5kD8Og7Thh1xfTc1oI00')" class="w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">
     <span>Buy with 1-Click</span>
     <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-400 group-hover/btn:translate-x-1 transition-transform"></i>
-  </button>
+  </a>
 </div>
 
 <!-- Plan 2: Retail Pro -->
@@ -2290,10 +2304,10 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
     </ul>
   </div>
 
-  <button type="button" onclick="selectSelfServePlan('Retail Pro', '$24.99 / mo', '3,000 invoices / month')" class="animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25">
+  <a href="https://buy.stripe.com/test_7sYeVd9Sk4H5fXt9uO1oI01" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_7sYeVd9Sk4H5fXt9uO1oI01')" class="animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 cursor-pointer">
     <span>Buy with 1-Click</span>
     <i data-lucide="zap" class="w-4 h-4 text-cyan-300"></i>
-  </button>
+  </a>
 </div>
 
 <!-- Plan 3: Wholesale / Heavy -->
@@ -2348,10 +2362,10 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
     </ul>
   </div>
 
-  <button type="button" onclick="selectSelfServePlan('Wholesale / Heavy', '$49.99 / mo', '10,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-blue-400/40 shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group/btn">
+  <a href="https://buy.stripe.com/test_7sY00jfcE5L93aH0Yi1oI02" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_7sY00jfcE5L93aH0Yi1oI02')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-blue-400/40 shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">
     <span>Buy with 1-Click</span>
     <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-300 group-hover/btn:translate-x-1 transition-transform"></i>
-  </button>
+  </a>
 </div>
 
 <!-- Plan 4: Maximum Self-Serve Plan (The Enterprise Beast) -->
@@ -2415,10 +2429,10 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
     </ul>
   </div>
 
-  <button type="button" onclick="selectSelfServePlan('Maximum Self-Serve Plan', '$249.00 / mo', '100,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm border border-violet-400/50 shadow-lg shadow-violet-500/30 transition-all flex items-center justify-center gap-2 group/btn hover:scale-[1.02] active:scale-95">
+  <a href="https://buy.stripe.com/test_8x2fZhfcE6Pd9z5cH01oI03" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_8x2fZhfcE6Pd9z5cH01oI03')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm border border-violet-400/50 shadow-lg shadow-violet-500/30 transition-all flex items-center justify-center gap-2 group/btn hover:scale-[1.02] active:scale-95 cursor-pointer">
     <span>Buy with 1-Click</span>
     <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200"></i>
-  </button>
+  </a>
 </div>
 </div>
 
@@ -2452,6 +2466,17 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
       <span>Stateless RAM</span>
     </div>
     <p class="text-xs text-gray-400">100% ephemeral data security</p>
+  </div>
+</div>
+<div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-400">
+  <div class="flex items-center gap-2 font-mono">
+    <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+    <span>Secure Checkout powered by <strong class="text-white">Stripe</strong></span>
+  </div>
+  <div class="flex items-center gap-2 font-mono text-[11px] text-gray-300">
+    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Google Pay</span>
+    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Apple Pay</span>
+    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Visa &bull; Mastercard &bull; Amex</span>
   </div>
 </div>
 </div>
@@ -2970,7 +2995,59 @@ Close
 <div class="aurora-blob"></div>
 </div>
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-<script>"use strict";let currentSelectedPlan=null;function selectSelfServePlan(planName,price,volume){currentSelectedPlan=planName;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn"),volumeSelect=document.getElementById("lead-volume");headline&&(headline.innerHTML=`Buy <span class="text-cyan-400 font-extrabold">${planName}</span> with 1-Click`),submitBtn&&(submitBtn.innerText=`Confirm 1-Click Buy (${price})`,refreshIcons()),volumeSelect&&(volume.includes("1,000")?volumeSelect.value="500 – 2,500 docs/month":volume.includes("3,000")?volumeSelect.value="2,500 – 10,000 docs/month":volume.includes("10,000")?volumeSelect.value="10,000 – 50,000+ docs/month":volume.includes("100,000")&&(volumeSelect.value="100,000+ docs/month (Enterprise Beast)"));const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function scrollToSection(id){const target=document.getElementById(id);if(!target)return;const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false")),requestAnimationFrame(()=>{const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);try{window.scrollTo({top:offsetPosition,behavior:"smooth"})}catch(e){window.scrollTo(0,offsetPosition)}})}function openEarlyAccessModal(){currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons());const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow=""),currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons())}window.addEventListener("load",()=>{refreshIcons();
+<script>
+"use strict";
+let currentSelectedPlan = null;
+
+const STRIPE_PAYMENT_LINKS = {
+  'Retail Starter': 'https://buy.stripe.com/test_fZu5kD8Og7Thh1xfTc1oI00',
+  'Retail Pro': 'https://buy.stripe.com/test_7sYeVd9Sk4H5fXt9uO1oI01',
+  'Wholesale / Heavy': 'https://buy.stripe.com/test_7sY00jfcE5L93aH0Yi1oI02',
+  'Maximum Self-Serve Plan': 'https://buy.stripe.com/test_8x2fZhfcE6Pd9z5cH01oI03'
+};
+
+function handleStripeRedirect(e, url) {
+  if (e && e.currentTarget) {
+    const textSpan = e.currentTarget.querySelector('span');
+    if (textSpan) textSpan.textContent = 'Redirecting to Stripe...';
+  }
+  if (url) {
+    window.location.href = url;
+  }
+}
+
+function selectSelfServePlan(planName, price, volume) {
+  const url = STRIPE_PAYMENT_LINKS[planName];
+  if (url) {
+    if (window.event && window.event.currentTarget) {
+      const textSpan = window.event.currentTarget.querySelector('span');
+      if (textSpan) textSpan.textContent = 'Redirecting to Stripe...';
+    }
+    window.location.href = url;
+    return;
+  }
+  currentSelectedPlan = planName;
+  const headline = document.getElementById("modal-headline"),
+        submitBtn = document.getElementById("submit-btn"),
+        volumeSelect = document.getElementById("lead-volume");
+  headline && (headline.innerHTML = `Buy <span class="text-cyan-400 font-extrabold">${planName}</span> with 1-Click`);
+  submitBtn && (submitBtn.innerText = `Confirm 1-Click Buy (${price})`, refreshIcons());
+  if (volumeSelect) {
+    if (volume && volume.includes("1,000")) volumeSelect.value = "500 – 2,500 docs/month";
+    else if (volume && volume.includes("3,000")) volumeSelect.value = "2,500 – 10,000 docs/month";
+    else if (volume && volume.includes("10,000")) volumeSelect.value = "10,000 – 50,000+ docs/month";
+    else if (volume && volume.includes("100,000")) volumeSelect.value = "100,000+ docs/month (Enterprise Beast)";
+  }
+  const modal = document.getElementById("early-access-modal");
+  if (modal) {
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    const firstInput = document.getElementById("lead-email");
+    firstInput && setTimeout(() => firstInput.focus(), 80);
+  }
+}
+
+function scrollToSection(id){const target=document.getElementById(id);if(!target)return;const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false")),requestAnimationFrame(()=>{const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);try{window.scrollTo({top:offsetPosition,behavior:"smooth"})}catch(e){window.scrollTo(0,offsetPosition)}})}function openEarlyAccessModal(){currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons());const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow=""),currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons())}window.addEventListener("load",()=>{refreshIcons();
 // Spotlight Effect for Glass Cards
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.spotlight-wrapper, .spotlight-card').forEach(wrapper => {
