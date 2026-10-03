@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <meta name="mobile-web-app-capable" content="yes">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-529L5D803E"></script>
@@ -14,7 +14,7 @@
 <meta property="og:title" content="ERPYAS.AI — Enterprise Autonomous Financial &amp; Operational Intelligence">
 <meta property="og:description" content="Enterprise-grade AI middleware bridging physical documents with ERPNext ledgers in under 4.5s with zero math hallucinations.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#030712">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
@@ -104,6 +104,7 @@ tailwind.config = {
 html {
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow-x: clip;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -116,6 +117,7 @@ body {
     background-color: var(--bg-color);
     color: #f8fafc;
     overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
     min-height: 100%;
     min-height: 100dvh;
@@ -123,7 +125,6 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-overflow-scrolling: touch;
 }
 @media screen and (max-width: 768px) {
     input, select, textarea { font-size: 16px !important; }
@@ -185,7 +186,6 @@ body {
     border-radius: 1.5rem;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
-    transform: translateZ(0);
 }
 @media (hover: hover) and (pointer: fine) {
     .glass-card:hover, .glass-card-hover:hover {
@@ -653,10 +653,9 @@ input[type="range"]::-moz-range-track {
 .glow-sphere {
     position: absolute;
     border-radius: 50%;
-    filter: blur(140px);
+    filter: blur(100px);
     pointer-events: none;
     z-index: 0;
-    transform: translateZ(0);
 }
 .holo-ring {
     position: absolute;
@@ -740,6 +739,7 @@ input[type="range"]::-moz-range-track {
 .reveal.is-visible, .reveal.active {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
 }
 .reveal-stagger.is-visible > * {
     animation: stagger-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -796,6 +796,7 @@ input[type="range"]::-moz-range-track {
     opacity: 1;
     transform: translateY(0);
     color: #f8fafc;
+    will-change: auto;
 }
 
 .math-geo-svg {
@@ -843,6 +844,80 @@ input[type="range"]::-moz-range-track {
 section {
     scroll-margin-top: 5.5rem;
 }
+
+/* Content Visibility for Off-screen Rendering Performance */
+#capabilities,
+#architecture,
+#copilot,
+#showcase,
+#roi-calculator,
+#pricing,
+#compliance,
+#roadmap {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 900px;
+}
+
+/* iOS Safe Area & Dynamic Island Inset Support */
+#navbar {
+    padding-top: env(safe-area-inset-top, 0px);
+}
+#mobile-menu {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+#early-access-modal {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+}
+footer {
+    padding-bottom: max(2.5rem, calc(2rem + env(safe-area-inset-bottom, 0px)));
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+/* iOS Safari & Mobile Hardware Acceleration Tuning */
+@media (max-width: 768px) {
+    .glass-card {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        background: rgba(11, 19, 41, 0.84);
+        transform: none !important;
+    }
+    .glow-sphere {
+        filter: blur(36px) !important;
+        opacity: 0.35 !important;
+        max-width: 320px !important;
+        max-height: 320px !important;
+        transform: none !important;
+    }
+    .mesh-blob {
+        filter: blur(36px) !important;
+        opacity: 0.35 !important;
+        animation-duration: 20s !important;
+    }
+    .hero-animated-statement-inner {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: rgba(10, 15, 30, 0.94);
+    }
+    .holo-ring {
+        display: none !important;
+    }
+    .geo-shape-cube,
+    .geo-shape-hex,
+    .geo-shape-diamond {
+        animation: none !important;
+    }
+    .scan-beam-wrap {
+        display: none !important;
+    }
+    .section-flare {
+        filter: blur(16px);
+    }
+}
 </style>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
@@ -858,7 +933,6 @@ section {
 <div class="runner" style="animation-delay:0s"></div>
 <div class="runner" style="animation-delay:1.6s"></div>
 </div>
-<nav class="ledger-rail" 
 <nav class="ledger-rail" aria-label="Page sections">
 <div class="ledger-item" data-section="capabilities">
 <div class="ledger-dot-wrap"><div class="ledger-dot"></div><span class="ledger-label">CAPABILITIES</span></div>
@@ -878,6 +952,10 @@ section {
 <div class="ledger-track"></div>
 <div class="ledger-item" data-section="roi-calculator">
 <div class="ledger-dot-wrap"><div class="ledger-dot"></div><span class="ledger-label">ROI</span></div>
+</div>
+<div class="ledger-track"></div>
+<div class="ledger-item" data-section="pricing">
+<div class="ledger-dot-wrap"><div class="ledger-dot"></div><span class="ledger-label">PRICING</span></div>
 </div>
 <div class="ledger-track"></div>
 <div class="ledger-item" data-section="compliance">
@@ -939,10 +1017,15 @@ section {
 AI Co-Pilot
 </button>
 <button type="button" onclick='scrollToSection("showcase")' class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/10 transition-all">Mobile Edge</button>
+<button type="button" onclick='scrollToSection("pricing")' class="px-3.5 py-2 rounded-lg text-cyan-300 hover:text-white hover:bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400/60 shadow-sm shadow-cyan-500/15 transition-all font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+Pricing
+</button>
+<button type="button" disabled aria-disabled="true" class="px-3.5 py-2 rounded-lg text-gray-400/80 cursor-not-allowed opacity-75 select-none hover:text-gray-400 transition-all" title="FAQ section coming soon">FAQ</button>
 </div>
 <div class="hidden sm:flex items-center gap-3">
-<button type="button" onclick='scrollToSection("copilot")' class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
-Live Simulation
+<button type="button" onclick='scrollToSection("pricing")' class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
+Self-Serve Plans
 </button>
 <button type="button" onclick="openEarlyAccessModal()" class="animated-border px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-transform hover:scale-105 active:scale-95 flex items-center gap-2">
 <span>Get Early Access</span>
@@ -960,6 +1043,11 @@ Live Simulation
 <button type="button" onclick='scrollToSection("capabilities")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-white/10 hover:text-cyan-400">Capabilities</button>
 <button type="button" onclick='scrollToSection("copilot")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-white/10 hover:text-cyan-400">AI Co-Pilot</button>
 <button type="button" onclick='scrollToSection("showcase")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-white/10 hover:text-cyan-400">Mobile Edge</button>
+<button type="button" onclick='scrollToSection("pricing")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-semibold text-cyan-400 hover:bg-cyan-500/10 bg-cyan-950/20 border border-cyan-500/30 flex items-center justify-between">
+<span>Pricing</span>
+<span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono">1-Click Plans</span>
+</button>
+<button type="button" disabled aria-disabled="true" class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-500 cursor-not-allowed opacity-75">FAQ</button>
 <div class="pt-4">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold shadow-lg shadow-blue-600/30">
 Request Early Access
@@ -2058,6 +2146,324 @@ Unlock These Savings Now
 </div>
 </div>
 </section>
+<section id="pricing" class="py-28 relative border-t border-white/5 overflow-hidden">
+<svg class="math-geo-svg geo-spin-clockwise opacity-25 -right-20 top-20 w-[680px] h-[680px]" aria-hidden="true" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.45)" stroke-width="1.2">
+<polygon points="250,30 450,145 450,375 250,490 50,375 50,145" stroke-dasharray="5 5"/>
+<circle cx="250" cy="260" r="150" stroke="rgba(168, 85, 247, 0.45)"/>
+<circle cx="250" cy="260" r="80" stroke-dasharray="3 4"/>
+<line x1="50" y1="145" x2="450" y2="375" stroke="rgba(0, 255, 157, 0.3)"/>
+<line x1="450" y1="145" x2="50" y2="375" stroke="rgba(0, 255, 157, 0.3)"/>
+<circle cx="250" cy="260" r="8" fill="#00f0ff"/>
+<circle cx="150" cy="200" r="5" fill="#a855f7"/>
+<circle cx="350" cy="320" r="5" fill="#00ff9d"/>
+</svg>
+<div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
+<div class="glow-sphere w-[700px] h-[700px] bg-cyan-600/15 top-16 -right-36 pointer-events-none"></div>
+<div class="glow-sphere w-[600px] h-[600px] bg-violet-600/18 bottom-16 -left-32 pointer-events-none"></div>
+<div class="holo-ring holo-ring-1 opacity-35" style="top:30%;right:12%" aria-hidden="true"></div>
+<div class="holo-ring holo-ring-2 opacity-30" style="bottom:25%;left:8%" aria-hidden="true"></div>
+<div class="geo-shape-cube top-28 left-16 opacity-50" aria-hidden="true"></div>
+<div class="geo-shape-hex bottom-24 right-20 opacity-45" style="animation-delay:-3s" aria-hidden="true"></div>
+<div class="geo-shape-diamond top-44 right-32 opacity-40" style="animation-delay:-5s" aria-hidden="true"></div>
+<div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration:9s;animation-delay:-2s"></div></div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center max-w-3xl mx-auto mb-20 reveal relative">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4 shadow-lg shadow-cyan-500/20">
+<i data-lucide="tag" class="w-3.5 h-3.5 text-cyan-400"></i>
+<span>Instant Activation</span><span class="term-cursor"></span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mb-6" aria-label="Self-Serve Plans (Buy with 1-Click on Website)">
+<div class="section-flare" aria-hidden="true"></div>Self-Serve Plans <br class="hidden sm:inline"/><span class="text-gradient">(Buy with 1-Click on Website)</span>
+</h2>
+<p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+Predictable, transparent monthly subscriptions. Instantly activate autonomous invoice processing with zero setup delays, zero hidden fees, and guaranteed sub-4.5s ERP ledger validation.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch reveal reveal-stagger">
+<!-- Plan 1: Retail Starter -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-cyan-500/40 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-white/5 border border-white/10 text-gray-300">STARTER TIER</span>
+      <div class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
+        <i data-lucide="store" class="w-4 h-4 text-cyan-400"></i>
+      </div>
+    </div>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Retail Starter</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Essential autonomous keying for single stores and boutique retailers.</p>
+    
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$9.99</span>
+        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+      </div>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
+        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>1,000 invoices / month</span>
+      </div>
+      <div class="text-[11px] text-gray-400 mt-2.5 font-mono">~$0.0099 per bill processed</div>
+    </div>
+
+    <ul class="space-y-3 text-xs text-gray-300 mb-8">
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span><strong>1,000 invoices / month</strong> included</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Sub-4.5s ledger verification</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Gemini Multimodal AI extraction</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Dual-Layer SHA-256 deduplication</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>ERPNext &amp; Frappe V15 API connector</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>100% Volatile RAM data protection</span>
+      </li>
+    </ul>
+  </div>
+
+  <button type="button" onclick="selectSelfServePlan('Retail Starter', '$9.99 / mo', '1,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn">
+    <span>Buy with 1-Click</span>
+    <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-400 group-hover/btn:translate-x-1 transition-transform"></i>
+  </button>
+</div>
+
+<!-- Plan 2: Retail Pro -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border-2 border-cyan-500/60 shadow-2xl shadow-cyan-500/20 transition-all duration-300 relative group bg-gradient-to-b from-cyan-950/30 via-white/[0.04] to-black/80 transform hover:-translate-y-1">
+  <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-cyan-500/35 flex items-center gap-1.5 whitespace-nowrap">
+    <i data-lucide="flame" class="w-3 h-3 text-amber-300"></i>
+    <span>MOST POPULAR</span>
+  </div>
+  <div>
+    <div class="flex items-center justify-between mb-4 pt-1">
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-cyan-950/70 border border-cyan-500/40 text-cyan-300">SCALE TIER</span>
+      <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center">
+        <i data-lucide="shopping-bag" class="w-4 h-4 text-cyan-300"></i>
+      </div>
+    </div>
+    <h3 class="text-2xl font-display font-bold text-white text-cyan-300">Retail Pro</h3>
+    <p class="text-xs text-gray-300 mt-1.5 leading-relaxed">Engineered for growing retail brands, multi-counter shops, and active e-commerce.</p>
+    
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-cyan-500/30">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-4xl sm:text-5xl font-display font-black text-cyan-400 font-mono">$24.99</span>
+        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+      </div>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/70 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-semibold">
+        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>3,000 invoices / month</span>
+      </div>
+      <div class="text-[11px] text-cyan-300/80 mt-2.5 font-mono">~$0.0083 per bill processed</div>
+    </div>
+
+    <ul class="space-y-3 text-xs text-gray-300 mb-8">
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span><strong>3,000 invoices / month</strong> included</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Priority processing queue (&lt; 3.8s)</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Mobile Edge camera &amp; PWA capture</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Automated line-item tax &amp; GL match</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Supplier purchase order reconciliation</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>HMRC / VAT audit-ready formatting</span>
+      </li>
+    </ul>
+  </div>
+
+  <button type="button" onclick="selectSelfServePlan('Retail Pro', '$24.99 / mo', '3,000 invoices / month')" class="animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25">
+    <span>Buy with 1-Click</span>
+    <i data-lucide="zap" class="w-4 h-4 text-cyan-300"></i>
+  </button>
+</div>
+
+<!-- Plan 3: Wholesale / Heavy -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-blue-500/50 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-blue-950/70 border border-blue-500/30 text-blue-300">WHOLESALE TIER</span>
+      <div class="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center">
+        <i data-lucide="truck" class="w-4 h-4 text-blue-400"></i>
+      </div>
+    </div>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-blue-300 transition-colors">Wholesale / Heavy</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Built for wholesalers, supply chains, and multi-depot distribution.</p>
+    
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$49.99</span>
+        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+      </div>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-950/60 border border-blue-500/30 text-blue-300 text-xs font-mono font-semibold">
+        <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-400"></i>
+        <span>10,000 invoices / month</span>
+      </div>
+      <div class="text-[11px] text-gray-400 mt-2.5 font-mono">~$0.0050 per bill processed</div>
+    </div>
+
+    <ul class="space-y-3 text-xs text-gray-300 mb-8">
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span><strong>10,000 invoices / month</strong> included</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>High-volume parallel batch ingestion</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Multi-warehouse inventory cross-check</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Deterministic SQL schema matching</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Automated PO &amp; Goods Receipt matching</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Dedicated webhook event sync</span>
+      </li>
+    </ul>
+  </div>
+
+  <button type="button" onclick="selectSelfServePlan('Wholesale / Heavy', '$49.99 / mo', '10,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-blue-400/40 shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group/btn">
+    <span>Buy with 1-Click</span>
+    <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-300 group-hover/btn:translate-x-1 transition-transform"></i>
+  </button>
+</div>
+
+<!-- Plan 4: Maximum Self-Serve Plan (The Enterprise Beast) -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border-2 border-violet-500/60 shadow-2xl shadow-violet-500/25 transition-all duration-300 relative group bg-gradient-to-b from-purple-950/30 via-white/[0.04] to-black/80 transform hover:-translate-y-1">
+  <div>
+    <!-- The exact requested label -->
+    <div class="mb-4 p-3 rounded-xl bg-gradient-to-r from-violet-950/90 via-purple-900/60 to-cyan-950/80 border border-violet-400/50 shadow-md">
+      <div class="flex items-center gap-1.5 text-cyan-400 mb-1">
+        <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400 animate-pulse"></i>
+        <span class="tracking-widest uppercase text-[10px] text-cyan-300 font-extrabold font-mono">ULTIMATE CAPACITY</span>
+      </div>
+      <p class="text-xs font-semibold text-white leading-snug">"The Enterprise Beast — Process up to 100,000 bills/month with zero server slowdown"</p>
+    </div>
+
+    <div class="flex items-center justify-between mb-4">
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-violet-950/70 border border-violet-500/40 text-violet-300">MAX SELF-SERVE</span>
+      <div class="w-8 h-8 rounded-xl bg-violet-500/20 border border-violet-500/40 flex items-center justify-center">
+        <i data-lucide="sparkles" class="w-4 h-4 text-violet-300"></i>
+      </div>
+    </div>
+    <h3 class="text-2xl font-display font-bold text-white text-violet-300">Maximum Self-Serve Plan</h3>
+    <p class="text-xs text-gray-300 mt-1.5 leading-relaxed">Unrivaled throughput for high-volume enterprises with massive automated billing cycles.</p>
+    
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-violet-500/30">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-4xl sm:text-5xl font-display font-black text-violet-400 font-mono">$249.00</span>
+        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+      </div>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-violet-950/70 border border-violet-500/50 text-violet-300 text-xs font-mono font-semibold">
+        <i data-lucide="zap" class="w-3.5 h-3.5 text-violet-400"></i>
+        <span>100,000 invoices / month</span>
+      </div>
+      <div class="text-[11px] text-emerald-400 mt-2.5 font-mono">~$0.00249 / bill (Maximum Scale Savings)</div>
+    </div>
+
+    <ul class="space-y-3 text-xs text-gray-300 mb-8">
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span><strong>100,000 invoices / month</strong> maximum volume</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span><strong>Zero server slowdown</strong> under massive bursts</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Multi-threaded parallel Gemini AI keying</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Executive SDUI Router &amp; NL audit queries</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>Unlimited user seats &amp; multi-entity ledgers</span>
+      </li>
+      <li class="flex items-start gap-2.5">
+        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
+        <span>24/7 dedicated engineering response channel</span>
+      </li>
+    </ul>
+  </div>
+
+  <button type="button" onclick="selectSelfServePlan('Maximum Self-Serve Plan', '$249.00 / mo', '100,000 invoices / month')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm border border-violet-400/50 shadow-lg shadow-violet-500/30 transition-all flex items-center justify-center gap-2 group/btn hover:scale-[1.02] active:scale-95">
+    <span>Buy with 1-Click</span>
+    <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200"></i>
+  </button>
+</div>
+</div>
+
+<!-- Self-Serve Trust & Assurance Features -->
+<div class="mt-14 glass-card p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.02] max-w-5xl mx-auto reveal">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+  <div class="space-y-1">
+    <div class="flex items-center justify-center gap-1.5 text-cyan-400 font-mono text-sm font-bold">
+      <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+      <span>1-Click Buy</span>
+    </div>
+    <p class="text-xs text-gray-400">Instant self-serve activation</p>
+  </div>
+  <div class="space-y-1">
+    <div class="flex items-center justify-center gap-1.5 text-emerald-400 font-mono text-sm font-bold">
+      <i data-lucide="shield-check" class="w-4 h-4"></i>
+      <span>Zero Lock-in</span>
+    </div>
+    <p class="text-xs text-gray-400">Cancel or switch tiers anytime</p>
+  </div>
+  <div class="space-y-1">
+    <div class="flex items-center justify-center gap-1.5 text-violet-400 font-mono text-sm font-bold">
+      <i data-lucide="server" class="w-4 h-4"></i>
+      <span>Zero Slowdown</span>
+    </div>
+    <p class="text-xs text-gray-400">Guaranteed cloud throughput</p>
+  </div>
+  <div class="space-y-1">
+    <div class="flex items-center justify-center gap-1.5 text-amber-400 font-mono text-sm font-bold">
+      <i data-lucide="lock" class="w-4 h-4"></i>
+      <span>Stateless RAM</span>
+    </div>
+    <p class="text-xs text-gray-400">100% ephemeral data security</p>
+  </div>
+</div>
+</div>
+<!-- FAQ Section Placeholder: Option is visible and inactive on the top navigation. Content will be added here in subsequent updates. -->
+</div>
+</section>
 <section id="compliance" class="py-28 relative border-t border-white/5 overflow-hidden">
 <svg class="math-geo-svg geo-spin-counter opacity-25 -right-28 top-16 w-[700px] h-[700px]" aria-hidden="true" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
 <path d="M250,40 L440,110 L440,280 C440,390 250,470 250,470 C250,470 60,390 60,280 L60,110 Z" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
@@ -2477,6 +2883,7 @@ Enterprise-grade AI middleware bridging physical warehouse documents with strict
 <div>
 <h5 class="text-sm font-mono font-bold tracking-wider uppercase text-white mb-6">Compliance &amp; Stack</h5>
 <ul class="space-y-3 text-xs text-gray-400">
+<li><button type="button" onclick='scrollToSection("pricing")' class="hover:text-cyan-400 transition-colors text-left text-cyan-300 font-semibold">Self-Serve 1-Click Plans</button></li>
 <li><button type="button" onclick='scrollToSection("architecture")' class="hover:text-cyan-400 transition-colors text-left">ERPNext / Frappe V15</button></li>
 <li><button type="button" onclick='scrollToSection("compliance")' class="hover:text-cyan-400 transition-colors text-left">UK HMRC &amp; Companies House</button></li>
 <li><button type="button" onclick='scrollToSection("showcase")' class="hover:text-cyan-400 transition-colors text-left">Cross-Platform Mobile Edge</button></li>
@@ -2540,6 +2947,7 @@ Request Pilot Access
 <option>500 – 2,500 docs/month</option>
 <option>2,500 – 10,000 docs/month</option>
 <option>10,000 – 50,000+ docs/month</option>
+<option>100,000+ docs/month (Enterprise Beast)</option>
 </select>
 </div>
 <div class="pt-2">
@@ -2568,7 +2976,7 @@ Close
 <div class="aurora-blob"></div>
 </div>
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-<script>"use strict";function scrollToSection(id){const target=document.getElementById(id);if(target){const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);try{window.scrollTo({top:offsetPosition,behavior:"smooth"})}catch(e){window.scrollTo(0,offsetPosition)}}const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false"))}function openEarlyAccessModal(){const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow="")}window.addEventListener("load",()=>{refreshIcons();
+<script>"use strict";let currentSelectedPlan=null;function selectSelfServePlan(planName,price,volume){currentSelectedPlan=planName;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn"),volumeSelect=document.getElementById("lead-volume");headline&&(headline.innerHTML=`Buy <span class="text-cyan-400 font-extrabold">${planName}</span> with 1-Click`),submitBtn&&(submitBtn.innerText=`Confirm 1-Click Buy (${price})`,refreshIcons()),volumeSelect&&(volume.includes("1,000")?volumeSelect.value="500 – 2,500 docs/month":volume.includes("3,000")?volumeSelect.value="2,500 – 10,000 docs/month":volume.includes("10,000")?volumeSelect.value="10,000 – 50,000+ docs/month":volume.includes("100,000")&&(volumeSelect.value="100,000+ docs/month (Enterprise Beast)"));const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function scrollToSection(id){const target=document.getElementById(id);if(target){try{target.scrollIntoView({behavior:"smooth",block:"start"})}catch(e){const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);window.scrollTo(0,offsetPosition)}}const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false"))}function openEarlyAccessModal(){currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons());const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow=""),currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons())}window.addEventListener("load",()=>{refreshIcons();
 // Spotlight Effect for Glass Cards
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.spotlight-wrapper, .spotlight-card').forEach(wrapper => {
@@ -2583,8 +2991,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         });
     });
 }
-}),document.getElementById("early-access-modal")?.addEventListener("click",e=>{e.target===e.currentTarget&&closeEarlyAccessModal()}),window.addEventListener("keydown",e=>{"Escape"===e.key&&closeEarlyAccessModal()});const EARLY_ACCESS_INBOX="alireza@erpyas.com";function handleFormSubmit(e){e.preventDefault();const btn=document.getElementById("submit-btn"),originalText=btn.innerText;btn.innerText="Sending...",btn.disabled=!0;const email=document.getElementById("lead-email").value,company=document.getElementById("lead-company").value,erp=document.getElementById("lead-erp").value,volume=document.getElementById("lead-volume").value;fetch("https://formsubmit.co/ajax/ab6630ed114995402f3a0d172413d653",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({"Work Email":email,"Company Name":company,"Current ERP System":erp,"Monthly Document Volume":volume,_replyto:email,_subject:"New ERPYAS Early Access Request — "+company})}).then(response=>response.json()).then(data=>{const form=document.querySelector("#early-access-modal form"),success=document.getElementById("modal-success");form&&form.classList.add("hidden"),success&&success.classList.remove("hidden")}).catch(error=>{console.error(error),alert("Error sending request, please try again."),btn.innerText=originalText,btn.disabled=!1})}function copySnippet(){const snippet=document.getElementById("code-snippet"),btn=document.getElementById("copy-btn");if(!snippet||!btn)return;const textToCopy=snippet.innerText||snippet.textContent||"",showSuccess=()=>{const originalHtml=btn.innerHTML;btn.innerHTML='<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="text-emerald-400">Copied!</span>',refreshIcons(),setTimeout(()=>{btn.innerHTML=originalHtml,refreshIcons()},2200)};navigator.clipboard&&"function"==typeof navigator.clipboard.writeText?navigator.clipboard.writeText(textToCopy).then(showSuccess).catch(()=>{fallbackCopy(textToCopy,showSuccess)}):fallbackCopy(textToCopy,showSuccess)}function fallbackCopy(text,cb){try{const ta=document.createElement("textarea");ta.value=text,ta.style.position="fixed",ta.style.opacity="0",document.body.appendChild(ta),ta.focus(),ta.select(),document.execCommand("copy"),document.body.removeChild(ta),"function"==typeof cb&&cb()}catch(e){console.warn("Fallback copy notice:",e)}}const PRESET_QUERIES={cashflow:{prompt:'"Give me an instant summary of our current Cash Flow, Accounts Payable, and top 3 supplier liabilities."',badge:"SDUI WIDGET: FINANCIAL_SUMMARY",title:"Liquidity & Accounts Payable Snapshot",kpis:[{label:"Total Liquidity",val:"£428,950",sub:"+12.4% vs last mo",subColor:"text-emerald-400",icon:"trending-up"},{label:"Accounts Payable",val:"£84,210",sub:"14 Invoices Due < 7d",subColor:"text-gray-400"},{label:"Net Working Cap.",val:"£344,740",sub:"Healthy Ratio (5.1x)",subColor:"text-cyan-400"}],rows:[{name:"Apex Logistics Global",ref:"PINV-2026-0842",amt:"£18,450.00"},{name:"Caledonian Freight Ltd",ref:"PINV-2026-0839",amt:"£12,120.50"},{name:"Nordic Timber Supplies",ref:"PINV-2026-0831",amt:"£9,840.00"}],explanation:"Query parsed deterministically. Executing erpnext.accounts.report.cash_flow & querying general ledger balance. Generated live SDUI widget on the right with zero LLM arithmetic hallucinations."},invoices:{prompt:'"Which warehouse purchase invoices are currently unallocated or pending verification in Frappe?"',badge:"SDUI WIDGET: UNALLOCATED_INVOICES",title:"Unallocated & Pending Warehouse Invoices",kpis:[{label:"Pending Drafts",val:"28 Docs",sub:"Awaiting HITL Review",subColor:"text-amber-400"},{label:"Draft Liability",val:"£36,420",sub:"docstatus: 0 enforced",subColor:"text-cyan-400"},{label:"Average SLA",val:"3.8 sec",sub:"Receipt to draft",subColor:"text-emerald-400"}],rows:[{name:"Metro Pallets UK",ref:"DRAFT-REC-901",amt:"£4,250.00"},{name:"Zenith Packaging Corp",ref:"DRAFT-REC-902",amt:"£8,910.20"},{name:"Highland Fuel Depot",ref:"DRAFT-REC-903",amt:"£14,110.00"}],explanation:"Executed filter query on Purchase Invoice doctype where docstatus = 0 and is_paid = 0. All entries generated strictly through on-device edge scans."},tax:{prompt:'"Forecast our quarterly UK VAT output liability based on verified draft purchase invoices."',badge:"SDUI WIDGET: TAX_RECONCILIATION",title:"HMRC Quarterly VAT & Input Tax Position",kpis:[{label:"Gross Net Purchases",val:"£248,100",sub:"Standard 20% Applied",subColor:"text-gray-400"},{label:"VAT Input Reclaim",val:"£49,620",sub:"100% Tax Match",subColor:"text-emerald-400"},{label:"Audit Risk Factor",val:"0.00%",sub:"Deterministic check",subColor:"text-cyan-400"}],rows:[{name:"UK Inland Haulage",ref:"VAT-STND-20%",amt:"£9,800.00"},{name:"Clyde Maritime Imports",ref:"VAT-STND-20%",amt:"£22,400.00"},{name:"Lothian Warehousing Ltd",ref:"VAT-ZERO-0%",amt:"£0.00"}],explanation:"Cross-referenced Frappe Regional Tax Template (UK VAT 20%) with supplier line items. Deduplication SHA-256 passed without collision."}};function runHeroDemo(){const badge=document.getElementById("hero-demo-badge"),scanner=document.getElementById("hero-scanner-beam"),supplier=document.getElementById("demo-supplier"),total=document.getElementById("demo-total");if(!badge||!scanner)return;badge.innerText="PROCESSING...",badge.classList.remove("text-emerald-400"),badge.classList.add("text-amber-400"),scanner.style.animation="none",scanner.offsetHeight,scanner.style.animation="hero-scan-loop 1s ease-in-out infinite alternate";const samples=[{s:"Apex Logistics UK",t:"£18,450.00",time:"3.8s"},{s:"Highland Freight Ltd",t:"£12,120.50",time:"4.1s"},{s:"Nordic Timber Supplies",t:"£9,840.00",time:"3.6s"},{s:"Caledonian Maritime Goods",t:"£24,300.00",time:"4.3s"}],pick=samples[Math.floor(Math.random()*samples.length)];setTimeout(()=>{supplier&&(supplier.innerText=pick.s),total&&(total.innerText=pick.t),badge.innerText="ROUNDTRIP: "+pick.time,badge.classList.remove("text-amber-400"),badge.classList.add("text-emerald-400"),scanner.style.animation="hero-scan-loop 3.5s ease-in-out infinite alternate",refreshIcons()},1200)}function runQuery(key){const data=PRESET_QUERIES[key];if(!data)return;document.querySelectorAll(".query-btn").forEach(btn=>{btn.classList.remove("bg-brand-600","bg-blue-600","text-white","text-black","active"),btn.classList.add("bg-white/5","text-gray-300","border","border-white/10")});const activeBtn=event?.currentTarget;activeBtn&&(activeBtn.classList.remove("bg-slate-100","text-gray-300"),activeBtn.classList.add("bg-brand-600","text-white","active"));const userBubble=document.getElementById("user-bubble");userBubble&&(userBubble.querySelector("div").innerText=data.prompt);const aiResp=document.getElementById("ai-response-text");aiResp&&(aiResp.innerText=data.explanation),document.getElementById("widget-type-badge").innerText=data.badge,document.getElementById("widget-title").innerText=data.title;const kpiGrid=document.getElementById("widget-kpi-grid");kpiGrid&&(kpiGrid.innerHTML=data.kpis.map(k=>`\n                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">\n                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block mb-1">${k.label}</span>\n                        <div class="text-2xl font-black text-white font-mono">${k.val}</div>\n                        <div class="text-[10px] ${k.subColor} mt-1">${k.sub}</div>\n                    </div>\n                `).join(""));const tableContainer=document.querySelector("#widget-table-container .divide-y");if(tableContainer){let html='\n                    <div class="px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]">\n                        <div class="col-span-4">SUPPLIER</div>\n                        <div class="col-span-4">INVOICE REF</div>\n                        <div class="col-span-4 text-right">TOTAL AMOUNT</div>\n                    </div>\n                ';data.rows.forEach(r=>{html+=`\n                        <div class="px-4 py-3 grid grid-cols-12 items-center text-gray-300 hover:bg-white/5 transition-colors">\n                            <div class="col-span-4 font-semibold text-white">${r.name}</div>\n                            <div class="col-span-4 font-mono text-gray-400">${r.ref}</div>\n                            <div class="col-span-4 text-right font-mono font-bold text-cyan-400">${r.amt}</div>\n                        </div>\n                    `}),tableContainer.innerHTML=html}refreshIcons()}function sendCustomQuery(){const input=document.getElementById("chat-input"),val=input.value.trim();if(!val)return;const userBubble=document.getElementById("user-bubble");userBubble&&(userBubble.querySelector("div").innerText=`"${val}"`);const aiResp=document.getElementById("ai-response-text");aiResp&&(aiResp.innerText=`Executed deterministic SQL router for "${val}". Verified against Frappe ledger database schema. Results synchronized.`),input.value=""}function updateCalculator(){const volumeInput=document.getElementById("calc-volume"),rateInput=document.getElementById("calc-rate");if(!volumeInput||!rateInput)return;const volume=parseInt(volumeInput.value,10),rate=parseInt(rateInput.value,10);document.getElementById("calc-volume-val").innerText=volume.toLocaleString()+" docs",document.getElementById("calc-rate-val").innerText="£"+rate+" / hr";const manualHours=.075*volume,manualCost=manualHours*rate,erpyasMonthly=.002*volume*.8,netSavings=Math.max(0,Math.round(manualCost-erpyasMonthly)),annualSavings=12*netSavings;document.getElementById("calc-savings").innerText="£"+netSavings.toLocaleString(),document.getElementById("calc-annual-savings").innerText="£"+annualSavings.toLocaleString()+" Annual Bottom-Line Boost",document.getElementById("calc-hours-saved").innerText=manualHours.toFixed(1)+" hrs / mo"}!function(){const tickerEl=document.getElementById("pain-point-ticker");if(!tickerEl)return;const painPoints=["Manual Invoice Keystrokes","48-Hour Ledger Lag","VAT Reconciliation Delays","Audit Discrepancy Risk","Warehouse Dock Data Bottlenecks","Unverified Paper Receipts"];let idx=0,tickerInterval=null;function tick(){tickerEl.style.opacity="0",tickerEl.style.transform="translateY(-6px)",setTimeout(()=>{idx=(idx+1)%painPoints.length,tickerEl.innerText=painPoints[idx],tickerEl.style.opacity="1",tickerEl.style.transform="translateY(0)"},300)}function startTicker(){tickerInterval||(tickerInterval=setInterval(tick,2800))}startTicker(),document.addEventListener("visibilitychange",()=>{document.hidden?tickerInterval&&(clearInterval(tickerInterval),tickerInterval=null):startTicker()})}(),function(){if(!("IntersectionObserver"in window))return;const elements=document.querySelectorAll(".scroll-illuminate"),observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{entry.isIntersecting?entry.target.classList.add("illuminated"):(entry.boundingClientRect.top>window.innerHeight||entry.boundingClientRect.bottom<0)&&entry.target.classList.remove("illuminated")})},{threshold:[.15,.5],rootMargin:"0px 0px -60px 0px"});elements.forEach(el=>observer.observe(el))}(),document.addEventListener("DOMContentLoaded",()=>{refreshIcons();const menuBtn=document.getElementById("mobile-menu-btn"),mobileMenu=document.getElementById("mobile-menu");menuBtn&&mobileMenu&&menuBtn.addEventListener("click",()=>{const isHidden=mobileMenu.classList.contains("hidden");mobileMenu.classList.toggle("hidden"),menuBtn.setAttribute("aria-expanded",isHidden?"true":"false")});const navbar=document.getElementById("navbar"),progressBar=document.getElementById("scroll-progress"),railItems=Array.from(document.querySelectorAll(".ledger-item")),pipeline=document.getElementById("signal-pipeline"),sectionElements=Array.from(document.querySelectorAll("section[id]"));railItems.forEach(item=>{item.querySelector(".ledger-dot-wrap")?.addEventListener("click",()=>{const target=document.getElementById(item.getAttribute("data-section"));target&&target.scrollIntoView({behavior:"smooth",block:"start"})})});const pipelineDots=pipeline&&sectionElements.length>0?sectionElements.map(sec=>{const dot=document.createElement("div");return dot.className="pulse-dot",pipeline.appendChild(dot),{dot:dot,sec:sec}}):[],sectionMap=sectionElements.map((el,index)=>{const id=el.getAttribute("id"),railItem=railItems.find(item=>item.getAttribute("data-section")===id)||null,dotEntry=pipelineDots.find(d=>d.sec===el)||null;return{el:el,railItem:railItem,dot:dotEntry?dotEntry.dot:null}});let scrollTicking=!1;function updateScrollVisuals(){const rawY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0;if(window.innerWidth<1280){navbar&&(rawY>20?navbar.classList.contains("shadow-xl")||navbar.classList.add("shadow-xl","bg-black/80","border-white/10"):navbar.classList.contains("shadow-xl")&&navbar.classList.remove("shadow-xl"));progressBar&&(progressBar.style.width="0%");scrollTicking=!1;return;}const innerH=window.innerHeight||800,docH=document.documentElement.scrollHeight||document.body.scrollHeight||1,scrollableH=Math.max(1,docH-innerH),y=Math.max(0,Math.min(scrollableH,rawY)),progress=scrollableH>0?y/scrollableH*100:0,probeY=.4*innerH,innerHalf=.5*innerH,innerTwenty=.2*innerH,fullHeight=docH||1;let activeRailIndex=-1;const measured=sectionMap.map((entry,i)=>{const rect=entry.el.getBoundingClientRect();rect.top<=probeY&&(activeRailIndex=i);const topDoc=rect.top+y,ratio=topDoc/fullHeight,isLit=rect.top<=innerHalf&&rect.bottom>=innerTwenty;return{entry:entry,topDoc:topDoc,topPercent:(100*ratio).toFixed(2)+"vh",isLit:isLit}});navbar&&(y>20?navbar.classList.contains("shadow-xl")||navbar.classList.add("shadow-xl","bg-black/80","border-white/10"):navbar.classList.contains("shadow-xl")&&navbar.classList.remove("shadow-xl")),progressBar&&(progressBar.style.width=progress+"%"),measured.forEach((m,i)=>{const item=m.entry.railItem;item&&(i<activeRailIndex?(item.classList.contains("is-passed")||item.classList.add("is-passed"),item.classList.contains("is-active")&&item.classList.remove("is-active")):i===activeRailIndex?(item.classList.contains("is-passed")&&item.classList.remove("is-passed"),item.classList.contains("is-active")||item.classList.add("is-active")):(item.classList.contains("is-passed")&&item.classList.remove("is-passed"),item.classList.contains("is-active")&&item.classList.remove("is-active")))}),measured.forEach(m=>{m.entry.dot&&(m.entry.dot.style.top!==m.topPercent&&(m.entry.dot.style.top=m.topPercent),m.isLit&&!m.entry.dot.classList.contains("lit")?m.entry.dot.classList.add("lit"):!m.isLit&&m.entry.dot.classList.contains("lit")&&m.entry.dot.classList.remove("lit"))}),scrollTicking=!1}window.addEventListener("scroll",()=>{scrollTicking||(scrollTicking=!0,window.requestAnimationFrame(updateScrollVisuals))},{passive:!0}),updateScrollVisuals();const counterEls=document.querySelectorAll(".count-target");if("IntersectionObserver"in window&&counterEls.length>0){const countObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target,target=parseFloat(el.getAttribute("data-count-to")||"0"),suffix=el.getAttribute("data-suffix")||"",decimals=parseInt(el.getAttribute("data-decimals")||"0",10),duration=1400,startTime=performance.now();function stepCount(now){const progress=Math.min((now-startTime)/duration,1),ease=1-Math.pow(1-progress,3),currentVal=(target*ease).toFixed(decimals);el.innerText=currentVal+suffix,progress<1?requestAnimationFrame(stepCount):el.innerText=target.toFixed(decimals)+suffix}requestAnimationFrame(stepCount),countObserver.unobserve(el)}})},{threshold:.2});counterEls.forEach(el=>countObserver.observe(el))}const revealEls=document.querySelectorAll(".reveal");if("IntersectionObserver"in window&&revealEls.length>0){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{entry.isIntersecting&&(entry.target.classList.add("is-visible"),io.unobserve(entry.target))})},{threshold:.05,rootMargin:"0px 0px 50px 0px"});revealEls.forEach(el=>io.observe(el)),setTimeout(()=>{revealEls.forEach(el=>el.classList.add("is-visible"))},1e3)}else revealEls.forEach(el=>el.classList.add("is-visible"));if(document.querySelectorAll(".spotlight-card").forEach(card=>{let rect=null,rafId=null;card.addEventListener("mouseenter",()=>{rect=card.getBoundingClientRect()},{passive:!0}),card.addEventListener("mousemove",e=>{rect||(rect=card.getBoundingClientRect()),rafId||(rafId=requestAnimationFrame(()=>{const mx=((e.clientX-rect.left)/rect.width*100).toFixed(1)+"%",my=((e.clientY-rect.top)/rect.height*100).toFixed(1)+"%";card.style.setProperty("--mx",mx),card.style.setProperty("--my",my),rafId=null}))},{passive:!0}),card.addEventListener("mouseleave",()=>{rect=null,rafId&&(cancelAnimationFrame(rafId),rafId=null)},{passive:!0})}),window.innerWidth>=768&&!window.matchMedia("(pointer: coarse)").matches){document.querySelectorAll(".glass-card").forEach(card=>{let tiltRaf=null,rect=null;card.addEventListener("mouseenter",()=>{rect=card.getBoundingClientRect()},{passive:!0}),card.addEventListener("mousemove",e=>{tiltRaf||(tiltRaf=requestAnimationFrame(()=>{rect||(rect=card.getBoundingClientRect());const x=e.clientX-rect.left,y=e.clientY-rect.top,centerX=rect.width/2,centerY=rect.height/2,rotateX=(y-centerY)/centerY*-5,rotateY=(x-centerX)/centerX*5;card.style.transform=`perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.012, 1.012, 1.012)`,card.style.transition="transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",card.style.zIndex="10",tiltRaf=null}))},{passive:!0}),card.addEventListener("mouseleave",()=>{tiltRaf&&(cancelAnimationFrame(tiltRaf),tiltRaf=null),rect=null,card.style.transform="perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",card.style.transition="transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",card.style.zIndex="1"},{passive:!0})})}!function(){const canvas=document.getElementById("hero-geometry-canvas");if(!canvas)return;const ctx=canvas.getContext("2d");if(!ctx)return;let width=0,height=0,canvasRect=null,mouseX=-9999,mouseY=-9999,isTabVisible=!0,isCanvasInView=!0,animFrameId=null;const dpr=Math.min(window.devicePixelRatio||1,2);function resize(){canvasRect=canvas.getBoundingClientRect();const rawW=canvasRect.width||canvas.clientWidth||0,isMobile=window.innerWidth<768,maxH=isMobile?Math.min(window.innerHeight,800):(canvasRect.height||0),rawH=Math.min(canvasRect.height||canvas.clientHeight||0,maxH);if(rawW<=0||rawH<=0)return;const targetW=Math.floor(rawW*dpr),targetH=Math.floor(rawH*dpr);if(Math.abs(canvas.width-targetW)>40||Math.abs(canvas.height-targetH)>40||width===0||height===0){width=rawW,height=rawH,canvas.width=targetW,canvas.height=targetH,ctx.scale(dpr,dpr)}}resize(),window.addEventListener("load",()=>{resize()},{once:!0});const nodeCount=window.innerWidth<640?20:window.innerWidth<1024?40:65,nodes=[];for(let i=0;i<nodeCount;i++)nodes.push({x:Math.random()*(width||window.innerWidth),y:Math.random()*(height||window.innerHeight),vx:.75*(Math.random()-.5),vy:.75*(Math.random()-.5),radius:2*Math.random()+1.2,pulse:Math.random()*Math.PI*2,isGold:Math.random()>.88});const ripples=[];canvas.parentElement?.addEventListener("click",e=>{canvasRect||(canvasRect=canvas.getBoundingClientRect()),ripples.push({x:e.clientX-canvasRect.left,y:e.clientY-canvasRect.top,radius:0,maxRadius:180,alpha:.8})});const heroSection=canvas.closest(".relative")||canvas.parentElement||window;heroSection.addEventListener("mousemove",e=>{isCanvasInView&&(canvasRect||(canvasRect=canvas.getBoundingClientRect()),e.clientY>=canvasRect.top&&e.clientY<=canvasRect.bottom?(mouseX=e.clientX-canvasRect.left,mouseY=e.clientY-canvasRect.top):(mouseX=-9999,mouseY=-9999))},{passive:!0}),heroSection.addEventListener("mouseleave",()=>{mouseX=-9999,mouseY=-9999},{passive:!0}),window.addEventListener("resize",()=>{resize()},{passive:!0}),document.addEventListener("visibilitychange",()=>{isTabVisible=!document.hidden,isTabVisible&&isCanvasInView&&!animFrameId&&draw()});const maxDist=160,maxDistSq=maxDist*maxDist,mouseDist=220,mouseDistSq=mouseDist*mouseDist;function draw(){if(!isTabVisible||!isCanvasInView)return void(animFrameId=null);ctx.clearRect(0,0,width,height);for(let r=ripples.length-1;r>=0;r--){const rip=ripples[r];rip.radius+=3.5,rip.alpha*=.96,ctx.strokeStyle=`rgba(0, 240, 255, ${rip.alpha.toFixed(2)})`,ctx.lineWidth=1.5,ctx.beginPath(),ctx.arc(rip.x,rip.y,rip.radius,0,2*Math.PI),ctx.stroke(),(rip.radius>rip.maxRadius||rip.alpha<.02)&&ripples.splice(r,1)}const nLen=nodes.length;for(let i=0;i<nLen;i++){const ni=nodes[i];for(let j=i+1;j<nLen;j++){const nj=nodes[j],dx=ni.x-nj.x;if(dx>maxDist||dx<-maxDist)continue;const dy=ni.y-nj.y;if(dy>maxDist||dy<-maxDist)continue;const dSq=dx*dx+dy*dy;if(dSq<maxDistSq){const alpha=.38*(1-Math.sqrt(dSq)/maxDist);ctx.strokeStyle=ni.isGold||nj.isGold?`rgba(255, 183, 0, ${(.85*alpha).toFixed(2)})`:`rgba(0, 240, 255, ${alpha.toFixed(2)})`,ctx.lineWidth=1,ctx.beginPath(),ctx.moveTo(ni.x,ni.y),ctx.lineTo(nj.x,nj.y),ctx.stroke()}}if(mouseX>0&&mouseY>0){const mdx=ni.x-mouseX;if(mdx<=mouseDist&&mdx>=-mouseDist){const mdy=ni.y-mouseY;if(mdy<=mouseDist&&mdy>=-mouseDist){const mdSq=mdx*mdx+mdy*mdy;if(mdSq<mouseDistSq){const alpha=.8*(1-Math.sqrt(mdSq)/mouseDist);ctx.strokeStyle=`rgba(0, 240, 255, ${alpha.toFixed(2)})`,ctx.lineWidth=1.6,ctx.beginPath(),ctx.moveTo(ni.x,ni.y),ctx.lineTo(mouseX,mouseY),ctx.stroke()}}}}ni.x+=ni.vx,ni.y+=ni.vy,(ni.x<0||ni.x>width)&&(ni.vx*=-1),(ni.y<0||ni.y>height)&&(ni.vy*=-1),ni.pulse+=.04;const pulseRadius=ni.radius+.8*Math.sin(ni.pulse);ctx.fillStyle=ni.isGold?"rgba(255, 183, 0, 0.95)":"rgba(0, 240, 255, 0.85)",ctx.beginPath(),ctx.arc(ni.x,ni.y,pulseRadius,0,2*Math.PI),ctx.fill()}animFrameId=requestAnimationFrame(draw)}if(draw(),"IntersectionObserver"in window){new IntersectionObserver(entries=>{entries.forEach(entry=>{isCanvasInView=entry.isIntersecting,isCanvasInView?animFrameId||draw():animFrameId&&(cancelAnimationFrame(animFrameId),animFrameId=null)})},{threshold:.05}).observe(canvas)    }
-  }
+}),document.getElementById("early-access-modal")?.addEventListener("click",e=>{e.target===e.currentTarget&&closeEarlyAccessModal()}),window.addEventListener("keydown",e=>{"Escape"===e.key&&closeEarlyAccessModal()});const EARLY_ACCESS_INBOX="alireza@erpyas.com";function handleFormSubmit(e){e.preventDefault();const btn=document.getElementById("submit-btn"),originalText=btn.innerText;btn.innerText="Sending...",btn.disabled=!0;const email=document.getElementById("lead-email").value,company=document.getElementById("lead-company").value,erp=document.getElementById("lead-erp").value,volume=document.getElementById("lead-volume").value;const postBody={"Work Email":email,"Company Name":company,"Current ERP System":erp,"Monthly Document Volume":volume,"Selected Plan":currentSelectedPlan||"General Enterprise Beta",_replyto:email,_subject:(currentSelectedPlan?"New 1-Click Plan Purchase ("+currentSelectedPlan+") — ":"New ERPYAS Early Access Request — ")+company};fetch("https://formsubmit.co/ajax/ab6630ed114995402f3a0d172413d653",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(postBody)}).then(response=>response.json()).then(data=>{const form=document.querySelector("#early-access-modal form"),success=document.getElementById("modal-success");form&&form.classList.add("hidden"),success&&success.classList.remove("hidden")}).catch(error=>{console.error(error),alert("Error sending request, please try again."),btn.innerText=originalText,btn.disabled=!1})}function copySnippet(){const snippet=document.getElementById("code-snippet"),btn=document.getElementById("copy-btn");if(!snippet||!btn)return;const textToCopy=snippet.innerText||snippet.textContent||"",showSuccess=()=>{const originalHtml=btn.innerHTML;btn.innerHTML='<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="text-emerald-400">Copied!</span>',refreshIcons(),setTimeout(()=>{btn.innerHTML=originalHtml,refreshIcons()},2200)};navigator.clipboard&&"function"==typeof navigator.clipboard.writeText?navigator.clipboard.writeText(textToCopy).then(showSuccess).catch(()=>{fallbackCopy(textToCopy,showSuccess)}):fallbackCopy(textToCopy,showSuccess)}function fallbackCopy(text,cb){try{const ta=document.createElement("textarea");ta.value=text,ta.style.position="fixed",ta.style.opacity="0",document.body.appendChild(ta),ta.focus(),ta.select(),document.execCommand("copy"),document.body.removeChild(ta),"function"==typeof cb&&cb()}catch(e){console.warn("Fallback copy notice:",e)}}const PRESET_QUERIES={cashflow:{prompt:'"Give me an instant summary of our current Cash Flow, Accounts Payable, and top 3 supplier liabilities."',badge:"SDUI WIDGET: FINANCIAL_SUMMARY",title:"Liquidity & Accounts Payable Snapshot",kpis:[{label:"Total Liquidity",val:"£428,950",sub:"+12.4% vs last mo",subColor:"text-emerald-400",icon:"trending-up"},{label:"Accounts Payable",val:"£84,210",sub:"14 Invoices Due < 7d",subColor:"text-gray-400"},{label:"Net Working Cap.",val:"£344,740",sub:"Healthy Ratio (5.1x)",subColor:"text-cyan-400"}],rows:[{name:"Apex Logistics Global",ref:"PINV-2026-0842",amt:"£18,450.00"},{name:"Caledonian Freight Ltd",ref:"PINV-2026-0839",amt:"£12,120.50"},{name:"Nordic Timber Supplies",ref:"PINV-2026-0831",amt:"£9,840.00"}],explanation:"Query parsed deterministically. Executing erpnext.accounts.report.cash_flow & querying general ledger balance. Generated live SDUI widget on the right with zero LLM arithmetic hallucinations."},invoices:{prompt:'"Which warehouse purchase invoices are currently unallocated or pending verification in Frappe?"',badge:"SDUI WIDGET: UNALLOCATED_INVOICES",title:"Unallocated & Pending Warehouse Invoices",kpis:[{label:"Pending Drafts",val:"28 Docs",sub:"Awaiting HITL Review",subColor:"text-amber-400"},{label:"Draft Liability",val:"£36,420",sub:"docstatus: 0 enforced",subColor:"text-cyan-400"},{label:"Average SLA",val:"3.8 sec",sub:"Receipt to draft",subColor:"text-emerald-400"}],rows:[{name:"Metro Pallets UK",ref:"DRAFT-REC-901",amt:"£4,250.00"},{name:"Zenith Packaging Corp",ref:"DRAFT-REC-902",amt:"£8,910.20"},{name:"Highland Fuel Depot",ref:"DRAFT-REC-903",amt:"£14,110.00"}],explanation:"Executed filter query on Purchase Invoice doctype where docstatus = 0 and is_paid = 0. All entries generated strictly through on-device edge scans."},tax:{prompt:'"Forecast our quarterly UK VAT output liability based on verified draft purchase invoices."',badge:"SDUI WIDGET: TAX_RECONCILIATION",title:"HMRC Quarterly VAT & Input Tax Position",kpis:[{label:"Gross Net Purchases",val:"£248,100",sub:"Standard 20% Applied",subColor:"text-gray-400"},{label:"VAT Input Reclaim",val:"£49,620",sub:"100% Tax Match",subColor:"text-emerald-400"},{label:"Audit Risk Factor",val:"0.00%",sub:"Deterministic check",subColor:"text-cyan-400"}],rows:[{name:"UK Inland Haulage",ref:"VAT-STND-20%",amt:"£9,800.00"},{name:"Clyde Maritime Imports",ref:"VAT-STND-20%",amt:"£22,400.00"},{name:"Lothian Warehousing Ltd",ref:"VAT-ZERO-0%",amt:"£0.00"}],explanation:"Cross-referenced Frappe Regional Tax Template (UK VAT 20%) with supplier line items. Deduplication SHA-256 passed without collision."}};function runHeroDemo(){const badge=document.getElementById("hero-demo-badge"),scanner=document.getElementById("hero-scanner-beam"),supplier=document.getElementById("demo-supplier"),total=document.getElementById("demo-total");if(!badge||!scanner)return;badge.innerText="PROCESSING...",badge.classList.remove("text-emerald-400"),badge.classList.add("text-amber-400"),scanner.style.animation="none",scanner.offsetHeight,scanner.style.animation="hero-scan-loop 1s ease-in-out infinite alternate";const samples=[{s:"Apex Logistics UK",t:"£18,450.00",time:"3.8s"},{s:"Highland Freight Ltd",t:"£12,120.50",time:"4.1s"},{s:"Nordic Timber Supplies",t:"£9,840.00",time:"3.6s"},{s:"Caledonian Maritime Goods",t:"£24,300.00",time:"4.3s"}],pick=samples[Math.floor(Math.random()*samples.length)];setTimeout(()=>{supplier&&(supplier.innerText=pick.s),total&&(total.innerText=pick.t),badge.innerText="ROUNDTRIP: "+pick.time,badge.classList.remove("text-amber-400"),badge.classList.add("text-emerald-400"),scanner.style.animation="hero-scan-loop 3.5s ease-in-out infinite alternate",refreshIcons()},1200)}function runQuery(key){const data=PRESET_QUERIES[key];if(!data)return;document.querySelectorAll(".query-btn").forEach(btn=>{btn.classList.remove("bg-brand-600","bg-blue-600","text-white","text-black","active"),btn.classList.add("bg-white/5","text-gray-300","border","border-white/10")});const activeBtn=event?.currentTarget;activeBtn&&(activeBtn.classList.remove("bg-slate-100","text-gray-300"),activeBtn.classList.add("bg-brand-600","text-white","active"));const userBubble=document.getElementById("user-bubble");userBubble&&(userBubble.querySelector("div").innerText=data.prompt);const aiResp=document.getElementById("ai-response-text");aiResp&&(aiResp.innerText=data.explanation),document.getElementById("widget-type-badge").innerText=data.badge,document.getElementById("widget-title").innerText=data.title;const kpiGrid=document.getElementById("widget-kpi-grid");kpiGrid&&(kpiGrid.innerHTML=data.kpis.map(k=>`\n                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10">\n                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block mb-1">${k.label}</span>\n                        <div class="text-2xl font-black text-white font-mono">${k.val}</div>\n                        <div class="text-[10px] ${k.subColor} mt-1">${k.sub}</div>\n                    </div>\n                `).join(""));const tableContainer=document.querySelector("#widget-table-container .divide-y");if(tableContainer){let html='\n                    <div class="px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]">\n                        <div class="col-span-4">SUPPLIER</div>\n                        <div class="col-span-4">INVOICE REF</div>\n                        <div class="col-span-4 text-right">TOTAL AMOUNT</div>\n                    </div>\n                ';data.rows.forEach(r=>{html+=`\n                        <div class="px-4 py-3 grid grid-cols-12 items-center text-gray-300 hover:bg-white/5 transition-colors">\n                            <div class="col-span-4 font-semibold text-white">${r.name}</div>\n                            <div class="col-span-4 font-mono text-gray-400">${r.ref}</div>\n                            <div class="col-span-4 text-right font-mono font-bold text-cyan-400">${r.amt}</div>\n                        </div>\n                    `}),tableContainer.innerHTML=html}refreshIcons()}function sendCustomQuery(){const input=document.getElementById("chat-input"),val=input.value.trim();if(!val)return;const userBubble=document.getElementById("user-bubble");userBubble&&(userBubble.querySelector("div").innerText=`"${val}"`);const aiResp=document.getElementById("ai-response-text");aiResp&&(aiResp.innerText=`Executed deterministic SQL router for "${val}". Verified against Frappe ledger database schema. Results synchronized.`),input.value=""}function updateCalculator(){const volumeInput=document.getElementById("calc-volume"),rateInput=document.getElementById("calc-rate");if(!volumeInput||!rateInput)return;const volume=parseInt(volumeInput.value,10),rate=parseInt(rateInput.value,10);document.getElementById("calc-volume-val").innerText=volume.toLocaleString()+" docs",document.getElementById("calc-rate-val").innerText="£"+rate+" / hr";const manualHours=.075*volume,manualCost=manualHours*rate,erpyasMonthly=.002*volume*.8,netSavings=Math.max(0,Math.round(manualCost-erpyasMonthly)),annualSavings=12*netSavings;document.getElementById("calc-savings").innerText="£"+netSavings.toLocaleString(),document.getElementById("calc-annual-savings").innerText="£"+annualSavings.toLocaleString()+" Annual Bottom-Line Boost",document.getElementById("calc-hours-saved").innerText=manualHours.toFixed(1)+" hrs / mo"}!function(){const tickerEl=document.getElementById("pain-point-ticker");if(!tickerEl)return;const painPoints=["Manual Invoice Keystrokes","48-Hour Ledger Lag","VAT Reconciliation Delays","Audit Discrepancy Risk","Warehouse Dock Data Bottlenecks","Unverified Paper Receipts"];let idx=0,tickerInterval=null;function tick(){tickerEl.style.opacity="0",tickerEl.style.transform="translateY(-6px)",setTimeout(()=>{idx=(idx+1)%painPoints.length,tickerEl.innerText=painPoints[idx],tickerEl.style.opacity="1",tickerEl.style.transform="translateY(0)"},300)}function startTicker(){tickerInterval||(tickerInterval=setInterval(tick,2800))}startTicker(),document.addEventListener("visibilitychange",()=>{document.hidden?tickerInterval&&(clearInterval(tickerInterval),tickerInterval=null):startTicker()})}(),function(){if(!("IntersectionObserver"in window))return;const elements=document.querySelectorAll(".scroll-illuminate"),observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{entry.isIntersecting?entry.target.classList.add("illuminated"):(entry.boundingClientRect.top>window.innerHeight||entry.boundingClientRect.bottom<0)&&entry.target.classList.remove("illuminated")})},{threshold:[.15,.5],rootMargin:"0px 0px -60px 0px"});elements.forEach(el=>observer.observe(el))}(),document.addEventListener("DOMContentLoaded",()=>{refreshIcons();const menuBtn=document.getElementById("mobile-menu-btn"),mobileMenu=document.getElementById("mobile-menu");menuBtn&&mobileMenu&&menuBtn.addEventListener("click",()=>{const isHidden=mobileMenu.classList.contains("hidden");mobileMenu.classList.toggle("hidden"),menuBtn.setAttribute("aria-expanded",isHidden?"true":"false")});const navbar=document.getElementById("navbar"),progressBar=document.getElementById("scroll-progress"),railItems=Array.from(document.querySelectorAll(".ledger-item")),pipeline=document.getElementById("signal-pipeline"),sectionElements=Array.from(document.querySelectorAll("section[id]"));railItems.forEach(item=>{item.querySelector(".ledger-dot-wrap")?.addEventListener("click",()=>{const target=document.getElementById(item.getAttribute("data-section"));target&&target.scrollIntoView({behavior:"smooth",block:"start"})})});const pipelineDots=pipeline&&sectionElements.length>0?sectionElements.map(sec=>{const dot=document.createElement("div");return dot.className="pulse-dot",pipeline.appendChild(dot),{dot:dot,sec:sec}}):[],sectionMap=sectionElements.map((el,index)=>{const id=el.getAttribute("id"),railItem=railItems.find(item=>item.getAttribute("data-section")===id)||null,dotEntry=pipelineDots.find(d=>d.sec===el)||null;return{el:el,railItem:railItem,dot:dotEntry?dotEntry.dot:null}});let scrollTicking=!1;function updateScrollVisuals(){const rawY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0;if(window.innerWidth<1280){navbar&&(rawY>20?navbar.classList.contains("shadow-xl")||navbar.classList.add("shadow-xl","bg-black/80","border-white/10"):navbar.classList.contains("shadow-xl")&&navbar.classList.remove("shadow-xl"));progressBar&&(progressBar.style.width="0%");scrollTicking=!1;return;}const innerH=window.innerHeight||800,docH=document.documentElement.scrollHeight||document.body.scrollHeight||1,scrollableH=Math.max(1,docH-innerH),y=Math.max(0,Math.min(scrollableH,rawY)),progress=scrollableH>0?y/scrollableH*100:0,probeY=.4*innerH,innerHalf=.5*innerH,innerTwenty=.2*innerH,fullHeight=docH||1;let activeRailIndex=-1;const measured=sectionMap.map((entry,i)=>{const rect=entry.el.getBoundingClientRect();rect.top<=probeY&&(activeRailIndex=i);const topDoc=rect.top+y,ratio=topDoc/fullHeight,isLit=rect.top<=innerHalf&&rect.bottom>=innerTwenty;return{entry:entry,topDoc:topDoc,topPercent:(100*ratio).toFixed(2)+"vh",isLit:isLit}});navbar&&(y>20?navbar.classList.contains("shadow-xl")||navbar.classList.add("shadow-xl","bg-black/80","border-white/10"):navbar.classList.contains("shadow-xl")&&navbar.classList.remove("shadow-xl")),progressBar&&(progressBar.style.width=progress+"%"),measured.forEach((m,i)=>{const item=m.entry.railItem;item&&(i<activeRailIndex?(item.classList.contains("is-passed")||item.classList.add("is-passed"),item.classList.contains("is-active")&&item.classList.remove("is-active")):i===activeRailIndex?(item.classList.contains("is-passed")&&item.classList.remove("is-passed"),item.classList.contains("is-active")||item.classList.add("is-active")):(item.classList.contains("is-passed")&&item.classList.remove("is-passed"),item.classList.contains("is-active")&&item.classList.remove("is-active")))}),measured.forEach(m=>{m.entry.dot&&(m.entry.dot.style.top!==m.topPercent&&(m.entry.dot.style.top=m.topPercent),m.isLit&&!m.entry.dot.classList.contains("lit")?m.entry.dot.classList.add("lit"):!m.isLit&&m.entry.dot.classList.contains("lit")&&m.entry.dot.classList.remove("lit"))}),scrollTicking=!1}window.addEventListener("scroll",()=>{scrollTicking||(scrollTicking=!0,window.requestAnimationFrame(updateScrollVisuals))},{passive:!0}),updateScrollVisuals();const counterEls=document.querySelectorAll(".count-target");if("IntersectionObserver"in window&&counterEls.length>0){const countObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target,target=parseFloat(el.getAttribute("data-count-to")||"0"),suffix=el.getAttribute("data-suffix")||"",decimals=parseInt(el.getAttribute("data-decimals")||"0",10),duration=1400,startTime=performance.now();function stepCount(now){const progress=Math.min((now-startTime)/duration,1),ease=1-Math.pow(1-progress,3),currentVal=(target*ease).toFixed(decimals);el.innerText=currentVal+suffix,progress<1?requestAnimationFrame(stepCount):el.innerText=target.toFixed(decimals)+suffix}requestAnimationFrame(stepCount),countObserver.unobserve(el)}})},{threshold:.2});counterEls.forEach(el=>countObserver.observe(el))}const revealEls=document.querySelectorAll(".reveal");if("IntersectionObserver"in window&&revealEls.length>0){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{entry.isIntersecting&&(entry.target.classList.add("is-visible"),io.unobserve(entry.target))})},{threshold:.05,rootMargin:"0px 0px 80px 0px"});revealEls.forEach(el=>io.observe(el))}else revealEls.forEach(el=>el.classList.add("is-visible"));if(document.querySelectorAll(".spotlight-card").forEach(card=>{let rect=null,rafId=null;card.addEventListener("mouseenter",()=>{rect=card.getBoundingClientRect()},{passive:!0}),card.addEventListener("mousemove",e=>{rect||(rect=card.getBoundingClientRect()),rafId||(rafId=requestAnimationFrame(()=>{const mx=((e.clientX-rect.left)/rect.width*100).toFixed(1)+"%",my=((e.clientY-rect.top)/rect.height*100).toFixed(1)+"%";card.style.setProperty("--mx",mx),card.style.setProperty("--my",my),rafId=null}))},{passive:!0}),card.addEventListener("mouseleave",()=>{rect=null,rafId&&(cancelAnimationFrame(rafId),rafId=null)},{passive:!0})}),window.innerWidth>=768&&!window.matchMedia("(pointer: coarse)").matches){document.querySelectorAll(".glass-card").forEach(card=>{let tiltRaf=null,rect=null;card.addEventListener("mouseenter",()=>{rect=card.getBoundingClientRect()},{passive:!0}),card.addEventListener("mousemove",e=>{tiltRaf||(tiltRaf=requestAnimationFrame(()=>{rect||(rect=card.getBoundingClientRect());const x=e.clientX-rect.left,y=e.clientY-rect.top,centerX=rect.width/2,centerY=rect.height/2,rotateX=(y-centerY)/centerY*-5,rotateY=(x-centerX)/centerX*5;card.style.transform=`perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.012, 1.012, 1.012)`,card.style.transition="transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",card.style.zIndex="10",tiltRaf=null}))},{passive:!0}),card.addEventListener("mouseleave",()=>{tiltRaf&&(cancelAnimationFrame(tiltRaf),tiltRaf=null),rect=null,card.style.transform="perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",card.style.transition="transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",card.style.zIndex="1"},{passive:!0})})}!function(){const canvas=document.getElementById("hero-geometry-canvas");if(!canvas)return;const ctx=canvas.getContext("2d");if(!ctx)return;let width=0,height=0,canvasRect=null,mouseX=-9999,mouseY=-9999,isTabVisible=!0,isCanvasInView=!0,animFrameId=null;const isMobile=window.innerWidth<768;const dpr=isMobile?1:Math.min(window.devicePixelRatio||1,2);function resize(){canvasRect=canvas.getBoundingClientRect();const rawW=canvasRect.width||canvas.clientWidth||0,maxH=isMobile?Math.min(window.innerHeight,800):(canvasRect.height||0),rawH=Math.min(canvasRect.height||canvas.clientHeight||0,maxH);if(rawW<=0||rawH<=0)return;const targetW=Math.floor(rawW*dpr),targetH=Math.floor(rawH*dpr);if(Math.abs(canvas.width-targetW)>40||Math.abs(canvas.height-targetH)>40||width===0||height===0){width=rawW,height=rawH,canvas.width=targetW,canvas.height=targetH,ctx.scale(dpr,dpr)}}resize(),window.addEventListener("load",()=>{resize()},{once:!0});const nodeCount=isMobile?12:(window.innerWidth<1024?35:60),nodes=[];for(let i=0;i<nodeCount;i++)nodes.push({x:Math.random()*(width||window.innerWidth),y:Math.random()*(height||window.innerHeight),vx:.75*(Math.random()-.5),vy:.75*(Math.random()-.5),radius:2*Math.random()+1.2,pulse:Math.random()*Math.PI*2,isGold:Math.random()>.88});const ripples=[];canvas.parentElement?.addEventListener("click",e=>{if(isMobile)return;canvasRect||(canvasRect=canvas.getBoundingClientRect()),ripples.push({x:e.clientX-canvasRect.left,y:e.clientY-canvasRect.top,radius:0,maxRadius:180,alpha:.8})});const heroSection=canvas.closest(".relative")||canvas.parentElement||window;if(!isMobile){heroSection.addEventListener("mousemove",e=>{isCanvasInView&&(canvasRect||(canvasRect=canvas.getBoundingClientRect()),e.clientY>=canvasRect.top&&e.clientY<=canvasRect.bottom?(mouseX=e.clientX-canvasRect.left,mouseY=e.clientY-canvasRect.top):(mouseX=-9999,mouseY=-9999))},{passive:!0}),heroSection.addEventListener("mouseleave",()=>{mouseX=-9999,mouseY=-9999},{passive:!0})}window.addEventListener("resize",()=>{resize()},{passive:!0}),document.addEventListener("visibilitychange",()=>{isTabVisible=!document.hidden,isTabVisible&&isCanvasInView&&!animFrameId&&draw()});const maxDist=isMobile?90:160,maxDistSq=maxDist*maxDist,mouseDist=220,mouseDistSq=mouseDist*mouseDist;function draw(){if(!isTabVisible||!isCanvasInView)return void(animFrameId=null);ctx.clearRect(0,0,width,height);for(let r=ripples.length-1;r>=0;r--){const rip=ripples[r];rip.radius+=3.5,rip.alpha*=.96,ctx.strokeStyle=`rgba(0, 240, 255, ${rip.alpha.toFixed(2)})`,ctx.lineWidth=1.5,ctx.beginPath(),ctx.arc(rip.x,rip.y,rip.radius,0,2*Math.PI),ctx.stroke(),(rip.radius>rip.maxRadius||rip.alpha<.02)&&ripples.splice(r,1)}const nLen=nodes.length;for(let i=0;i<nLen;i++){const ni=nodes[i];for(let j=i+1;j<nLen;j++){const nj=nodes[j],dx=ni.x-nj.x;if(dx>maxDist||dx<-maxDist)continue;const dy=ni.y-nj.y;if(dy>maxDist||dy<-maxDist)continue;const dSq=dx*dx+dy*dy;if(dSq<maxDistSq){const alpha=.38*(1-Math.sqrt(dSq)/maxDist);ctx.strokeStyle=ni.isGold||nj.isGold?`rgba(255, 183, 0, ${(.85*alpha).toFixed(2)})`:`rgba(0, 240, 255, ${alpha.toFixed(2)})`,ctx.lineWidth=1,ctx.beginPath(),ctx.moveTo(ni.x,ni.y),ctx.lineTo(nj.x,nj.y),ctx.stroke()}}if(!isMobile&&mouseX>0&&mouseY>0){const mdx=ni.x-mouseX;if(mdx<=mouseDist&&mdx>=-mouseDist){const mdy=ni.y-mouseY;if(mdy<=mouseDist&&mdy>=-mouseDist){const mdSq=mdx*mdx+mdy*mdy;if(mdSq<mouseDistSq){const alpha=.8*(1-Math.sqrt(mdSq)/mouseDist);ctx.strokeStyle=`rgba(0, 240, 255, ${alpha.toFixed(2)})`,ctx.lineWidth=1.6,ctx.beginPath(),ctx.moveTo(ni.x,ni.y),ctx.lineTo(mouseX,mouseY),ctx.stroke()}}}}ni.x+=ni.vx,ni.y+=ni.vy,(ni.x<0||ni.x>width)&&(ni.vx*=-1),(ni.y<0||ni.y>height)&&(ni.vy*=-1),ni.pulse+=.04;const pulseRadius=ni.radius+.8*Math.sin(ni.pulse);ctx.fillStyle=ni.isGold?"rgba(255, 183, 0, 0.95)":"rgba(0, 240, 255, 0.85)",ctx.beginPath(),ctx.arc(ni.x,ni.y,pulseRadius,0,2*Math.PI),ctx.fill()}animFrameId=requestAnimationFrame(draw)}if(draw(),"IntersectionObserver"in window){new IntersectionObserver(entries=>{entries.forEach(entry=>{isCanvasInView=entry.isIntersecting,isCanvasInView?animFrameId||draw():animFrameId&&(cancelAnimationFrame(animFrameId),animFrameId=null)})},{threshold:.05}).observe(canvas)}}()
 });</script>
 <script>
 function switchJournalTab(mode) {
