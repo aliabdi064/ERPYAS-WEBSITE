@@ -405,12 +405,13 @@ input[type="range"]::-moz-range-track {
     border-radius: 26px;
     padding: 2rem 1.75rem;
     overflow: hidden;
+    min-height: 280px;
 }
 @media (min-width: 640px) {
-    .hero-animated-statement-inner { padding: 2.75rem 2.5rem; }
+    .hero-animated-statement-inner { padding: 2.75rem 2.5rem; min-height: 330px; }
 }
 @media (min-width: 1024px) {
-    .hero-animated-statement-inner { padding: 3.25rem 3.5rem; }
+    .hero-animated-statement-inner { padding: 3.25rem 3.5rem; min-height: 380px; }
 }
 .hero-laser-shine {
     position: absolute;
@@ -443,11 +444,17 @@ input[type="range"]::-moz-range-track {
 .hero-statement-line {
     display: block;
     width: 100%;
-    font-size: clamp(1.85rem, 4.2vw, 4.2rem);
-    line-height: 1.14;
+    max-width: 100%;
+    font-size: clamp(1.12rem, 4.6vw, 4.2rem);
+    line-height: 1.25;
+    height: 1.3em;
+    min-height: 1.3em;
     font-weight: 900;
     letter-spacing: -0.025em;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: transform .3s cubic-bezier(.16, 1, .3, 1), filter .3s ease;
 }
 .hero-statement-line:hover {
@@ -845,19 +852,6 @@ section {
     scroll-margin-top: 5.5rem;
 }
 
-/* Content Visibility for Off-screen Rendering Performance */
-#capabilities,
-#architecture,
-#copilot,
-#showcase,
-#roi-calculator,
-#pricing,
-#compliance,
-#roadmap {
-    content-visibility: auto;
-    contain-intrinsic-size: auto none auto 900px;
-}
-
 /* iOS Safe Area & Dynamic Island Inset Support */
 #navbar {
     padding-top: env(safe-area-inset-top, 0px);
@@ -1112,10 +1106,10 @@ Autonomous Finance &amp; Operational Intelligence
 </div>
 </div>
 <div class="flex justify-center mb-6">
-<div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-2xl glass-card border border-white/10 shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
-<span class="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping"></span>
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300">Eliminating:</span>
-<span id="pain-point-ticker" class="text-xs font-mono font-bold text-cyan-400 transition-all duration-300">Manual Invoice Keystrokes</span>
+<div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-2xl glass-card border border-white/10 shadow-xl shadow-cyan-500/10 backdrop-blur-xl min-h-[40px] max-w-[92vw] overflow-hidden whitespace-nowrap">
+<span class="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping flex-shrink-0"></span>
+<span class="text-xs font-mono font-bold uppercase tracking-wider text-gray-300 flex-shrink-0">Eliminating:</span>
+<span id="pain-point-ticker" class="text-xs font-mono font-bold text-cyan-400 transition-all duration-300 inline-block whitespace-nowrap">Manual Invoice Keystrokes</span>
 </div>
 </div>
 <div class="text-center max-w-5xl mx-auto relative mt-8">
@@ -2976,7 +2970,7 @@ Close
 <div class="aurora-blob"></div>
 </div>
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-<script>"use strict";let currentSelectedPlan=null;function selectSelfServePlan(planName,price,volume){currentSelectedPlan=planName;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn"),volumeSelect=document.getElementById("lead-volume");headline&&(headline.innerHTML=`Buy <span class="text-cyan-400 font-extrabold">${planName}</span> with 1-Click`),submitBtn&&(submitBtn.innerText=`Confirm 1-Click Buy (${price})`,refreshIcons()),volumeSelect&&(volume.includes("1,000")?volumeSelect.value="500 – 2,500 docs/month":volume.includes("3,000")?volumeSelect.value="2,500 – 10,000 docs/month":volume.includes("10,000")?volumeSelect.value="10,000 – 50,000+ docs/month":volume.includes("100,000")&&(volumeSelect.value="100,000+ docs/month (Enterprise Beast)"));const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function scrollToSection(id){const target=document.getElementById(id);if(target){try{target.scrollIntoView({behavior:"smooth",block:"start"})}catch(e){const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);window.scrollTo(0,offsetPosition)}}const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false"))}function openEarlyAccessModal(){currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons());const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow=""),currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons())}window.addEventListener("load",()=>{refreshIcons();
+<script>"use strict";let currentSelectedPlan=null;function selectSelfServePlan(planName,price,volume){currentSelectedPlan=planName;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn"),volumeSelect=document.getElementById("lead-volume");headline&&(headline.innerHTML=`Buy <span class="text-cyan-400 font-extrabold">${planName}</span> with 1-Click`),submitBtn&&(submitBtn.innerText=`Confirm 1-Click Buy (${price})`,refreshIcons()),volumeSelect&&(volume.includes("1,000")?volumeSelect.value="500 – 2,500 docs/month":volume.includes("3,000")?volumeSelect.value="2,500 – 10,000 docs/month":volume.includes("10,000")?volumeSelect.value="10,000 – 50,000+ docs/month":volume.includes("100,000")&&(volumeSelect.value="100,000+ docs/month (Enterprise Beast)"));const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function scrollToSection(id){const target=document.getElementById(id);if(!target)return;const mobileMenu=document.getElementById("mobile-menu"),menuBtn=document.getElementById("mobile-menu-btn");mobileMenu&&!mobileMenu.classList.contains("hidden")&&(mobileMenu.classList.add("hidden"),menuBtn&&menuBtn.setAttribute("aria-expanded","false")),requestAnimationFrame(()=>{const nav=document.getElementById("navbar"),navHeight=nav?nav.offsetHeight:80,scrollY=window.pageYOffset||window.scrollY||document.documentElement.scrollTop||0,elementPosition=target.getBoundingClientRect().top+scrollY,offsetPosition=Math.max(0,elementPosition-navHeight);try{window.scrollTo({top:offsetPosition,behavior:"smooth"})}catch(e){window.scrollTo(0,offsetPosition)}})}function openEarlyAccessModal(){currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons());const modal=document.getElementById("early-access-modal");if(modal){modal.classList.remove("hidden"),document.body.style.overflow="hidden";const firstInput=document.getElementById("lead-email");firstInput&&setTimeout(()=>firstInput.focus(),80)}}function closeEarlyAccessModal(){const modal=document.getElementById("early-access-modal");modal&&(modal.classList.add("hidden"),document.body.style.overflow=""),currentSelectedPlan=null;const headline=document.getElementById("modal-headline"),submitBtn=document.getElementById("submit-btn");headline&&(headline.innerHTML='Join the <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> Enterprise Beta'),submitBtn&&(submitBtn.innerText="Request VIP Onboarding Slot",refreshIcons())}window.addEventListener("load",()=>{refreshIcons();
 // Spotlight Effect for Glass Cards
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.spotlight-wrapper, .spotlight-card').forEach(wrapper => {
@@ -3052,8 +3046,13 @@ document.addEventListener("DOMContentLoaded", () => {
     style.innerHTML = `
         .hero-statement-line {
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
-            display: inline-block;
-            will-change: opacity, transform, filter;
+            display: block;
+            width: 100%;
+            height: 1.3em;
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .hero-statement-line.anim-out {
             opacity: 0;
@@ -3069,27 +3068,57 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(style);
 
     let currentIndex = 0;
-    
-    setInterval(() => {
-        lines.forEach(line => {
-            line.classList.add('anim-out');
-        });
-        
+    let tickerTimer = null;
+    let isHeroInView = true;
+
+    function stepKeywords() {
+        if (!isHeroInView || document.hidden) return;
+        lines.forEach(line => line.classList.add('anim-out'));
         setTimeout(() => {
             currentIndex = (currentIndex + 4) % keywords.length;
-            
             lines.forEach((line, i) => {
                 line.textContent = keywords[(currentIndex + i) % keywords.length];
                 line.classList.remove('anim-out');
                 line.classList.add('anim-in');
-                
-                // force reflow
-                void line.offsetWidth;
-                
-                line.classList.remove('anim-in');
             });
-        }, 500); 
-    }, 3000); 
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    lines.forEach(line => line.classList.remove('anim-in'));
+                });
+            });
+        }, 500);
+    }
+
+    function startKeywordTicker() {
+        if (!tickerTimer) {
+            tickerTimer = setInterval(stepKeywords, 3500);
+        }
+    }
+
+    function stopKeywordTicker() {
+        if (tickerTimer) {
+            clearInterval(tickerTimer);
+            tickerTimer = null;
+        }
+    }
+
+    startKeywordTicker();
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopKeywordTicker();
+        else if (isHeroInView) startKeywordTicker();
+    });
+
+    const heroCard = document.querySelector('.hero-animated-statement-card');
+    if (heroCard && "IntersectionObserver" in window) {
+        new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                isHeroInView = entry.isIntersecting;
+                if (isHeroInView) startKeywordTicker();
+                else stopKeywordTicker();
+            });
+        }, { threshold: 0.05 }).observe(heroCard);
+    } 
 });
 </script>
 </body>
