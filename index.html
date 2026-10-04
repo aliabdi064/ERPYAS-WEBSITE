@@ -2140,6 +2140,7 @@ Unlock These Savings Now
 </div>
 </div>
 </section>
+
 <section id="pricing" class="py-28 relative border-t border-white/5 overflow-hidden">
 <svg class="math-geo-svg geo-spin-clockwise opacity-25 -right-20 top-20 w-[680px] h-[680px]" aria-hidden="true" viewBox="0 0 500 500" fill="none" stroke="rgba(0, 240, 255, 0.45)" stroke-width="1.2">
 <polygon points="250,30 450,145 450,375 250,490 50,375 50,145" stroke-dasharray="5 5"/>
@@ -2154,15 +2155,9 @@ Unlock These Savings Now
 <div class="cyber-grid-floor opacity-55" aria-hidden="true"></div>
 <div class="glow-sphere w-[700px] h-[700px] bg-cyan-600/15 top-16 -right-36 pointer-events-none"></div>
 <div class="glow-sphere w-[600px] h-[600px] bg-violet-600/18 bottom-16 -left-32 pointer-events-none"></div>
-<div class="holo-ring holo-ring-1 opacity-35" style="top:30%;right:12%" aria-hidden="true"></div>
-<div class="holo-ring holo-ring-2 opacity-30" style="bottom:25%;left:8%" aria-hidden="true"></div>
-<div class="geo-shape-cube top-28 left-16 opacity-50" aria-hidden="true"></div>
-<div class="geo-shape-hex bottom-24 right-20 opacity-45" style="animation-delay:-3s" aria-hidden="true"></div>
-<div class="geo-shape-diamond top-44 right-32 opacity-40" style="animation-delay:-5s" aria-hidden="true"></div>
-<div class="scan-beam-wrap"><div class="scan-beam" style="animation-duration:9s;animation-delay:-2s"></div></div>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="text-center max-w-3xl mx-auto mb-20 reveal relative">
+<div class="text-center max-w-3xl mx-auto mb-16 reveal relative">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4 shadow-lg shadow-cyan-500/20">
 <i data-lucide="tag" class="w-3.5 h-3.5 text-cyan-400"></i>
 <span>Instant Activation</span><span class="term-cursor"></span>
@@ -2170,9 +2165,85 @@ Unlock These Savings Now
 <h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mb-6" aria-label="Self-Serve Plans (Buy with 1-Click on Website)">
 <div class="section-flare" aria-hidden="true"></div>Self-Serve Plans <br class="hidden sm:inline"/><span class="text-gradient">(Buy with 1-Click on Website)</span>
 </h2>
-<p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-Predictable, transparent monthly subscriptions. Instantly activate autonomous invoice processing with zero setup delays, zero hidden fees, and guaranteed sub-4.5s ERP ledger validation.
+<p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light mb-8">
+Predictable, transparent subscriptions. Instantly activate autonomous invoice processing with zero setup delays, zero hidden fees, and guaranteed sub-4.5s ERP ledger validation.
 </p>
+
+<!-- PRICING TOGGLE -->
+<div class="flex items-center justify-center gap-4 mb-6 relative">
+  <span id="label-monthly" class="text-sm font-semibold text-gray-400 transition-colors">Pay Monthly</span>
+  
+  <button id="billing-toggle" type="button" class="relative inline-flex h-8 w-16 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 bg-cyan-600" role="switch" aria-checked="true">
+    <span class="sr-only">Toggle billing period</span>
+    <span id="billing-knob" class="pointer-events-none relative inline-block h-7 w-7 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-8">
+      <span class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in-out">
+        <i data-lucide="calendar" class="h-3 w-3 text-cyan-600"></i>
+      </span>
+    </span>
+  </button>
+  
+  <div class="flex items-center gap-2">
+    <span id="label-yearly" class="text-sm font-bold text-white transition-colors">Pay Yearly</span>
+    <span class="inline-flex items-center rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 px-2.5 py-0.5 text-xs font-bold text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.3)] animate-pulse-slow">
+      SAVE 17% (2 MONTHS FREE)
+    </span>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.getElementById("billing-toggle");
+  const knob = document.getElementById("billing-knob");
+  const labelMo = document.getElementById("label-monthly");
+  const labelYr = document.getElementById("label-yearly");
+  let isYearly = true;
+  
+  const prices = document.querySelectorAll(".price-value");
+  const subTexts = document.querySelectorAll(".price-subtext");
+  const btnsMo = document.querySelectorAll(".btn-mo");
+  const btnsYr = document.querySelectorAll(".btn-yr");
+
+  toggle.addEventListener("click", () => {
+    isYearly = !isYearly;
+    toggle.setAttribute("aria-checked", isYearly);
+    
+    if (isYearly) {
+      toggle.classList.remove("bg-gray-600");
+      toggle.classList.add("bg-cyan-600");
+      knob.classList.remove("translate-x-0");
+      knob.classList.add("translate-x-8");
+      
+      labelMo.classList.replace("text-white", "text-gray-400");
+      labelMo.classList.remove("font-bold");
+      labelYr.classList.replace("text-gray-400", "text-white");
+      labelYr.classList.add("font-bold");
+      
+      prices.forEach(p => p.innerText = p.dataset.yr);
+      subTexts.forEach(p => p.innerText = "/ yr");
+      
+      btnsMo.forEach(b => b.classList.add("hidden"));
+      btnsYr.forEach(b => b.classList.remove("hidden"));
+    } else {
+      toggle.classList.remove("bg-cyan-600");
+      toggle.classList.add("bg-gray-600");
+      knob.classList.remove("translate-x-8");
+      knob.classList.add("translate-x-0");
+      
+      labelYr.classList.replace("text-white", "text-gray-400");
+      labelYr.classList.remove("font-bold");
+      labelMo.classList.replace("text-gray-400", "text-white");
+      labelMo.classList.add("font-bold");
+      
+      prices.forEach(p => p.innerText = p.dataset.mo);
+      subTexts.forEach(p => p.innerText = "/ mo");
+      
+      btnsYr.forEach(b => b.classList.add("hidden"));
+      btnsMo.forEach(b => b.classList.remove("hidden"));
+    }
+  });
+});
+</script>
+
 <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs font-mono">
   <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">
     <i data-lucide="credit-card" class="w-3.5 h-3.5 text-cyan-400"></i>
@@ -2190,299 +2261,121 @@ Predictable, transparent monthly subscriptions. Instantly activate autonomous in
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch reveal reveal-stagger">
-<!-- Plan 1: Retail Starter -->
+
+<!-- Starter -->
 <div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-cyan-500/40 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
   <div>
     <div class="flex items-center justify-between mb-4">
-      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-white/5 border border-white/10 text-gray-300">STARTER TIER</span>
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-white/5 border border-white/10 text-gray-300">STARTER</span>
       <div class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
         <i data-lucide="store" class="w-4 h-4 text-cyan-400"></i>
       </div>
     </div>
-    <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Retail Starter</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Essential autonomous keying for single stores and boutique retailers.</p>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Starter</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Essential autonomous keying for small retailers.</p>
     
     <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
       <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$9.99</span>
-        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="9.90" data-yr="99">99</span></span>
+        <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ yr</span>
       </div>
       <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
         <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i>
-        <span>1,000 invoices / month</span>
+        <span>1,000 invoices</span>
       </div>
-      <div class="text-[11px] text-gray-400 mt-2.5 font-mono">~$0.0099 per bill processed</div>
     </div>
-
-    <ul class="space-y-3 text-xs text-gray-300 mb-8">
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span><strong>1,000 invoices / month</strong> included</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Sub-4.5s ledger verification</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Gemini Multimodal AI extraction</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Dual-Layer SHA-256 deduplication</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>ERPNext &amp; Frappe V15 API connector</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>100% Volatile RAM data protection</span>
-      </li>
-    </ul>
   </div>
-
-  <a href="https://buy.stripe.com/test_fZu5kD8Og7Thh1xfTc1oI00" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_fZu5kD8Og7Thh1xfTc1oI00')" class="w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">
-    <span>Buy with 1-Click</span>
-    <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-400 group-hover/btn:translate-x-1 transition-transform"></i>
-  </a>
+  <a href="https://buy.stripe.com/test_4gM28r5C45L912z6iC1oI04" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">Start Monthly</a>
+  <a href="https://buy.stripe.com/test_14A4gzggI6PdbHdcH01oI05" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-xs sm:text-sm border border-cyan-400/40 shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">Activate Yearly</a>
 </div>
 
-<!-- Plan 2: Retail Pro -->
-<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border-2 border-cyan-500/60 shadow-2xl shadow-cyan-500/20 transition-all duration-300 relative group bg-gradient-to-b from-cyan-950/30 via-white/[0.04] to-black/80 transform hover:-translate-y-1">
-  <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg shadow-cyan-500/35 flex items-center gap-1.5 whitespace-nowrap">
-    <i data-lucide="flame" class="w-3 h-3 text-amber-300"></i>
-    <span>MOST POPULAR</span>
-  </div>
-  <div>
-    <div class="flex items-center justify-between mb-4 pt-1">
-      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-cyan-950/70 border border-cyan-500/40 text-cyan-300">SCALE TIER</span>
-      <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center">
-        <i data-lucide="shopping-bag" class="w-4 h-4 text-cyan-300"></i>
-      </div>
-    </div>
-    <h3 class="text-2xl font-display font-bold text-white text-cyan-300">Retail Pro</h3>
-    <p class="text-xs text-gray-300 mt-1.5 leading-relaxed">Engineered for growing retail brands, multi-counter shops, and active e-commerce.</p>
-    
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-cyan-500/30">
-      <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-cyan-400 font-mono">$24.99</span>
-        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
-      </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/70 border border-cyan-500/50 text-cyan-300 text-xs font-mono font-semibold">
-        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i>
-        <span>3,000 invoices / month</span>
-      </div>
-      <div class="text-[11px] text-cyan-300/80 mt-2.5 font-mono">~$0.0083 per bill processed</div>
-    </div>
-
-    <ul class="space-y-3 text-xs text-gray-300 mb-8">
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span><strong>3,000 invoices / month</strong> included</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Priority processing queue (&lt; 3.8s)</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Mobile Edge camera &amp; PWA capture</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Automated line-item tax &amp; GL match</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Supplier purchase order reconciliation</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>HMRC / VAT audit-ready formatting</span>
-      </li>
-    </ul>
-  </div>
-
-  <a href="https://buy.stripe.com/test_7sYeVd9Sk4H5fXt9uO1oI01" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_7sYeVd9Sk4H5fXt9uO1oI01')" class="animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 cursor-pointer">
-    <span>Buy with 1-Click</span>
-    <i data-lucide="zap" class="w-4 h-4 text-cyan-300"></i>
-  </a>
-</div>
-
-<!-- Plan 3: Wholesale / Heavy -->
-<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-blue-500/50 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
+<!-- Growth -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border-2 border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 relative group bg-cyan-900/10 transform md:-translate-y-4 shadow-[0_0_30px_rgba(6,182,212,0.15)] relative overflow-hidden">
+  <div class="absolute top-0 right-0 bg-cyan-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg tracking-wider uppercase">Most Popular</div>
   <div>
     <div class="flex items-center justify-between mb-4">
-      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-blue-950/70 border border-blue-500/30 text-blue-300">WHOLESALE TIER</span>
-      <div class="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center">
-        <i data-lucide="truck" class="w-4 h-4 text-blue-400"></i>
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-cyan-500/20 border border-cyan-500/40 text-cyan-200">GROWTH</span>
+      <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/50 flex items-center justify-center">
+        <i data-lucide="zap" class="w-4 h-4 text-cyan-300"></i>
       </div>
     </div>
-    <h3 class="text-2xl font-display font-bold text-white group-hover:text-blue-300 transition-colors">Wholesale / Heavy</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Built for wholesalers, supply chains, and multi-depot distribution.</p>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Growth</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Advanced multi-store document processing & sync.</p>
     
     <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
       <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$49.99</span>
-        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="15.00" data-yr="150">150</span></span>
+        <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ yr</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-950/60 border border-blue-500/30 text-blue-300 text-xs font-mono font-semibold">
-        <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-400"></i>
-        <span>10,000 invoices / month</span>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
+        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>3,500 invoices</span>
       </div>
-      <div class="text-[11px] text-gray-400 mt-2.5 font-mono">~$0.0050 per bill processed</div>
     </div>
-
-    <ul class="space-y-3 text-xs text-gray-300 mb-8">
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span><strong>10,000 invoices / month</strong> included</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>High-volume parallel batch ingestion</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Multi-warehouse inventory cross-check</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Deterministic SQL schema matching</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Automated PO &amp; Goods Receipt matching</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Dedicated webhook event sync</span>
-      </li>
-    </ul>
   </div>
-
-  <a href="https://buy.stripe.com/test_7sY00jfcE5L93aH0Yi1oI02" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_7sY00jfcE5L93aH0Yi1oI02')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-blue-400/40 shadow-lg shadow-blue-500/25 transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">
-    <span>Buy with 1-Click</span>
-    <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-300 group-hover/btn:translate-x-1 transition-transform"></i>
-  </a>
+  <a href="https://buy.stripe.com/test_6oU14n6G81uT7qX6iC1oI06" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">Start Monthly</a>
+  <a href="https://buy.stripe.com/test_dRm6oH8Og1uT7qXgXg1oI07" class="btn-yr animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 cursor-pointer">Activate Yearly</a>
 </div>
 
-<!-- Plan 4: Maximum Self-Serve Plan (The Enterprise Beast) -->
-<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border-2 border-violet-500/60 shadow-2xl shadow-violet-500/25 transition-all duration-300 relative group bg-gradient-to-b from-purple-950/30 via-white/[0.04] to-black/80 transform hover:-translate-y-1">
+<!-- Wholesale -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-violet-500/40 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
   <div>
-    <!-- The exact requested label -->
-    <div class="mb-4 p-3 rounded-xl bg-gradient-to-r from-violet-950/90 via-purple-900/60 to-cyan-950/80 border border-violet-400/50 shadow-md">
-      <div class="flex items-center gap-1.5 text-cyan-400 mb-1">
-        <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400 animate-pulse"></i>
-        <span class="tracking-widest uppercase text-[10px] text-cyan-300 font-extrabold font-mono">ULTIMATE CAPACITY</span>
-      </div>
-      <p class="text-xs font-semibold text-white leading-snug">"The Enterprise Beast — Process up to 100,000 bills/month with zero server slowdown"</p>
-    </div>
-
     <div class="flex items-center justify-between mb-4">
-      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-violet-950/70 border border-violet-500/40 text-violet-300">MAX SELF-SERVE</span>
-      <div class="w-8 h-8 rounded-xl bg-violet-500/20 border border-violet-500/40 flex items-center justify-center">
-        <i data-lucide="sparkles" class="w-4 h-4 text-violet-300"></i>
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-violet-500/10 border border-violet-500/30 text-violet-300">WHOLESALE</span>
+      <div class="w-8 h-8 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center">
+        <i data-lucide="building-2" class="w-4 h-4 text-violet-400"></i>
       </div>
     </div>
-    <h3 class="text-2xl font-display font-bold text-white text-violet-300">Maximum Self-Serve Plan</h3>
-    <p class="text-xs text-gray-300 mt-1.5 leading-relaxed">Unrivaled throughput for high-volume enterprises with massive automated billing cycles.</p>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-violet-300 transition-colors">Wholesale</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">High-density automated invoice batch ingestion.</p>
     
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-violet-500/30">
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
       <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-violet-400 font-mono">$249.00</span>
-        <span class="text-gray-400 text-sm font-mono font-semibold">/ mo</span>
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="40.00" data-yr="400">400</span></span>
+        <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ yr</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-violet-950/70 border border-violet-500/50 text-violet-300 text-xs font-mono font-semibold">
-        <i data-lucide="zap" class="w-3.5 h-3.5 text-violet-400"></i>
-        <span>100,000 invoices / month</span>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-violet-950/40 border border-violet-500/30 text-violet-300 text-xs font-mono font-semibold">
+        <i data-lucide="receipt" class="w-3.5 h-3.5 text-violet-400"></i>
+        <span>10,000 invoices</span>
       </div>
-      <div class="text-[11px] text-emerald-400 mt-2.5 font-mono">~$0.00249 / bill (Maximum Scale Savings)</div>
     </div>
-
-    <ul class="space-y-3 text-xs text-gray-300 mb-8">
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span><strong>100,000 invoices / month</strong> maximum volume</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span><strong>Zero server slowdown</strong> under massive bursts</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Multi-threaded parallel Gemini AI keying</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Executive SDUI Router &amp; NL audit queries</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>Unlimited user seats &amp; multi-entity ledgers</span>
-      </li>
-      <li class="flex items-start gap-2.5">
-        <span class="w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span>
-        <span>24/7 dedicated engineering response channel</span>
-      </li>
-    </ul>
   </div>
-
-  <a href="https://buy.stripe.com/test_8x2fZhfcE6Pd9z5cH01oI03" onclick="handleStripeRedirect(event, 'https://buy.stripe.com/test_8x2fZhfcE6Pd9z5cH01oI03')" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs sm:text-sm border border-violet-400/50 shadow-lg shadow-violet-500/30 transition-all flex items-center justify-center gap-2 group/btn hover:scale-[1.02] active:scale-95 cursor-pointer">
-    <span>Buy with 1-Click</span>
-    <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200"></i>
-  </a>
-</div>
+  <a href="https://buy.stripe.com/test_9B66oH3tWgpN9z58qK1oI08" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">Start Monthly</a>
+  <a href="https://buy.stripe.com/test_dRm7sLc0s2yX3aH0Yi1oI09" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-violet-400/40 shadow-lg shadow-violet-500/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] cursor-pointer">Activate Yearly</a>
 </div>
 
-<!-- Self-Serve Trust & Assurance Features -->
-<div class="mt-14 glass-card p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.02] max-w-5xl mx-auto reveal">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-  <div class="space-y-1">
-    <div class="flex items-center justify-center gap-1.5 text-cyan-400 font-mono text-sm font-bold">
-      <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
-      <span>1-Click Buy</span>
+<!-- Enterprise Max -->
+<div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300 relative group bg-gradient-to-b from-emerald-950/10 to-transparent overflow-hidden">
+  <div class="absolute -right-12 -top-12 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full"></div>
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">ENTERPRISE MAX</span>
+      <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+        <i data-lucide="rocket" class="w-4 h-4 text-emerald-400"></i>
+      </div>
     </div>
-    <p class="text-xs text-gray-400">Instant self-serve activation</p>
-  </div>
-  <div class="space-y-1">
-    <div class="flex items-center justify-center gap-1.5 text-emerald-400 font-mono text-sm font-bold">
-      <i data-lucide="shield-check" class="w-4 h-4"></i>
-      <span>Zero Lock-in</span>
+    <h3 class="text-2xl font-display font-bold text-white group-hover:text-emerald-300 transition-colors">Enterprise Max</h3>
+    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Process massive bulk bills with zero server slowdown.</p>
+    
+    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-emerald-500/10">
+      <div class="flex items-baseline gap-1.5">
+        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="349.00" data-yr="3,490">3,490</span></span>
+        <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ yr</span>
+      </div>
+      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-semibold">
+        <i data-lucide="receipt" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>Up to 150,000 invoices</span>
+      </div>
     </div>
-    <p class="text-xs text-gray-400">Cancel or switch tiers anytime</p>
   </div>
-  <div class="space-y-1">
-    <div class="flex items-center justify-center gap-1.5 text-violet-400 font-mono text-sm font-bold">
-      <i data-lucide="server" class="w-4 h-4"></i>
-      <span>Zero Slowdown</span>
-    </div>
-    <p class="text-xs text-gray-400">Guaranteed cloud throughput</p>
-  </div>
-  <div class="space-y-1">
-    <div class="flex items-center justify-center gap-1.5 text-amber-400 font-mono text-sm font-bold">
-      <i data-lucide="lock" class="w-4 h-4"></i>
-      <span>Stateless RAM</span>
-    </div>
-    <p class="text-xs text-gray-400">100% ephemeral data security</p>
-  </div>
+  <a href="https://buy.stripe.com/test_4gMcN52pSehF7qX4au1oI0a" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-emerald-500/30 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">Start Monthly</a>
+  <a href="https://buy.stripe.com/test_cNidR90hKa1p9z5bCW1oI0b" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm border border-emerald-400/50 shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 cursor-pointer">Activate Yearly</a>
 </div>
-<div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-400">
-  <div class="flex items-center gap-2 font-mono">
-    <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
-    <span>Secure Checkout powered by <strong class="text-white">Stripe</strong></span>
-  </div>
-  <div class="flex items-center gap-2 font-mono text-[11px] text-gray-300">
-    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Google Pay</span>
-    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Apple Pay</span>
-    <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Visa &bull; Mastercard &bull; Amex</span>
-  </div>
+
 </div>
-</div>
-<!-- FAQ Section Placeholder: Option is visible and inactive on the top navigation. Content will be added here in subsequent updates. -->
 </div>
 </section>
+
 <section id="compliance" class="py-28 relative border-t border-white/5 overflow-hidden">
 <svg class="math-geo-svg geo-spin-counter opacity-25 -right-28 top-16 w-[700px] h-[700px]" aria-hidden="true" viewBox="0 0 500 500" fill="none" stroke="rgba(30, 64, 175, 0.6)" stroke-width="1.3">
 <path d="M250,40 L440,110 L440,280 C440,390 250,470 250,470 C250,470 60,390 60,280 L60,110 Z" stroke="rgba(0, 240, 255, 0.6)" stroke-width="2"/>
