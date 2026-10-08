@@ -9,6 +9,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-529L5D803E"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-529L5D803E")</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Cpath d=%27M20 4L34 12V28L20 36L6 28V12Z%27 fill=%27%230f172a%27 stroke=%27%2300f0ff%27 stroke-width=%272%27/%3E%3Cpath d=%27M14 10L20 18L26 10M20 18V29%27 stroke=%27white%27 stroke-width=%272.4%27 fill=%27none%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
 <title>ERPYAS.AI — Enterprise Autonomous Financial &amp; Operational Intelligence</title>
 <meta name="description" content="Enterprise-grade, AI-driven middleware bridging physical documents with ERPNext ledgers in under 4.5 seconds, powered by Gemini and Google Cloud.">
 <meta property="og:title" content="ERPYAS.AI — Enterprise Autonomous Financial &amp; Operational Intelligence">
@@ -388,7 +389,7 @@ input[type="range"]::-moz-range-track {
     position: relative;
     margin-top: 1.75rem;
     margin-bottom: 2.25rem;
-    max-width: 1100px;
+    max-width: 860px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -408,19 +409,18 @@ input[type="range"]::-moz-range-track {
 }
 .hero-animated-statement-inner {
     position: relative;
-    background: rgba(10, 15, 30, 0.88);
-    backdrop-filter: blur(36px);
-    -webkit-backdrop-filter: blur(36px);
+    background: rgba(10, 15, 30, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 26px;
-    padding: 2rem 1.75rem;
+    padding: 1.25rem 1.25rem;
     overflow: hidden;
-    min-height: 280px;
 }
 @media (min-width: 640px) {
-    .hero-animated-statement-inner { padding: 2.75rem 2.5rem; min-height: 330px; }
+    .hero-animated-statement-inner { padding: 1.5rem 2rem; }
 }
 @media (min-width: 1024px) {
-    .hero-animated-statement-inner { padding: 3.25rem 3.5rem; min-height: 380px; }
+    .hero-animated-statement-inner { padding: 1.75rem 2.5rem; }
 }
 .hero-laser-shine {
     position: absolute;
@@ -451,7 +451,7 @@ input[type="range"]::-moz-range-track {
     display: block;
     width: 100%;
     max-width: 100%;
-    font-size: clamp(1.12rem, 4.6vw, 4.2rem);
+    font-size: clamp(1.05rem, 3.2vw, 2.4rem);
     line-height: 1.25;
     height: 1.3em;
     min-height: 1.3em;
@@ -939,6 +939,75 @@ footer {
         filter: blur(16px);
     }
 }
+
+
+/* Compact animated statement box: 2×2 lines on tablet / desktop */
+@media (min-width: 768px) {
+    .hero-animated-statement-inner h2 { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.5rem; row-gap: .35rem; }
+    .hero-animated-statement-inner h2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0 !important; }
+}
+.hero-statement-line { font-size: clamp(1.05rem, 2.6vw, 2rem); }
+.hero-animated-statement-inner .flex.justify-center.mb-4 { margin-bottom: .75rem; }
+.hero-animated-statement-inner .mt-6.pt-5 { margin-top: 1rem; padding-top: .9rem; }
+
+/* ── ERPYAS in 30 Seconds (hero) ───────────────────────────────────────── */
+.how30 { max-width: 1100px; margin: 0 auto 2.25rem; text-align: left; }
+.how30-title { text-align: center; font-weight: 800; letter-spacing: -0.02em; color: #fff;
+    font-size: clamp(1.35rem, 3vw, 2rem); margin-bottom: .35rem; }
+.how30-title span { background: linear-gradient(90deg,#00f0ff,#a78bfa); -webkit-background-clip: text;
+    background-clip: text; -webkit-text-fill-color: transparent; }
+.how30-sub { text-align: center; color: #94a3b8; font-size: .95rem; margin-bottom: 1.25rem; }
+.how30-steps { display: grid; grid-template-columns: 1fr; gap: .85rem; counter-reset: step; }
+@media (min-width: 640px) { .how30-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .how30-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.how30-step { position: relative; padding: 1.1rem 1.1rem 1.15rem 1.1rem; border-radius: 18px;
+    background: rgba(15, 23, 42, .78); border: 1px solid rgba(148, 163, 184, .18);
+    box-shadow: 0 10px 30px -18px rgba(0, 240, 255, .45); min-width: 0; }
+.how30-step:hover { border-color: rgba(0, 240, 255, .45); }
+.how30-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem;
+    border-radius: 999px; font-weight: 800; font-size: .95rem; color: #031018;
+    background: linear-gradient(135deg, #00f0ff, #34d399); margin-bottom: .6rem; }
+.how30-step h3 { color: #fff; font-weight: 700; font-size: 1.02rem; margin-bottom: .3rem; }
+.how30-step p { color: #cbd5e1; font-size: .9rem; line-height: 1.5; }
+.how30-step p strong { color: #fff; }
+.how30-benefits { margin-top: .9rem; display: grid; grid-template-columns: 1fr; gap: .75rem; }
+@media (min-width: 768px) { .how30-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.how30-benefit { display: flex; gap: .75rem; align-items: flex-start; padding: .9rem 1rem; border-radius: 16px;
+    background: rgba(2, 6, 23, .6); border: 1px dashed rgba(167, 139, 250, .35); color: #e2e8f0; font-size: .93rem; }
+.how30-benefit i { flex-shrink: 0; width: 1.25rem; height: 1.25rem; color: #a78bfa; margin-top: .1rem; }
+.how30-benefit b { color: #fff; }
+
+/* ── FAQ (last section) ─────────────────────────────────────────────────── */
+.faq-wrap { max-width: 920px; margin: 0 auto; }
+.faq-group { margin-bottom: 1.75rem; }
+.faq-group-title { display: flex; align-items: center; gap: .6rem; color: #fff; font-weight: 800;
+    font-size: 1.15rem; margin: 0 0 .75rem; }
+.faq-group-title i { width: 1.2rem; height: 1.2rem; color: #00f0ff; }
+.faq-item { border: 1px solid rgba(148, 163, 184, .18); border-radius: 14px; background: rgba(15, 23, 42, .7);
+    margin-bottom: .55rem; overflow: hidden; }
+.faq-item[open] { border-color: rgba(0, 240, 255, .4); }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; padding: .95rem 1.1rem; color: #f1f5f9; font-weight: 600; font-size: .98rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:focus-visible { outline: 2px solid #00f0ff; outline-offset: -2px; }
+.faq-chevron { width: 1.1rem; height: 1.1rem; flex-shrink: 0; color: #94a3b8; transition: transform .2s ease; }
+.faq-item[open] .faq-chevron { transform: rotate(180deg); color: #00f0ff; }
+.faq-answer, .faq-intro { color: #cbd5e1; font-size: .93rem; line-height: 1.6; }
+.faq-answer { padding: 0 1.1rem 1rem; }
+.faq-intro { margin-bottom: .75rem; }
+.faq-answer p, .faq-intro p { margin: .4rem 0; }
+.faq-answer ul, .faq-intro ul { list-style: disc; padding-left: 1.25rem; margin: .4rem 0; }
+.faq-answer ol, .faq-intro ol { list-style: decimal; padding-left: 1.25rem; margin: .4rem 0; }
+.faq-answer li, .faq-intro li { margin: .2rem 0; }
+.faq-answer strong, .faq-intro strong { color: #fff; }
+.faq-answer a, .faq-intro a { color: #22d3ee; text-decoration: underline; }
+.faq-answer code, .faq-intro code { background: rgba(148,163,184,.15); padding: .05rem .35rem; border-radius: 6px; font-size: .85em; }
+.faq-answer table, .faq-intro table { width: 100%; border-collapse: collapse; margin: .5rem 0; font-size: .85rem; display: block;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.faq-answer th, .faq-intro th { text-align: left; color: #fff; background: rgba(0, 240, 255, .08); }
+.faq-answer th, .faq-answer td, .faq-intro th, .faq-intro td { padding: .45rem .6rem; border: 1px solid rgba(148, 163, 184, .18); vertical-align: top; }
+@media (prefers-reduced-motion: reduce) { .faq-chevron { transition: none; } }
 </style>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
@@ -985,6 +1054,10 @@ footer {
 <div class="ledger-track"></div>
 <div class="ledger-item" data-section="roadmap">
 <div class="ledger-dot-wrap"><div class="ledger-dot"></div><span class="ledger-label">ROADMAP</span></div>
+</div>
+<div class="ledger-track"></div>
+<div class="ledger-item" data-section="faq">
+<div class="ledger-dot-wrap"><div class="ledger-dot"></div><span class="ledger-label">FAQ</span></div>
 </div>
 </nav>
 <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-black/40 backdrop-blur-md" id="navbar">
@@ -1042,7 +1115,7 @@ AI Co-Pilot
 <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
 Pricing
 </button>
-<button type="button" disabled aria-disabled="true" class="px-3.5 py-2 rounded-lg text-gray-400/80 cursor-not-allowed opacity-75 select-none hover:text-gray-400 transition-all" title="FAQ section coming soon">FAQ</button>
+<button type="button" onclick='scrollToSection("faq")' class="px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all">FAQ</button>
 </div>
 <div class="hidden sm:flex items-center gap-3">
 <button type="button" onclick='scrollToSection("pricing")' class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
@@ -1068,7 +1141,7 @@ Self-Serve Plans
 <span>Pricing</span>
 <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono">1-Click Plans</span>
 </button>
-<button type="button" disabled aria-disabled="true" class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-500 cursor-not-allowed opacity-75">FAQ</button>
+<button type="button" onclick='scrollToSection("faq")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">FAQ</button>
 <div class="pt-4">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold shadow-lg shadow-blue-600/30">
 Request Early Access
@@ -1132,6 +1205,25 @@ Autonomous Finance &amp; Operational Intelligence
 </div>
 </div>
 </div>
+
+<section class="how30 reveal is-visible" aria-labelledby="how30-title">
+<h2 id="how30-title" class="how30-title"><span>ERPYAS in 30 Seconds</span></h2>
+<p class="how30-sub">From a paper invoice to a ready-to-check draft in your ERPNext.</p>
+<ol class="how30-steps">
+<li class="how30-step"><div class="how30-num">1</div><h3>Snap or upload</h3>
+<p>Take a photo or upload a <strong>PDF or image</strong> of the invoice in the ERPYAS app.</p></li>
+<li class="how30-step"><div class="how30-num">2</div><h3>AI reads it</h3>
+<p>Supplier, invoice number, date, <strong>every line item</strong>, discounts and the total.</p></li>
+<li class="how30-step"><div class="how30-num">3</div><h3>Draft in ERPNext</h3>
+<p>A <strong>draft Purchase Invoice</strong> appears in your ERPNext with the original document attached.</p></li>
+<li class="how30-step"><div class="how30-num">4</div><h3>You stay in control</h3>
+<p>Your accountant checks and submits it. ERPYAS <strong>never submits or pays</strong> anything on its own.</p></li>
+</ol>
+<div class="how30-benefits" aria-label="Everyone in the business benefits">
+<div class="how30-benefit"><i data-lucide="line-chart"></i><div><b>Owners &amp; CEOs</b> get live financial answers on their phone (CEO Mode).</div></div>
+<div class="how30-benefit"><i data-lucide="calculator"></i><div><b>Accountants</b> stop typing invoices and only review them.</div></div>
+</div>
+</section>
 <div class="flex justify-center mb-6">
 <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-2xl glass-card border border-white/10 shadow-xl shadow-cyan-500/10 backdrop-blur-xl min-h-[40px] max-w-[92vw] overflow-hidden whitespace-nowrap">
 <span class="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping flex-shrink-0"></span>
@@ -1256,60 +1348,6 @@ Edge Capture (~180ms)
 Multimodal Reasoning (~2100ms)
 </span>
 <span class="text-gray-600">→</span>
-<span class="flex items-center gap-1.5 text-gray-300">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-SQL Deduplication &amp; Draft (~420ms)
-</span>
-</div>
-</div>
-</div>
-<div class="md:col-span-2 flex flex-col items-center justify-center gap-2 py-2 text-center font-mono text-xs">
-<div class="w-8 h-8 rounded-full bg-blue-600/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-500/20 animate-pulse">
-<i data-lucide="cpu" class="w-4 h-4"></i>
-</div>
-<div class="text-[10px] text-cyan-300 font-bold uppercase tracking-wider">Gemini</div>
-<div class="w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-<span class="text-[9px] text-gray-400">0.00% Error</span>
-</div>
-<div class="md:col-span-5 p-4 rounded-2xl bg-white/[0.03] border border-cyan-500/30 relative overflow-hidden shadow-inner">
-<div class="flex justify-between items-center mb-3">
-<span class="text-[10px] font-mono text-gray-400 flex items-center gap-1">
-<i data-lucide="database" class="w-3.5 h-3.5 text-blue-400"></i>
-ERPNEXT LEDGER COMMIT
-</span>
-<span class="text-[10px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-800/60">
-docstatus: 0
-</span>
-</div>
-<div class="space-y-2 text-xs font-mono">
-<div class="p-2 rounded bg-white/5 border border-white/5 flex justify-between">
-<span class="text-gray-400">Target Schema:</span>
-<span class="text-white font-semibold">tabPurchase Invoice</span>
-</div>
-<div class="p-2 rounded bg-white/5 border border-white/5 flex justify-between">
-<span class="text-gray-400">Hash Checksum:</span>
-<span class="text-purple-300 font-mono">SHA-256 MATCH</span>
-</div>
-<div class="p-2 rounded bg-slate-50/80 border border-emerald-500/30 bg-emerald-950/20 flex justify-between items-center">
-<span class="text-gray-300">Accountant Authority:</span>
-<span class="text-emerald-400 font-bold flex items-center gap-1">
-<i data-lucide="check" class="w-3 h-3"></i> Draft Ready
-</span>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-5 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-gray-400">
-<span class="flex items-center gap-1.5 text-gray-300">
-<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-Edge Capture (~180ms)
-</span>
-<span class="text-gray-400">→</span>
-<span class="flex items-center gap-1.5 text-gray-300">
-<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-Multimodal Reasoning (~2100ms)
-</span>
-<span class="text-gray-400">→</span>
 <span class="flex items-center gap-1.5 text-gray-300">
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
 SQL Deduplication &amp; Draft (~420ms)
@@ -2753,6 +2791,282 @@ alireza@erpyas.com
 </div>
 </div>
 </section>
+<section id="faq" class="py-28 relative border-t border-white/5 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 font-mono text-[11px] font-semibold tracking-wider">CUSTOMER GUIDE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-4 mb-3">Frequently Asked Questions</h2>
+<p class="text-gray-400">How ERPYAS works, what you can upload, plans and credits, and everything accountants and owners should know. Tap a question to open it.</p>
+</div>
+<div class="faq-wrap">
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="rocket"></i>Getting Started (about 5 minutes)</h3><details class="faq-item"><summary><span>What do I need?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li>An Android phone or tablet. iPhone is coming soon.</li>
+<li>A Google account to sign in.</li>
+<li>An <strong>ERPNext</strong> company (version 16, on Frappe Cloud or your own server).</li>
+</ul></div></details>
+<details class="faq-item"><summary><span>How do I start?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ol>
+<li>Install the ERPYAS app and tap <strong>Continue with Google</strong>.</li>
+<li>Enter your ERPNext address (for example <code>yourcompany.frappe.cloud</code>) and your ERPNext <strong>API Key</strong> and <strong>API Secret</strong>.</li>
+<li>Tap <strong>Connect</strong>. ERPYAS checks the connection, and you're ready to scan.</li>
+</ol>
+<p><strong>Your first 50 invoices are free.</strong> No card is needed to try it.</p></div></details>
+<details class="faq-item"><summary><span>Where do I get the ERPNext API Key and Secret?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>In ERPNext: open your <strong>User</strong> profile → <strong>API Access</strong> → <strong>Generate Keys</strong>.
+- Use a user who is allowed to create Purchase Invoices, Suppliers and Items.
+- ERPNext shows the Secret only once, so copy it straight into the app.</p></div></details>
+<details class="faq-item"><summary><span>Do I need to install anything in ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> No plugins, no custom code, no server changes. ERPYAS uses ERPNext's standard, secure API.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="upload"></i>What Can I Upload?</h3><div class="faq-intro"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Which files?</strong></td>
+<td>Camera photos, <strong>PDF</strong>, <strong>JPG / JPEG</strong>, <strong>PNG</strong>, <strong>WEBP</strong></td>
+</tr>
+<tr>
+<td><strong>Multi-page invoices?</strong></td>
+<td>Yes. A multi-page PDF is read as <strong>one</strong> invoice, every page and every row</td>
+</tr>
+<tr>
+<td><strong>Maximum file size?</strong></td>
+<td><strong>30 MB per file</strong>. A normal phone photo or PDF is far smaller</td>
+</tr>
+<tr>
+<td><strong>How many at once?</strong></td>
+<td><strong>1 invoice</strong>, or <strong>up to 50 invoices in one batch</strong> (up to 200 MB per batch)</td>
+</tr>
+<tr>
+<td><strong>One invoice per file?</strong></td>
+<td>Yes. Each file should contain one invoice (receipts and credit notes are fine)</td>
+</tr>
+<tr>
+<td><strong>Handwritten bills?</strong></td>
+<td>Not supported. Handwritten or unreadable documents are politely rejected, and they cost nothing</td>
+</tr>
+<tr>
+<td><strong>Which languages and currencies?</strong></td>
+<td>Invoices in any common language and currency; amounts post in your ERPNext company currency. The app itself is available in English, Arabic, German, Spanish, Hindi, Urdu and Chinese</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For the best results:</strong>
+- Use good light, and photograph the invoice flat with all four corners visible.
+- Make sure the supplier name, invoice number, date and total are readable.
+- Original PDFs from suppliers give the best accuracy of all.</p></div></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="timer"></i>How Fast Is It?</h3><div class="faq-intro"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Typical time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One invoice, from upload to draft in ERPNext</td>
+<td><strong>About 5–15 seconds</strong></td>
+</tr>
+<tr>
+<td>Batch of 50 invoices</td>
+<td>All 50 are read in parallel, then written to ERPNext at <strong>up to 100 per minute</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why paced?</strong> Batches are written at a steady pace so your ERPNext server stays fast for everyone else in your team.</p></div>
+<details class="faq-item"><summary><span>Can I keep working while a batch runs?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Yes. Progress is shown in the app, and you can keep using it.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="credit-card"></i>Plans, Credits &amp; Billing</h3><div class="faq-intro"><p><strong>One processed invoice = one credit.</strong> Choose a plan at <a href="https://www.erpyas.com">www.erpyas.com</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Monthly</th>
+<th>Yearly (2 months free)</th>
+<th>Invoices per month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Free Trial</strong></td>
+<td>$0</td>
+<td>–</td>
+<td><strong>50 invoices</strong> (once, to try ERPYAS)</td>
+</tr>
+<tr>
+<td><strong>Starter</strong></td>
+<td>$9.90</td>
+<td>$99</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td><strong>Growth</strong></td>
+<td>$15</td>
+<td>$150</td>
+<td>3,500</td>
+</tr>
+<tr>
+<td><strong>Wholesale</strong></td>
+<td>$40</td>
+<td>$400</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td><strong>Enterprise Max</strong></td>
+<td>$349</td>
+<td>$3,490</td>
+<td>up to 150,000</td>
+</tr>
+</tbody>
+</table>
+<p>Need more than 150,000 invoices a month, or a multi-branch setup? Contact us.</p></div>
+<details class="faq-item"><summary><span>What uses a credit?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Only an invoice that becomes a <strong>draft in ERPNext</strong>. These are <strong>free</strong>:
+- duplicates,
+- rejected or unreadable documents,
+- uploads that fail for any reason,
+- re-sending the same upload after a network drop.</p></div></details>
+<details class="faq-item"><summary><span>Do I get credits back if I undo an invoice?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Yes.</strong> Invoices removed with the <strong>24-hour Undo</strong> (see section 6) give their credits back.</p></div></details>
+<details class="faq-item"><summary><span>When does my allowance renew?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li><strong>Monthly plans:</strong> on every billing date.</li>
+<li><strong>Yearly plans:</strong> a full monthly allowance every month for the whole year.</li>
+</ul></div></details>
+<details class="faq-item"><summary><span>How do I know how much I have left?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Settings → Account &amp; plan</strong> shows your plan and invoices remaining. The app also reminds you when you've used <strong>90%</strong>.</p></div></details>
+<details class="faq-item"><summary><span>What happens when I run out?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li>New uploads pause and the app shows <strong>Upgrade plan</strong>.</li>
+<li>Invoices you've already scanned <strong>stay safe on your phone</strong>. Upgrade and they continue.</li>
+<li>Nothing is ever lost.</li>
+</ul></div></details>
+<details class="faq-item"><summary><span>How do I upgrade, change card, download receipts or cancel?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>In the app: <strong>Settings → Account &amp; plan</strong>.
+- <strong>Upgrade plan</strong> opens the plans page.
+- <strong>Manage billing</strong> opens your secure Stripe billing page (card, invoices, cancellation).</p>
+<p>Buy with the <strong>same email you sign in with</strong> and your plan activates automatically within seconds.</p></div></details>
+<details class="faq-item"><summary><span>Is payment secure?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Yes. Payments are handled by <strong>Stripe</strong>. ERPYAS never sees your card details. Every purchase gets a <strong>9-digit Customer Service ID</strong> on your receipt for quick support.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="database"></i>What Arrives in ERPNext?</h3><details class="faq-item"><summary><span>What exactly does ERPYAS create?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li>A <strong>Draft Purchase Invoice</strong> with the supplier, invoice number, dates, every line item, discounts and taxes.</li>
+<li>The <strong>original invoice file attached</strong>, so auditors are always one click from the source.</li>
+<li><strong>The draft's total always matches the invoice total.</strong></li>
+</ul></div></details>
+<details class="faq-item"><summary><span>Will it create suppliers and items for me?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Yes. Known items are matched to your catalogue, including part numbers and SKUs. Genuinely new items and suppliers are created automatically. Items that <em>look</em> similar but differ in a number (for example a 24-port vs a 48-port panel) are <strong>never</strong> silently merged.</p></div></details>
+<details class="faq-item"><summary><span>How are taxes, shipping and discounts handled?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li>Line items are recorded as printed.</li>
+<li>Bottom-line discounts are recorded as a discount.</li>
+<li>VAT / sales tax, shipping and similar charges are posted as a tax-and-charges line.</li>
+</ul>
+<p>This way the draft balances exactly to the invoice.</p></div></details>
+<details class="faq-item"><summary><span>Paid or unpaid?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>You choose before scanning, and one choice applies to a whole batch:
+- <strong>Credit</strong> (pay later): the draft goes to Accounts Payable.
+- <strong>Cash</strong> or <strong>Bank</strong>: recorded as already paid from the account you pick.</p></div></details>
+<details class="faq-item"><summary><span>Which expense account is used?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Your default expense account, or the one you pick in the app's account picker. The app remembers your usual choices.</p></div></details>
+<details class="faq-item"><summary><span>What is the &quot;Suspense&quot; account?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>When something needs a human decision, the draft goes to a <strong>suspense (review) account</strong> with a note explaining why. For example:
+- a blurry total,
+- a missing price,
+- an uncertain supplier,
+- an item that conflicts with your catalogue.</p>
+<p>Your accountant checks it, corrects the account and submits it, usually in under a minute.</p></div></details>
+<details class="faq-item"><summary><span>What if a supplier sends a corrected version of an invoice?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>ERPYAS recognises it:
+- If the original is still a draft, the draft is updated.
+- If the original was already submitted, a new draft is created and flagged for review.</p></div></details>
+<details class="faq-item"><summary><span>How are duplicates prevented?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>ERPYAS blocks the same invoice twice, whether it's:
+- the same file,
+- the same supplier and invoice number already in ERPNext,
+- or the same invoice content scanned again.</p>
+<p>A duplicate shows <strong>"Duplicate Blocked"</strong> and costs nothing.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="calculator"></i>For Accountants: Your Daily Routine</h3><div class="faq-intro"><ol>
+<li><strong>Scan</strong> invoices as they arrive (one at a time or in batches of up to 50).</li>
+<li><strong>Open ERPNext → Buying → Purchase Invoice</strong> and filter by <strong>Draft</strong>.</li>
+<li><strong>Review</strong> each draft against the attached original. Check suspense items first; the remarks say why.</li>
+<li><strong>Submit.</strong> ERPYAS never submits, pays or deletes submitted documents. That stays your decision.</li>
+</ol></div>
+<details class="faq-item"><summary><span>I scanned the wrong invoice. Can I undo it?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Yes, within <strong>24 hours</strong>:
+1. Go to <strong>Settings → Emergency 24-Hour Session Undo</strong> and tap <strong>Undo</strong> next to an invoice, or <strong>Rollback All</strong>.
+2. The draft and its attachment are removed from ERPNext, and the credit comes back.
+3. Invoices that were already <strong>submitted or paid</strong> are protected and are never deleted.</p></div></details>
+<details class="faq-item"><summary><span>No signal in the warehouse?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Keep scanning. Invoices wait in the app's <strong>Outbox</strong> and upload automatically when you're back online, just like WhatsApp messages.</p></div></details>
+<details class="faq-item"><summary><span>What do the app messages mean?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Meaning</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quality Gate Rejected</strong></td>
+<td>Handwritten, blurry or not an invoice</td>
+<td>Rescan clearly, or enter it manually (no credit used)</td>
+</tr>
+<tr>
+<td><strong>Duplicate Blocked</strong></td>
+<td>This invoice is already in ERPNext</td>
+<td>Nothing (no credit used)</td>
+</tr>
+<tr>
+<td><strong>ERP server temporarily down</strong></td>
+<td>Your ERPNext didn't answer</td>
+<td>Nothing: the Outbox retries automatically</td>
+</tr>
+<tr>
+<td><strong>AI temporarily unavailable</strong></td>
+<td>Short service hiccup</td>
+<td>Nothing: it retries automatically</td>
+</tr>
+<tr>
+<td><strong>Upgrade plan / free trial used up</strong></td>
+<td>Your allowance is used</td>
+<td>Upgrade in Settings (scanned invoices stay saved)</td>
+</tr>
+<tr>
+<td><strong>Authentication failed</strong></td>
+<td>Your ERPNext API key was changed or revoked</td>
+<td>Enter the new key in Settings</td>
+</tr>
+<tr>
+<td><strong>Access forbidden</strong></td>
+<td>Your ERPNext user lacks permission</td>
+<td>Ask your admin for Purchase Invoice rights</td>
+</tr>
+</tbody>
+</table></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="line-chart"></i>For CEOs &amp; Owners: CEO Mode</h3><details class="faq-item"><summary><span>What is CEO Mode?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Instant answers to the questions owners actually ask, straight from your live ERPNext books, on your phone:
+- Profit &amp; Loss
+- Balance Sheet
+- Cash Flow
+- Cash-Flow Forecast
+- Who owes us (Receivables)
+- Who we owe (Payables)
+- Working Capital
+- Sales Pipeline
+- Budget vs Actual
+- Profit by Segment</p>
+<p>Pick a question, then a period: <strong>Today, 1 month, 3 months, 6 months or 1 year</strong>.</p></div></details>
+<details class="faq-item"><summary><span>Can I trust the numbers?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Yes. <strong>AI never calculates your financial figures.</strong> Every number comes directly from your ERPNext ledger using standard accounting reports, so what you see is exactly what your books say.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="shield-check"></i>Accounts, Privacy &amp; Security</h3><details class="faq-item"><summary><span>Can several people use one subscription?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>A subscription belongs to <strong>one person's ERPYAS account</strong> (their Google sign-in). Each team member who scans should have their own account and plan. They can all post into the same ERPNext company.</p></div></details>
+<details class="faq-item"><summary><span>Where are my ERPNext keys stored?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Only on your phone</strong>, encrypted by the phone's secure hardware keystore. ERPYAS servers never store them; they're used for each request and then discarded.</p></div></details>
+<details class="faq-item"><summary><span>Does ERPYAS keep my invoices?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong>
+- Invoices go to <strong>your own ERPNext</strong>.
+- Batch uploads are held briefly while they're processed and are <strong>deleted automatically within 24 hours</strong>.
+- We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents).</p></div></details>
+<details class="faq-item"><summary><span>Who processes the data?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<li><strong>Google Cloud</strong> runs ERPYAS (USA region).</li>
+<li><strong>Google Gemini</strong> AI reads invoices.</li>
+<li><strong>Stripe</strong> handles payments.</li>
+</ul>
+<p>Data is encrypted in transit (HTTPS) end to end.</p></div></details>
+<details class="faq-item"><summary><span>How do I sign in?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>With <strong>Google</strong> (on iPhone, Sign in with Apple is coming). Sessions stay signed in securely. You can sign out any time from the app.</p></div></details></div>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="zap"></i>Quick Answers</h3><div class="faq-intro"><ul>
+<li><strong>Free trial?</strong> Yes, 50 invoices, no card.</li>
+<li><strong>Contract?</strong> No. Monthly or yearly, cancel any time in <em>Manage billing</em>.</li>
+<li><strong>Works with my existing ERPNext?</strong> Yes, with no changes to your ERPNext.</li>
+<li><strong>Do I need an IT person?</strong> No. Setup takes about 5 minutes.</li>
+<li><strong>Does it replace my accountant?</strong> No. It removes the typing; your accountant keeps full control and approves everything.</li>
+</ul>
+<p><em>Questions, onboarding or enterprise volumes: </em><em>alireza@erpyas.com</em><em> · <a href="https://www.erpyas.com">www.erpyas.com</a></em></p></div></div>
+<p class="text-center text-gray-400 text-sm mt-10">Still have a question? Email <a class="text-cyan-400 underline" href="mailto:alireza@erpyas.com">alireza@erpyas.com</a> or <button type="button" class="text-cyan-400 underline" onclick='scrollToSection("pricing")'>see the plans</button>.</p>
+</div>
+</div>
+</section>
+
 <footer class="border-t border-white/10 bg-black/90 text-white pt-20 pb-12 relative overflow-hidden z-10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
