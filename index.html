@@ -471,6 +471,27 @@ input[type="range"]::-moz-range-track {
         transform: scale(1.02);
     }
 }
+.hero-sme-badge {
+    display: inline-block;
+    padding: .35rem 1.4rem;
+    border-radius: .6rem;
+    border: 2px solid rgba(0, 240, 255, .55);
+    background: rgba(8, 47, 73, .55);
+    box-shadow: 0 0 22px rgba(0, 240, 255, .25), inset 0 0 14px rgba(0, 240, 255, .12);
+    font-size: clamp(1.15rem, 3.4vw, 2rem);
+    font-weight: 900;
+    letter-spacing: .12em;
+    line-height: 1.2;
+    background-clip: padding-box;
+    color: #e0fbff;
+    text-shadow: 0 0 12px rgba(0, 240, 255, .6);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+}
+.hero-sme-badge.anim-out { opacity: 0; transform: translateY(-8px); filter: blur(3px); }
+.hero-sme-badge.anim-in { opacity: 0; transform: translateY(8px); filter: blur(3px); }
+@supports (-webkit-touch-callout: none) {
+    .hero-sme-badge.anim-out, .hero-sme-badge.anim-in { filter: none; }
+}
 .hero-part-1 {
     background-clip: text;
     -webkit-background-clip: text;
@@ -1176,6 +1197,9 @@ Request Early Access
 <span class="hud-corner hud-tr"></span>
 <span class="hud-corner hud-bl"></span>
 <span class="hud-corner hud-br"></span>
+<div class="flex justify-center mb-3">
+<span class="hero-sme-badge" aria-label="Built for SMEs">SMEs</span>
+</div>
 <div class="flex justify-center mb-4">
 <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 font-mono text-[11px] font-semibold tracking-wider shadow-sm">
 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -2802,7 +2826,24 @@ alireza@erpyas.com
 <p class="text-gray-400">How ERPYAS works, what you can upload, plans and credits, and everything accountants and owners should know. Tap a question to open it.</p>
 </div>
 <div class="faq-wrap">
-<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="rocket"></i>Getting Started (about 5 minutes)</h3><details class="faq-item"><summary><span>What do I need?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
+<div class="faq-group"><h3 class="faq-group-title"><i data-lucide="rocket"></i>Getting Started (about 5 minutes)</h3><details class="faq-item"><summary><span>I'm new. How do I start from the very beginning?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer">
+<p><strong>Step 1: Do you already use ERPNext?</strong> Great, you're ready: go to step 3.</p>
+<p><strong>Step 2: No ERPNext yet? Get it in minutes.</strong> <a href="https://frappe.io/erpnext" target="_blank" rel="noopener">ERPNext</a> is a free, open-source ERP (accounting, buying, selling, stock and more) trusted by thousands of businesses. Its makers, Frappe, host it for you: fast, reliable, backed up and upgraded for you. You only pay for hosting (<a href="https://frappe.io/erpnext/pricing" target="_blank" rel="noopener">see Frappe's pricing</a>):</p>
+<ul>
+<li><strong>From $5 / month</strong>: your own ERPNext site, ideal for small businesses.</li>
+<li><strong>From $20 / month</strong>: your own server, for growing teams.</li>
+<li><strong>From $125 / month</strong>: premium dedicated servers for larger companies.</li>
+</ul>
+<p>Tap <strong>Start free trial</strong> on <a href="https://frappe.io/erpnext" target="_blank" rel="noopener">frappe.io/erpnext</a>, then create your company in the setup wizard. (Prices are set by Frappe and may change.)</p>
+<p><strong>Step 3: Get the ERPYAS app.</strong> Tap <strong>Request TestFlight / APK Pilot Build</strong> on this page to receive the Android app (APK). Google Play: coming soon.</p>
+<p><strong>Step 4: Quick setup (about 5 minutes).</strong></p>
+<ol>
+<li>Open ERPYAS and tap <strong>Continue with Google</strong>.</li>
+<li>In ERPNext, open your <strong>User</strong> profile → <strong>API Access</strong> → <strong>Generate Keys</strong>.</li>
+<li>In ERPYAS, enter your ERPNext address (for example <code>yourcompany.frappe.cloud</code>), the API Key and the API Secret, then tap <strong>Connect</strong>.</li>
+<li>Enter your invite code for a 3-day free trial, or choose a plan, and scan your first invoice.</li>
+</ol>
+</div></details><details class="faq-item"><summary><span>What do I need?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
 <li>An Android phone or tablet. iPhone is coming soon.</li>
 <li>A Google account to sign in.</li>
 <li>An <strong>ERPNext</strong> company (version 16, on Frappe Cloud or your own server).</li>
@@ -3396,9 +3437,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let tickerTimer = null;
     let isHeroInView = true;
 
+    const smeBadge = document.querySelector('.hero-sme-badge');
+
     function stepKeywords() {
         if (!isHeroInView || document.hidden) return;
         lines.forEach(line => line.classList.add('anim-out'));
+        if (smeBadge) smeBadge.classList.add('anim-out');
         setTimeout(() => {
             currentIndex = (currentIndex + 4) % keywords.length;
             lines.forEach((line, i) => {
@@ -3406,9 +3450,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 line.classList.remove('anim-out');
                 line.classList.add('anim-in');
             });
+            if (smeBadge) { smeBadge.classList.remove('anim-out'); smeBadge.classList.add('anim-in'); }
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     lines.forEach(line => line.classList.remove('anim-in'));
+                    if (smeBadge) smeBadge.classList.remove('anim-in');
                 });
             });
         }, 500);
