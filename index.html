@@ -2899,7 +2899,7 @@ alireza@erpyas.com
 </tr>
 <tr>
 <td><strong>Handwritten bills?</strong></td>
-<td>Not supported. Handwritten or unreadable documents are politely rejected, and they cost nothing</td>
+<td>Not supported. Handwritten or unreadable documents are politely rejected (1 credit, as the AI read them; the same file again is free)</td>
 </tr>
 <tr>
 <td><strong>Which languages and currencies?</strong></td>
@@ -2982,12 +2982,16 @@ alireza@erpyas.com
 </table>
 <p>Need more than 150,000 invoices a month, or a multi-branch setup? Contact us.</p></div>
 <details class="faq-item"><summary><span>How do I use an invite code?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>In the app: <strong>Settings → Account &amp; plan → Invite code</strong>, type the code, then tap <strong>Redeem</strong>. Your <strong>3-day free trial</strong> starts straight away. Each account can use one invite code. When the trial ends, scanning and CEO Insights pause until you choose a plan; invoices already in ERPNext are not affected.</p></div></details>
-<details class="faq-item"><summary><span>What uses a credit?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Only an invoice that becomes a <strong>draft in ERPNext</strong>. These are <strong>free</strong>:
-- duplicates,
-- rejected or unreadable documents,
-- uploads that fail for any reason,
+<details class="faq-item"><summary><span>What uses a credit?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Every document the AI reads uses <strong>one credit</strong>:
+- an invoice that becomes a <strong>draft in ERPNext</strong>,
+- a <strong>duplicate</strong> found after reading (e.g. a new photo of an invoice already in ERPNext),
+- a document <strong>not accepted</strong> after reading (not an invoice, handwritten, unreadable).</p>
+<p>These are <strong>free</strong>:
+- the <strong>same file sent again</strong> (recognised before the AI reads it),
+- errors on our side, or Gemini / ERPNext being unavailable,
+- ERPNext refusing the draft (e.g. a missing account in your setup),
 - re-sending the same upload after a network drop.</p></div></details>
-<details class="faq-item"><summary><span>Do I get credits back if I undo an invoice?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> The <strong>24-hour Undo</strong> (see section 6) removes the draft so you can scan the invoice again, but the credit already used is not returned, because the invoice was already read. Duplicates, rejected documents and failed uploads never use a credit in the first place.</p></div></details>
+<details class="faq-item"><summary><span>Do I get credits back if I undo an invoice?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> The <strong>24-hour Undo</strong> (see section 6) removes the draft so you can scan the invoice again, but the credit already used is not returned, because the invoice was already read. Failed uploads and the same file sent again never use a credit.</p></div></details>
 <details class="faq-item"><summary><span>When does my allowance renew?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
 <li><strong>Monthly plans:</strong> on every billing date.</li>
 <li><strong>Yearly plans:</strong> the whole year's allowance (for example 12,000 on Starter) is available as soon as you pay. Use it at any pace during the year; it renews on your yearly billing date.</li>
@@ -3042,7 +3046,7 @@ alireza@erpyas.com
 - the same file,
 - the same supplier and invoice number already in ERPNext,
 - or the same invoice content scanned again.</p>
-<p>A duplicate shows <strong>"Duplicate Blocked"</strong> and costs nothing.</p></div></details></div>
+<p>A duplicate shows <strong>"Duplicate Blocked"</strong>. The same file sent again is free; if the AI had to read the invoice to spot the duplicate, one credit is used.</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="calculator"></i>For Accountants: Your Daily Routine</h3><div class="faq-intro"><ol>
 <li><strong>Scan</strong> invoices as they arrive (one at a time or in batches of up to 50).</li>
 <li><strong>Open ERPNext → Buying → Purchase Invoice</strong> and filter by <strong>Draft</strong>.</li>
@@ -3066,12 +3070,12 @@ alireza@erpyas.com
 <tr>
 <td><strong>Quality Gate Rejected</strong></td>
 <td>Handwritten, blurry or not an invoice</td>
-<td>Rescan clearly, or enter it manually (no credit used)</td>
+<td>Rescan clearly, or enter it manually (1 credit used; the same file again is free)</td>
 </tr>
 <tr>
 <td><strong>Duplicate Blocked</strong></td>
 <td>This invoice is already in ERPNext</td>
-<td>Nothing (no credit used)</td>
+<td>Nothing. Free for the same file; 1 credit if the AI had to read it</td>
 </tr>
 <tr>
 <td><strong>ERP server temporarily down</strong></td>
