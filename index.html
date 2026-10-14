@@ -3510,8 +3510,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 else stopKeywordTicker();
             });
         }, { threshold: 0.05 }).observe(heroCard);
-    } 
+    }
 });
+</script>
+<script>
+// Opened from the ERPYAS app ("Upgrade plan"): ?account=<uid>&email=<email>. Hand both to the
+// Stripe Payment Links so the purchase reaches that app account even if another email is typed.
+(function () {
+    const q = new URLSearchParams(location.search);
+    const account = q.get("account") || "";
+    const email = (q.get("email") || "").trim().toLowerCase();
+    const extra = {};
+    if (/^[A-Za-z0-9_-]{1,200}$/.test(account)) extra.client_reference_id = account;
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) extra.prefilled_email = email;
+    if (!Object.keys(extra).length) return;
+    document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(a => {
+        const url = new URL(a.href);
+        Object.entries(extra).forEach(([k, v]) => url.searchParams.set(k, v));
+        a.href = url.toString();
+    });
+})();
 </script>
 </body>
 </html>
