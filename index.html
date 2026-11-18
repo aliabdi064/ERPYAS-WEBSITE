@@ -3080,10 +3080,12 @@ info@erpyas.com
 <details class="faq-item"><summary><span>Does ERPYAS keep my invoices?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong>
 - Invoices go to <strong>your own ERPNext</strong>.
 - Batch uploads are held briefly while they're processed and are <strong>deleted automatically within 24 hours</strong>.
-- We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents).</p></div></details>
+- We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents).
+- To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.</p></div></details>
 <details class="faq-item"><summary><span>Who processes the data?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
 <li><strong>Google Cloud</strong> runs ERPYAS (USA region).</li>
 <li><strong>Google Gemini</strong> AI reads invoices.</li>
+<li><strong>Firebase Crashlytics</strong> (Google) receives the app's crash reports.</li>
 <li><strong>Stripe</strong> handles payments.</li>
 </ul>
 <p>Data is encrypted in transit (HTTPS) end to end.</p></div></details>
