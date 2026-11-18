@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Delete your ERPYAS account</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/img/erpyas-logo-32.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta name="description" content="How to delete your ERPYAS account and its data: in the app or by email.">
+<meta name="theme-color" content="#030712">
+<style>
+  :root { --bg:#030712; --card:#0b1220; --line:#1f2937; --text:#f3f4f6; --muted:#9ca3af; --accent:#22d3ee; --danger:#f87171; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:40px 16px 64px; }
+  a { color:var(--accent); }
+  header { display:flex; align-items:center; gap:10px; margin-bottom:28px; }
+  header img { width:36px; height:36px; border-radius:50%; }
+  header a { color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.2px; }
+  h1 { font-size:1.9rem; line-height:1.25; margin:0 0 8px; }
+  h2 { font-size:1.15rem; margin:0 0 10px; }
+  .lead { color:var(--muted); margin:0 0 28px; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; margin:0 0 16px; }
+  ol, ul { margin:0; padding-left:1.25rem; }
+  li { margin:4px 0; }
+  .mail { display:inline-block; margin-top:10px; padding:10px 16px; border-radius:10px; background:#0e7490; color:#fff; text-decoration:none; font-weight:700; }
+  .note { color:var(--muted); font-size:.92rem; }
+  .kept li::marker { color:var(--muted); }
+  .gone li::marker { color:var(--danger); }
+  footer { margin-top:28px; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <header><img src="/img/erpyas-logo-192.webp" alt="ERPYAS logo" width="36" height="36"><a href="/">ERPYAS</a></header>
+
+  <h1>Delete your ERPYAS account</h1>
+  <p class="lead">You can delete your ERPYAS account and its data at any time, in the app or by email.</p>
+
+  <section>
+    <h2>In the app (fastest)</h2>
+    <ol>
+      <li>Open ERPYAS and tap <strong>Settings</strong> (gear, bottom right).</li>
+      <li>Scroll down and tap <strong>Delete my account</strong>.</li>
+      <li>Type <strong>DELETE</strong> and confirm. It happens at once.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Without the app</h2>
+    <p>Email us from the address you sign in to ERPYAS with, subject <strong>"Delete my account"</strong>.
+       We delete the account within 7 days and reply to confirm.</p>
+    <a class="mail" href="mailto:info@erpyas.com?subject=Delete%20my%20account">Email info@erpyas.com</a>
+    <p class="note">We only act on requests sent from the account's own sign-in email, so nobody else can delete your account.</p>
+  </section>
+
+  <section>
+    <h2>What is deleted</h2>
+    <ul class="gone">
+      <li>Your ERPYAS account: sign-in, name, plan, credits and usage.</li>
+      <li>Your customer record in our admin records.</li>
+      <li>On your phone (when deleted in the app): your ERPNext keys, invoices still waiting to upload, and the undo history.</li>
+      <li>A paid plan is cancelled at once and does not renew.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What is kept, and why</h2>
+    <ul class="kept">
+      <li><strong>Invoices already in your ERPNext.</strong> They are in your own system and belong to you; ERPYAS never deletes them.</li>
+      <li><strong>Payment records</strong> at Stripe, our payment provider, as tax law requires.</li>
+      <li><strong>A one-way code made from your email</strong> (not the email itself), so a deleted account cannot start a second free trial.</li>
+      <li><strong>Messages you sent us</strong> through Feedback &amp; support, to answer them and for our support history.</li>
+      <li><strong>Server logs</strong> (30 days) and <strong>app crash reports</strong> (90 days), deleted automatically after that.</li>
+    </ul>
+  </section>
+
+  <footer>Questions: <a href="mailto:info@erpyas.com">info@erpyas.com</a> · <a href="/">www.erpyas.com</a></footer>
+</main>
+</body>
+</html>
