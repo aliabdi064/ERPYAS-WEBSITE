@@ -2780,7 +2780,7 @@ info@erpyas.com
 <p><strong>Step 4: Quick setup (about 5 minutes).</strong></p>
 <ol>
 <li>Open ERPYAS and tap <strong>Continue with Google</strong>.</li>
-<li>In ERPNext, open your <strong>User</strong> profile → <strong>API Access</strong> → <strong>Generate Keys</strong>.</li>
+<li>In ERPNext, open your <strong>User</strong> profile → <strong>API Access</strong> → <strong>Generate Keys</strong>. Set this user's <strong>Language to English</strong> (everyone else may use any language).</li>
 <li>In ERPYAS, enter your ERPNext address (for example <code>yourcompany.frappe.cloud</code>), the API Key and the API Secret, then tap <strong>Connect</strong>.</li>
 <li>Enter your invite code for a 7-day free trial with 10 invoices, or choose a plan, and scan your first invoice.</li>
 </ol>
@@ -2814,7 +2814,9 @@ info@erpyas.com
 <p><strong>Have an invite code?</strong> Enter it in <strong>Settings → Account &amp; plan → Invite code</strong> to start a <strong>7-day free trial</strong> with 10 invoices and CEO Insights. No card needed. No code? Choose a plan at <a href="https://www.erpyas.com">www.erpyas.com</a>.</p></div></details>
 <details class="faq-item"><summary><span>Where do I get the ERPNext API Key and Secret?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>In ERPNext: open your <strong>User</strong> profile → <strong>API Access</strong> → <strong>Generate Keys</strong>.
 - Use a user who is allowed to create Purchase Invoices and read Suppliers, Items and Accounts. ERPYAS creates one supplier only, once: <code>Unknown_supplier</code>.
+- Set this user's <strong>Language to English</strong> (User → Language). Everyone else in ERPNext can use any language. ERPNext writes its messages in this user's language, and ERPYAS reads them to fix small refusals by itself.
 - ERPNext shows the Secret only once, so copy it straight into the app.</p></div></details>
+<details class="faq-item"><summary><span>What language must we use in ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Any.</strong> Your bookkeeper and staff can use ERPNext in Chinese, Hindi, Arabic, German, English or any other language, and the ERPYAS app can be in a different language. Only the <strong>user whose API key is in ERPYAS</strong> should be set to <strong>English</strong>. Supplier, item and account names stay exactly as you typed them. What ERPYAS writes on the draft stays English (<code>Printed supplier</code>, <code>Unknown_supplier</code>, the tag "ERPYAS Review"), because ERPYAS reads it back to learn your suppliers and to catch duplicates.</p></div></details>
 <details class="faq-item"><summary><span>Do I need to install anything in ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> No plugins, no custom code, no server changes. ERPYAS uses ERPNext's standard, secure API.</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="upload"></i>What Can I Upload?</h3><div class="faq-intro"><table>
 <thead>
@@ -2854,7 +2856,7 @@ info@erpyas.com
 </tr>
 <tr>
 <td><strong>Which languages and currencies?</strong></td>
-<td>Invoices in any common language and currency; amounts post in your ERPNext company currency. The app itself is available in English, Arabic, German, Spanish, Hindi, Urdu and Chinese</td>
+<td>Invoices in any common language and currency; amounts post in your ERPNext company currency. The app is in <strong>English</strong> (the default), <strong>Chinese, Hindi, Arabic and German</strong> (Settings → Language, or "Phone language" to follow the phone). The translation is being completed screen by screen; a screen not translated yet shows in English</td>
 </tr>
 </tbody>
 </table>
