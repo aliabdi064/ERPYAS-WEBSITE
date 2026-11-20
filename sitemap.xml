@@ -1,7 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.erpyas.com/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/hi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/fa/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/zh/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/hi/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/ar/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/de/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
+  </url>
+  <url>
+    <loc>https://www.erpyas.com/fa/delete-account</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.erpyas.com/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/delete-account"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/delete-account"/>
   </url>
 </urlset>

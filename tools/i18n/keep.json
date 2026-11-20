@@ -1,0 +1,14 @@
+{
+ "_": "English texts that stay as they are in every language: names, plan names, codes and sample data.",
+ "keep": [
+  "<0>dashboard.erpyas.local</0>", "<0> ROUNDTRIP: 3.8s </0>", "Gemini", "<0>NODE_STATUS: ONLINE</0>",
+  "<0>SDUI_ROUTER: ACTIVE</0>", "<0>AUTOSCALE: ON</0>", "<0> <1/> erpyas.core / pipeline.overview </0>",
+  "Apex Logistics Global", "PINV-2026-0842", "Caledonian Freight Ltd", "PINV-2026-0839", "Nordic Timber Supplies",
+  "PINV-2026-0831", "iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master", "£15/hr", "£35/hr", "£60/hr",
+  "<0>STARTER</0>", "Starter", "<0>BUSINESS</0>", "Business", "<0>GROWTH</0>", "Growth", "<0>SCALE</0>", "Scale",
+  "<0>Starter</0>", "<0>Business</0>", "<0>Growth</0>", "<0>Scale</0>",
+  "Alireza Abdi", "Alireza Abdi LinkedIn", "<0> <1/> info@erpyas.com </0>", "LinkedIn", "ERPNext / Frappe V15",
+  "you@company.com", "ERPNext (Frappe)", "SAP Business One / S/4HANA", "Microsoft Dynamics 365", "Oracle NetSuite",
+  "<0/><1>ERPYAS</1>", "ERP<0>YAS</0><1>Cloud</1>"
+ ]
+}

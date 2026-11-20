@@ -2,6 +2,7 @@
 <html lang="en" class="dark scroll-smooth">
 <head>
 <meta charset="UTF-8">
+<!-- i18n:redirect --><script>try{var s=localStorage.getItem("erpyas_lang");if(document.documentElement.lang==="en"&&/^(zh|hi|ar|de|fa)$/.test(s||"")){var p=location.pathname.replace(/(^|\/)index\.html$/,"$1").replace(/\.html$/,"");location.replace("/"+s+p+location.search+location.hash)}}catch(e){}</script><!-- /i18n:redirect -->
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Payment Successful — ERPYAS Customer Service & Receipt</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/img/erpyas-logo-32.png">
@@ -60,6 +61,8 @@ body {
     .print-text-dark { color: #111827 !important; }
 }
 </style>
+<!-- i18n:head --><link rel="stylesheet" href="/css/lang-switch.css"><script src="/js/lang-switch.js" defer></script><!-- /i18n:head -->
+<!-- i18n:alternates --><link rel="alternate" hreflang="en" href="https://www.erpyas.com/success"><link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/success"><link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/success"><link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/success"><link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/success"><link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/success"><link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/success"><!-- /i18n:alternates -->
 </head>
 <body class="cyber-grid relative overflow-x-hidden flex flex-col justify-between">
 
@@ -75,10 +78,11 @@ body {
             ERP<span class="text-cyan-400">YAS</span><span class="text-xs font-mono ml-1 text-emerald-400 font-semibold uppercase">Cloud</span>
         </div>
     </a>
+    <div class="flex items-center gap-2"><div class="lang-switch" data-lang-switch></div>
     <a href="/" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-semibold border border-white/10 transition-all flex items-center gap-1.5 text-gray-300 hover:text-white">
         <i data-lucide="arrow-left" class="w-4 h-4 text-cyan-400"></i>
         <span>Return to Home</span>
-    </a>
+    </a></div>
 </header>
 
 <!-- Main Container -->

@@ -2,6 +2,7 @@
 <html lang="en" class="dark scroll-smooth">
 <head>
 <meta charset="UTF-8">
+<!-- i18n:redirect --><script>try{var s=localStorage.getItem("erpyas_lang");if(document.documentElement.lang==="en"&&/^(zh|hi|ar|de|fa)$/.test(s||"")){var p=location.pathname.replace(/(^|\/)index\.html$/,"$1").replace(/\.html$/,"");location.replace("/"+s+p+location.search+location.hash)}}catch(e){}</script><!-- /i18n:redirect -->
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1041,6 +1042,8 @@ footer {
 .faq-answer th, .faq-answer td, .faq-intro th, .faq-intro td { padding: .45rem .6rem; border: 1px solid rgba(148, 163, 184, .18); vertical-align: top; }
 @media (prefers-reduced-motion: reduce) { .faq-chevron { transition: none; } }
 </style>
+<!-- i18n:head --><link rel="stylesheet" href="/css/lang-switch.css"><script src="/js/lang-switch.js" defer></script><!-- /i18n:head -->
+<!-- i18n:alternates --><link rel="alternate" hreflang="en" href="https://www.erpyas.com/"><link rel="alternate" hreflang="zh" href="https://www.erpyas.com/zh/"><link rel="alternate" hreflang="hi" href="https://www.erpyas.com/hi/"><link rel="alternate" hreflang="ar" href="https://www.erpyas.com/ar/"><link rel="alternate" hreflang="de" href="https://www.erpyas.com/de/"><link rel="alternate" hreflang="fa" href="https://www.erpyas.com/fa/"><link rel="alternate" hreflang="x-default" href="https://www.erpyas.com/"><!-- /i18n:alternates -->
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
 <!-- Background Mesh Gradients -->
@@ -1122,6 +1125,7 @@ Pricing
 <button type="button" onclick='scrollToSection("faq")' class="px-3.5 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all">FAQ</button>
 </div>
 <div class="hidden sm:flex items-center gap-3">
+<div class="lang-switch" data-lang-switch></div>
 <button type="button" onclick='scrollToSection("pricing")' class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
 Self-Serve Plans
 </button>
@@ -1130,7 +1134,8 @@ Self-Serve Plans
 <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-400"></i>
 </button>
 </div>
-<div class="lg:hidden flex items-center">
+<div class="lg:hidden flex items-center gap-2">
+<div class="sm:hidden"><div class="lang-switch" data-lang-switch></div></div>
 <button type="button" id="mobile-menu-btn" class="p-2.5 rounded-xl bg-white/5 text-gray-300 hover:text-white border border-white/10 focus:outline-none" aria-label="Toggle menu" aria-expanded="false">
 <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
 </button>
