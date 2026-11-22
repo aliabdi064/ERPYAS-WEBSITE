@@ -1,18 +1,20 @@
-/* ERPYAS website language menu: a flag button that opens the six ERPYAS languages.
-   Each language is a full static copy of the site (/zh/, /hi/, /ar/, /de/, /fa/; English at /).
+/* ERPYAS website language menu: a flag button that opens the nine ERPYAS languages.
+   Each language is a full static copy of the site (/zh/, /hi/, /ar/, /de/, /fa/, /es/, /pt/, /fr/; English at /).
    The choice is remembered in this browser only, so the next visit opens in the same language. */
 (function () {
   var LANGS = [
     ["en", "gb", "English"], ["zh", "cn", "中文"], ["hi", "in", "हिन्दी"],
-    ["ar", "ae", "العربية"], ["de", "de", "Deutsch"], ["fa", "fa", "فارسی"]
+    ["ar", "ae", "العربية"], ["de", "de", "Deutsch"], ["fa", "fa", "فارسی"],
+    ["es", "es", "Español"], ["pt", "pt", "Português"], ["fr", "fr", "Français"]
   ];
-  var LABEL = { en: "Language", zh: "语言", hi: "भाषा", ar: "اللغة", de: "Sprache", fa: "زبان" };
+  var LABEL = { en: "Language", zh: "语言", hi: "भाषा", ar: "اللغة", de: "Sprache", fa: "زبان",
+                es: "Idioma", pt: "Idioma", fr: "Langue" };
   var KEY = "erpyas_lang";
   var cur = (document.documentElement.lang || "en").slice(0, 2);
   if (!LANGS.some(function (l) { return l[0] === cur; })) cur = "en";
 
   function page() {
-    return location.pathname.replace(/^\/(zh|hi|ar|de|fa)(\/|$)/, "/").replace(/^\//, "")
+    return location.pathname.replace(/^\/(zh|hi|ar|de|fa|es|pt|fr)(\/|$)/, "/").replace(/^\//, "")
       .replace(/(^|\/)index\.html$/, "$1").replace(/\.html$/, "");
   }
   function href(code) { return (code === "en" ? "/" : "/" + code + "/") + page() + location.search + location.hash; }

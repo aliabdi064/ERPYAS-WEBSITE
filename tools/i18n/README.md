@@ -1,7 +1,7 @@
 # Website languages
 
 The English pages (`index.html`, `delete-account.html`, `success.html`) are the source.
-`build.py` writes `zh/ hi/ ar/ de/ fa/` from them and the translations in `<lang>.json`,
+`build.py` writes `zh/ hi/ ar/ de/ fa/ es/ pt/ fr/` from them and the translations in `<lang>.json`,
 and updates `sitemap.xml` and the language links in the English pages.
 
     python3 tools/i18n/build.py          # write the pages
@@ -16,4 +16,4 @@ translation to `<lang>.json` under `"text"` (page text, with the `<0>…</0>` to
 The build stops when a translation loses a token or `${…}` placeholder, or when a translated
 page's structure differs from the English page.
 
-Never edit the files in `zh/ hi/ ar/ de/ fa/` by hand: the next build overwrites them.
+Never edit the files in `zh/ hi/ ar/ de/ fa/ es/ pt/ fr/` by hand: the next build overwrites them.

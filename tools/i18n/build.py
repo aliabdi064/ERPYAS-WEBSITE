@@ -1,4 +1,4 @@
-"""Builds the translated copies of the website: /zh/ /hi/ /ar/ /de/ /fa/ (English stays at /).
+"""Builds the translated copies of the website: /zh/ /hi/ /ar/ /de/ /fa/ /es/ /pt/ /fr/ (English stays at /).
 
     python3 tools/i18n/build.py            # build every language, report anything untranslated
     python3 tools/i18n/build.py --check    # build in memory only; fail if a page would change or a text is missing
@@ -29,6 +29,9 @@ LANGS = {
     "ar": {"dir": "rtl", "font": "Noto+Sans+Arabic:wght@400;500;600;700;800", "family": "'Noto Sans Arabic'"},
     "de": {"dir": "ltr", "font": None, "family": None},
     "fa": {"dir": "rtl", "font": "Vazirmatn:wght@400;500;600;700;800", "family": "'Vazirmatn'"},
+    "es": {"dir": "ltr", "font": None, "family": None},
+    "pt": {"dir": "ltr", "font": None, "family": None},
+    "fr": {"dir": "ltr", "font": None, "family": None},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}

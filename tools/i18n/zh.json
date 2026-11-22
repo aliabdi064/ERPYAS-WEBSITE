@@ -332,7 +332,6 @@
   "<0>Handwritten bills?</0>": "<0>手写票据？</0>",
   "Not supported. Handwritten or unreadable documents are politely rejected (1 credit, as the AI read them; the same file again is free)": "不支持。手写或无法识别的单据会被礼貌地拒绝（消耗 1 个额度，因为 AI 已读取；同一文件再次发送免费）",
   "<0>Which languages and currencies?</0>": "<0>支持哪些语言和货币？</0>",
-  "Invoices in any common language and currency; amounts post in your ERPNext company currency. The app is in <0>English</0> (the default), <1>Chinese, Hindi, Arabic, German and Persian</1> (Settings → Language, or \"Phone language\" to follow the phone). The whole app follows the language you choose, the help pages, CEO Chat answers and the reasons a draft is held for review too (ERPNext itself keeps them in English for your bookkeeper); only the sign-in screens are still in English": "支持任何常见语言和货币的发票；金额以您 ERPNext 公司的货币过账。应用提供 <0>英语</0>（默认）以及<1>中文、印地语、阿拉伯语、德语和波斯语</1>（设置 → 语言，或选择“跟随手机语言”）。整个应用都跟随您选择的语言，包括帮助页面、CEO 对话的回答，以及草稿被暂扣待审的原因（ERPNext 本身仍为您的会计保留英文）；只有登录页面仍是英文",
   "<0>For the best results:</0> - Use good light, and photograph the invoice flat with all four corners visible. - Make sure the supplier name, invoice number, date and total are readable. - Original PDFs from suppliers give the best accuracy of all.": "<0>想要最佳效果：</0> - 光线充足，把发票平放拍摄，四个角都要拍到。- 确保供应商名称、发票号、日期和总额清晰可读。- 供应商提供的原始 PDF 准确度最高。",
   "<0/>How Fast Is It?": "<0/>速度有多快？",
   "Task": "任务",
@@ -567,7 +566,8 @@
   "<0>Back to the app:</0> open the ERPYAS app. Your plan is already active there (<1>Settings → Account &amp; plan</1>) when you paid with the same email you use in the app.<2/> <3>Paid on a computer or another device?</3> Open the ERPYAS app and sign in with <4>the same email you just paid with</4>. Your plan switches on automatically.": "<0>返回应用：</0>打开 ERPYAS 应用。如果您用的是与应用相同的邮箱付款，套餐已经生效（<1>设置 → 账户和套餐</1>）。<2/> <3>在电脑或其他设备上付的款？</3>打开 ERPYAS 应用，用<4>刚才付款时的同一个邮箱</4>登录。您的套餐会自动开通。",
   "<0/> <1>Print Official Receipt</1>": "<0/> <1>打印正式收据</1>",
   "<0> <1/> <2>Contact Support with ID</2> </0>": "<0> <1/> <2>凭 ID 联系客服</2> </0>",
-  "&copy; 2026 ERPYAS. All payments secured and processed by Stripe, Inc.": "&copy; 2026 ERPYAS。所有付款均由 Stripe, Inc. 安全处理。"
+  "&copy; 2026 ERPYAS. All payments secured and processed by Stripe, Inc.": "&copy; 2026 ERPYAS。所有付款均由 Stripe, Inc. 安全处理。",
+  "Invoices in any common language and currency; amounts post in your ERPNext company currency. The app is in <0>English</0> (the default), <1>Chinese, Hindi, Arabic, German, Persian, Spanish, Portuguese and French</1> (Settings → Language, or \"Phone language\" to follow the phone). The whole app follows the language you choose, the help pages, CEO Chat answers and the reasons a draft is held for review too (ERPNext itself keeps them in English for your bookkeeper); only the sign-in screens are still in English": "支持任何常见语言和货币的发票；金额以您 ERPNext 公司的货币过账。应用提供 <0>英语</0>（默认）以及<1>中文、印地语、阿拉伯语、德语、波斯语、西班牙语、葡萄牙语和法语</1>（设置 → 语言，或选择“跟随手机语言”）。整个应用都跟随您选择的语言，包括帮助页面、CEO 对话的回答，以及草稿被暂扣待审的原因（ERPNext 本身仍为您的会计保留英文）；只有登录页面仍是英文"
  },
  "js": {
   "Redirecting to Stripe...": "正在跳转到 Stripe...",
