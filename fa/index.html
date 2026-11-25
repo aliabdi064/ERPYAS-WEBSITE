@@ -256,6 +256,37 @@ input, select, textarea {
 .blob-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background: rgba(168, 85, 247, 0.3); animation-delay: 2s; min-width: 250px; min-height: 250px; }
 .blob-3 { bottom: -20%; left: 20%; width: 60vw; height: 60vw; background: rgba(236, 72, 153, 0.2); animation-delay: 4s; min-width: 350px; min-height: 350px; }
 
+/* Pricing: large, clear prices and the free trial (25 Nov 2026) */
+.price-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: .45rem; row-gap: .25rem; }
+.price-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; letter-spacing: -.035em; color: #fff; }
+@media (min-width: 640px) { .price-amount { font-size: 3.75rem; } }
+@media (min-width: 1280px) { .price-amount { font-size: clamp(3rem, 3.9vw, 3.5rem); } }
+.price-subtext { font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; }
+.price-note { margin-top: .7rem; font-size: .9rem; font-weight: 600; }
+.quota { margin-top: 1.1rem; display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; border-radius: 1rem; border-width: 1px; border-style: solid; }
+.quota-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; }
+.quota-sub { font-size: .85rem; color: #9ca3af; margin-top: .1rem; }
+.trial-card { position: relative; border-radius: 2rem; padding: 1px; background: linear-gradient(120deg, rgba(16,185,129,.6), rgba(6,182,212,.45), rgba(139,92,246,.55)); box-shadow: 0 0 50px rgba(16,185,129,.14); }
+.trial-inner { border-radius: calc(2rem - 1px); background: rgba(3,7,18,.93); padding: 1.75rem 1.25rem; }
+@media (min-width: 640px) { .trial-inner { padding: 2.25rem 2.5rem; } }
+.trial-step { display: grid; grid-template-columns: 2.25rem 1fr; column-gap: 1rem; align-items: start; padding: 1rem 1.15rem; border-radius: 1.25rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); text-align: left; }
+.trial-num { width: 2.25rem; height: 2.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .95rem; color: #04121a; background: linear-gradient(135deg, #34d399, #22d3ee); grid-row: span 2; }
+.trial-title { color: #fff; font-weight: 700; font-size: 1.05rem; margin-bottom: .2rem; }
+.trial-text { color: #cbd5e1; font-size: .9rem; line-height: 1.5; }
+.trial-text strong { color: #a5f3fc; font-weight: 600; }
+/* Video tutorial */
+.video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: #030712; box-shadow: 0 30px 80px -20px rgba(6,182,212,.35), 0 0 0 1px rgba(139,92,246,.15); }
+.video-frame img, .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 0; }
+.video-frame iframe { z-index: 5; }
+.video-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,7,18,.85), rgba(3,7,18,0) 45%); }
+.video-play { position: absolute; left: 1.5rem; bottom: 1.5rem; width: 4.75rem; height: 4.75rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(135deg, #06b6d4, #8b5cf6); box-shadow: 0 0 0 8px rgba(255,255,255,.08), 0 18px 45px rgba(139,92,246,.45); transition: transform .25s; cursor: default; }
+.video-soon { position: absolute; left: 7.75rem; bottom: 2.75rem; padding: .5rem 1.05rem; border-radius: 9999px; background: rgba(0,0,0,.65); border: 1px solid rgba(255,255,255,.18); color: #e5e7eb; font-size: .9rem; font-weight: 600; backdrop-filter: blur(6px); }
+.video-frame.has-video { cursor: pointer; }
+.video-frame.has-video .video-play { cursor: pointer; }
+.video-frame.has-video:hover .video-play { transform: scale(1.07); }
+.video-frame.has-video .video-soon { display: none; }
+@media (max-width: 640px) { .video-play { left: 1rem; bottom: 1rem; width: 3.5rem; height: 3.5rem; } .video-soon { left: 5.25rem; bottom: 1.6rem; font-size: .8rem; } }
+
 /* Animated borders */
 .animated-border {
     position: relative;
@@ -1118,10 +1149,10 @@ footer {
 </div>
 <div class="hidden sm:flex items-center gap-3">
 <div class="lang-switch" data-lang-switch></div>
-<button type="button" onclick='scrollToSection("pricing")' class="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors">
-طرح‌های خرید آنلاین
+<button type="button" onclick='scrollToSection("tutorial")' class="hidden md:flex px-3.5 py-2 rounded-full text-sm font-semibold text-gray-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 transition-all items-center gap-2">
+<i data-lucide="circle-play" class="w-4 h-4 text-cyan-400"></i> <span>دیدن آموزش</span>
 </button>
-<button type="button" onclick="openEarlyAccessModal()" class="animated-border px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-transform hover:scale-105 active:scale-95 flex items-center gap-2">
+<button type="button" onclick="openEarlyAccessModal()" class="animated-border isolate px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-transform hover:scale-105 active:scale-95 flex items-center gap-2">
 <span>دسترسی زودهنگام</span> <i data-lucide="arrow-right" class="w-4 h-4 text-cyan-400"></i>
 </button>
 </div>
@@ -1141,6 +1172,9 @@ footer {
 <span>قیمت‌ها</span> <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono">طرح‌های یک‌کلیکی</span>
 </button>
 <button type="button" onclick='scrollToSection("faq")' class="mobile-link block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">پرسش‌های متداول</button>
+<button type="button" onclick='scrollToSection("tutorial")' class="mobile-link w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-white/10 hover:text-cyan-400 flex items-center gap-2">
+<i data-lucide="circle-play" class="w-4 h-4 text-cyan-400"></i> <span>دیدن آموزش</span>
+</button>
 <div class="pt-4">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold shadow-lg shadow-blue-600/30">
 درخواست دسترسی زودهنگام
@@ -1786,7 +1820,7 @@ erpyas.core / pipeline.overview
 <div class="text-sm font-bold text-white flex items-center gap-2">
 <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> مسیریاب هوشمند مدیر <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800/50">آنلاین • متصل به SQL</span>
 </div>
-<div class="text-xs text-gray-400 font-mono">هسته‌ی ERPNext v15 • جداسازی چندمستأجری</div>
+<div class="text-xs text-gray-400 font-mono">هسته‌ی ERPNext • جداسازی چندمستأجری</div>
 </div>
 </div>
 <div class="flex items-center gap-2">
@@ -1993,6 +2027,46 @@ iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master
 </div>
 </div>
 </section>
+
+<section id="tutorial" class="py-24 relative border-t border-white/5 overflow-hidden">
+<div class="cyber-grid-floor opacity-50" aria-hidden="true"></div>
+<div class="glow-sphere w-[700px] h-[700px] bg-violet-600/15 top-10 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center max-w-3xl mx-auto mb-12 reveal relative">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-950/60 border border-violet-500/40 text-violet-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4 shadow-lg shadow-violet-500/20">
+<i data-lucide="circle-play" class="w-3.5 h-3.5 text-cyan-400"></i> <span>ویدیوی آموزشی</span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mb-6">
+<div class="section-flare" aria-hidden="true"></div>ببینید <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> چطور کار می‌کند
+</h2>
+<p class="text-gray-300 text-lg leading-relaxed">ویدیویی کوتاه و گام‌به‌گام از اپ ERPYAS: از عکس یک فاکتور تا پیش‌نویس در ERPNext شما.</p>
+</div>
+<!-- YouTube: put the video ID in data-youtube-id (for https://youtu.be/AbC123 it is AbC123). -->
+<div id="tutorial-video" class="video-frame reveal" data-youtube-id="">
+<img src="/img/erpyas-og.png" alt="ویدیوی آموزشی ERPYAS" width="1200" height="630" loading="lazy" decoding="async">
+<div class="video-shade" aria-hidden="true"></div>
+<button type="button" class="video-play" aria-label="پخش ویدیو"><i data-lucide="play" class="w-9 h-9 ml-1"></i></button>
+<div class="video-soon">ویدیو به‌زودی</div>
+</div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById("tutorial-video");
+  var id = box ? (box.getAttribute("data-youtube-id") || "").trim() : "";
+  if (!id) return;
+  box.classList.add("has-video");
+  box.addEventListener("click", function () {
+    if (box.querySelector("iframe")) return;
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0";
+    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    f.allowFullscreen = true;
+    f.title = (box.querySelector("img") || {}).alt || "";
+    box.appendChild(f);
+  });
+})();
+</script>
+</section>
 <section id="roi-calculator" class="py-28 border-t border-white/5 relative overflow-hidden bg-black/40">
 <svg class="math-geo-svg geo-pulse opacity-25 -left-20 top-20 w-[650px] h-[650px]" aria-hidden="true" viewBox="0 0 500 500" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.2">
 <line x1="50" y1="450" x2="470" y2="450" stroke-width="2" stroke="rgba(16, 185, 129, 0.7)"/>
@@ -2098,7 +2172,7 @@ iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master
 <div class="glow-sphere w-[700px] h-[700px] bg-cyan-600/15 top-16 -right-36 pointer-events-none"></div>
 <div class="glow-sphere w-[600px] h-[600px] bg-violet-600/18 bottom-16 -left-32 pointer-events-none"></div>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="max-w-[84rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="text-center max-w-3xl mx-auto mb-16 reveal relative">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4 shadow-lg shadow-cyan-500/20">
 <i data-lucide="tag" class="w-3.5 h-3.5 text-cyan-400"></i> <span>فعال‌سازی فوری</span><span class="term-cursor"></span>
@@ -2112,14 +2186,14 @@ iOS 17+ • Android 14+ • frappe_api: ^2.4.0 • 2048×2048 Retina Master
 
 <!-- PRICING TOGGLE -->
 <div class="flex items-center justify-center gap-4 mb-6 relative">
-  <span id="label-monthly" class="text-sm font-semibold text-gray-400 transition-colors">پرداخت ماهانه</span>
+  <span id="label-monthly" class="text-base sm:text-lg font-semibold text-gray-400 transition-colors">پرداخت ماهانه</span>
   
   <button id="billing-toggle" type="button" class="relative inline-flex h-8 w-16 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-900 bg-cyan-600" role="switch" aria-checked="true">
     <span class="sr-only">تغییر دوره‌ی پرداخت</span> <span id="billing-knob" class="pointer-events-none relative inline-block h-7 w-7 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-8"> <span class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity duration-200 ease-in-out"> <i data-lucide="calendar" class="h-3 w-3 text-cyan-600"></i> </span> </span>
   </button>
   
   <div class="flex items-center gap-2">
-    <span id="label-yearly" class="text-sm font-bold text-white transition-colors">پرداخت سالانه</span> <span class="inline-flex items-center rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 px-2.5 py-0.5 text-xs font-bold text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.3)] animate-pulse-slow"> 1 ماه رایگان </span>
+    <span id="label-yearly" class="text-base sm:text-lg font-bold text-white transition-colors">پرداخت سالانه</span> <span class="inline-flex items-center rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 px-3 py-1 text-xs sm:text-sm font-bold text-emerald-300 border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.3)] animate-pulse-slow"> 1 ماه رایگان </span>
   </div>
 </div>
 
@@ -2133,7 +2207,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
   const prices = document.querySelectorAll(".price-value");
   const subTexts = document.querySelectorAll(".price-subtext");
-  const invoiceTexts = document.querySelectorAll(".invoice-value");
+  const notesYr = document.querySelectorAll(".note-yr");
+  const notesMo = document.querySelectorAll(".note-mo");
   const btnsMo = document.querySelectorAll(".btn-mo");
   const btnsYr = document.querySelectorAll(".btn-yr");
 
@@ -2154,7 +2229,8 @@ document.addEventListener("DOMContentLoaded", function() {
       
       prices.forEach(p => p.innerText = p.dataset.yr);
       subTexts.forEach(p => p.innerText = "/ سال");
-      invoiceTexts.forEach(p => p.innerText = p.dataset.yr);
+      notesMo.forEach(n => n.classList.add("hidden"));
+      notesYr.forEach(n => n.classList.remove("hidden"));
       
       btnsMo.forEach(b => b.classList.add("hidden"));
       btnsYr.forEach(b => b.classList.remove("hidden"));
@@ -2171,7 +2247,8 @@ document.addEventListener("DOMContentLoaded", function() {
       
       prices.forEach(p => p.innerText = p.dataset.mo);
       subTexts.forEach(p => p.innerText = "/ ماه");
-      invoiceTexts.forEach(p => p.innerText = p.dataset.mo);
+      notesYr.forEach(n => n.classList.add("hidden"));
+      notesMo.forEach(n => n.classList.remove("hidden"));
       
       btnsYr.forEach(b => b.classList.add("hidden"));
       btnsMo.forEach(b => b.classList.remove("hidden"));
@@ -2185,7 +2262,40 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch reveal reveal-stagger">
+<!-- FREE TRIAL -->
+<div class="trial-card reveal max-w-5xl mx-auto mb-14">
+<div class="trial-inner grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-10 items-center">
+<div class="text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+<i data-lucide="gift" class="w-4 h-4"></i> <span>آزمایش رایگان</span>
+</div>
+<h3 class="text-2xl sm:text-3xl font-display font-bold text-white leading-tight"><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> را 7 روز رایگان امتحان کنید</h3>
+<p class="mt-3 text-gray-300 text-base sm:text-lg">شامل 10 فاکتور و بینش مدیر، بدون نیاز به کارت.</p>
+<button type="button" onclick="openEarlyAccessModal()" class="mt-6 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-sm sm:text-base font-bold shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
+<i data-lucide="ticket" class="w-5 h-5"></i> <span>درخواست کد دعوت</span>
+</button>
+</div>
+<ol class="grid grid-cols-1 gap-3">
+<li class="trial-step">
+<div class="trial-num">1</div>
+<div class="trial-title">کد دعوت بگیرید</div>
+<div class="trial-text">با دکمه، آن را از ERPYAS درخواست کنید.</div>
+</li>
+<li class="trial-step">
+<div class="trial-num">2</div>
+<div class="trial-title">در اپ از آن استفاده کنید</div>
+<div class="trial-text"><strong>تنظیمات ← حساب و طرح ← کد دعوت</strong>، سپس روی <strong>استفاده از کد</strong> بزنید.</div>
+</li>
+<li class="trial-step">
+<div class="trial-num">3</div>
+<div class="trial-title">اولین فاکتور را اسکن کنید</div>
+<div class="trial-text">آزمایش شما بی‌درنگ شروع می‌شود. وقتی تمام شود، طرح‌ها را به ایمیلتان می‌فرستیم.</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-7 items-stretch reveal reveal-stagger">
 
 <!-- Starter -->
 <div class="glass-card spotlight-card p-6 sm:p-7 rounded-[2rem] flex flex-col justify-between border border-white/10 hover:border-cyan-500/40 transition-all duration-300 relative group bg-gradient-to-b from-white/[0.03] to-transparent">
@@ -2197,18 +2307,24 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
     <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Starter</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای خرد و فروشگاه‌ها: معمولاً 20 تا 60 قبض در ماه.</p>
+    <p class="text-sm text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای خرد و فروشگاه‌ها: معمولاً 20 تا 60 قبض در ماه.</p>
     
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
-      <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="9" data-yr="99">99</span></span> <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ سال</span>
+    <div class="mt-6 mb-6 pt-6 pb-6 border-y border-white/10">
+      <div class="price-row">
+        <span class="price-amount">$<span class="price-value" data-mo="9" data-yr="99">99</span></span> <span class="price-subtext text-cyan-300">/ سال</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
-        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i> <span class="invoice-value" data-mo="100 فاکتور / ماه" data-yr="100 فاکتور در هر ماه">100 فاکتور در هر ماه</span>
+      <p class="note-yr price-note text-emerald-300">1 ماه رایگان · $9 صرفه‌جویی</p>
+      <p class="note-mo price-note text-gray-400 hidden">پرداخت ماهانه · لغو در هر زمان</p>
+      <div class="quota bg-cyan-950/60 border-cyan-500/30">
+        <i data-lucide="receipt" class="w-5 h-5 shrink-0 text-cyan-400"></i>
+        <div>
+          <div class="quota-num">100 فاکتور</div>
+          <div class="quota-sub">در هر ماه</div>
+        </div>
       </div>
     </div>
   </div>
-  <a href="https://buy.stripe.com/dRm00k9CK3HK4zKaaM6sw08" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/aFa9AU2aibac1ny6YA6sw0g" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-xs sm:text-sm border border-cyan-400/40 shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">فعال‌سازی سالانه</a>
+  <a href="https://buy.stripe.com/dRm00k9CK3HK4zKaaM6sw08" class="btn-mo hidden w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-sm sm:text-base border border-white/15 hover:border-cyan-400/50 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/aFa9AU2aibac1ny6YA6sw0g" class="btn-yr w-full py-4 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold text-sm sm:text-base border border-cyan-400/40 shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">فعال‌سازی سالانه</a>
 </div>
 
 <!-- Business -->
@@ -2222,18 +2338,24 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
     <h3 class="text-2xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">Business</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای کوچک: معمولاً 100 تا 200 قبض در ماه.</p>
+    <p class="text-sm text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای کوچک: معمولاً 100 تا 200 قبض در ماه.</p>
     
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
-      <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="25" data-yr="275">275</span></span> <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ سال</span>
+    <div class="mt-6 mb-6 pt-6 pb-6 border-y border-white/10">
+      <div class="price-row">
+        <span class="price-amount">$<span class="price-value" data-mo="25" data-yr="275">275</span></span> <span class="price-subtext text-cyan-300">/ سال</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
-        <i data-lucide="receipt" class="w-3.5 h-3.5 text-cyan-400"></i> <span class="invoice-value" data-mo="300 فاکتور / ماه" data-yr="300 فاکتور در هر ماه">300 فاکتور در هر ماه</span>
+      <p class="note-yr price-note text-emerald-300">1 ماه رایگان · $25 صرفه‌جویی</p>
+      <p class="note-mo price-note text-gray-400 hidden">پرداخت ماهانه · لغو در هر زمان</p>
+      <div class="quota bg-cyan-950/60 border-cyan-500/30">
+        <i data-lucide="receipt" class="w-5 h-5 shrink-0 text-cyan-400"></i>
+        <div>
+          <div class="quota-num">300 فاکتور</div>
+          <div class="quota-sub">در هر ماه</div>
+        </div>
       </div>
     </div>
   </div>
-  <a href="https://buy.stripe.com/dRmeVeg180vygis96I6sw0h" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/9B69AU16e6TW3vG6YA6sw0i" class="btn-yr animated-border w-full py-3.5 px-4 text-white font-bold text-xs sm:text-sm transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 cursor-pointer">فعال‌سازی سالانه</a>
+  <a href="https://buy.stripe.com/dRmeVeg180vygis96I6sw0h" class="btn-mo hidden w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-sm sm:text-base border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 group/btn cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/9B69AU16e6TW3vG6YA6sw0i" class="btn-yr animated-border w-full py-4 px-4 text-white font-bold text-sm sm:text-base transition-transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 cursor-pointer">فعال‌سازی سالانه</a>
 </div>
 
 <!-- Growth -->
@@ -2246,18 +2368,24 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
     <h3 class="text-2xl font-display font-bold text-white group-hover:text-violet-300 transition-colors">Growth</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای متوسط و گروه‌های چند شرکتی.</p>
+    <p class="text-sm text-gray-400 mt-1.5 leading-relaxed">برای کسب‌وکارهای متوسط و گروه‌های چند شرکتی.</p>
     
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-white/10">
-      <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="59" data-yr="649">649</span></span> <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ سال</span>
+    <div class="mt-6 mb-6 pt-6 pb-6 border-y border-white/10">
+      <div class="price-row">
+        <span class="price-amount">$<span class="price-value" data-mo="59" data-yr="649">649</span></span> <span class="price-subtext text-violet-300">/ سال</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-violet-950/40 border border-violet-500/30 text-violet-300 text-xs font-mono font-semibold">
-        <i data-lucide="receipt" class="w-3.5 h-3.5 text-violet-400"></i> <span class="invoice-value" data-mo="1,000 فاکتور / ماه" data-yr="1,000 فاکتور در هر ماه">1,000 فاکتور در هر ماه</span>
+      <p class="note-yr price-note text-emerald-300">1 ماه رایگان · $59 صرفه‌جویی</p>
+      <p class="note-mo price-note text-gray-400 hidden">پرداخت ماهانه · لغو در هر زمان</p>
+      <div class="quota bg-violet-950/40 border-violet-500/30">
+        <i data-lucide="receipt" class="w-5 h-5 shrink-0 text-violet-400"></i>
+        <div>
+          <div class="quota-num">1,000 فاکتور</div>
+          <div class="quota-sub">در هر ماه</div>
+        </div>
       </div>
     </div>
   </div>
-  <a href="https://buy.stripe.com/eVq8wQcOWemoaY83Mo6sw0j" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/14AbJ2aGObac8Q05Uw6sw0k" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-xs sm:text-sm border border-violet-400/40 shadow-lg shadow-violet-500/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] cursor-pointer">فعال‌سازی سالانه</a>
+  <a href="https://buy.stripe.com/eVq8wQcOWemoaY83Mo6sw0j" class="btn-mo hidden w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-sm sm:text-base border border-white/15 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/14AbJ2aGObac8Q05Uw6sw0k" class="btn-yr w-full py-4 px-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold text-sm sm:text-base border border-violet-400/40 shadow-lg shadow-violet-500/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] cursor-pointer">فعال‌سازی سالانه</a>
 </div>
 
 <!-- Scale -->
@@ -2271,22 +2399,28 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
     <h3 class="text-2xl font-display font-bold text-white group-hover:text-emerald-300 transition-colors">Scale</h3>
-    <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">برای شرکت‌های بزرگ‌تر و دفاتر حسابداری.</p>
+    <p class="text-sm text-gray-400 mt-1.5 leading-relaxed">برای شرکت‌های بزرگ‌تر و دفاتر حسابداری.</p>
     
-    <div class="mt-6 mb-6 pt-5 pb-5 border-y border-emerald-500/10">
-      <div class="flex items-baseline gap-1.5">
-        <span class="text-4xl sm:text-5xl font-display font-black text-white font-mono">$<span class="price-value" data-mo="149" data-yr="1,639">1,639</span></span> <span class="price-subtext text-gray-400 text-sm font-mono font-semibold">/ سال</span>
+    <div class="mt-6 mb-6 pt-6 pb-6 border-y border-emerald-500/10">
+      <div class="price-row">
+        <span class="price-amount">$<span class="price-value" data-mo="149" data-yr="1,639">1,639</span></span> <span class="price-subtext text-emerald-300">/ سال</span>
       </div>
-      <div class="mt-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-semibold">
-        <i data-lucide="receipt" class="w-3.5 h-3.5 text-emerald-400"></i> <span class="invoice-value" data-mo="3,000 فاکتور / ماه" data-yr="3,000 فاکتور در هر ماه">3,000 فاکتور در هر ماه</span>
+      <p class="note-yr price-note text-emerald-300">1 ماه رایگان · $149 صرفه‌جویی</p>
+      <p class="note-mo price-note text-gray-400 hidden">پرداخت ماهانه · لغو در هر زمان</p>
+      <div class="quota bg-emerald-950/40 border-emerald-500/30">
+        <i data-lucide="receipt" class="w-5 h-5 shrink-0 text-emerald-400"></i>
+        <div>
+          <div class="quota-num">3,000 فاکتور</div>
+          <div class="quota-sub">در هر ماه</div>
+        </div>
       </div>
     </div>
   </div>
-  <a href="https://buy.stripe.com/3cIfZibKS7Y09U4aaM6sw0l" class="btn-mo hidden w-full py-3.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-emerald-500/30 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/00wbJ24iq3HK6HSdmY6sw0m" class="btn-yr w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs sm:text-sm border border-emerald-400/50 shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 cursor-pointer">فعال‌سازی سالانه</a>
+  <a href="https://buy.stripe.com/3cIfZibKS7Y09U4aaM6sw0l" class="btn-mo hidden w-full py-4 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-sm sm:text-base border border-emerald-500/30 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">شروع ماهانه</a> <a href="https://buy.stripe.com/00wbJ24iq3HK6HSdmY6sw0m" class="btn-yr w-full py-4 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-sm sm:text-base border border-emerald-400/50 shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 cursor-pointer">فعال‌سازی سالانه</a>
 </div>
 
 </div>
-<p class="mt-10 text-center text-xs text-gray-400 leading-relaxed max-w-3xl mx-auto px-4">قیمت‌ها به دلار آمریکا و <strong class="text-gray-200">بدون مالیات بر ارزش افزوده</strong> است. هنگام پرداخت می‌توانید با پوند یا یورو هم بپردازید: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 در ماه (سالانه ‎£88، ‎£220، ‎£517، ‎£1,309). <strong class="text-gray-200">بینش مدیر در همه‌ی طرح‌ها هست.</strong> طرح‌های سالانه به قیمت 11 ماه‌اند (1 ماه رایگان) و فاکتورهای شما را هر ماه می‌دهند؛ فاکتورهای استفاده‌نشده یک ماه منتقل می‌شوند. آزمایش رایگان با کد دعوت: 7 روز، 10 فاکتور. بیش از 3,000 فاکتور در ماه لازم دارید؟ <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">با ما تماس بگیرید</a>.</p>
+<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">قیمت‌ها به دلار آمریکا و <strong class="text-gray-200">بدون مالیات بر ارزش افزوده</strong> است. هنگام پرداخت می‌توانید با پوند یا یورو هم بپردازید: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 در ماه (سالانه ‎£88، ‎£220، ‎£517، ‎£1,309). <strong class="text-gray-200">بینش مدیر در همه‌ی طرح‌ها هست.</strong> طرح‌های سالانه به قیمت 11 ماه‌اند (1 ماه رایگان) و فاکتورهای شما را هر ماه می‌دهند؛ فاکتورهای استفاده‌نشده یک ماه منتقل می‌شوند. آزمایش رایگان با کد دعوت: 7 روز، 10 فاکتور. بیش از 3,000 فاکتور در ماه لازم دارید؟ <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">با ما تماس بگیرید</a>.</p>
 <div id="manage-billing" class="mt-6 text-center text-sm text-gray-300 max-w-3xl mx-auto px-4">از قبل مشتری هستید؟ <a id="manage-billing-link" href="https://billing.stripe.com/p/login/bJeeVe5muceg2rCgza6sw00" target="_blank" rel="noopener" class="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">مدیریت پرداخت</a>: تغییر کارت، دانلود رسیدها یا لغو (با ایمیلی که با آن پرداخت کرده‌اید وارد شوید؛ Stripe یک کد برایتان می‌فرستد). طرح‌ها در همین سایت خریده می‌شوند، نه در اپ؛ با همان ایمیلی بپردازید که در اپ ERPYAS استفاده می‌کنید.</div>
 </div>
 </section>
@@ -2604,7 +2738,6 @@ info@erpyas.com
 <li><strong>چرا:</strong> در هر اسکن، ERPYAS کالاها، تأمین‌کنندگان و حساب‌های شما را می‌خواند و یک پیش‌نویس همراه با پیوست در ERPNext می‌سازد، و حالت مدیر کل دفتر شما را می‌خواند. طرح $5 سایت شما را همراه مشتریان دیگر روی <strong>سرورهای اشتراکی</strong> اجرا می‌کند، پس در ساعات شلوغ این درخواست‌ها ممکن است کند، محدود یا قطع شوند.</li>
 <li><strong>آنچه با $20 یا بیشتر می‌گیرید:</strong> ظرفیت سرور اختصاصی، اسکن‌ها و گزارش‌های سریع‌تر و بارگذاری‌های ناموفق کمتر، به‌ویژه با هزاران کالا یا فاکتورهای زیاد در روز.</li>
 <li><strong>الان روی طرح $5 هستید؟</strong> پیش از اتصال ERPYAS، در داشبورد Frappe Cloud طرح خود را ارتقا دهید. مشکلات ناشی از محدودیت‌های طرح $5 خارج از پشتیبانی ERPYAS است.</li>
-<li><strong>سرور خودتان؟</strong> فعلاً نه: ERPYAS فقط به سایت‌های Frappe Cloud و ERPNext Cloud وصل می‌شود. برای میزبان دیگر، با ما تماس بگیرید.</li>
 </ul>
 <p>(قیمت‌ها را Frappe تعیین می‌کند و ممکن است تغییر کنند: <a href="https://frappe.io/erpnext/pricing" target="_blank" rel="noopener">قیمت‌های Frappe را ببینید</a>.)</p>
 </div></details><details class="faq-item"><summary><span>ERPNext من چند شرکت دارد. ERPYAS از کدام استفاده می‌کند؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer">
@@ -2680,10 +2813,6 @@ info@erpyas.com
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>یک فاکتور، از بارگذاری تا پیش‌نویس در ERPNext</td>
-<td><strong>حدود 5 تا 15 ثانیه</strong></td>
-</tr>
 <tr>
 <td>دسته‌ای از 50 فاکتور</td>
 <td>هر 50 فاکتور هم‌زمان خوانده می‌شوند و سپس با سرعت <strong>حداکثر 100 فاکتور در دقیقه</strong> در ERPNext نوشته می‌شوند</td>
@@ -2853,7 +2982,7 @@ info@erpyas.com
 <details class="faq-item"><summary><span>می‌توانم به اعداد اعتماد کنم؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>بله. <strong>هوش مصنوعی هرگز ارقام مالی شما را محاسبه نمی‌کند.</strong> هر عدد مستقیم از دفتر ERPNext شما و با گزارش‌های استاندارد حسابداری می‌آید، پس آنچه می‌بینید دقیقاً همان چیزی است که در دفاتر شما هست.</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="shield-check"></i>حساب‌ها، حریم خصوصی و امنیت</h3><details class="faq-item"><summary><span>چند نفر می‌توانند از یک اشتراک استفاده کنند؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>هر اشتراک متعلق به <strong>حساب ERPYAS یک نفر</strong> است (ورود Google او). هر عضو تیم که اسکن می‌کند باید حساب و طرح خودش را داشته باشد. همه می‌توانند در همان شرکت ERPNext ثبت کنند.</p></div></details>
 <details class="faq-item"><summary><span>کلیدهای ERPNext من کجا نگه‌داری می‌شوند؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>فقط روی گوشی شما</strong>، رمزگذاری‌شده در انبار کلید سخت‌افزاری امن گوشی. سرورهای ERPYAS هرگز آن‌ها را ذخیره نمی‌کنند؛ برای هر درخواست استفاده و سپس دور ریخته می‌شوند.</p></div></details>
-<details class="faq-item"><summary><span>آیا ERPYAS فاکتورهای مرا نگه می‌دارد؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>نه.</strong> - فاکتورها به <strong>ERPNext خود شما</strong> می‌روند. - بارگذاری‌های دسته‌ای فقط تا زمان پردازش به طور کوتاه نگه داشته می‌شوند و <strong>ظرف 24 ساعت خودکار پاک می‌شوند</strong>. - فقط آنچه برای اداره‌ی حساب شما لازم است را نگه می‌داریم: ایمیل، طرح، مانده‌ی اعتبار و اثرانگشت‌های بررسی تکرار (نه خود اسناد). - برای یافتن و رفع مشکلات: گزارش‌های خطا و از کار افتادن (Error ID، نسخه‌ی اپ، مدل گوشی، نسخه‌ی Android). هرگز فاکتورها، مبالغ یا کلیدهای ERPNext شما. گزارش‌های سرور 30 روز و گزارش‌های از کار افتادن 90 روز نگه داشته می‌شوند.</p></div></details>
+<details class="faq-item"><summary><span>آیا ERPYAS فاکتورهای مرا نگه می‌دارد؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>نه.</strong> - فاکتورها به <strong>ERPNext خود شما</strong> می‌روند. - فقط آنچه برای اداره‌ی حساب شما لازم است را نگه می‌داریم: ایمیل، طرح، مانده‌ی اعتبار و اثرانگشت‌های بررسی تکرار (نه خود اسناد). - برای یافتن و رفع مشکلات: گزارش‌های خطا و از کار افتادن (Error ID، نسخه‌ی اپ، مدل گوشی، نسخه‌ی Android). هرگز فاکتورها، مبالغ یا کلیدهای ERPNext شما. گزارش‌های سرور 30 روز و گزارش‌های از کار افتادن 90 روز نگه داشته می‌شوند.</p></div></details>
 <details class="faq-item"><summary><span>چه کسی داده‌ها را پردازش می‌کند؟</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><ul>
 <li><strong>Google Cloud</strong> ERPYAS را اجرا می‌کند (منطقه‌ی آمریکا).</li>
 <li>هوش مصنوعی <strong>Google Gemini</strong> فاکتورها را می‌خواند.</li>
@@ -2920,7 +3049,7 @@ info@erpyas.com
 <h5 class="text-sm font-mono font-bold tracking-wider uppercase text-white mb-6">انطباق و فناوری</h5>
 <ul class="space-y-3 text-xs text-gray-400">
 <li><button type="button" onclick='scrollToSection("pricing")' class="hover:text-cyan-400 transition-colors text-left text-cyan-300 font-semibold">طرح‌های یک‌کلیکی خرید آنلاین</button></li>
-<li><button type="button" onclick='scrollToSection("architecture")' class="hover:text-cyan-400 transition-colors text-left">ERPNext / Frappe V15</button></li>
+<li><button type="button" onclick='scrollToSection("architecture")' class="hover:text-cyan-400 transition-colors text-left">ERPNext / Frappe</button></li>
 <li><button type="button" onclick='scrollToSection("compliance")' class="hover:text-cyan-400 transition-colors text-left">HMRC و Companies House بریتانیا</button></li>
 <li><button type="button" onclick='scrollToSection("showcase")' class="hover:text-cyan-400 transition-colors text-left">اپ موبایل چندسکویی</button></li>
 <li><button type="button" onclick='scrollToSection("roadmap")' class="hover:text-cyan-400 transition-colors text-left">نقشه‌ی راه عمومی 2026</button></li>
