@@ -297,7 +297,7 @@
   "<0>Other files?</0>": "<0>दूसरी फ़ाइलें?</0>",
   "Blocked on the phone before sending, with no credit used: Word, Excel, ZIP, web pages, programs and other image types. Password-protected PDFs and PDFs with scripts are refused for safety": "भेजने से पहले फ़ोन पर ही रोकी जाती हैं, कोई क्रेडिट ख़र्च नहीं: Word, Excel, ZIP, वेब पेज, प्रोग्राम और दूसरी इमेज फ़ॉर्मेट। पासवर्ड वाली PDF और स्क्रिप्ट वाली PDF सुरक्षा के लिए अस्वीकार की जाती हैं",
   "<0>Maximum file size?</0>": "<0>अधिकतम फ़ाइल साइज़?</0>",
-  "<0>30 MB per file</0>. A normal phone photo or PDF is far smaller": "<0>हर फ़ाइल 30 MB</0>। सामान्य फ़ोन फ़ोटो या PDF इससे बहुत छोटी होती है",
+  "<0>Photos 30 MB, PDFs 10 MB per file</0>. Photos are shrunk on the phone to about 250 dpi; 10 MB is the largest file ERPNext accepts": "<0>फ़ोटो 30 MB, PDF हर फ़ाइल 10 MB</0>। फ़ोटो फ़ोन पर लगभग 250 dpi तक छोटी की जाती हैं; 10 MB वह सबसे बड़ी फ़ाइल है जो ERPNext स्वीकार करता है",
   "<0>How many at once?</0>": "<0>एक बार में कितनी?</0>",
   "<0>1 invoice</0>, or <1>up to 50 invoices in one batch</1> (up to 200 MB per batch)": "<0>1 इनवॉइस</0>, या <1>एक बैच में 50 इनवॉइस तक</1> (हर बैच 200 MB तक)",
   "<0>One invoice per file?</0>": "<0>हर फ़ाइल में एक इनवॉइस?</0>",

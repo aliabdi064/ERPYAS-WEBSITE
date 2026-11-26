@@ -297,7 +297,7 @@
   "<0>Other files?</0>": "<0>Autres fichiers ?</0>",
   "Blocked on the phone before sending, with no credit used: Word, Excel, ZIP, web pages, programs and other image types. Password-protected PDFs and PDFs with scripts are refused for safety": "Bloqués sur le téléphone avant l'envoi, sans utiliser de crédit : Word, Excel, ZIP, pages web, programmes et autres types d'image. Les PDF protégés par mot de passe ou contenant des scripts sont refusés par sécurité",
   "<0>Maximum file size?</0>": "<0>Taille maximale ?</0>",
-  "<0>30 MB per file</0>. A normal phone photo or PDF is far smaller": "<0>30 MB par fichier</0>. Une photo ou un PDF normal du téléphone est bien plus petit",
+  "<0>Photos 30 MB, PDFs 10 MB per file</0>. Photos are shrunk on the phone to about 250 dpi; 10 MB is the largest file ERPNext accepts": "<0>Photos 30 MB, PDF 10 MB par fichier</0>. Les photos sont réduites sur le téléphone à environ 250 ppp ; 10 MB est la taille maximale acceptée par ERPNext",
   "<0>How many at once?</0>": "<0>Combien à la fois ?</0>",
   "<0>1 invoice</0>, or <1>up to 50 invoices in one batch</1> (up to 200 MB per batch)": "<0>1 facture</0>, ou <1>jusqu'à 50 factures en un lot</1> (jusqu'à 200 MB par lot)",
   "<0>One invoice per file?</0>": "<0>Une facture par fichier ?</0>",

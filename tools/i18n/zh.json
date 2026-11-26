@@ -297,7 +297,7 @@
   "<0>Other files?</0>": "<0>其他文件？</0>",
   "Blocked on the phone before sending, with no credit used: Word, Excel, ZIP, web pages, programs and other image types. Password-protected PDFs and PDFs with scripts are refused for safety": "发送前就在手机上拦截，不消耗额度：Word、Excel、ZIP、网页、程序和其他图片格式。出于安全考虑，有密码保护的 PDF 和含脚本的 PDF 会被拒绝",
   "<0>Maximum file size?</0>": "<0>文件大小上限？</0>",
-  "<0>30 MB per file</0>. A normal phone photo or PDF is far smaller": "<0>每个文件 30 MB</0>。普通手机照片或 PDF 远小于此",
+  "<0>Photos 30 MB, PDFs 10 MB per file</0>. Photos are shrunk on the phone to about 250 dpi; 10 MB is the largest file ERPNext accepts": "<0>照片 30 MB，PDF 每个文件 10 MB</0>。照片会在手机上缩小到约 250 dpi；10 MB 是 ERPNext 可接受的最大文件",
   "<0>How many at once?</0>": "<0>一次能传多少？</0>",
   "<0>1 invoice</0>, or <1>up to 50 invoices in one batch</1> (up to 200 MB per batch)": "<0>1 张发票</0>，或<1>一批最多 50 张发票</1>（每批最多 200 MB）",
   "<0>One invoice per file?</0>": "<0>一个文件一张发票？</0>",
