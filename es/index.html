@@ -256,6 +256,23 @@ input, select, textarea {
 .blob-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background: rgba(168, 85, 247, 0.3); animation-delay: 2s; min-width: 250px; min-height: 250px; }
 .blob-3 { bottom: -20%; left: 20%; width: 60vw; height: 60vw; background: rgba(236, 72, 153, 0.2); animation-delay: 4s; min-width: 350px; min-height: 350px; }
 
+/* Google Play badge (26 Nov 2026): shown, not clickable until PLAY_STORE_URL is set (script at the end) */
+.play-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.25rem; }
+.play-badge { display: inline-flex; align-items: center; gap: .75rem; padding: .6rem 1.35rem .6rem 1.05rem; min-height: 3.6rem; border-radius: .95rem; background: #000; border: 1.5px solid #9ca3af; color: #fff; text-decoration: none; box-shadow: 0 8px 28px rgba(0,0,0,.4); transition: transform .2s, border-color .2s, box-shadow .2s; }
+.play-badge:not(.is-off):hover { transform: translateY(-2px); border-color: #fff; box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+.play-badge.is-off { cursor: default; }
+.play-logo { width: 1.95rem; height: auto; flex-shrink: 0; }
+.play-words { display: flex; flex-direction: column; line-height: 1.08; text-align: start; }
+.play-small { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #e5e7eb; }
+.play-big { font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+.play-info { text-align: center; }
+@media (min-width: 640px) { .play-info { text-align: start; } }
+.play-free { color: #fff; font-weight: 700; font-size: 1.05rem; }
+.play-sub { color: #d1d5db; font-size: .92rem; margin-top: .1rem; }
+.play-soon { margin-top: .35rem; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fcd34d; }
+.play-soon[hidden] { display: none; }
+:is(:lang(ar), :lang(fa), :lang(hi), :lang(zh)) :is(.play-soon, .play-small) { letter-spacing: 0; font-family: inherit; }
+
 /* Pricing: large, clear prices and the free trial (25 Nov 2026) */
 .price-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: .45rem; row-gap: .25rem; }
 .price-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; letter-spacing: -.035em; color: #fff; }
@@ -265,7 +282,7 @@ input, select, textarea {
 .price-note { margin-top: .7rem; font-size: .9rem; font-weight: 600; }
 .quota { margin-top: 1.1rem; display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; border-radius: 1rem; border-width: 1px; border-style: solid; }
 .quota-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; }
-.quota-sub { font-size: .85rem; color: #9ca3af; margin-top: .1rem; }
+.quota-sub { font-size: 1rem; font-weight: 700; color: #fff; margin-top: .15rem; letter-spacing: .01em; text-shadow: 0 0 14px rgba(255,255,255,.28); }
 .trial-card { position: relative; border-radius: 2rem; padding: 1px; background: linear-gradient(120deg, rgba(16,185,129,.6), rgba(6,182,212,.45), rgba(139,92,246,.55)); box-shadow: 0 0 50px rgba(16,185,129,.14); }
 .trial-inner { border-radius: calc(2rem - 1px); background: rgba(3,7,18,.93); padding: 1.75rem 1.25rem; }
 @media (min-width: 640px) { .trial-inner { padding: 2.25rem 2.5rem; } }
@@ -1270,13 +1287,24 @@ Del papel real a <br class="hidden sm:inline"/> <span class="text-gradient-flow"
 <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed reveal">
 <strong><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span></strong> convierte los albaranes caóticos del almacén, las facturas comerciales y las preguntas de la dirección en asientos de ERPNext validados matemáticamente en <strong>menos de 4,5 segundos</strong>. Construido sobre Google Gemini y la arquitectura serverless de Google Cloud, da a los equipos contables una entrada de datos automática y sin esfuerzo, manteniendo un control financiero estricto con supervisión humana.
 </p>
-<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
 <i data-lucide="zap" class="w-5 h-5 text-black"></i> <span>Empezar piloto empresarial gratis</span>
 </button>
 <button type="button" onclick='scrollToSection("showcase")' class="w-full sm:w-auto glass-card px-8 py-4 rounded-full font-semibold text-base text-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2.5">
 <i data-lucide="smartphone" class="w-5 h-5 text-cyan-400"></i> <span>Ver la app móvil</span>
 </button>
+</div>
+<div class="play-cta mb-14 reveal">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">DISPONIBLE EN</span><span class="play-big">Google Play</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">Descarga gratuita en Google Play</div>
+<div class="play-sub">Cada cuenta nueva: 7 días y 10 facturas gratis. Sin tarjeta.</div>
+<div class="play-soon">Enlace de descarga próximamente</div>
+</div>
 </div>
 <div class="max-w-5xl mx-auto mb-16 text-left reveal spotlight-wrapper glass-card p-1 sm:p-2">
 <div class="spotlight-content rounded-xl sm:rounded-2xl overflow-hidden bg-[#0A0A0A] border border-white/10 shadow-2xl relative p-5 sm:p-7">
@@ -2279,26 +2307,33 @@ document.addEventListener("DOMContentLoaded", function() {
 <i data-lucide="gift" class="w-4 h-4"></i> <span>Prueba gratuita</span>
 </div>
 <h3 class="text-2xl sm:text-3xl font-display font-bold text-white leading-tight">Pruebe <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> gratis durante 7 días</h3>
-<p class="mt-3 text-gray-300 text-base sm:text-lg">Incluye 10 facturas e Informes del CEO. Sin tarjeta.</p>
-<button type="button" onclick="openEarlyAccessModal()" class="mt-6 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-sm sm:text-base font-bold shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
-<i data-lucide="ticket" class="w-5 h-5"></i> <span>Solicitar un código de invitación</span>
-</button>
+<p class="mt-3 text-gray-300 text-base sm:text-lg">Cada cuenta nueva recibe 10 facturas e Informes del CEO. Sin tarjeta.</p>
+<div class="play-cta lg:justify-start mt-6">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">DISPONIBLE EN</span><span class="play-big">Google Play</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">Descarga gratuita</div>
+<div class="play-soon">Enlace de descarga próximamente</div>
+</div>
+</div>
 </div>
 <ol class="grid grid-cols-1 gap-3">
 <li class="trial-step">
 <div class="trial-num">1</div>
-<div class="trial-title">Consiga un código de invitación</div>
-<div class="trial-text">Solicítelo a ERPYAS con el botón.</div>
+<div class="trial-title">Descargue ERPYAS</div>
+<div class="trial-text">Gratis en Google Play.</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">2</div>
-<div class="trial-title">Canjéelo en la app</div>
-<div class="trial-text"><strong>Ajustes → Cuenta y plan → Código de invitación</strong> y toque <strong>Canjear</strong>.</div>
+<div class="trial-title">Inicie sesión con Google</div>
+<div class="trial-text">Su prueba gratuita de 7 días con 10 facturas empieza automáticamente.</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">3</div>
-<div class="trial-title">Escanee su primera factura</div>
-<div class="trial-text">Su prueba empieza enseguida. Cuando termina, le enviamos los planes por correo.</div>
+<div class="trial-title">Conecte ERPNext y escanee</div>
+<div class="trial-text">Introduzca la dirección de su ERPNext y sus claves API, y escanee su primera factura. Cuando termine la prueba, le enviamos los planes por correo.</div>
 </li>
 </ol>
 </div>
@@ -2429,7 +2464,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 </div>
-<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">Precios en dólares estadounidenses, <strong class="text-gray-200">IVA no incluido</strong>. Pague en libras o euros al finalizar la compra: Starter £8, Business £20, Growth £47, Scale £119 al mes (anual £88, £220, £517, £1,309). <strong class="text-gray-200">Informes del CEO incluidos en todos los planes.</strong> Los planes anuales cuestan el precio de 11 meses (1 mes gratis) y le dan sus facturas cada mes; las no usadas pasan un mes. Prueba gratuita con código de invitación: 7 días, 10 facturas. ¿Necesita más de 3.000 facturas al mes? <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">Contáctenos</a>.</p>
+<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">Precios en dólares estadounidenses, <strong class="text-gray-200">IVA no incluido</strong>. Pague en libras o euros al finalizar la compra: Starter £8, Business £20, Growth £47, Scale £119 al mes (anual £88, £220, £517, £1,309). <strong class="text-gray-200">Informes del CEO incluidos en todos los planes.</strong> Los planes anuales cuestan el precio de 11 meses (1 mes gratis) y le dan sus facturas cada mes; las no usadas pasan un mes. Prueba gratuita para cada cuenta nueva: 7 días, 10 facturas. ¿Necesita más de 3.000 facturas al mes? <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">Contáctenos</a>.</p>
 <div id="manage-billing" class="mt-6 text-center text-sm text-gray-300 max-w-3xl mx-auto px-4">¿Ya es cliente? <a id="manage-billing-link" href="https://billing.stripe.com/p/login/bJeeVe5muceg2rCgza6sw00" target="_blank" rel="noopener" class="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">Gestionar la facturación</a>: cambie su tarjeta, descargue recibos o cancele (inicie sesión con el correo con el que pagó; Stripe le envía un código). Los planes se compran aquí, en nuestra web, no en la app; pague con el mismo correo que usa en la app ERPYAS.</div>
 </div>
 </section>
@@ -2739,7 +2774,7 @@ info@erpyas.com
 <li>Abra ERPYAS y toque <strong>Continuar con Google</strong>.</li>
 <li>En ERPNext, abra su perfil de <strong>User</strong> → <strong>API Access</strong> → <strong>Generate Keys</strong>. Ponga el <strong>idioma de este usuario en inglés</strong> (los demás pueden usar cualquier idioma).</li>
 <li>En ERPYAS, introduzca la dirección de su ERPNext (por ejemplo <code>suempresa.frappe.cloud</code>), la API Key y el API Secret, y toque <strong>Conectar</strong>.</li>
-<li>Introduzca su código de invitación para una prueba gratuita de 7 días con 10 facturas, o elija un plan, y escanee su primera factura.</li>
+<li>Escanee su primera factura. Su prueba gratuita de 7 días con 10 facturas empezó al iniciar sesión; sin tarjeta.</li>
 </ol>
 </div></details><details class="faq-item"><summary><span>¿Qué plan de ERPNext elijo para ERPYAS?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer">
 <p><strong>Recomendamos encarecidamente el plan Servers de Frappe Cloud de $20 / mes (o superior).</strong> El plan Sites de $5 / mes <strong>no es compatible</strong> con ERPYAS.</p>
@@ -2767,7 +2802,7 @@ info@erpyas.com
 <li>Introduzca la dirección de su ERPNext (por ejemplo <code>suempresa.frappe.cloud</code>) y su <strong>API Key</strong> y <strong>API Secret</strong> de ERPNext.</li>
 <li>Toque <strong>Conectar</strong>. ERPYAS comprueba la conexión y ya puede escanear.</li>
 </ol>
-<p><strong>¿Tiene un código de invitación?</strong> Introdúzcalo en <strong>Ajustes → Cuenta y plan → Código de invitación</strong> para empezar una <strong>prueba gratuita de 7 días</strong> con 10 facturas e Informes del CEO. Sin tarjeta. ¿Sin código? Elija un plan en <a href="https://www.erpyas.com">www.erpyas.com</a>.</p></div></details>
+<p><strong>Cada cuenta nueva empieza con una prueba gratuita de 7 días</strong> con 10 facturas e Informes del CEO, automáticamente. Sin tarjeta. Para continuar después, elija un plan en <a href="https://www.erpyas.com">www.erpyas.com</a>.</p></div></details>
 <details class="faq-item"><summary><span>¿Dónde consigo la API Key y el Secret de ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>En ERPNext: abra su perfil de <strong>User</strong> → <strong>API Access</strong> → <strong>Generate Keys</strong>. - Use un usuario que pueda crear facturas de compra (Purchase Invoices) y leer proveedores, artículos y cuentas. ERPYAS crea un solo proveedor, una vez: <code>Unknown_supplier</code>. - Ponga el <strong>idioma de este usuario en inglés</strong> (User → Language). Todos los demás en ERPNext pueden usar cualquier idioma. ERPNext escribe sus mensajes en el idioma de este usuario, y ERPYAS los lee para resolver solo los pequeños rechazos. - ERPNext muestra el Secret una sola vez, así que cópielo directamente en la app.</p></div></details>
 <details class="faq-item"><summary><span>¿Qué idioma debemos usar en ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Cualquiera.</strong> Su contable y su equipo pueden usar ERPNext en español, portugués, francés, chino, hindi, árabe, alemán, inglés o cualquier otro idioma, y la app ERPYAS puede estar en otro idioma. Solo el <strong>usuario cuya clave API está en ERPYAS</strong> debe estar en <strong>inglés</strong>. Los nombres de proveedores, artículos y cuentas quedan exactamente como los escribió. Lo que ERPYAS escribe en el borrador queda en inglés (<code>Printed supplier</code>, <code>Unknown_supplier</code>, la etiqueta "ERPYAS Review"), porque ERPYAS lo vuelve a leer para aprender sus proveedores y detectar duplicados.</p></div></details>
 <details class="faq-item"><summary><span>¿Tengo que instalar algo en ERPNext?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> Ni plugins, ni código propio, ni cambios en el servidor. ERPYAS usa la API estándar y segura de ERPNext.</p></div></details></div>
@@ -2843,7 +2878,7 @@ info@erpyas.com
 </thead>
 <tbody>
 <tr>
-<td><strong>Prueba gratuita</strong> (código de invitación)</td>
+<td><strong>Prueba gratuita</strong> (cada cuenta nueva)</td>
 <td>$0</td>
 <td>–</td>
 <td><strong>10 facturas en 7 días</strong> + Informes del CEO (una vez por cuenta)</td>
@@ -2880,7 +2915,7 @@ info@erpyas.com
 </tbody>
 </table>
 <p>Precios <strong>sin IVA</strong>. <strong>Los Informes del CEO están incluidos en todos los planes.</strong> Pague en dólares, libras o euros al finalizar la compra (tarjeta, Google Pay o Apple Pay a través de Stripe). ¿Necesita más de 3.000 facturas al mes? Contáctenos.</p></div>
-<details class="faq-item"><summary><span>¿Cómo uso un código de invitación?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>En la app: <strong>Ajustes → Cuenta y plan → Código de invitación</strong>, escriba el código y toque <strong>Canjear</strong>. Su <strong>prueba gratuita de 7 días con 10 facturas</strong> empieza enseguida. <strong>Cuando termina</strong> (a los 7 días, o antes si se usan las 10 facturas) le enviamos los planes por correo con un enlace para elegir uno. Cada cuenta puede usar un código de invitación. Al terminar la prueba, el escaneo y los Informes del CEO se pausan hasta que elija un plan; las facturas que ya están en ERPNext no se ven afectadas.</p></div></details>
+<details class="faq-item"><summary><span>¿Cómo funciona la prueba gratuita?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Cada cuenta nueva de ERPYAS recibe una <strong>prueba gratuita de 7 días con 10 facturas</strong> e Informes del CEO. Empieza automáticamente la primera vez que inicia sesión en la app; sin tarjeta. <strong>Cuando termina</strong> (a los 7 días, o antes si se usan las 10 facturas) le enviamos los planes por correo con un enlace para elegir uno. Una prueba gratuita por dirección de correo. Al terminar la prueba, el escaneo y los Informes del CEO se pausan hasta que elija un plan; las facturas que ya están en ERPNext no se ven afectadas.</p></div></details>
 <details class="faq-item"><summary><span>¿Qué usa un crédito?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Cada documento que lee la IA usa <strong>un crédito</strong>: - una factura que se convierte en un <strong>borrador en ERPNext</strong>, - un <strong>duplicado</strong> detectado tras leerlo (p. ej. una foto nueva de una factura que ya está en ERPNext), - un documento <strong>no aceptado</strong> tras leerlo (no es una factura, escrito a mano, ilegible).</p>
 <p>Esto es <strong>gratis</strong>: - el <strong>mismo archivo enviado otra vez</strong> (se reconoce antes de que lo lea la IA), - errores por nuestra parte, o que Gemini / ERPNext no estén disponibles, - que ERPNext rechace el borrador (p. ej. falta una cuenta en su configuración), - volver a enviar la misma subida tras un corte de red.</p></div></details>
 <details class="faq-item"><summary><span>¿Recupero los créditos si deshago una factura?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>No.</strong> El <strong>Deshacer de 24 horas</strong> (vea la sección 6) elimina el borrador para que pueda escanear la factura de nuevo, pero el crédito ya usado no se devuelve, porque la factura ya se leyó. Las subidas fallidas y el mismo archivo enviado otra vez nunca usan crédito.</p></div></details>
@@ -2966,8 +3001,8 @@ info@erpyas.com
 </tr>
 <tr>
 <td><strong>Aún sin créditos de facturas</strong></td>
-<td>Cuenta nueva sin plan</td>
-<td>Introduzca su código de invitación o elija un plan</td>
+<td>Este correo ya tuvo su prueba gratuita</td>
+<td>Elija un plan</td>
 </tr>
 <tr>
 <td><strong>Límite del plan alcanzado / facturas gratuitas agotadas</strong></td>
@@ -3001,7 +3036,7 @@ info@erpyas.com
 <p>Los datos van cifrados en tránsito (HTTPS) de extremo a extremo.</p></div></details>
 <details class="faq-item"><summary><span>¿Cómo inicio sesión?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>Con <strong>Google</strong> (en iPhone llegará Iniciar sesión con Apple). Las sesiones se mantienen abiertas de forma segura. Puede cerrar sesión cuando quiera desde la app.</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="zap"></i>Respuestas rápidas</h3><div class="faq-intro"><ul>
-<li><strong>¿Prueba gratuita?</strong> Sí, con código de invitación de ERPYAS: 7 días, 10 facturas e Informes del CEO, sin tarjeta.</li>
+<li><strong>¿Prueba gratuita?</strong> Sí, para cada cuenta nueva: 7 días, 10 facturas e Informes del CEO, sin tarjeta.</li>
 <li><strong>¿Permanencia?</strong> No. Mensual o anual, cancele cuando quiera en <a href="#manage-billing"><em>Gestionar la facturación</em></a> o por correo a info@erpyas.com.</li>
 <li><strong>¿Funciona con mi ERPNext actual?</strong> Sí, sin ningún cambio en su ERPNext.</li>
 <li><strong>¿Necesito un informático?</strong> No. La configuración lleva unos 5 minutos.</li>
@@ -3381,6 +3416,23 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.entries(extra).forEach(([k, v]) => url.searchParams.set(k, v));
         a.href = url.toString();
     });
+})();
+</script>
+<script>
+// Google Play (owner, 26 Nov 2026: "click for download must be turned off and I will add the link
+// later"). Put the store link here, e.g. "https://play.google.com/store/apps/details?id=com.erpyas.ai",
+// run tools/i18n/build.py and push: every Google Play badge becomes a link and "coming soon" hides.
+(function () {
+  var PLAY_STORE_URL = "";
+  if (!/^https:\/\/play\.google\.com\//.test(PLAY_STORE_URL)) return;
+  document.querySelectorAll("[data-play-badge]").forEach(function (a) {
+    a.href = PLAY_STORE_URL;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.classList.remove("is-off");
+    a.removeAttribute("aria-disabled");
+  });
+  document.querySelectorAll(".play-soon").forEach(function (e) { e.hidden = true; });
 })();
 </script>
 </body>

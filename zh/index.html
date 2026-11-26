@@ -256,6 +256,23 @@ input, select, textarea {
 .blob-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background: rgba(168, 85, 247, 0.3); animation-delay: 2s; min-width: 250px; min-height: 250px; }
 .blob-3 { bottom: -20%; left: 20%; width: 60vw; height: 60vw; background: rgba(236, 72, 153, 0.2); animation-delay: 4s; min-width: 350px; min-height: 350px; }
 
+/* Google Play badge (26 Nov 2026): shown, not clickable until PLAY_STORE_URL is set (script at the end) */
+.play-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.25rem; }
+.play-badge { display: inline-flex; align-items: center; gap: .75rem; padding: .6rem 1.35rem .6rem 1.05rem; min-height: 3.6rem; border-radius: .95rem; background: #000; border: 1.5px solid #9ca3af; color: #fff; text-decoration: none; box-shadow: 0 8px 28px rgba(0,0,0,.4); transition: transform .2s, border-color .2s, box-shadow .2s; }
+.play-badge:not(.is-off):hover { transform: translateY(-2px); border-color: #fff; box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+.play-badge.is-off { cursor: default; }
+.play-logo { width: 1.95rem; height: auto; flex-shrink: 0; }
+.play-words { display: flex; flex-direction: column; line-height: 1.08; text-align: start; }
+.play-small { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #e5e7eb; }
+.play-big { font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+.play-info { text-align: center; }
+@media (min-width: 640px) { .play-info { text-align: start; } }
+.play-free { color: #fff; font-weight: 700; font-size: 1.05rem; }
+.play-sub { color: #d1d5db; font-size: .92rem; margin-top: .1rem; }
+.play-soon { margin-top: .35rem; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fcd34d; }
+.play-soon[hidden] { display: none; }
+:is(:lang(ar), :lang(fa), :lang(hi), :lang(zh)) :is(.play-soon, .play-small) { letter-spacing: 0; font-family: inherit; }
+
 /* Pricing: large, clear prices and the free trial (25 Nov 2026) */
 .price-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: .45rem; row-gap: .25rem; }
 .price-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; letter-spacing: -.035em; color: #fff; }
@@ -265,7 +282,7 @@ input, select, textarea {
 .price-note { margin-top: .7rem; font-size: .9rem; font-weight: 600; }
 .quota { margin-top: 1.1rem; display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; border-radius: 1rem; border-width: 1px; border-style: solid; }
 .quota-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; }
-.quota-sub { font-size: .85rem; color: #9ca3af; margin-top: .1rem; }
+.quota-sub { font-size: 1rem; font-weight: 700; color: #fff; margin-top: .15rem; letter-spacing: .01em; text-shadow: 0 0 14px rgba(255,255,255,.28); }
 .trial-card { position: relative; border-radius: 2rem; padding: 1px; background: linear-gradient(120deg, rgba(16,185,129,.6), rgba(6,182,212,.45), rgba(139,92,246,.55)); box-shadow: 0 0 50px rgba(16,185,129,.14); }
 .trial-inner { border-radius: calc(2rem - 1px); background: rgba(3,7,18,.93); padding: 1.75rem 1.25rem; }
 @media (min-width: 640px) { .trial-inner { padding: 2.25rem 2.5rem; } }
@@ -1270,13 +1287,24 @@ footer {
 <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed reveal">
 <strong><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span></strong> 把杂乱的仓库单据、商业发票和管理层的对话式提问，在 <strong>4.5 秒内</strong> 变成经过数学校验的 ERPNext 账簿记录。它基于 Google Gemini 和 Google Cloud 无服务器架构，让会计团队轻松实现自动录入，同时保留严格的人工把关。
 </p>
-<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
 <i data-lucide="zap" class="w-5 h-5 text-black"></i> <span>免费开始企业试点</span>
 </button>
 <button type="button" onclick='scrollToSection("showcase")' class="w-full sm:w-auto glass-card px-8 py-4 rounded-full font-semibold text-base text-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2.5">
 <i data-lucide="smartphone" class="w-5 h-5 text-cyan-400"></i> <span>查看移动应用</span>
 </button>
+</div>
+<div class="play-cta mb-14 reveal">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">下载应用，请到</span><span class="play-big">Google Play</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">可在 Google Play 免费下载</div>
+<div class="play-sub">每个新账户：免费 7 天、10 张发票，无需银行卡。</div>
+<div class="play-soon">下载链接即将上线</div>
+</div>
 </div>
 <div class="max-w-5xl mx-auto mb-16 text-left reveal spotlight-wrapper glass-card p-1 sm:p-2">
 <div class="spotlight-content rounded-xl sm:rounded-2xl overflow-hidden bg-[#0A0A0A] border border-white/10 shadow-2xl relative p-5 sm:p-7">
@@ -2279,26 +2307,33 @@ document.addEventListener("DOMContentLoaded", function() {
 <i data-lucide="gift" class="w-4 h-4"></i> <span>免费试用</span>
 </div>
 <h3 class="text-2xl sm:text-3xl font-display font-bold text-white leading-tight">免费试用 <span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> 7 天</h3>
-<p class="mt-3 text-gray-300 text-base sm:text-lg">含 10 张发票和 CEO 洞察，无需银行卡。</p>
-<button type="button" onclick="openEarlyAccessModal()" class="mt-6 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-sm sm:text-base font-bold shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
-<i data-lucide="ticket" class="w-5 h-5"></i> <span>申请邀请码</span>
-</button>
+<p class="mt-3 text-gray-300 text-base sm:text-lg">每个新账户都含 10 张发票和 CEO 洞察，无需银行卡。</p>
+<div class="play-cta lg:justify-start mt-6">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">下载应用，请到</span><span class="play-big">Google Play</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">免费下载</div>
+<div class="play-soon">下载链接即将上线</div>
+</div>
+</div>
 </div>
 <ol class="grid grid-cols-1 gap-3">
 <li class="trial-step">
 <div class="trial-num">1</div>
-<div class="trial-title">获取邀请码</div>
-<div class="trial-text">点击按钮向 ERPYAS 申请。</div>
+<div class="trial-title">下载 ERPYAS</div>
+<div class="trial-text">在 Google Play 免费下载。</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">2</div>
-<div class="trial-title">在应用中兑换</div>
-<div class="trial-text"><strong>设置 → 账户和套餐 → 邀请码</strong>，然后点击<strong>兑换</strong>。</div>
+<div class="trial-title">使用 Google 登录</div>
+<div class="trial-text">您的 7 天免费试用（10 张发票）自动开始。</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">3</div>
-<div class="trial-title">扫描第一张发票</div>
-<div class="trial-text">试用立即开始。试用结束时，我们会通过邮件发给您各个套餐。</div>
+<div class="trial-title">连接 ERPNext 并扫描</div>
+<div class="trial-text">输入您的 ERPNext 地址和 API 密钥，然后扫描第一张发票。试用结束时，我们会通过邮件发给您各个套餐。</div>
 </li>
 </ol>
 </div>
@@ -2429,7 +2464,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 </div>
-<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">价格以美元计，<strong class="text-gray-200">不含增值税</strong>。结账时也可用英镑或欧元支付：Starter £8、Business £20、Growth £47、Scale £119 每月（按年 £88、£220、£517、£1,309）。<strong class="text-gray-200">每个套餐都包含 CEO 洞察。</strong>年付套餐只收 11 个月的价格（免费 1 个月），每月发放发票额度；未用完的可顺延一个月。使用邀请码免费试用：7 天，10 张发票。每月需要超过 3,000 张？<a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">联系我们</a>。</p>
+<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">价格以美元计，<strong class="text-gray-200">不含增值税</strong>。结账时也可用英镑或欧元支付：Starter £8、Business £20、Growth £47、Scale £119 每月（按年 £88、£220、£517、£1,309）。<strong class="text-gray-200">每个套餐都包含 CEO 洞察。</strong>年付套餐只收 11 个月的价格（免费 1 个月），每月发放发票额度；未用完的可顺延一个月。每个新账户均可免费试用：7 天，10 张发票。每月需要超过 3,000 张？<a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">联系我们</a>。</p>
 <div id="manage-billing" class="mt-6 text-center text-sm text-gray-300 max-w-3xl mx-auto px-4">已经是客户？<a id="manage-billing-link" href="https://billing.stripe.com/p/login/bJeeVe5muceg2rCgza6sw00" target="_blank" rel="noopener" class="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">管理账单</a>：更换银行卡、下载收据或取消订阅（用付款时的邮箱登录，Stripe 会给您发验证码）。套餐在我们网站上购买，而不是在应用内；请使用与 ERPYAS 应用相同的邮箱付款。</div>
 </div>
 </section>
@@ -2739,7 +2774,7 @@ info@erpyas.com
 <li>打开 ERPYAS，点击 <strong>Continue with Google</strong>。</li>
 <li>在 ERPNext 中打开您的 <strong>User</strong> 资料 → <strong>API Access</strong> → <strong>Generate Keys</strong>。把这个用户的<strong>语言设为英语</strong>（其他人可以用任何语言）。</li>
 <li>在 ERPYAS 中输入您的 ERPNext 地址（例如 <code>yourcompany.frappe.cloud</code>）、API Key 和 API Secret，然后点击 <strong>Connect</strong>。</li>
-<li>输入邀请码开始 7 天免费试用（10 张发票），或选择一个套餐，然后扫描您的第一张发票。</li>
+<li>扫描您的第一张发票。您登录时，7 天免费试用（10 张发票）就已开始；无需银行卡。</li>
 </ol>
 </div></details><details class="faq-item"><summary><span>ERPYAS 应该选哪个 ERPNext 套餐？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer">
 <p><strong>我们强烈推荐 Frappe Cloud 每月 $20 的 Servers 套餐（或更高）。</strong> 每月 $5 的 Sites 套餐<strong>不支持</strong> ERPYAS。</p>
@@ -2767,7 +2802,7 @@ info@erpyas.com
 <li>输入您的 ERPNext 地址（例如 <code>yourcompany.frappe.cloud</code>）以及 ERPNext 的 <strong>API Key</strong> 和 <strong>API Secret</strong>。</li>
 <li>点击 <strong>Connect</strong>。ERPYAS 检查连接后，就可以开始扫描了。</li>
 </ol>
-<p><strong>有邀请码？</strong> 在 <strong>设置 → 账户和套餐 → 邀请码</strong> 中输入，即可开始 <strong>7 天免费试用</strong>，含 10 张发票和 CEO 洞察。无需银行卡。没有邀请码？请在 <a href="https://www.erpyas.com">www.erpyas.com</a> 选择套餐。</p></div></details>
+<p><strong>每个新账户都会自动开始 7 天免费试用</strong>，含 10 张发票和 CEO 洞察。无需银行卡。试用结束后如需继续使用，请在 <a href="https://www.erpyas.com">www.erpyas.com</a> 选择套餐。</p></div></details>
 <details class="faq-item"><summary><span>ERPNext 的 API Key 和 Secret 从哪里获取？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>在 ERPNext 中：打开您的 <strong>User</strong> 资料 → <strong>API Access</strong> → <strong>Generate Keys</strong>。- 使用一个有权创建采购发票、并能读取供应商、物料和科目的用户。ERPYAS 只会创建一个供应商，而且只创建一次：<code>Unknown_supplier</code>。- 把这个用户的<strong>语言设为英语</strong>（User → Language）。ERPNext 中的其他人可以用任何语言。ERPNext 用这个用户的语言写系统消息，ERPYAS 会读取这些消息来自动修正小的拒绝问题。- ERPNext 只显示一次 Secret，请直接复制到应用中。</p></div></details>
 <details class="faq-item"><summary><span>我们在 ERPNext 中必须用什么语言？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>任何语言都可以。</strong> 您的会计和员工可以用中文、印地语、阿拉伯语、德语、英语或其他任何语言使用 ERPNext，ERPYAS 应用也可以用另一种语言。只有<strong>其 API 密钥填在 ERPYAS 中的那个用户</strong>需要设为<strong>英语</strong>。供应商、物料和科目名称完全保持您输入的样子。ERPYAS 写在草稿上的内容保持英文（<code>Printed supplier</code>、<code>Unknown_supplier</code>、标签“ERPYAS Review”），因为 ERPYAS 会读回这些内容来学习您的供应商并识别重复。</p></div></details>
 <details class="faq-item"><summary><span>需要在 ERPNext 中安装什么吗？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>不需要。</strong> 无插件、无自定义代码、无需改动服务器。ERPYAS 使用 ERPNext 标准、安全的 API。</p></div></details></div>
@@ -2843,7 +2878,7 @@ info@erpyas.com
 </thead>
 <tbody>
 <tr>
-<td><strong>免费试用</strong>（邀请码）</td>
+<td><strong>免费试用</strong>（每个新账户）</td>
 <td>$0</td>
 <td>–</td>
 <td><strong>7 天 10 张发票</strong> + CEO 洞察（每个账户一次）</td>
@@ -2880,7 +2915,7 @@ info@erpyas.com
 </tbody>
 </table>
 <p>价格<strong>不含增值税</strong>。<strong>每个套餐都包含 CEO 洞察。</strong>结账时可用美元、英镑或欧元支付（通过 Stripe 使用银行卡、Google Pay 或 Apple Pay）。每月需要超过 3,000 张发票？请联系我们。</p></div>
-<details class="faq-item"><summary><span>如何使用邀请码？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>在应用中：<strong>设置 → 账户和套餐 → 邀请码</strong>，输入邀请码后点击<strong>兑换</strong>。您的 <strong>7 天免费试用（10 张发票）</strong>立即开始。<strong>试用结束时</strong>（7 天后，或 10 张发票提前用完时），我们会通过邮件发给您各个套餐和选择链接。每个账户只能使用一个邀请码。试用结束后，扫描和 CEO 洞察会暂停，直到您选择套餐；已在 ERPNext 中的发票不受影响。</p></div></details>
+<details class="faq-item"><summary><span>免费试用如何运作？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>每个新的 ERPYAS 账户都可获得 <strong>7 天免费试用（10 张发票）</strong>和 CEO 洞察。首次登录应用时自动开始；无需银行卡。<strong>试用结束时</strong>（7 天后，或 10 张发票提前用完时），我们会通过邮件发给您各个套餐和选择链接。每个邮箱地址只能免费试用一次。试用结束后，扫描和 CEO 洞察会暂停，直到您选择套餐；已在 ERPNext 中的发票不受影响。</p></div></details>
 <details class="faq-item"><summary><span>什么会消耗额度？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>AI 读取的每份单据消耗<strong>一个额度</strong>：- 成为 <strong>ERPNext 草稿</strong>的发票，- 读取后发现的<strong>重复</strong>（例如对 ERPNext 中已有发票重新拍照），- 读取后<strong>未被接受</strong>的单据（不是发票、手写、无法识别）。</p>
 <p>以下<strong>免费</strong>：- <strong>再次发送同一文件</strong>（在 AI 读取前就能识别），- 我方出错，或 Gemini / ERPNext 不可用，- ERPNext 拒绝草稿（例如您的设置中缺少科目），- 网络中断后重新发送同一上传。</p></div></details>
 <details class="faq-item"><summary><span>撤销发票后额度会退回吗？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>不会。</strong><strong>24 小时撤销</strong>（见第 6 节）会删除草稿，让您可以重新扫描，但已用额度不退还，因为发票已经被读取。上传失败和再次发送同一文件从不消耗额度。</p></div></details>
@@ -2966,8 +3001,8 @@ info@erpyas.com
 </tr>
 <tr>
 <td><strong>还没有发票额度</strong></td>
-<td>新账户尚未选择套餐</td>
-<td>输入邀请码，或选择套餐</td>
+<td>此邮箱已用过免费试用</td>
+<td>选择套餐</td>
 </tr>
 <tr>
 <td><strong>已达套餐上限 / 免费发票已用完</strong></td>
@@ -3001,7 +3036,7 @@ info@erpyas.com
 <p>数据在传输过程中全程加密（HTTPS）。</p></div></details>
 <details class="faq-item"><summary><span>如何登录？</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>使用 <strong>Google</strong>（iPhone 上即将支持“通过 Apple 登录”）。会话会安全地保持登录。您随时可以在应用中退出。</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="zap"></i>快速问答</h3><div class="faq-intro"><ul>
-<li><strong>有免费试用吗？</strong>有，使用 ERPYAS 提供的邀请码：7 天、10 张发票和 CEO 洞察，无需银行卡。</li>
+<li><strong>有免费试用吗？</strong>有，每个新账户都有：7 天、10 张发票和 CEO 洞察，无需银行卡。</li>
 <li><strong>需要签合同吗？</strong>不需要。按月或按年，随时可在<a href="#manage-billing"><em>管理账单</em></a>中取消，或发邮件至 info@erpyas.com。</li>
 <li><strong>能配合我现有的 ERPNext 使用吗？</strong>可以，无需对您的 ERPNext 做任何改动。</li>
 <li><strong>需要 IT 人员吗？</strong>不需要。设置大约 5 分钟。</li>
@@ -3381,6 +3416,23 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.entries(extra).forEach(([k, v]) => url.searchParams.set(k, v));
         a.href = url.toString();
     });
+})();
+</script>
+<script>
+// Google Play (owner, 26 Nov 2026: "click for download must be turned off and I will add the link
+// later"). Put the store link here, e.g. "https://play.google.com/store/apps/details?id=com.erpyas.ai",
+// run tools/i18n/build.py and push: every Google Play badge becomes a link and "coming soon" hides.
+(function () {
+  var PLAY_STORE_URL = "";
+  if (!/^https:\/\/play\.google\.com\//.test(PLAY_STORE_URL)) return;
+  document.querySelectorAll("[data-play-badge]").forEach(function (a) {
+    a.href = PLAY_STORE_URL;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.classList.remove("is-off");
+    a.removeAttribute("aria-disabled");
+  });
+  document.querySelectorAll(".play-soon").forEach(function (e) { e.hidden = true; });
 })();
 </script>
 </body>

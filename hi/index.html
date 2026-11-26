@@ -256,6 +256,23 @@ input, select, textarea {
 .blob-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background: rgba(168, 85, 247, 0.3); animation-delay: 2s; min-width: 250px; min-height: 250px; }
 .blob-3 { bottom: -20%; left: 20%; width: 60vw; height: 60vw; background: rgba(236, 72, 153, 0.2); animation-delay: 4s; min-width: 350px; min-height: 350px; }
 
+/* Google Play badge (26 Nov 2026): shown, not clickable until PLAY_STORE_URL is set (script at the end) */
+.play-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.25rem; }
+.play-badge { display: inline-flex; align-items: center; gap: .75rem; padding: .6rem 1.35rem .6rem 1.05rem; min-height: 3.6rem; border-radius: .95rem; background: #000; border: 1.5px solid #9ca3af; color: #fff; text-decoration: none; box-shadow: 0 8px 28px rgba(0,0,0,.4); transition: transform .2s, border-color .2s, box-shadow .2s; }
+.play-badge:not(.is-off):hover { transform: translateY(-2px); border-color: #fff; box-shadow: 0 12px 34px rgba(0,0,0,.55); }
+.play-badge.is-off { cursor: default; }
+.play-logo { width: 1.95rem; height: auto; flex-shrink: 0; }
+.play-words { display: flex; flex-direction: column; line-height: 1.08; text-align: start; }
+.play-small { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #e5e7eb; }
+.play-big { font-family: 'Inter', sans-serif; font-size: 1.45rem; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+.play-info { text-align: center; }
+@media (min-width: 640px) { .play-info { text-align: start; } }
+.play-free { color: #fff; font-weight: 700; font-size: 1.05rem; }
+.play-sub { color: #d1d5db; font-size: .92rem; margin-top: .1rem; }
+.play-soon { margin-top: .35rem; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fcd34d; }
+.play-soon[hidden] { display: none; }
+:is(:lang(ar), :lang(fa), :lang(hi), :lang(zh)) :is(.play-soon, .play-small) { letter-spacing: 0; font-family: inherit; }
+
 /* Pricing: large, clear prices and the free trial (25 Nov 2026) */
 .price-row { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: .45rem; row-gap: .25rem; }
 .price-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3rem; line-height: 1; letter-spacing: -.035em; color: #fff; }
@@ -265,7 +282,7 @@ input, select, textarea {
 .price-note { margin-top: .7rem; font-size: .9rem; font-weight: 600; }
 .quota { margin-top: 1.1rem; display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; border-radius: 1rem; border-width: 1px; border-style: solid; }
 .quota-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; }
-.quota-sub { font-size: .85rem; color: #9ca3af; margin-top: .1rem; }
+.quota-sub { font-size: 1rem; font-weight: 700; color: #fff; margin-top: .15rem; letter-spacing: .01em; text-shadow: 0 0 14px rgba(255,255,255,.28); }
 .trial-card { position: relative; border-radius: 2rem; padding: 1px; background: linear-gradient(120deg, rgba(16,185,129,.6), rgba(6,182,212,.45), rgba(139,92,246,.55)); box-shadow: 0 0 50px rgba(16,185,129,.14); }
 .trial-inner { border-radius: calc(2rem - 1px); background: rgba(3,7,18,.93); padding: 1.75rem 1.25rem; }
 @media (min-width: 640px) { .trial-inner { padding: 2.25rem 2.5rem; } }
@@ -1270,13 +1287,24 @@ footer {
 <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed reveal">
 <strong><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span></strong> गोदाम की बिखरी रसीदों, व्यावसायिक इनवॉइस और प्रबंधन के सवालों को <strong>4.5 सेकंड से कम</strong> में गणितीय रूप से जाँची गई ERPNext लेजर प्रविष्टियों में बदलता है। Google Gemini और Google Cloud की सर्वरलेस आर्किटेक्चर पर बना यह सिस्टम अकाउंटिंग टीमों को बिना मेहनत स्वचालित डेटा एंट्री देता है और वित्तीय निर्णयों पर इंसान का कड़ा नियंत्रण बनाए रखता है।
 </p>
-<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
 <button type="button" onclick="openEarlyAccessModal()" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
 <i data-lucide="zap" class="w-5 h-5 text-black"></i> <span>मुफ़्त एंटरप्राइज़ पायलट शुरू करें</span>
 </button>
 <button type="button" onclick='scrollToSection("showcase")' class="w-full sm:w-auto glass-card px-8 py-4 rounded-full font-semibold text-base text-white hover:bg-white/10 transition-colors flex items-center justify-center gap-2.5">
 <i data-lucide="smartphone" class="w-5 h-5 text-cyan-400"></i> <span>मोबाइल ऐप देखें</span>
 </button>
+</div>
+<div class="play-cta mb-14 reveal">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">इसे पाएं</span><span class="play-big">Google Play पर</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">Google Play से मुफ़्त डाउनलोड करें</div>
+<div class="play-sub">हर नए खाते को: 7 दिन और 10 इनवॉइस मुफ़्त। कोई कार्ड नहीं चाहिए।</div>
+<div class="play-soon">डाउनलोड लिंक जल्द आ रहा है</div>
+</div>
 </div>
 <div class="max-w-5xl mx-auto mb-16 text-left reveal spotlight-wrapper glass-card p-1 sm:p-2">
 <div class="spotlight-content rounded-xl sm:rounded-2xl overflow-hidden bg-[#0A0A0A] border border-white/10 shadow-2xl relative p-5 sm:p-7">
@@ -2279,26 +2307,33 @@ document.addEventListener("DOMContentLoaded", function() {
 <i data-lucide="gift" class="w-4 h-4"></i> <span>मुफ़्त ट्रायल</span>
 </div>
 <h3 class="text-2xl sm:text-3xl font-display font-bold text-white leading-tight"><span class="text-cyan-400 font-extrabold">ERP</span><span class="text-violet-400 font-extrabold">YAS</span> को 7 दिन मुफ़्त आज़माएँ</h3>
-<p class="mt-3 text-gray-300 text-base sm:text-lg">10 इनवॉइस और CEO इनसाइट्स शामिल। कोई कार्ड नहीं चाहिए।</p>
-<button type="button" onclick="openEarlyAccessModal()" class="mt-6 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-sm sm:text-base font-bold shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95">
-<i data-lucide="ticket" class="w-5 h-5"></i> <span>इनवाइट कोड माँगें</span>
-</button>
+<p class="mt-3 text-gray-300 text-base sm:text-lg">हर नए खाते को 10 इनवॉइस और CEO इनसाइट्स मिलते हैं। कोई कार्ड नहीं चाहिए।</p>
+<div class="play-cta lg:justify-start mt-6">
+<a class="play-badge is-off" data-play-badge aria-disabled="true">
+<svg class="play-logo" viewBox="0 0 92 100" aria-hidden="true" focusable="false"><path fill="#00C3FF" d="M 4 3.5 C 2.4 5.2 1.5 7.8 1.5 11.2 L 1.5 88.8 C 1.5 92.2 2.4 94.8 4 96.5 L 4.5 97 L 53.5 48.5 L 53.5 48 L 4 3.5 Z"/><path fill="#FF3A44" d="M 69.8 64.8 L 53.5 48.5 L 4 97 C 6 98.8 9 99.2 12.5 97.2 L 69.8 64.8 Z"/><path fill="#00E676" d="M 69.8 35.2 L 12.5 2.8 C 9 0.8 6 1.2 4 3 L 53.5 51.5 L 69.8 35.2 Z"/><path fill="#FFC400" d="M 69.8 35.2 L 53.5 48 L 69.8 64.8 L 88.5 54.2 C 93.5 51.3 93.5 46.7 88.5 43.8 L 69.8 35.2 Z"/></svg>
+<span class="play-words"><span class="play-small">इसे पाएं</span><span class="play-big">Google Play पर</span></span>
+</a>
+<div class="play-info">
+<div class="play-free">मुफ़्त डाउनलोड</div>
+<div class="play-soon">डाउनलोड लिंक जल्द आ रहा है</div>
+</div>
+</div>
 </div>
 <ol class="grid grid-cols-1 gap-3">
 <li class="trial-step">
 <div class="trial-num">1</div>
-<div class="trial-title">इनवाइट कोड पाएँ</div>
-<div class="trial-text">बटन से ERPYAS से कोड माँगें।</div>
+<div class="trial-title">ERPYAS डाउनलोड करें</div>
+<div class="trial-text">Google Play पर मुफ़्त।</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">2</div>
-<div class="trial-title">ऐप में रिडीम करें</div>
-<div class="trial-text"><strong>सेटिंग्स → खाता और प्लान → इनवाइट कोड</strong>, फिर <strong>रिडीम करें</strong> पर टैप करें।</div>
+<div class="trial-title">Google से साइन इन करें</div>
+<div class="trial-text">10 इनवॉइस वाला आपका 7 दिन का मुफ़्त ट्रायल अपने आप शुरू हो जाता है।</div>
 </li>
 <li class="trial-step">
 <div class="trial-num">3</div>
-<div class="trial-title">अपना पहला इनवॉइस स्कैन करें</div>
-<div class="trial-text">आपका ट्रायल तुरंत शुरू होता है। ख़त्म होने पर हम आपको प्लान ईमेल करते हैं।</div>
+<div class="trial-title">ERPNext जोड़ें और स्कैन करें</div>
+<div class="trial-text">अपना ERPNext पता और API कुंजियाँ भरें, फिर अपना पहला इनवॉइस स्कैन करें। ट्रायल ख़त्म होने पर हम आपको प्लान ईमेल करते हैं।</div>
 </li>
 </ol>
 </div>
@@ -2429,7 +2464,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 </div>
-<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">कीमतें अमेरिकी डॉलर में, <strong class="text-gray-200">VAT अलग</strong>। चेकआउट पर पाउंड या यूरो में भी भुगतान करें: Starter £8, Business £20, Growth £47, Scale £119 प्रति माह (सालाना £88, £220, £517, £1,309)। <strong class="text-gray-200">CEO इनसाइट्स हर प्लान में शामिल है।</strong> सालाना प्लान की कीमत 11 महीनों की है (1 महीना मुफ़्त) और वे हर महीने आपके इनवॉइस देते हैं; बचे हुए एक महीने आगे जाते हैं। इनवाइट कोड से मुफ़्त ट्रायल: 7 दिन, 10 इनवॉइस। महीने में 3,000 से ज़्यादा इनवॉइस चाहिए? <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">हमसे संपर्क करें</a>।</p>
+<p class="mt-12 text-center text-sm text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">कीमतें अमेरिकी डॉलर में, <strong class="text-gray-200">VAT अलग</strong>। चेकआउट पर पाउंड या यूरो में भी भुगतान करें: Starter £8, Business £20, Growth £47, Scale £119 प्रति माह (सालाना £88, £220, £517, £1,309)। <strong class="text-gray-200">CEO इनसाइट्स हर प्लान में शामिल है।</strong> सालाना प्लान की कीमत 11 महीनों की है (1 महीना मुफ़्त) और वे हर महीने आपके इनवॉइस देते हैं; बचे हुए एक महीने आगे जाते हैं। हर नए खाते के लिए मुफ़्त ट्रायल: 7 दिन, 10 इनवॉइस। महीने में 3,000 से ज़्यादा इनवॉइस चाहिए? <a href="mailto:info@erpyas.com" class="text-cyan-400 hover:underline">हमसे संपर्क करें</a>।</p>
 <div id="manage-billing" class="mt-6 text-center text-sm text-gray-300 max-w-3xl mx-auto px-4">पहले से ग्राहक हैं? <a id="manage-billing-link" href="https://billing.stripe.com/p/login/bJeeVe5muceg2rCgza6sw00" target="_blank" rel="noopener" class="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">बिलिंग प्रबंधित करें</a>: कार्ड बदलें, रसीदें डाउनलोड करें या रद्द करें (जिस ईमेल से भुगतान किया उससे साइन इन करें; Stripe आपको एक कोड भेजता है)। प्लान यहाँ हमारी वेबसाइट पर ख़रीदे जाते हैं, ऐप में नहीं; उसी ईमेल से भुगतान करें जो आप ERPYAS ऐप में इस्तेमाल करते हैं।</div>
 </div>
 </section>
@@ -2739,7 +2774,7 @@ info@erpyas.com
 <li>ERPYAS खोलें और <strong>Continue with Google</strong> पर टैप करें।</li>
 <li>ERPNext में अपनी <strong>User</strong> प्रोफ़ाइल → <strong>API Access</strong> → <strong>Generate Keys</strong> खोलें। इस उपयोगकर्ता की <strong>भाषा English रखें</strong> (बाक़ी सब कोई भी भाषा इस्तेमाल कर सकते हैं)।</li>
 <li>ERPYAS में अपना ERPNext पता (जैसे <code>yourcompany.frappe.cloud</code>), API Key और API Secret भरें, फिर <strong>Connect</strong> पर टैप करें।</li>
-<li>10 इनवॉइस वाले 7 दिन के मुफ़्त ट्रायल के लिए अपना इनवाइट कोड भरें, या कोई प्लान चुनें, और अपना पहला इनवॉइस स्कैन करें।</li>
+<li>अपना पहला इनवॉइस स्कैन करें। 10 इनवॉइस वाला आपका 7 दिन का मुफ़्त ट्रायल साइन इन करते ही शुरू हो गया; कार्ड की ज़रूरत नहीं।</li>
 </ol>
 </div></details><details class="faq-item"><summary><span>ERPYAS के लिए कौन-सा ERPNext प्लान चुनूँ?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer">
 <p><strong>हम Frappe Cloud के $20 / माह वाले Servers प्लान (या उससे ऊपर) की ज़ोरदार सिफ़ारिश करते हैं।</strong> $5 / माह वाला Sites प्लान ERPYAS के लिए <strong>समर्थित नहीं</strong> है।</p>
@@ -2767,7 +2802,7 @@ info@erpyas.com
 <li>अपना ERPNext पता (जैसे <code>yourcompany.frappe.cloud</code>) और अपने ERPNext की <strong>API Key</strong> व <strong>API Secret</strong> भरें।</li>
 <li><strong>Connect</strong> पर टैप करें। ERPYAS कनेक्शन जाँचता है, और आप स्कैन के लिए तैयार हैं।</li>
 </ol>
-<p><strong>इनवाइट कोड है?</strong> उसे <strong>सेटिंग्स → खाता और प्लान → इनवाइट कोड</strong> में भरें और 10 इनवॉइस व CEO इनसाइट्स के साथ <strong>7 दिन का मुफ़्त ट्रायल</strong> शुरू करें। कार्ड की ज़रूरत नहीं। कोड नहीं है? <a href="https://www.erpyas.com">www.erpyas.com</a> पर प्लान चुनें।</p></div></details>
+<p><strong>हर नया खाता अपने आप 7 दिन के मुफ़्त ट्रायल से शुरू होता है</strong>, 10 इनवॉइस और CEO इनसाइट्स के साथ। कार्ड की ज़रूरत नहीं। उसके बाद जारी रखने के लिए <a href="https://www.erpyas.com">www.erpyas.com</a> पर प्लान चुनें।</p></div></details>
 <details class="faq-item"><summary><span>ERPNext की API Key और Secret कहाँ से मिलेगी?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>ERPNext में: अपनी <strong>User</strong> प्रोफ़ाइल → <strong>API Access</strong> → <strong>Generate Keys</strong> खोलें। - ऐसा उपयोगकर्ता इस्तेमाल करें जिसे Purchase Invoice बनाने और सप्लायर, आइटम व खाते पढ़ने की अनुमति हो। ERPYAS सिर्फ़ एक सप्लायर बनाता है, एक बार: <code>Unknown_supplier</code>। - इस उपयोगकर्ता की <strong>भाषा English रखें</strong> (User → Language)। ERPNext में बाक़ी सब कोई भी भाषा इस्तेमाल कर सकते हैं। ERPNext अपने संदेश इसी उपयोगकर्ता की भाषा में लिखता है, और ERPYAS उन्हें पढ़कर छोटे-मोटे रिजेक्शन ख़ुद ठीक करता है। - ERPNext Secret सिर्फ़ एक बार दिखाता है, इसलिए उसे सीधे ऐप में कॉपी करें।</p></div></details>
 <details class="faq-item"><summary><span>ERPNext में हमें कौन-सी भाषा इस्तेमाल करनी होगी?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>कोई भी।</strong> आपके बुककीपर और स्टाफ़ ERPNext को चीनी, हिंदी, अरबी, जर्मन, अंग्रेज़ी या किसी भी भाषा में चला सकते हैं, और ERPYAS ऐप किसी अलग भाषा में हो सकता है। सिर्फ़ <strong>वह उपयोगकर्ता जिसकी API कुंजी ERPYAS में है</strong>, <strong>English</strong> पर होना चाहिए। सप्लायर, आइटम और खातों के नाम बिल्कुल वैसे ही रहते हैं जैसे आपने लिखे। ERPYAS ड्राफ्ट पर जो लिखता है वह अंग्रेज़ी में रहता है (<code>Printed supplier</code>, <code>Unknown_supplier</code>, टैग "ERPYAS Review"), क्योंकि ERPYAS उसे दोबारा पढ़कर आपके सप्लायर पहचानता है और डुप्लिकेट पकड़ता है।</p></div></details>
 <details class="faq-item"><summary><span>क्या मुझे ERPNext में कुछ इंस्टॉल करना होगा?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>नहीं।</strong> कोई प्लगइन नहीं, कोई कस्टम कोड नहीं, सर्वर में कोई बदलाव नहीं। ERPYAS ERPNext का मानक, सुरक्षित API इस्तेमाल करता है।</p></div></details></div>
@@ -2843,7 +2878,7 @@ info@erpyas.com
 </thead>
 <tbody>
 <tr>
-<td><strong>मुफ़्त ट्रायल</strong> (इनवाइट कोड)</td>
+<td><strong>मुफ़्त ट्रायल</strong> (हर नया खाता)</td>
 <td>$0</td>
 <td>–</td>
 <td><strong>7 दिन में 10 इनवॉइस</strong> + CEO इनसाइट्स (हर खाते के लिए एक बार)</td>
@@ -2880,7 +2915,7 @@ info@erpyas.com
 </tbody>
 </table>
 <p>कीमतों में <strong>VAT शामिल नहीं</strong>। <strong>CEO इनसाइट्स हर प्लान में शामिल है।</strong> चेकआउट पर अमेरिकी डॉलर, पाउंड या यूरो में भुगतान करें (Stripe के ज़रिए कार्ड, Google Pay या Apple Pay)। महीने में 3,000 से ज़्यादा इनवॉइस चाहिए? हमसे संपर्क करें।</p></div>
-<details class="faq-item"><summary><span>इनवाइट कोड कैसे इस्तेमाल करूँ?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>ऐप में: <strong>सेटिंग्स → खाता और प्लान → इनवाइट कोड</strong>, कोड लिखें, फिर <strong>रिडीम करें</strong> पर टैप करें। आपका <strong>10 इनवॉइस वाला 7 दिन का मुफ़्त ट्रायल</strong> तुरंत शुरू होता है। <strong>जब यह ख़त्म होता है</strong> (7 दिन बाद, या 10 इनवॉइस पहले ख़त्म होने पर), हम आपको प्लान और चुनने का लिंक ईमेल करते हैं। हर खाता एक इनवाइट कोड इस्तेमाल कर सकता है। ट्रायल ख़त्म होने पर प्लान चुनने तक स्कैनिंग और CEO इनसाइट्स रुक जाते हैं; ERPNext में पहले से मौजूद इनवॉइस पर कोई असर नहीं पड़ता।</p></div></details>
+<details class="faq-item"><summary><span>मुफ़्त ट्रायल कैसे काम करता है?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>हर नए ERPYAS खाते को <strong>10 इनवॉइस वाला 7 दिन का मुफ़्त ट्रायल</strong> और CEO इनसाइट्स मिलते हैं। यह ऐप में पहली बार साइन इन करते ही अपने आप शुरू होता है; कार्ड की ज़रूरत नहीं। <strong>जब यह ख़त्म होता है</strong> (7 दिन बाद, या 10 इनवॉइस पहले ख़त्म होने पर), हम आपको प्लान और चुनने का लिंक ईमेल करते हैं। हर ईमेल पते पर एक मुफ़्त ट्रायल। ट्रायल ख़त्म होने पर प्लान चुनने तक स्कैनिंग और CEO इनसाइट्स रुक जाते हैं; ERPNext में पहले से मौजूद इनवॉइस पर कोई असर नहीं पड़ता।</p></div></details>
 <details class="faq-item"><summary><span>क्रेडिट किसमें ख़र्च होता है?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p>AI जो भी दस्तावेज़ पढ़ता है उसमें <strong>एक क्रेडिट</strong> लगता है: - ऐसा इनवॉइस जो <strong>ERPNext में ड्राफ्ट</strong> बनता है, - पढ़ने के बाद मिला <strong>डुप्लिकेट</strong> (जैसे ERPNext में पहले से मौजूद इनवॉइस की नई फ़ोटो), - पढ़ने के बाद <strong>अस्वीकार</strong> हुआ दस्तावेज़ (इनवॉइस नहीं, हाथ से लिखा, न पढ़ा जा सकने वाला)।</p>
 <p>ये <strong>मुफ़्त</strong> हैं: - <strong>वही फ़ाइल दोबारा भेजना</strong> (AI के पढ़ने से पहले पहचानी जाती है), - हमारी तरफ़ की ग़लतियाँ, या Gemini / ERPNext का उपलब्ध न होना, - ERPNext का ड्राफ्ट अस्वीकार करना (जैसे आपके सेटअप में कोई खाता न होना), - नेटवर्क टूटने के बाद वही अपलोड दोबारा भेजना।</p></div></details>
 <details class="faq-item"><summary><span>इनवॉइस अनडू करने पर क्या क्रेडिट वापस मिलता है?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>नहीं।</strong> <strong>24 घंटे का अनडू</strong> (भाग 6 देखें) ड्राफ्ट हटा देता है ताकि आप इनवॉइस दोबारा स्कैन कर सकें, पर ख़र्च हुआ क्रेडिट वापस नहीं होता, क्योंकि इनवॉइस पढ़ा जा चुका है। असफल अपलोड और वही फ़ाइल दोबारा भेजने में कभी क्रेडिट नहीं लगता।</p></div></details>
@@ -2966,8 +3001,8 @@ info@erpyas.com
 </tr>
 <tr>
 <td><strong>अभी कोई इनवॉइस क्रेडिट नहीं</strong></td>
-<td>बिना प्लान का नया खाता</td>
-<td>अपना इनवाइट कोड भरें, या प्लान चुनें</td>
+<td>इस ईमेल का मुफ़्त ट्रायल पहले ही हो चुका है</td>
+<td>प्लान चुनें</td>
 </tr>
 <tr>
 <td><strong>प्लान की सीमा पूरी / मुफ़्त इनवॉइस ख़त्म</strong></td>
@@ -3001,7 +3036,7 @@ info@erpyas.com
 <p>ट्रांज़िट में डेटा शुरू से अंत तक एन्क्रिप्टेड रहता है (HTTPS)।</p></div></details>
 <details class="faq-item"><summary><span>साइन इन कैसे करूँ?</span><i data-lucide="chevron-down" class="faq-chevron"></i></summary><div class="faq-answer"><p><strong>Google</strong> से (iPhone पर Apple से साइन इन जल्द आ रहा है)। सेशन सुरक्षित रूप से साइन-इन रहते हैं। आप कभी भी ऐप से साइन आउट कर सकते हैं।</p></div></details></div>
 <div class="faq-group"><h3 class="faq-group-title"><i data-lucide="zap"></i>झटपट जवाब</h3><div class="faq-intro"><ul>
-<li><strong>मुफ़्त ट्रायल?</strong> हाँ, ERPYAS के इनवाइट कोड से: 7 दिन, 10 इनवॉइस और CEO इनसाइट्स, बिना कार्ड।</li>
+<li><strong>मुफ़्त ट्रायल?</strong> हाँ, हर नए खाते के लिए: 7 दिन, 10 इनवॉइस और CEO इनसाइट्स, बिना कार्ड।</li>
 <li><strong>कॉन्ट्रैक्ट?</strong> नहीं। मासिक या सालाना, कभी भी <a href="#manage-billing"><em>बिलिंग प्रबंधित करें</em></a> में या info@erpyas.com पर ईमेल करके रद्द करें।</li>
 <li><strong>मेरे मौजूदा ERPNext के साथ चलता है?</strong> हाँ, आपके ERPNext में बिना किसी बदलाव के।</li>
 <li><strong>क्या मुझे IT वाले की ज़रूरत है?</strong> नहीं। सेटअप में लगभग 5 मिनट लगते हैं।</li>
@@ -3381,6 +3416,23 @@ document.addEventListener("DOMContentLoaded", () => {
         Object.entries(extra).forEach(([k, v]) => url.searchParams.set(k, v));
         a.href = url.toString();
     });
+})();
+</script>
+<script>
+// Google Play (owner, 26 Nov 2026: "click for download must be turned off and I will add the link
+// later"). Put the store link here, e.g. "https://play.google.com/store/apps/details?id=com.erpyas.ai",
+// run tools/i18n/build.py and push: every Google Play badge becomes a link and "coming soon" hides.
+(function () {
+  var PLAY_STORE_URL = "";
+  if (!/^https:\/\/play\.google\.com\//.test(PLAY_STORE_URL)) return;
+  document.querySelectorAll("[data-play-badge]").forEach(function (a) {
+    a.href = PLAY_STORE_URL;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.classList.remove("is-off");
+    a.removeAttribute("aria-disabled");
+  });
+  document.querySelectorAll(".play-soon").forEach(function (e) { e.hidden = true; });
 })();
 </script>
 </body>
