@@ -175,9 +175,6 @@
   "<0>3</0> CEO Agentic Chat": "<0>3</0> Chat de agentes do CEO",
   "Interactive SDUI Tables": "Tabelas SDUI interativas",
   "Instant function routing returning live verified supplier records and totals without latency.": "Encaminhamento imediato de funções que devolve registos de fornecedores e totais verificados em direto, sem esperas.",
-  "<0></0> <1>4K ULTRA-HD DUAL VIEW</1>": "<0></0> <1>VISTA DUPLA 4K ULTRA HD</1>",
-  "ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface": "Digitalizador neuronal de documentos e interface conversacional da app móvel ERPYAS",
-  "<0></0> <1>Live Production Flutter/Dart Build</1>": "<0></0> <1>Versão Flutter/Dart em produção</1>",
   "<0/> <1>Request TestFlight / APK Pilot Build</1>": "<0/> <1>Pedir versão piloto TestFlight / APK</1>",
   "<0/> Economic Impact": "<0/> Impacto económico",
   "Calculate Your Bottom-Line ROI": "Calcule o seu retorno",
@@ -578,7 +575,13 @@
   "<0>$<1>649</1></0> <2>/ year</2>": "<0>$<1>649</1></0> <2>/ ano</2>",
   "<0>$<1>1,639</1></0> <2>/ year</2>": "<0>$<1>1,639</1></0> <2>/ ano</2>",
   "ERPNext Core • Multi-Tenant Partition": "Núcleo ERPNext • Partição multiempresa",
-  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>Não.</0> - As faturas vão para o <1>seu próprio ERPNext</1>. - Guardamos só o necessário para a sua conta: o seu e-mail, plano, saldo de créditos e impressões digitais para detetar duplicados (não os documentos). - Para encontrar e corrigir problemas: relatórios de erros e de falhas (ID de erro, versão da app, modelo do telemóvel, versão do Android). Nunca as suas faturas, valores nem chaves do ERPNext. Os registos do servidor são guardados 30 dias e os relatórios de falhas 90 dias."
+  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>Não.</0> - As faturas vão para o <1>seu próprio ERPNext</1>. - Guardamos só o necessário para a sua conta: o seu e-mail, plano, saldo de créditos e impressões digitais para detetar duplicados (não os documentos). - Para encontrar e corrigir problemas: relatórios de erros e de falhas (ID de erro, versão da app, modelo do telemóvel, versão do Android). Nunca as suas faturas, valores nem chaves do ERPNext. Os registos do servidor são guardados 30 dias e os relatórios de falhas 90 dias.",
+  "Scan or upload an invoice": "Digitalize ou carregue uma fatura",
+  "ERPYAS app: Upload": "App ERPYAS: Carregar",
+  "ERPYAS app: CEO Insights": "App ERPYAS: Indicadores do CEO",
+  "ERPYAS app: CEO Insights, today's figures": "App ERPYAS: Indicadores do CEO, números de hoje",
+  "Ask your books": "Pergunte aos seus livros",
+  "Live from your ERPNext": "Em direto do seu ERPNext"
  },
  "js": {
   "Redirecting to Stripe...": "A redirecionar para a Stripe...",

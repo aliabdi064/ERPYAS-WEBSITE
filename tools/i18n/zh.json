@@ -175,9 +175,6 @@
   "<0>3</0> CEO Agentic Chat": "<0>3</0> CEO 智能对话",
   "Interactive SDUI Tables": "交互式 SDUI 表格",
   "Instant function routing returning live verified supplier records and totals without latency.": "即时路由，返回经核验的供应商记录和合计，毫无延迟。",
-  "<0></0> <1>4K ULTRA-HD DUAL VIEW</1>": "<0></0> <1>4K 超高清双视图</1>",
-  "ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface": "ERPYAS 移动端智能单据扫描与对话界面",
-  "<0></0> <1>Live Production Flutter/Dart Build</1>": "<0></0> <1>正式生产版 Flutter/Dart 构建</1>",
   "<0/> <1>Request TestFlight / APK Pilot Build</1>": "<0/> <1>申请 TestFlight / APK 试用版</1>",
   "<0/> Economic Impact": "<0/> 经济效益",
   "Calculate Your Bottom-Line ROI": "计算您的投资回报",
@@ -578,7 +575,13 @@
   "<0>$<1>649</1></0> <2>/ year</2>": "<0>$<1>649</1></0> <2>/ 年</2>",
   "<0>$<1>1,639</1></0> <2>/ year</2>": "<0>$<1>1,639</1></0> <2>/ 年</2>",
   "ERPNext Core • Multi-Tenant Partition": "ERPNext 内核 • 多租户隔离",
-  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>不会。</0> - 发票进入<1>您自己的 ERPNext</1>。- 我们只保留运行您账户所需的信息：邮箱、套餐、额度余额和查重指纹（不是单据本身）。- 为了发现和修复问题：错误和崩溃报告（Error ID、应用版本、手机型号、Android 版本）。绝不包括您的发票、金额或 ERPNext 密钥。服务器日志保留 30 天，崩溃报告保留 90 天。"
+  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>不会。</0> - 发票进入<1>您自己的 ERPNext</1>。- 我们只保留运行您账户所需的信息：邮箱、套餐、额度余额和查重指纹（不是单据本身）。- 为了发现和修复问题：错误和崩溃报告（Error ID、应用版本、手机型号、Android 版本）。绝不包括您的发票、金额或 ERPNext 密钥。服务器日志保留 30 天，崩溃报告保留 90 天。",
+  "Scan or upload an invoice": "扫描或上传发票",
+  "ERPYAS app: Upload": "ERPYAS 应用：上传",
+  "ERPYAS app: CEO Insights": "ERPYAS 应用：CEO 洞察",
+  "ERPYAS app: CEO Insights, today's figures": "ERPYAS 应用：CEO 洞察，今日数据",
+  "Ask your books": "问问您的账簿",
+  "Live from your ERPNext": "实时来自您的 ERPNext"
  },
  "js": {
   "Redirecting to Stripe...": "正在跳转到 Stripe...",

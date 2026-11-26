@@ -175,9 +175,6 @@
   "<0>3</0> CEO Agentic Chat": "<0>3</0> محادثة المدير",
   "Interactive SDUI Tables": "جداول SDUI تفاعلية",
   "Instant function routing returning live verified supplier records and totals without latency.": "توجيه فوري يعيد سجلات موردين وإجماليات مُتحقق منها دون تأخير.",
-  "<0></0> <1>4K ULTRA-HD DUAL VIEW</1>": "<0></0> <1>عرض مزدوج بدقة 4K</1>",
-  "ERPYAS Mobile Edge Neural Document Scanner and Conversational Interface": "ماسح المستندات الذكي وواجهة المحادثة في تطبيق ERPYAS",
-  "<0></0> <1>Live Production Flutter/Dart Build</1>": "<0></0> <1>إصدار إنتاجي فعلي Flutter/Dart</1>",
   "<0/> <1>Request TestFlight / APK Pilot Build</1>": "<0/> <1>اطلب نسخة تجريبية TestFlight / APK</1>",
   "<0/> Economic Impact": "<0/> الأثر الاقتصادي",
   "Calculate Your Bottom-Line ROI": "احسب عائدك على الاستثمار",
@@ -578,7 +575,13 @@
   "<0>$<1>649</1></0> <2>/ year</2>": "<0>$<1>649</1></0> <2>/ سنة</2>",
   "<0>$<1>1,639</1></0> <2>/ year</2>": "<0>$<1>1,639</1></0> <2>/ سنة</2>",
   "ERPNext Core • Multi-Tenant Partition": "نواة ERPNext • فصل متعدد المستأجرين",
-  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>لا.</0> - تذهب الفواتير إلى <1>ERPNext الخاص بك</1>. - نحتفظ فقط بما يلزم لتشغيل حسابك: بريدك وخطتك ورصيدك وبصمات فحص التكرار (وليس المستندات). - لاكتشاف المشكلات وإصلاحها: تقارير الأخطاء والأعطال (Error ID وإصدار التطبيق وطراز الهاتف وإصدار Android). ولا تشمل أبداً فواتيرك أو مبالغك أو مفاتيح ERPNext. تُحفظ سجلات الخادم 30 يوماً وتقارير الأعطال 90 يوماً."
+  "<0>No.</0> - Invoices go to <1>your own ERPNext</1>. - We keep only what's needed to run your account: your email, plan, credit balance, and duplicate-check fingerprints (not the documents). - To find and fix problems: error and crash reports (Error ID, app version, phone model, Android version). Never your invoices, amounts or ERPNext keys. Server logs are kept 30 days, crash reports 90 days.": "<0>لا.</0> - تذهب الفواتير إلى <1>ERPNext الخاص بك</1>. - نحتفظ فقط بما يلزم لتشغيل حسابك: بريدك وخطتك ورصيدك وبصمات فحص التكرار (وليس المستندات). - لاكتشاف المشكلات وإصلاحها: تقارير الأخطاء والأعطال (Error ID وإصدار التطبيق وطراز الهاتف وإصدار Android). ولا تشمل أبداً فواتيرك أو مبالغك أو مفاتيح ERPNext. تُحفظ سجلات الخادم 30 يوماً وتقارير الأعطال 90 يوماً.",
+  "Scan or upload an invoice": "امسح فاتورة أو ارفعها",
+  "ERPYAS app: Upload": "تطبيق ERPYAS: الرفع",
+  "ERPYAS app: CEO Insights": "تطبيق ERPYAS: رؤى المدير",
+  "ERPYAS app: CEO Insights, today's figures": "تطبيق ERPYAS: رؤى المدير، أرقام اليوم",
+  "Ask your books": "اسأل دفاترك",
+  "Live from your ERPNext": "مباشرة من ERPNext لديك"
  },
  "js": {
   "Redirecting to Stripe...": "جارٍ التحويل إلى Stripe...",
