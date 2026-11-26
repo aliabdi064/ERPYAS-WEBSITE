@@ -204,7 +204,6 @@
   "For small businesses: usually 100 to 200 bills a month.": "适合小企业：通常每月 100 到 200 张票据。",
   "For medium businesses and groups of companies.": "适合中型企业和集团公司。",
   "For larger firms and accounting practices.": "适合较大企业和会计师事务所。",
-  "Already a customer? <0>Manage billing</0>: change your card, download receipts or cancel (sign in with the email you paid with; Stripe sends you a code). Plans are bought here on our website, not in the app; pay with the same email you use in the ERPYAS app.": "已经是客户？<0>管理账单</0>：更换银行卡、下载收据或取消订阅（用付款时的邮箱登录，Stripe 会给您发验证码）。套餐在我们网站上购买，而不是在应用内；请使用与 ERPYAS 应用相同的邮箱付款。",
   "<0/> SOC2 &amp; GDPR READY ARCHITECTURE": "<0/> 符合 SOC2 与 GDPR 的架构",
   "Global Compliance &amp; <0/> <1>Volatile RAM Protection.</1>": "全球合规与 <0/> <1>易失性内存保护。</1>",
   "<0>ERP</0><1>YAS</1> relies on ERPNext for the ultimate ledger authority. We enforce the <2>Law of Absolute Statelessness</2>. The middleware processes documents strictly in volatile memory, meaning sensitive documents evaporate the millisecond extraction finishes.": "<0>ERP</0><1>YAS</1> 以 ERPNext 作为最终的账簿权威。我们奉行<2>绝对无状态原则</2>：中间件只在易失性内存中处理单据，提取一结束，敏感单据即刻消失。",
@@ -441,7 +440,6 @@
   "<0>How do I sign in?</0><1/>": "<0>如何登录？</0><1/>",
   "With <0>Google</0> (on iPhone, Sign in with Apple is coming). Sessions stay signed in securely. You can sign out any time from the app.": "使用 <0>Google</0>（iPhone 上即将支持“通过 Apple 登录”）。会话会安全地保持登录。您随时可以在应用中退出。",
   "<0/>Quick Answers": "<0/>快速问答",
-  "<0>Contract?</0> No. Monthly or yearly, cancel any time in <1><2>Manage billing</2></1> or by email to info@erpyas.com.": "<0>需要签合同吗？</0>不需要。按月或按年，随时可在<1><2>管理账单</2></1>中取消，或发邮件至 info@erpyas.com。",
   "<0>Works with my existing ERPNext?</0> Yes, with no changes to your ERPNext.": "<0>能配合我现有的 ERPNext 使用吗？</0>可以，无需对您的 ERPNext 做任何改动。",
   "<0>Do I need an IT person?</0> No. Setup takes about 5 minutes.": "<0>需要 IT 人员吗？</0>不需要。设置大约 5 分钟。",
   "<0>Does it replace my accountant?</0> No. It removes the typing; your accountant keeps full control and approves everything.": "<0>它会取代我的会计吗？</0>不会。它免去录入工作；您的会计保留完全的控制权，并审批一切。",
@@ -585,7 +583,13 @@
   "Choose a plan": "选择套餐",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>有免费试用吗？</0>有，每个新账户都有：7 天、10 张发票和 CEO 洞察，无需银行卡。",
   "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "价格以美元计，<0>不含增值税</0>。结账时也可用英镑或欧元支付：Starter £8、Business £20、Growth £47、Scale £119 每月（按年 £88、£220、£517、£1,309）。<1>每个套餐都包含 CEO 洞察。</1>年付套餐只收 11 个月的价格（免费 1 个月），每月发放发票额度；未用完的可顺延一个月。每个新账户均可免费试用：7 天，10 张发票。每月需要超过 3,000 张？<2>联系我们</2>。",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "在 ERPYAS 应用中给发票拍照，或上传 <0>PDF 或图片</0>；也可以<1>一次上传最多 50 个 PDF 或图片</1>。"
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "在 ERPYAS 应用中给发票拍照，或上传 <0>PDF 或图片</0>；也可以<1>一次上传最多 50 个 PDF 或图片</1>。",
+  "Already a customer? <0>Manage billing</0>: change your card, download receipts or cancel (sign in with the email you paid with; Stripe sends you a code). Plans are bought here on our website, not in the app; pay with the same email you use in the ERPYAS app. You can also cancel in the ERPYAS app: <1>Settings → Account &amp; plan → Cancel plan</1>.": "已经是客户？<0>管理账单</0>：更换银行卡、下载收据或取消订阅（用付款时的邮箱登录，Stripe 会给您发验证码）。套餐在我们网站上购买，而不是在应用内；请使用与 ERPYAS 应用相同的邮箱付款。也可以在 ERPYAS 应用中取消：<1>设置 → 账户和套餐 → 取消套餐</1>。",
+  "<0>Contract?</0> No. Monthly or yearly, cancel any time in the ERPYAS app, in <1><2>Manage billing</2></1> or by email to info@erpyas.com.": "<0>需要签合同吗？</0>不需要。按月或按年，随时可在 ERPYAS 应用或<1><2>管理账单</2></1>中取消，或发邮件至 info@erpyas.com。",
+  "<0>To cancel</0>, the easiest way is the ERPYAS app: <1>Settings → Account &amp; plan → Cancel plan</1>. See <2>Cancelling and refunds</2>.": "<0>如需取消</0>，最简单的方法是在 ERPYAS 应用中：<1>设置 → 账户和套餐 → 取消套餐</1>。另见<2>取消与退款</2>。",
+  "<0>Cancelling and refunds</0><1/>": "<0>取消与退款</0><1/>",
+  "Cancel any time: in the ERPYAS app (<0>Settings → Account &amp; plan → Cancel plan</0>), in <1>Manage billing</1> here, or by email to <2>info@erpyas.com</2>. Your plan stays active, with its invoices, until the end of the month or year you paid for, and you are not charged again. Changed your mind? Tap <3>Keep my plan</3> in the app before that date.": "随时可以取消：在 ERPYAS 应用中（<0>设置 → 账户和套餐 → 取消套餐</0>）、在本页的<1>管理账单</1>中，或发邮件至 <2>info@erpyas.com</2>。您的套餐及其发票额度会保留到已付费的月或年结束，之后不再扣款。改变主意了？在该日期前在应用中点击<3>保留我的套餐</3>即可。",
+  "<0>Refunds:</0> payments already made are not refunded, because the 7-day free trial with 10 invoices is there to try ERPYAS first. We do refund billing mistakes, such as a double charge or a charge after you cancelled: email <1>info@erpyas.com</1>. Please cancel in the app or email us rather than asking your bank to reverse a payment: a reversed payment (chargeback) pauses the account until it is settled.": "<0>退款：</0>已支付的费用不予退还，因为 7 天免费试用（10 张发票）就是让您先试用 ERPYAS 的。计费错误我们会退款，例如重复扣款或取消后仍被扣款：请发邮件至 <1>info@erpyas.com</1>。请在应用中取消或给我们发邮件，而不要让银行撤回付款：被撤回的付款（拒付）会使账户暂停，直到处理完毕。"
  },
  "js": {
   "Redirecting to Stripe...": "正在跳转到 Stripe...",
