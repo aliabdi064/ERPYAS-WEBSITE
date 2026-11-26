@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>O ERPYAS em 30 segundos</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "De uma fatura em papel a um rascunho pronto a rever no seu ERPNext.",
   "Snap or upload": "Foto ou carregamento",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "Tire uma foto ou carregue um <0>PDF ou uma imagem</0> da fatura na app ERPYAS.",
   "AI reads it": "A IA lê-a",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "Fornecedor, número da fatura, data, <0>cada linha</0>, descontos e total.",
   "Draft in ERPNext": "Rascunho no ERPNext",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "Este e-mail já teve a sua avaliação gratuita",
   "Choose a plan": "Escolha um plano",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>Avaliação gratuita?</0> Sim, para cada conta nova: 7 dias, 10 faturas e Indicadores do CEO, sem cartão.",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Preços em dólares americanos, <0>IVA não incluído</0>. Pague em libras ou euros no checkout: Starter £8, Business £20, Growth £47, Scale £119 por mês (anual £88, £220, £517, £1,309). <1>Indicadores do CEO incluídos em todos os planos.</1> Os planos anuais custam o preço de 11 meses (1 mês grátis) e dão-lhe as faturas todos os meses; as não usadas passam um mês. Avaliação gratuita para cada conta nova: 7 dias, 10 faturas. Precisa de mais de 3.000 faturas por mês? <2>Contacte-nos</2>."
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Preços em dólares americanos, <0>IVA não incluído</0>. Pague em libras ou euros no checkout: Starter £8, Business £20, Growth £47, Scale £119 por mês (anual £88, £220, £517, £1,309). <1>Indicadores do CEO incluídos em todos os planos.</1> Os planos anuais custam o preço de 11 meses (1 mês grátis) e dão-lhe as faturas todos os meses; as não usadas passam um mês. Avaliação gratuita para cada conta nova: 7 dias, 10 faturas. Precisa de mais de 3.000 faturas por mês? <2>Contacte-nos</2>.",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "Tire uma foto ou carregue um <0>PDF ou uma imagem</0> da fatura na app ERPYAS, ou <1>até 50 PDF ou imagens de uma vez</1>."
  },
  "js": {
   "Redirecting to Stripe...": "A redirecionar para a Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "Rácio saudável (5,1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">FORNECEDOR</div>\\n                        <div class=\"col-span-4\">REF. FATURA</div>\\n                        <div class=\"col-span-4 text-right\">VALOR TOTAL</div>\\n                    </div>\\n",
   "/ year": "/ ano",
-  "/ month": "/ mês"
+  "/ month": "/ mês",
+  "Bulk Upload:": "Envio em lote:",
+  "Up to 50 Invoices at Once": "até 50 faturas de uma vez"
  }
 }

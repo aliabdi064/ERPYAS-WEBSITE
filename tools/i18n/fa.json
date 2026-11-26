@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>ERPYAS در 30 ثانیه</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "از فاکتور کاغذی تا یک پیش‌نویس آماده‌ی بررسی در ERPNext شما.",
   "Snap or upload": "عکس بگیرید یا بارگذاری کنید",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "در اپ ERPYAS از فاکتور عکس بگیرید یا آن را به صورت <0>PDF یا تصویر</0> بارگذاری کنید.",
   "AI reads it": "هوش مصنوعی آن را می‌خواند",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "تأمین‌کننده، شماره‌ی فاکتور، تاریخ، <0>همه‌ی ردیف‌ها</0>، تخفیف‌ها و جمع کل.",
   "Draft in ERPNext": "پیش‌نویس در ERPNext",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "این ایمیل پیش‌تر آزمایش رایگانش را داشته است",
   "Choose a plan": "یک طرح انتخاب کنید",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>آزمایش رایگان؟</0> بله، برای هر حساب جدید: 7 روز، 10 فاکتور و بینش مدیر، بدون کارت.",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "قیمت‌ها به دلار آمریکا و <0>بدون مالیات بر ارزش افزوده</0> است. هنگام پرداخت می‌توانید با پوند یا یورو هم بپردازید: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 در ماه (سالانه ‎£88، ‎£220، ‎£517، ‎£1,309). <1>بینش مدیر در همه‌ی طرح‌ها هست.</1> طرح‌های سالانه به قیمت 11 ماه‌اند (1 ماه رایگان) و فاکتورهای شما را هر ماه می‌دهند؛ فاکتورهای استفاده‌نشده یک ماه منتقل می‌شوند. آزمایش رایگان برای هر حساب جدید: 7 روز، 10 فاکتور. بیش از 3,000 فاکتور در ماه لازم دارید؟ <2>با ما تماس بگیرید</2>."
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "قیمت‌ها به دلار آمریکا و <0>بدون مالیات بر ارزش افزوده</0> است. هنگام پرداخت می‌توانید با پوند یا یورو هم بپردازید: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 در ماه (سالانه ‎£88، ‎£220، ‎£517، ‎£1,309). <1>بینش مدیر در همه‌ی طرح‌ها هست.</1> طرح‌های سالانه به قیمت 11 ماه‌اند (1 ماه رایگان) و فاکتورهای شما را هر ماه می‌دهند؛ فاکتورهای استفاده‌نشده یک ماه منتقل می‌شوند. آزمایش رایگان برای هر حساب جدید: 7 روز، 10 فاکتور. بیش از 3,000 فاکتور در ماه لازم دارید؟ <2>با ما تماس بگیرید</2>.",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "در اپ ERPYAS از فاکتور عکس بگیرید یا آن را به صورت <0>PDF یا تصویر</0> بارگذاری کنید، یا <1>تا 50 PDF یا تصویر را یک‌جا</1> بفرستید."
  },
  "js": {
   "Redirecting to Stripe...": "در حال انتقال به Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "نسبت سالم (5.1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">تأمین‌کننده</div>\\n                        <div class=\"col-span-4\">شماره‌ی فاکتور</div>\\n                        <div class=\"col-span-4 text-right\">مبلغ کل</div>\\n                    </div>\\n                ",
   "/ year": "/ سال",
-  "/ month": "/ ماه"
+  "/ month": "/ ماه",
+  "Bulk Upload:": "بارگذاری دسته‌ای:",
+  "Up to 50 Invoices at Once": "تا 50 فاکتور یک‌جا"
  }
 }

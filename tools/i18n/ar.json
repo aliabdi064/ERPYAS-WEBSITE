@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>ERPYAS في 30 ثانية</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "من فاتورة ورقية إلى مسودة جاهزة للمراجعة في ERPNext الخاص بك.",
   "Snap or upload": "صوّر أو ارفع",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "التقط صورة للفاتورة أو ارفعها بصيغة <0>PDF أو صورة</0> في تطبيق ERPYAS.",
   "AI reads it": "الذكاء الاصطناعي يقرؤها",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "المورد ورقم الفاتورة والتاريخ و<0>كل بند</0> والخصومات والإجمالي.",
   "Draft in ERPNext": "مسودة في ERPNext",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "هذا البريد استخدم تجربته المجانية من قبل",
   "Choose a plan": "اختر خطة",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>تجربة مجانية؟</0> نعم، لكل حساب جديد: 7 أيام و10 فواتير ورؤى المدير، دون بطاقة.",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "الأسعار بالدولار الأمريكي <0>دون ضريبة القيمة المضافة</0>. يمكنك الدفع بالجنيه الإسترليني أو اليورو عند الدفع: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 شهرياً (سنوياً ‎£88، ‎£220، ‎£517، ‎£1,309). <1>رؤى المدير مشمولة في كل خطة.</1> الخطط السنوية بسعر 11 شهراً (شهر مجاني) وتمنحك فواتيرك كل شهر، وما لا يُستخدم يُرحَّل شهراً واحداً. تجربة مجانية لكل حساب جديد: 7 أيام و10 فواتير. تحتاج أكثر من 3,000 فاتورة شهرياً؟ <2>تواصل معنا</2>."
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "الأسعار بالدولار الأمريكي <0>دون ضريبة القيمة المضافة</0>. يمكنك الدفع بالجنيه الإسترليني أو اليورو عند الدفع: Starter ‎£8، Business ‎£20، Growth ‎£47، Scale ‎£119 شهرياً (سنوياً ‎£88، ‎£220، ‎£517، ‎£1,309). <1>رؤى المدير مشمولة في كل خطة.</1> الخطط السنوية بسعر 11 شهراً (شهر مجاني) وتمنحك فواتيرك كل شهر، وما لا يُستخدم يُرحَّل شهراً واحداً. تجربة مجانية لكل حساب جديد: 7 أيام و10 فواتير. تحتاج أكثر من 3,000 فاتورة شهرياً؟ <2>تواصل معنا</2>.",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "التقط صورة للفاتورة أو ارفعها بصيغة <0>PDF أو صورة</0> في تطبيق ERPYAS، أو ارفع <1>حتى 50 ملف PDF أو صورة دفعة واحدة</1>."
  },
  "js": {
   "Redirecting to Stripe...": "جارٍ التحويل إلى Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "نسبة صحية (5.1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">المورد</div>\\n                        <div class=\"col-span-4\">رقم الفاتورة</div>\\n                        <div class=\"col-span-4 text-right\">المبلغ الإجمالي</div>\\n                    </div>\\n                ",
   "/ year": "/ سنة",
-  "/ month": "/ شهر"
+  "/ month": "/ شهر",
+  "Bulk Upload:": "الرفع الجماعي:",
+  "Up to 50 Invoices at Once": "حتى 50 فاتورة دفعة واحدة"
  }
 }

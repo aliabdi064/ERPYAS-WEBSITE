@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>30 秒了解 ERPYAS</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "从纸质发票到 ERPNext 中待审核的草稿。",
   "Snap or upload": "拍照或上传",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "在 ERPYAS 应用中给发票拍照，或上传 <0>PDF 或图片</0>。",
   "AI reads it": "AI 读取",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "供应商、发票号、日期、<0>每一行明细</0>、折扣和总额。",
   "Draft in ERPNext": "ERPNext 中的草稿",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "此邮箱已用过免费试用",
   "Choose a plan": "选择套餐",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>有免费试用吗？</0>有，每个新账户都有：7 天、10 张发票和 CEO 洞察，无需银行卡。",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "价格以美元计，<0>不含增值税</0>。结账时也可用英镑或欧元支付：Starter £8、Business £20、Growth £47、Scale £119 每月（按年 £88、£220、£517、£1,309）。<1>每个套餐都包含 CEO 洞察。</1>年付套餐只收 11 个月的价格（免费 1 个月），每月发放发票额度；未用完的可顺延一个月。每个新账户均可免费试用：7 天，10 张发票。每月需要超过 3,000 张？<2>联系我们</2>。"
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "价格以美元计，<0>不含增值税</0>。结账时也可用英镑或欧元支付：Starter £8、Business £20、Growth £47、Scale £119 每月（按年 £88、£220、£517、£1,309）。<1>每个套餐都包含 CEO 洞察。</1>年付套餐只收 11 个月的价格（免费 1 个月），每月发放发票额度；未用完的可顺延一个月。每个新账户均可免费试用：7 天，10 张发票。每月需要超过 3,000 张？<2>联系我们</2>。",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "在 ERPYAS 应用中给发票拍照，或上传 <0>PDF 或图片</0>；也可以<1>一次上传最多 50 个 PDF 或图片</1>。"
  },
  "js": {
   "Redirecting to Stripe...": "正在跳转到 Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "比率健康 (5.1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">供应商</div>\\n                        <div class=\"col-span-4\">发票编号</div>\\n                        <div class=\"col-span-4 text-right\">总金额</div>\\n                    </div>\\n                ",
   "/ year": "/ 年",
-  "/ month": "/ 月"
+  "/ month": "/ 月",
+  "Bulk Upload:": "批量上传：",
+  "Up to 50 Invoices at Once": "一次最多 50 张发票"
  }
 }

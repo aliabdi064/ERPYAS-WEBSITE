@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>ERPYAS in 30 Sekunden</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "Von der Papierrechnung zum prüfbereiten Entwurf in Ihrem ERPNext.",
   "Snap or upload": "Fotografieren oder hochladen",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "Fotografieren Sie die Rechnung oder laden Sie sie als <0>PDF oder Bild</0> in der ERPYAS-App hoch.",
   "AI reads it": "Die KI liest sie",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "Lieferant, Rechnungsnummer, Datum, <0>jede Position</0>, Rabatte und die Summe.",
   "Draft in ERPNext": "Entwurf in ERPNext",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "Diese E-Mail hatte bereits ihre kostenlose Testphase",
   "Choose a plan": "Tarif wählen",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>Kostenlose Testphase?</0> Ja, für jedes neue Konto: 7 Tage, 10 Rechnungen und CEO-Einblicke, ohne Karte.",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Preise in US-Dollar, <0>zzgl. USt.</0> An der Kasse auch in Pfund oder Euro zahlbar: Starter £8, Business £20, Growth £47, Scale £119 im Monat (jährlich £88, £220, £517, £1.309). <1>CEO-Einblicke sind in jedem Tarif enthalten.</1> Jahrestarife kosten den Preis von 11 Monaten (1 Monat gratis) und geben Ihnen Ihre Rechnungen jeden Monat; ungenutzte werden einen Monat übertragen. Kostenlose Testphase für jedes neue Konto: 7 Tage, 10 Rechnungen. Mehr als 3.000 Rechnungen im Monat? <2>Schreiben Sie uns</2>."
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Preise in US-Dollar, <0>zzgl. USt.</0> An der Kasse auch in Pfund oder Euro zahlbar: Starter £8, Business £20, Growth £47, Scale £119 im Monat (jährlich £88, £220, £517, £1.309). <1>CEO-Einblicke sind in jedem Tarif enthalten.</1> Jahrestarife kosten den Preis von 11 Monaten (1 Monat gratis) und geben Ihnen Ihre Rechnungen jeden Monat; ungenutzte werden einen Monat übertragen. Kostenlose Testphase für jedes neue Konto: 7 Tage, 10 Rechnungen. Mehr als 3.000 Rechnungen im Monat? <2>Schreiben Sie uns</2>.",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "Fotografieren Sie die Rechnung oder laden Sie sie als <0>PDF oder Bild</0> in der ERPYAS-App hoch, oder <1>bis zu 50 PDFs oder Bilder auf einmal</1>."
  },
  "js": {
   "Redirecting to Stripe...": "Weiter zu Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "Gesunde Quote (5,1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">LIEFERANT</div>\\n                        <div class=\"col-span-4\">RECHNUNGSNR.</div>\\n                        <div class=\"col-span-4 text-right\">GESAMTBETRAG</div>\\n                    </div>\\n                ",
   "/ year": "/ Jahr",
-  "/ month": "/ Monat"
+  "/ month": "/ Monat",
+  "Bulk Upload:": "Stapel-Upload:",
+  "Up to 50 Invoices at Once": "bis zu 50 Rechnungen auf einmal"
  }
 }

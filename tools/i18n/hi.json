@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>30 सेकंड में ERPYAS</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "कागज़ के इनवॉइस से आपके ERPNext में जाँच के लिए तैयार ड्राफ्ट तक।",
   "Snap or upload": "फ़ोटो लें या अपलोड करें",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "ERPYAS ऐप में इनवॉइस की फ़ोटो लें या उसकी <0>PDF या इमेज</0> अपलोड करें।",
   "AI reads it": "AI उसे पढ़ता है",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "सप्लायर, इनवॉइस नंबर, तारीख, <0>हर लाइन आइटम</0>, छूट और कुल राशि।",
   "Draft in ERPNext": "ERPNext में ड्राफ्ट",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "इस ईमेल का मुफ़्त ट्रायल पहले ही हो चुका है",
   "Choose a plan": "प्लान चुनें",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>मुफ़्त ट्रायल?</0> हाँ, हर नए खाते के लिए: 7 दिन, 10 इनवॉइस और CEO इनसाइट्स, बिना कार्ड।",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "कीमतें अमेरिकी डॉलर में, <0>VAT अलग</0>। चेकआउट पर पाउंड या यूरो में भी भुगतान करें: Starter £8, Business £20, Growth £47, Scale £119 प्रति माह (सालाना £88, £220, £517, £1,309)। <1>CEO इनसाइट्स हर प्लान में शामिल है।</1> सालाना प्लान की कीमत 11 महीनों की है (1 महीना मुफ़्त) और वे हर महीने आपके इनवॉइस देते हैं; बचे हुए एक महीने आगे जाते हैं। हर नए खाते के लिए मुफ़्त ट्रायल: 7 दिन, 10 इनवॉइस। महीने में 3,000 से ज़्यादा इनवॉइस चाहिए? <2>हमसे संपर्क करें</2>।"
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "कीमतें अमेरिकी डॉलर में, <0>VAT अलग</0>। चेकआउट पर पाउंड या यूरो में भी भुगतान करें: Starter £8, Business £20, Growth £47, Scale £119 प्रति माह (सालाना £88, £220, £517, £1,309)। <1>CEO इनसाइट्स हर प्लान में शामिल है।</1> सालाना प्लान की कीमत 11 महीनों की है (1 महीना मुफ़्त) और वे हर महीने आपके इनवॉइस देते हैं; बचे हुए एक महीने आगे जाते हैं। हर नए खाते के लिए मुफ़्त ट्रायल: 7 दिन, 10 इनवॉइस। महीने में 3,000 से ज़्यादा इनवॉइस चाहिए? <2>हमसे संपर्क करें</2>।",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "ERPYAS ऐप में इनवॉइस की फ़ोटो लें या उसकी <0>PDF या इमेज</0> अपलोड करें, या <1>एक साथ 50 तक PDF या इमेज</1> अपलोड करें।"
  },
  "js": {
   "Redirecting to Stripe...": "Stripe पर ले जा रहे हैं...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "स्वस्थ अनुपात (5.1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">सप्लायर</div>\\n                        <div class=\"col-span-4\">इनवॉइस नंबर</div>\\n                        <div class=\"col-span-4 text-right\">कुल राशि</div>\\n                    </div>\\n                ",
   "/ year": "/ साल",
-  "/ month": "/ माह"
+  "/ month": "/ माह",
+  "Bulk Upload:": "बल्क अपलोड:",
+  "Up to 50 Invoices at Once": "एक बार में 50 इनवॉइस तक"
  }
 }

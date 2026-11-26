@@ -34,7 +34,6 @@
   "<0>ERPYAS in 30 Seconds</0>": "<0>ERPYAS en 30 secondes</0>",
   "From a paper invoice to a ready-to-check draft in your ERPNext.": "D'une facture papier à un brouillon prêt à vérifier dans votre ERPNext.",
   "Snap or upload": "Photo ou import",
-  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app.": "Prenez une photo ou importez un <0>PDF ou une image</0> de la facture dans l'appli ERPYAS.",
   "AI reads it": "L'IA la lit",
   "Supplier, invoice number, date, <0>every line item</0>, discounts and the total.": "Fournisseur, numéro de facture, date, <0>chaque ligne</0>, remises et total.",
   "Draft in ERPNext": "Brouillon dans ERPNext",
@@ -585,7 +584,8 @@
   "This email already had its free trial": "Cet e-mail a déjà eu son essai gratuit",
   "Choose a plan": "Choisissez un forfait",
   "<0>Free trial?</0> Yes, for every new account: 7 days, 10 invoices and CEO Insights, no card.": "<0>Essai gratuit ?</0> Oui, pour chaque nouveau compte : 7 jours, 10 factures et Indicateurs PDG, sans carte bancaire.",
-  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Prix en dollars américains, <0>hors TVA</0>. Payez en livres ou en euros au paiement : Starter £8, Business £20, Growth £47, Scale £119 par mois (annuel £88, £220, £517, £1,309). <1>Indicateurs PDG inclus dans chaque forfait.</1> Les forfaits annuels coûtent le prix de 11 mois (1 mois offert) et vous donnent vos factures chaque mois ; celles non utilisées sont reportées d'un mois. Essai gratuit pour chaque nouveau compte : 7 jours, 10 factures. Besoin de plus de 3.000 factures par mois ? <2>Contactez-nous</2>."
+  "Prices in US dollars, <0>excluding VAT</0>. Pay in pounds or euros at checkout: Starter £8, Business £20, Growth £47, Scale £119 a month (yearly £88, £220, £517, £1,309). <1>CEO Insights included in every plan.</1> Yearly plans cost 11 months' price (one month free) and give your invoices every month; unused ones carry over one month. Free trial for every new account: 7 days, 10 invoices. Need more than 3,000 invoices a month? <2>Contact us</2>.": "Prix en dollars américains, <0>hors TVA</0>. Payez en livres ou en euros au paiement : Starter £8, Business £20, Growth £47, Scale £119 par mois (annuel £88, £220, £517, £1,309). <1>Indicateurs PDG inclus dans chaque forfait.</1> Les forfaits annuels coûtent le prix de 11 mois (1 mois offert) et vous donnent vos factures chaque mois ; celles non utilisées sont reportées d'un mois. Essai gratuit pour chaque nouveau compte : 7 jours, 10 factures. Besoin de plus de 3.000 factures par mois ? <2>Contactez-nous</2>.",
+  "Take a photo or upload a <0>PDF or image</0> of the invoice in the ERPYAS app, or <1>up to 50 PDFs or images at once</1>.": "Prenez une photo ou importez un <0>PDF ou une image</0> de la facture dans l'appli ERPYAS, ou <1>jusqu'à 50 PDF ou images d'un coup</1>."
  },
  "js": {
   "Redirecting to Stripe...": "Redirection vers Stripe...",
@@ -664,6 +664,8 @@
   "Healthy Ratio (5.1x)": "Ratio sain (5,1x)",
   "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">SUPPLIER</div>\\n                        <div class=\"col-span-4\">INVOICE REF</div>\\n                        <div class=\"col-span-4 text-right\">TOTAL AMOUNT</div>\\n                    </div>\\n                ": "\\n                    <div class=\"px-4 py-2.5 grid grid-cols-12 text-gray-400 font-mono text-[11px]\">\\n                        <div class=\"col-span-4\">FOURNISSEUR</div>\\n                        <div class=\"col-span-4\">RÉF. FACTURE</div>\\n                        <div class=\"col-span-4 text-right\">MONTANT TOTAL</div>\\n                    </div>\\n",
   "/ year": "/ an",
-  "/ month": "/ mois"
+  "/ month": "/ mois",
+  "Bulk Upload:": "Import par lot :",
+  "Up to 50 Invoices at Once": "jusqu'à 50 factures d'un coup"
  }
 }
