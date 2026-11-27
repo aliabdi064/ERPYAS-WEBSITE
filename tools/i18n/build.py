@@ -37,6 +37,7 @@ LANGS = {
     "zh-tw": {"dir": "ltr", "font": "Noto+Sans+TC:wght@400;500;700;900", "family": "'Noto Sans TC'", "tag": "zh-TW"},
     "pt-br": {"dir": "ltr", "font": None, "family": None, "tag": "pt-BR"},
     "nb": {"dir": "ltr", "font": None, "family": None},
+    "sv": {"dir": "ltr", "font": None, "family": None},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}
