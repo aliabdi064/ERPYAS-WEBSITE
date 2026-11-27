@@ -1,4 +1,4 @@
-"""Builds the translated copies of the website: /zh/ /hi/ /ar/ /de/ /fa/ /es/ /pt/ /fr/ (English stays at /).
+"""Builds the translated copies of the website, one folder per language (/zh/, /de/, /tr/, …; English stays at /).
 
     python3 tools/i18n/build.py            # build every language, report anything untranslated
     python3 tools/i18n/build.py --check    # build in memory only; fail if a page would change or a text is missing
@@ -32,6 +32,8 @@ LANGS = {
     "es": {"dir": "ltr", "font": None, "family": None},
     "pt": {"dir": "ltr", "font": None, "family": None},
     "fr": {"dir": "ltr", "font": None, "family": None},
+    # ERPNext 16 languages (owner, 27 Nov 2026). "tag" is the page language when it is not the folder name.
+    "tr": {"dir": "ltr", "font": None, "family": None},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}
@@ -44,12 +46,17 @@ def norm(text: str) -> str:
     return " ".join(text.split())
 
 
+def tag(lang: str) -> str:
+    """The page language for a folder: pt-br -> pt-BR, sr-latn -> sr-Latn, zh-tw -> zh-TW."""
+    return LANGS.get(lang, {}).get("tag", lang)
+
+
 def page_url(lang: str, page: str) -> str:
     return f"{ORIGIN}/" + ("" if lang == "en" else f"{lang}/") + page
 
 
 def alternates(page: str) -> str:
-    links = [f'<link rel="alternate" hreflang="{l}" href="{page_url(l, page)}">' for l in ALL]
+    links = [f'<link rel="alternate" hreflang="{tag(l)}" href="{page_url(l, page)}">' for l in ALL]
     links.append(f'<link rel="alternate" hreflang="x-default" href="{page_url("en", page)}">')
     return "".join(links)
 
@@ -196,7 +203,7 @@ def build_page(name: str, lang: str, table: dict, js_table: dict, report: dict, 
     report.setdefault("__js_used__", set()).update(used_js)
 
     cfg = LANGS[lang]
-    page = re.sub(r'<html lang="en"', f'<html lang="{lang}" dir="{cfg["dir"]}"', page, count=1)
+    page = re.sub(r'<html lang="en"', f'<html lang="{tag(lang)}" dir="{cfg["dir"]}"', page, count=1)
     page = re.sub(r"(?s)<!-- i18n:redirect -->.*?<!-- /i18n:redirect -->\n?", "", page)
     page = localize_links(page, lang)
     me = page_url(lang, PAGES[name])
@@ -279,7 +286,7 @@ def sitemap() -> str:
         for lang in ALL:
             rows.append(f"  <url>\n    <loc>{page_url(lang, page)}</loc>")
             for alt in ALL:
-                rows.append(f'    <xhtml:link rel="alternate" hreflang="{alt}" href="{page_url(alt, page)}"/>')
+                rows.append(f'    <xhtml:link rel="alternate" hreflang="{tag(alt)}" href="{page_url(alt, page)}"/>')
             rows.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{page_url("en", page)}"/>\n  </url>')
     rows.append("</urlset>\n")
     return "\n".join(rows)
