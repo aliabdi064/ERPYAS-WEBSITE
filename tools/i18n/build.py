@@ -44,6 +44,7 @@ LANGS = {
     "hr": {"dir": "ltr", "font": None, "family": None},
     "bs": {"dir": "ltr", "font": None, "family": None},
     "th": {"dir": "ltr", "font": "Noto+Sans+Thai:wght@400;500;600;700;800", "family": "'Noto Sans Thai'"},
+    "my": {"dir": "ltr", "font": "Noto+Sans+Myanmar:wght@400;500;600;700;800", "family": "'Noto Sans Myanmar'"},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}
