@@ -1,6 +1,6 @@
 Language flags used by the language switch (js/lang-switch.js) and the ERPYAS app.
 
-gb.svg, cn.svg, in.svg, ae.svg, de.svg, es.svg, pt.svg, br.svg, fr.svg, tr.svg, tw.svg, no.svg, se.svg, rs.svg, hr.svg
+gb.svg, cn.svg, in.svg, ae.svg, de.svg, es.svg, pt.svg, br.svg, fr.svg, tr.svg, tw.svg, no.svg, se.svg, rs.svg, hr.svg, ba.svg
   From flag-icons 7.2.3 (https://github.com/lipis/flag-icons), 4x3 set.
   The MIT License (MIT)
   Copyright (c) 2013 Panayiotis Lipiridis
