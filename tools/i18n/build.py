@@ -38,6 +38,9 @@ LANGS = {
     "pt-br": {"dir": "ltr", "font": None, "family": None, "tag": "pt-BR"},
     "nb": {"dir": "ltr", "font": None, "family": None},
     "sv": {"dir": "ltr", "font": None, "family": None},
+    # Serbian Cyrillic: Inter (already loaded) has Cyrillic; the display fonts do not, so Inter everywhere
+    "sr": {"dir": "ltr", "font": None, "family": "'Inter'"},
+    "sr-latn": {"dir": "ltr", "font": None, "family": None, "tag": "sr-Latn"},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}
