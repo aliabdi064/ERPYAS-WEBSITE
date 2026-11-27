@@ -5,11 +5,11 @@
   var LANGS = [
     ["en", "gb", "English"], ["zh", "cn", "简体中文"], ["zh-tw", "tw", "繁體中文"], ["hi", "in", "हिन्दी"],
     ["ar", "ae", "العربية"], ["de", "de", "Deutsch"], ["fa", "fa", "فارسی"],
-    ["es", "es", "Español"], ["pt", "pt", "Português"], ["fr", "fr", "Français"],
+    ["es", "es", "Español"], ["pt", "pt", "Português (Portugal)"], ["pt-br", "br", "Português (Brasil)"], ["fr", "fr", "Français"],
     ["tr", "tr", "Türkçe"]
   ];
   var LABEL = { en: "Language", zh: "语言", "zh-tw": "語言", hi: "भाषा", ar: "اللغة", de: "Sprache", fa: "زبان",
-                es: "Idioma", pt: "Idioma", fr: "Langue", tr: "Dil" };
+                es: "Idioma", pt: "Idioma", "pt-br": "Idioma", fr: "Langue", tr: "Dil" };
   var KEY = "erpyas_lang";
   var cur = (document.documentElement.lang || "en").toLowerCase(); // a folder name: de, pt-br, sr-latn, zh-tw
   if (!LANGS.some(function (l) { return l[0] === cur; })) cur = "en";

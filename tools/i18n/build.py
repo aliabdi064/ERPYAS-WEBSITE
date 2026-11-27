@@ -35,6 +35,7 @@ LANGS = {
     # ERPNext 16 languages (owner, 27 Nov 2026). "tag" is the page language when it is not the folder name.
     "tr": {"dir": "ltr", "font": None, "family": None},
     "zh-tw": {"dir": "ltr", "font": "Noto+Sans+TC:wght@400;500;700;900", "family": "'Noto Sans TC'", "tag": "zh-TW"},
+    "pt-br": {"dir": "ltr", "font": None, "family": None, "tag": "pt-BR"},
 }
 ALL = ["en"] + list(LANGS)
 KEEP = {" ".join(k.split()) for k in json.loads((Path(__file__).resolve().parent / "keep.json").read_text())["keep"]}
