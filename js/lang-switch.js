@@ -53,7 +53,17 @@
       menu.appendChild(a);
     });
 
-    function open() { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); host.classList.add("is-open"); }
+    // Keep the open list on the screen: on a small phone the flag can sit mid-header, and a list
+    // pinned to its edge would run off the side of the screen.
+    function fit() {
+      menu.style.transform = "";
+      var r = menu.getBoundingClientRect(), vw = document.documentElement.clientWidth, gap = 8, dx = 0;
+      if (r.right > vw - gap) dx = vw - gap - r.right;
+      if (r.left + dx < gap) dx = gap - r.left;
+      if (dx) menu.style.transform = "translateX(" + Math.round(dx) + "px)";
+    }
+    function open() { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); host.classList.add("is-open"); fit(); }
+    window.addEventListener("resize", function () { if (!menu.hidden) fit(); });
     function close() { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); host.classList.remove("is-open"); }
     btn.addEventListener("click", function (e) {
       e.stopPropagation();

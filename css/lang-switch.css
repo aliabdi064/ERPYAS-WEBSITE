@@ -10,15 +10,20 @@
 .lang-flag-lg{width:28px;height:21px}
 .lang-chev{transition:transform .2s;opacity:.8}
 .lang-switch.is-open .lang-chev{transform:rotate(180deg)}
-.lang-menu{position:absolute;top:calc(100% + 10px);inset-inline-end:0;min-width:196px;padding:6px;border-radius:14px;
+/* width:max-content: as wide as the longest language name (and its scrollbar), never squeezed to the button's width. */
+.lang-menu{position:absolute;top:calc(100% + 10px);inset-inline-end:0;width:max-content;min-width:196px;padding:6px;border-radius:14px;
   background:rgba(3,7,18,.97);border:1px solid rgba(255,255,255,.12);box-shadow:0 22px 48px rgba(0,0,0,.55);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);z-index:80;
-  max-height:min(72vh,600px);overflow-y:auto;overscroll-behavior:contain}
-@media (min-width:640px){.lang-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:4px;min-width:400px}}
+  max-height:min(72vh,600px);max-width:calc(100vw - 16px);overflow-y:auto;overscroll-behavior:contain}
+@media (min-width:640px){.lang-menu{display:grid;grid-template-columns:repeat(2,minmax(max-content,1fr));column-gap:4px;min-width:400px}}
 .lang-menu[hidden]{display:none}
 .lang-item{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:9px;color:#e5e7eb;
   text-decoration:none;font:500 15px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;white-space:nowrap}
 .lang-item:hover,.lang-item:focus-visible{background:rgba(255,255,255,.08);color:#fff;outline:none}
 .lang-item[aria-current=true]{background:rgba(6,182,212,.14);color:#67e8f9}
 .lang-item[aria-current=true]::after{content:"";margin-inline-start:auto;width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee}
+/* Small phones (5-inch, 320-379 px wide): a narrower button, so it never covers the logo. */
+@media (max-width:379px){.lang-btn{gap:4px;padding:0 7px 0 6px}}
+/* Touch screens: taller rows, easier to hit with a finger. */
+@media (pointer:coarse){.lang-item{padding:11px 12px}}
 @media (prefers-reduced-motion:reduce){.lang-chev,.lang-btn{transition:none}}
